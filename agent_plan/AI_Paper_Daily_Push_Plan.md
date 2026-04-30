@@ -2,7 +2,7 @@
 
 ## 项目概述
 
-基于 **Claude Code 原生 Skill 机制**驱动的多 Skill Agent 系统，每天定时抓取最新人工智能领域论文，自动生成中文摘要并推送给用户。
+基于 **Claude Code 原生 Skill 机制**驱动的多 Skill Agent 系统，每天定时抓取最新**人工智能**和**具身智能/机器人控制**领域论文，按主题分类、生成中文摘要，并以固定日报格式推送给用户。
 
 每个功能单元是一个标准 Claude Code Skill：`.claude/skills/<name>/SKILL.md` + 辅助脚本。Claude 读取 Skill 指令后自主调用脚本完成任务，无需额外 Agent 框架。
 
@@ -67,7 +67,12 @@ effort: high               # 推理深度
 └────────┘  └──────────┘  └──────────┘  └──────────┘  └──────────┘
 ```
 
-**数据流**：`fetcher` 输出 JSON → `ranker` 过滤排序 → `summarizer` 生成摘要 → `storage` 持久化 → `notifier` 推送日报
+**数据流**：
+1. `fetcher` 抓取 cs.AI + cs.RO 论文 → `data/YYYY-MM-DD-raw.json`
+2. `ranker` 按主题分类（机器人 / AI）+ 筛选每日 Top-N + 选取周/月热门 → `data/YYYY-MM-DD-ranked.json`
+3. `summarizer` 生成中文摘要（每日论文：短摘要；热门论文：详细介绍） → `data/YYYY-MM-DD-summarized.json`
+4. `storage` 持久化 + 记录推送历史（用于去重周/月热门） → `data/papers.db`
+5. `notifier` 组装四板块日报并推送 → `reports/YYYY-MM-DD.md`
 
 ---
 
@@ -89,15 +94,17 @@ effort: high
 ---
 ```
 
+**配置文件**：`config.yaml`（搜索主题，当前配置 `cs.AI` + `cs.RO`，修改此文件即可调整抓取领域）
+
 **辅助脚本**：
 - `scripts/fetch.py`（每日多源并发抓取、去重、标准化输出）
-- `scripts/hot_papers.py`（历史热榜工具，按需手动调用，不接入主流水线）
+- `scripts/hot_papers.py`（历史热榜工具，供 ranker 调用获取周/月热门数据）
 
-**数据源**：arXiv API / HuggingFace Daily Papers（内含 GitHub 链接和 Stars）/ Semantic Scholar（引用数，可选）
+**数据源**：arXiv API / HuggingFace Daily Papers / Papers With Code（代码链接 + Stars）/ Semantic Scholar（引用数，可选）
 
-**输出**：`data/YYYY-MM-DD-raw.json`，每条记录含 `id / title / authors / abstract / url / pdf_url / categories / hf_upvotes / github_stars / code_url / citation_count`
+**输出**：`data/YYYY-MM-DD-raw.json`，每条记录含 `id / title / authors / abstract / url / pdf_url / categories / hf_upvotes / pwc_stars / code_url / citation_count`
 
-**详细计划**：见 `agent_plan/skills/Fetcher.md` 及 `.claude/skills/Fetcher/SKILL.md`
+**已实现**，详见 `.claude/skills/Fetcher/SKILL.md`
 
 ---
 
@@ -109,7 +116,7 @@ effort: high
 ```yaml
 ---
 name: ranker
-description: 对论文列表进行去重、热度评分、主题分类和重要性排序，筛选每类 Top-N。当需要从原始论文列表中筛选精华时使用。
+description: 对论文列表按主题分类（机器人/AI）、热度评分、排名筛选。产出每日 Top-N 和周/月热门候选。当需要从原始论文列表中筛选精华时使用。
 argument-hint: "[raw-json-path]"
 allowed-tools: Bash Read Write
 context: fork
@@ -120,15 +127,40 @@ context: fork
 
 **评分公式**：
 ```
-score = hf_upvotes × 2.0 + github_stars × 0.05 + citation_count × 0.5
+score = hf_upvotes × 2.0 + pwc_stars × 0.05 + citation_count × 0.5
 ```
 
-**策略**：
-- 硬过滤：hf_upvotes / github_stars / citation_count 三项全为 0 的论文丢弃
-- 主题分类：LLM / 多模态 / AI Agent / 计算机视觉 / 强化学习 / 其他
-- 按 score 降序截取 Top-N（默认 Top-20，可通过 `$ARGUMENTS` 传入覆盖）
+**核心逻辑**：
 
-**输出**：`data/YYYY-MM-DD-ranked.json`
+1. **主题分类**：按论文 `categories` 字段将论文分为两组
+   - **机器人组**：包含 `cs.RO` 的论文（具身智能、机器人控制方向）
+   - **AI 组**：包含 `cs.AI` 但不含 `cs.RO` 的论文（通用 AI 方向）
+   - 同时包含两者的，优先归入机器人组
+
+2. **每日筛选**（基于昨天 `raw.json`）：
+   - 机器人组：按 score 降序取 **Top-15**
+   - AI 组：按 score 降序取 **Top-5**
+
+3. **周热门**（基于过去 7 天数据）：
+   - 调用 `hot_papers.py --days 7` 或从近 7 天 `raw.json` 汇总
+   - 取 score 最高的 **1 篇**
+   - 查询 `storage`（`papers.db`）的推送历史，若该篇已推过则取第 2 名，依此类推
+
+4. **月热门**（基于过去 30 天数据）：
+   - 调用 `hot_papers.py --days 30` 或从近 30 天 `raw.json` 汇总
+   - 取 score 最高的 **1 篇**
+   - 同样查推送历史去重，避免重复推送
+
+**输出**：`data/YYYY-MM-DD-ranked.json`，结构如下：
+```json
+{
+  "date": "2026-04-30",
+  "daily_robot": [ /* 15 篇机器人论文 */ ],
+  "daily_ai": [ /* 5 篇 AI 论文 */ ],
+  "weekly_hot": { /* 1 篇周热门 */ },
+  "monthly_hot": { /* 1 篇月热门 */ }
+}
+```
 
 ---
 
@@ -140,23 +172,38 @@ score = hf_upvotes × 2.0 + github_stars × 0.05 + citation_count × 0.5
 ```yaml
 ---
 name: summarizer
-description: 对论文列表中的每篇论文生成中文摘要，包含核心问题、方法、结论和意义。当需要为论文生成中文摘要时使用。
+description: 对论文生成中文摘要。每日论文生成短摘要，周/月热门生成详细介绍。当需要为论文生成中文摘要时使用。
 argument-hint: "[ranked-json-path]"
 allowed-tools: Read Write
 effort: high
 ---
 ```
 
-**指令体**（SKILL.md body）直接内嵌 Prompt 模板，Claude 逐篇处理：
-```
-对每篇论文按以下格式生成 200 字以内中文摘要：
-1. 核心问题（1句）
-2. 主要方法（2-3句）
-3. 关键结论/指标（1-2句）
-4. 实际意义（1句）
-```
+**两级摘要策略**：
 
-**输出**：`data/YYYY-MM-DD-summarized.json`（在 ranked JSON 中追加 `summary_zh` 字段）
+**A. 短摘要**（用于每日 15+5 篇论文）：
+```
+对每篇论文生成 150 字以内中文摘要，格式：
+1. 核心问题（1句）
+2. 方法与创新点（1-2句）
+3. 关键结论/指标（1句）
+```
+追加字段：`summary_zh`
+
+**B. 详细介绍**（用于周/月热门各 1 篇）：
+```
+对该论文生成 500-800 字中文详细介绍，格式：
+1. 研究背景与动机（2-3句）
+2. 核心问题定义（1-2句）
+3. 方法论详解（3-5句，包含技术细节）
+4. 实验结果与关键指标（2-3句）
+5. 与现有工作对比（1-2句）
+6. 实际意义与未来展望（1-2句）
+7. 推荐理由（1句）
+```
+追加字段：`detail_zh`
+
+**输出**：`data/YYYY-MM-DD-summarized.json`（在 ranked JSON 各板块中追加摘要字段）
 
 ---
 
@@ -168,13 +215,48 @@ effort: high
 ```yaml
 ---
 name: storage
-description: 将处理完成的论文数据持久化到 SQLite 数据库，支持历史查询和去重判断。当需要保存或查询论文数据时使用。
+description: 将论文数据持久化到 SQLite，记录推送历史用于去重。支持写入、查询推送记录、判断论文是否已推过。
 argument-hint: "[summarized-json-path]"
 allowed-tools: Bash Read Write
 ---
 ```
 
-**辅助脚本**：`scripts/save.py`（写入 SQLite，表：`papers(id, title, authors, abstract, summary_zh, url, date, categories, score, code_url)`）
+**辅助脚本**：`scripts/save.py`
+
+**数据库表设计**：
+
+```sql
+-- 论文主表
+CREATE TABLE papers (
+    id          TEXT PRIMARY KEY,  -- arxiv:XXXX.XXXXX
+    title       TEXT,
+    authors     TEXT,              -- JSON 数组序列化
+    abstract    TEXT,
+    summary_zh  TEXT,              -- 短摘要
+    detail_zh   TEXT,              -- 详细介绍（仅热门论文有值）
+    url         TEXT,
+    pdf_url     TEXT,
+    categories  TEXT,              -- JSON 数组序列化
+    score       REAL,
+    code_url    TEXT,
+    published_date TEXT,
+    created_at  TEXT DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 推送历史表（用于周/月热门去重）
+CREATE TABLE push_history (
+    id          INTEGER PRIMARY KEY AUTOINCREMENT,
+    paper_id    TEXT NOT NULL,     -- 关联 papers.id
+    push_date   TEXT NOT NULL,     -- 推送日期 YYYY-MM-DD
+    push_type   TEXT NOT NULL,     -- 'daily_robot' / 'daily_ai' / 'weekly_hot' / 'monthly_hot'
+    UNIQUE(paper_id, push_type)   -- 同一论文同一类型只推一次
+);
+```
+
+**对外接口**（供 ranker 调用）：
+- `save.py --save <json-path>`：写入论文数据
+- `save.py --check-pushed <paper-id> --type weekly_hot`：查询某篇是否已作为周热门推过
+- `save.py --mark-pushed <paper-id> --type monthly_hot --date 2026-04-30`：标记为已推送
 
 **输出**：写入 `data/papers.db`，同时保留 `data/YYYY-MM-DD-summarized.json` 归档
 
@@ -188,7 +270,7 @@ allowed-tools: Bash Read Write
 ```yaml
 ---
 name: notifier
-description: 将今日 AI 论文日报推送给用户（Email / Telegram / 本地文件）。当需要发送论文日报时使用。
+description: 将论文日报按四板块格式组装并推送（15篇机器人+5篇AI+周热门+月热门）。当需要发送论文日报时使用。
 argument-hint: "[date]"
 allowed-tools: Bash Read Write
 ---
@@ -198,23 +280,92 @@ allowed-tools: Bash Read Write
 
 **模板文件**：`templates/report.md`（日报 Markdown 模板）
 
-**推送渠道**（可配置）：Email（SMTP）/ Telegram Bot / 本地 `reports/YYYY-MM-DD.md`
+**推送渠道**（可配置，优先级从高到低）：
+1. Telegram Bot（即时推送）
+2. Email SMTP（备选）
+3. 本地 `reports/YYYY-MM-DD.md`（兜底，始终生成）
 
-**日报格式示例**：
+**核心职责**：
+1. 读取 `data/YYYY-MM-DD-summarized.json`
+2. 按模板组装四板块日报
+3. 调用 `storage` 标记本次推送的论文（`push_history`）
+4. 通过配置的渠道推送
+
+---
+
+#### 日报格式（四板块）
+
+```markdown
+📅 AI & 机器人论文日报 — 2026-04-30
+
+═══════════════════════════════════════
+
+🤖 板块一：昨日机器人/具身智能论文（15 篇）
+
+1. 《论文标题》
+   📝 核心问题 ... 方法 ... 结论 ...
+   🔗 论文 | PDF | 代码
+
+2. 《论文标题》
+   � ...
+
+... (共 15 篇)
+
+═══════════════════════════════════════
+
+🧠 板块二：昨日 AI 论文精选（5 篇）
+
+1. 《论文标题》
+   📝 核心问题 ... 方法 ... 结论 ...
+   🔗 论文 | PDF | 代码
+
+... (共 5 篇)
+
+═══════════════════════════════════════
+
+� 板块三：本周最热论文（1 篇）
+
+### 《论文标题》
+
+� 作者：Author One, Author Two 等
+� 发布日期：2026-04-28
+🔥 HF 点赞：128 | ⭐ Stars：256 | 📖 引用：12
+
+📝 详细介绍：
+  研究背景与动机 ...
+  核心问题 ...
+  方法论详解 ...
+  实验结果 ...
+  与现有工作对比 ...
+  实际意义 ...
+  推荐理由 ...
+
+🔗 论文 | PDF | 代码
+
+═══════════════════════════════════════
+
+🏆 板块四：本月最热论文（1 篇）
+
+### 《论文标题》
+
+👥 作者：...
+📅 发布日期：...
+🔥 HF 点赞：... | ⭐ Stars：... | 📖 引用：...
+
+📝 详细介绍：
+  （同上格式，500-800 字）
+
+🔗 论文 | PDF | 代码
+
+═══════════════════════════════════════
+📊 统计：共推送 22 篇 | 机器人 15 篇 | AI 5 篇 | 周热门 1 篇 | 月热门 1 篇
 ```
-📅 AI 论文日报 — 2026-04-29
 
-🔥 今日精选 (共 15 篇)
-
-【LLM】
-1. 《...》
-   👥 作者：...  📁 arXiv:2401.xxxxx
-   📝 摘要：...
-   🔗 [论文链接] | [PDF] | [代码]
-
-【多模态】
-...
-```
+**边界处理**：
+- 若昨日机器人论文不足 15 篇，有多少推多少，标注实际篇数
+- 若昨日 AI 论文不足 5 篇，同上
+- 若周热门和月热门选中同一篇论文，月热门顺延至第 2 名
+- 周/月热门的 `detail_zh` 由 summarizer 生成，notifier 直接使用
 
 ---
 
@@ -245,10 +396,12 @@ effort: high
 ├── skills/
 │   ├── daily-paper-push/       # Skill 0: 主调度器（Orchestrator）
 │   │   └── SKILL.md
-│   ├── fetcher/                # Skill 1: 论文抓取
+│   ├── Fetcher/                # Skill 1: 论文抓取（已实现）
 │   │   ├── SKILL.md
+│   │   ├── config.yaml          # 搜索主题配置（cs.AI + cs.RO）
 │   │   └── scripts/
-│   │       └── fetch.py
+│   │       ├── fetch.py
+│   │       └── hot_papers.py
 │   ├── ranker/                 # Skill 2: 过滤排名
 │   │   ├── SKILL.md
 │   │   └── scripts/
@@ -341,7 +494,7 @@ EMAIL_TO=...
 ## 风险与注意事项
 
 - **arXiv API 限流**：单 IP 每秒请求不超过 3 次，`fetch.py` 需加 rate limiter
-- **Claude 摘要费用**：每篇约 0.01-0.03 USD，每日 15 篇约 $0.3-0.5
+- **Claude 摘要费用**：短摘要每篇约 $0.01-0.03，详细介绍约 $0.05-0.10；每日 20 篇短摘要 + 2 篇详细介绍 ≈ $0.3-0.8
 - **Skill 工具权限**：`Bash` 工具需在 Claude Code 权限配置中显式允许
 - **时区处理**：arXiv 使用 UTC，`fetch.py` 需转换为本地时区判断"当日"
 - **推送稳定性**：建议 Telegram / Email 主渠道 + 本地 `reports/` 文件双重保障

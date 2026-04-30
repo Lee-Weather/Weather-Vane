@@ -8,6 +8,7 @@
 httpx>=0.27.0           # 异步 HTTP 客户端（arXiv / HF / PWC / S2 请求）
 feedparser>=6.0.11      # arXiv Atom XML 解析
 python-dateutil>=2.9    # 日期解析与时区转换
+PyYAML>=6.0             # config.yaml 配置文件解析
 
 # ── Skill 4: storage ────────────────────────────────────────
 # SQLite3 为 Python 内置模块，无需额外安装

@@ -1,0 +1,23 @@
+# Fetcher Skill — 论文搜索主题配置
+# 修改此文件即可调整抓取的论文领域，无需改动脚本代码。
+#
+# 字段说明：
+#   name            - 领域名称（自然语言，供日志和报告展示）
+#   description     - 领域描述（自然语言，说明覆盖的具体研究方向）
+#   arxiv_category  - 对应的 arXiv 分类标签（fetch.py 用于构造 API 查询）
+#
+# HuggingFace Daily Papers（hot_papers.py）由 HF 编辑团队人工策划，
+# 不支持分类过滤，topics 仅作日志展示用途。
+
+topics:
+  - name: "人工智能"
+    description: "通用人工智能方法与理论，包括知识表示、规划、推理、智能体等"
+    arxiv_category: "cs.AI"
+
+  - name: "具身智能与机器人控制"
+    description: "具身智能、机器人感知与控制、运动规划、人机交互、强化学习在机器人领域的应用"
+    arxiv_category: "cs.RO"
+
+# arXiv 抓取参数（fetch.py 使用）
+arxiv:
+  max_results: 100

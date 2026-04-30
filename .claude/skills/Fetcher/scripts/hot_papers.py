@@ -5,7 +5,7 @@ hot_papers.py — 过去 N 天最火 AI 论文排行榜
 完全独立工具，不依赖 fetch.py。
 直接从 HuggingFace Daily Papers API 抓取过去 N 天有点赞的论文
 （HF API 内置 GitHub 代码链接和 Stars，无需额外查询 PWC）。
-可选补充 Semantic Scholar 引用数，按综合热度评分排名，输出 Markdown 报告。
+可选补充 Semantic Scholar 引用数，按综合热度评分排名，输出 JSON 数据文件。
 
 热度评分公式：
     score = hf_upvotes * 2.0 + github_stars * 0.05 + citation_count * 0.5
@@ -13,12 +13,12 @@ hot_papers.py — 过去 N 天最火 AI 论文排行榜
 用法：
     python hot_papers.py                  # 过去 30 天 Top-20
     python hot_papers.py --days 7         # 过去 7 天
-    python hot_papers.py --top 50         # 显示 Top-50
+    python hot_papers.py --top 50         # 保留 Top-50 到 JSON
     python hot_papers.py --skip-citations # 跳过 S2 引用数（更快）
-    python hot_papers.py --output report.md  # 输出到指定文件
+    python hot_papers.py --output path/to/out.json  # 输出到指定路径
 
 输出：
-    控制台打印排名表 + 自动保存至 reports/hot-papers-YYYY-MM-DD-{N}d.md
+    reports/hot-papers-YYYY-MM-DD-{N}d.json
 """
 
 import argparse
@@ -26,11 +26,11 @@ import asyncio
 import json
 import logging
 import os
-import time
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 import httpx
+import yaml
 
 # ──────────────────────────────────────────────────────────────────────────────
 # 常量
@@ -48,6 +48,15 @@ RETRY_DELAYS = [1, 2, 4]
 # 默认输出目录（脚本同级的 reports/ 相对于项目根）
 PROJECT_ROOT = Path(__file__).resolve().parents[4]
 DEFAULT_OUTPUT_DIR = PROJECT_ROOT / "reports"
+
+# 从配置文件读取关注领域（HF Daily Papers 无需分类过滤，仅用于日志展示）
+_SKILL_DIR = Path(__file__).resolve().parents[1]
+try:
+    _cfg = yaml.safe_load((_SKILL_DIR / "config.yaml").read_text(encoding="utf-8"))
+    TOPIC_NAMES = [t["name"] for t in _cfg.get("topics", []) if t.get("name")]
+except Exception:
+    logging.warning("配置文件加载失败，主题展示为空")
+    TOPIC_NAMES = []
 
 # ──────────────────────────────────────────────────────────────────────────────
 # 日志
@@ -76,7 +85,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--skip-citations", action="store_true",
                         help="跳过 Semantic Scholar 引用数补充")
     parser.add_argument("--output", type=str, default=None,
-                        help="输出 Markdown 文件路径（默认：只打印到控制台）")
+                        help="JSON 输出路径（默认： reports/hot-papers-YYYY-MM-DD-{N}d.json）")
     return parser.parse_args()
 
 
@@ -255,59 +264,6 @@ def compute_score(paper: dict) -> float:
 
 
 # ──────────────────────────────────────────────────────────────────────────────
-# 报告生成
-# ──────────────────────────────────────────────────────────────────────────────
-
-def format_report(papers: list[dict], days: int, top_n: int) -> str:
-    """将论文列表格式化为 Markdown 报告。"""
-    now = datetime.now(TZ_CST).strftime("%Y-%m-%d")
-    start = (datetime.now(TZ_CST) - timedelta(days=days)).strftime("%Y-%m-%d")
-
-    lines = [
-        f"# 🔥 AI 论文热度排行榜",
-        f"",
-        f"**统计周期**：{start} ～ {now}（过去 {days} 天）",
-        f"**数据来源**：HuggingFace Daily Papers / Semantic Scholar",
-        f"**生成时间**：{datetime.now(TZ_CST).strftime('%Y-%m-%d %H:%M:%S')} UTC+8",
-        f"",
-        f"---",
-        f"",
-        f"## Top-{min(top_n, len(papers))} 论文",
-        f"",
-    ]
-
-    for rank, p in enumerate(papers[:top_n], start=1):
-        score = compute_score(p)
-        code_badge = f"[💻 Code]({p['code_url']})" if p["code_url"] else "🚫 无代码"
-        authors_str = ", ".join(p["authors"][:3])
-        if len(p["authors"]) > 3:
-            authors_str += f" 等 {len(p['authors'])} 人"
-
-        lines += [
-            f"### #{rank} {p['title']}",
-            f"",
-            f"| 指标 | 数值 |",
-            f"|------|------|",
-            f"| 🔥 HF 点赞 | {p['hf_upvotes']} |",
-            f"| ⭐ GitHub Stars | {p.get('github_stars', 0)} |",
-            f"| 📖 引用数 | {p['citation_count']} |",
-            f"| 📊 综合评分 | {score:.1f} |",
-            f"| 📅 发布日期 | {p['published_date']} |",
-            f"",
-            f"**作者**：{authors_str}",
-            f"",
-            f"**摘要**：{p['abstract'][:300]}{'...' if len(p['abstract']) > 300 else ''}",
-            f"",
-            f"🔗 [论文]({p['url']}) | [PDF]({p['pdf_url']}) | {code_badge}",
-            f"",
-            f"---",
-            f"",
-        ]
-
-    return "\n".join(lines)
-
-
-# ──────────────────────────────────────────────────────────────────────────────
 # 主流程
 # ──────────────────────────────────────────────────────────────────────────────
 
@@ -317,6 +273,7 @@ async def main() -> None:
 
     logger.info("=" * 60)
     logger.info("🔥 AI 论文热度榜 — 过去 %d 天", args.days)
+    logger.info("关注领域：%s", " / ".join(TOPIC_NAMES))
     logger.info("=" * 60)
 
     # 生成日期列表
@@ -365,33 +322,42 @@ async def main() -> None:
 
     # Step 3：按热度评分排名
     all_papers.sort(key=compute_score, reverse=True)
-    top_papers = all_papers[: args.top]
 
-    # Step 4：控制台摘要
-    separator = "=" * 60
-    print(f"\n{separator}")
-    print(f"🔥 过去 {args.days} 天 AI 论文热度 Top-{len(top_papers)}")
-    print(separator)
-    print(f"{'排名':<4} {'HF赞':>5} {'GH⭐':>6} {'引用':>5}  标题")
-    print("-" * 60)
-    for rank, p in enumerate(top_papers, start=1):
-        title_short = p["title"][:45] + "…" if len(p["title"]) > 45 else p["title"]
-        print(f"#{rank:<3} {p['hf_upvotes']:>5} {p.get('github_stars', 0):>6} {p['citation_count']:>5}  {title_short}")
-    print(separator)
-
-    # Step 6：输出 Markdown
-    report_md = format_report(all_papers, args.days, args.top)
-
+    # Step 4：输出 JSON
+    today_str = today.strftime("%Y-%m-%d")
     if args.output:
-        out_path = Path(args.output)
+        json_path = Path(args.output)
     else:
         DEFAULT_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-        today_str = today.strftime("%Y-%m-%d")
-        out_path = DEFAULT_OUTPUT_DIR / f"hot-papers-{today_str}-{args.days}d.md"
+        json_path = DEFAULT_OUTPUT_DIR / f"hot-papers-{today_str}-{args.days}d.json"
 
-    out_path.parent.mkdir(parents=True, exist_ok=True)
-    out_path.write_text(report_md, encoding="utf-8")
-    print(f"\n📄 Markdown 报告已保存：{out_path.resolve()}\n")
+    json_data = []
+    for p in all_papers[: args.top]:
+        entry: dict = {
+            "id": p["id"],
+            "title": p["title"],
+            "authors": p["authors"],
+            "abstract": p["abstract"],
+            "url": p["url"],
+            "pdf_url": p["pdf_url"],
+            "published_date": p["published_date"],
+            "categories": p.get("categories", []),
+            "hf_upvotes": p.get("hf_upvotes", 0),
+            "pwc_stars": p.get("github_stars", 0),
+            "score": compute_score(p),
+        }
+        if p.get("code_url"):
+            entry["code_url"] = p["code_url"]
+        if p.get("citation_count", 0) > 0:
+            entry["citation_count"] = p["citation_count"]
+        json_data.append(entry)
+
+    json_path.parent.mkdir(parents=True, exist_ok=True)
+    json_path.write_text(
+        json.dumps(json_data, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+    logger.info("📊 JSON 已保存：%s（%d 篇）", json_path.resolve(), len(json_data))
 
 
 if __name__ == "__main__":

@@ -26,6 +26,7 @@ from pathlib import Path
 
 import feedparser
 import httpx
+import yaml
 from dateutil import parser as date_parser
 
 # ──────────────────────────────────────────────────────────────────────────────
@@ -42,8 +43,23 @@ TZ_CST = timezone(timedelta(hours=8))
 
 # arXiv API
 ARXIV_API_URL = "https://export.arxiv.org/api/query"  # 使用 HTTPS，避免 301 重定向
-ARXIV_CATEGORIES = "cat:cs.AI+OR+cat:cs.LG+OR+cat:cs.CV+OR+cat:cs.CL+OR+cat:stat.ML"
-ARXIV_MAX_RESULTS = 100
+
+# 从配置文件读取搜索主题与参数
+_SKILL_DIR = Path(__file__).resolve().parents[1]
+_CONFIG_PATH = _SKILL_DIR / "config.yaml"
+_DEFAULT_CATEGORIES = "cat:cs.AI+OR+cat:cs.RO"
+_DEFAULT_MAX_RESULTS = 100
+try:
+    _cfg = yaml.safe_load(_CONFIG_PATH.read_text(encoding="utf-8"))
+    _topics = _cfg.get("topics", [])
+    ARXIV_CATEGORIES = "+OR+".join(
+        f"cat:{t['arxiv_category']}" for t in _topics if t.get("arxiv_category")
+    ) or _DEFAULT_CATEGORIES
+    ARXIV_MAX_RESULTS = _cfg.get("arxiv", {}).get("max_results", _DEFAULT_MAX_RESULTS)
+except Exception:
+    logging.warning("配置文件 %s 加载失败，使用默认分类", _CONFIG_PATH)
+    ARXIV_CATEGORIES = _DEFAULT_CATEGORIES
+    ARXIV_MAX_RESULTS = _DEFAULT_MAX_RESULTS
 
 # HuggingFace Daily Papers API
 HF_API_URL = "https://huggingface.co/api/daily_papers"
@@ -131,7 +147,11 @@ def normalize_arxiv_id(raw_id: str) -> str:
 
 
 def make_paper_template(arxiv_id: str) -> dict:
-    """创建具有默认值的论文记录模板。"""
+    """
+    创建具有默认值的论文记录模板。
+    hf_upvotes / pwc_stars / code_url / citation_count 不预设，
+    只在真正获取到有效值时才写入。
+    """
     bare_id = arxiv_id.removeprefix("arxiv:")
     return {
         "id": arxiv_id,
@@ -143,10 +163,6 @@ def make_paper_template(arxiv_id: str) -> dict:
         "published_date": "",
         "categories": [],
         "source": "arxiv",
-        "hf_upvotes": 0,
-        "pwc_stars": 0,
-        "code_url": None,
-        "citation_count": 0,
     }
 
 
@@ -184,9 +200,8 @@ async def fetch_with_retry(
 
 async def fetch_arxiv(client: httpx.AsyncClient, date: str) -> list[dict]:
     """
-    从 arXiv API 抓取当日 AI 论文。
-    端点：http://export.arxiv.org/api/query
-    分类：cs.AI / cs.LG / cs.CV / cs.CL / stat.ML
+    从 arXiv API 抓取当日论文（分类由 config.yaml 配置）。
+    端点：https://export.arxiv.org/api/query
     空结果时返回 [] 并记录 WARN（节假日/周末正常现象）。
     """
     logger.info("开始抓取 arXiv（日期：%s）...", date)
@@ -273,11 +288,11 @@ async def fetch_arxiv(client: httpx.AsyncClient, date: str) -> list[dict]:
 # 3-3: 抓取 HuggingFace Daily Papers
 # ──────────────────────────────────────────────────────────────────────────────
 
-async def fetch_huggingface(client: httpx.AsyncClient, date: str) -> dict[str, int]:
+async def fetch_huggingface(client: httpx.AsyncClient, date: str) -> dict[str, dict]:
     """
-    从 HuggingFace Daily Papers API 获取热门论文点赞数。
+    从 HuggingFace Daily Papers API 获取热门论文点赞数、GitHub 代码链接和 Stars。
     端点：https://huggingface.co/api/daily_papers?date=YYYY-MM-DD
-    返回 {arxiv_id: upvotes} 映射字典，失败时返回 {}（静默降级）。
+    返回 {arxiv_id: {upvotes, github_stars, code_url}} 映射字典，失败时返回 {}（静默降级）。
     """
     logger.info("开始抓取 HuggingFace Daily Papers（日期：%s）...", date)
 
@@ -294,13 +309,17 @@ async def fetch_huggingface(client: httpx.AsyncClient, date: str) -> dict[str, i
         logger.warning("HuggingFace 响应解析失败：%s，降级跳过", exc)
         return {}
 
-    hf_map: dict[str, int] = {}
+    hf_map: dict[str, dict] = {}
     for item in items:
         try:
             paper = item.get("paper", {})
             raw_id = paper.get("id", "")
             if raw_id:
-                hf_map[f"arxiv:{raw_id}"] = item.get("upvotes", 0)
+                hf_map[f"arxiv:{raw_id}"] = {
+                    "upvotes": paper.get("upvotes", 0) or 0,
+                    "github_stars": paper.get("githubStars", 0) or 0,
+                    "code_url": paper.get("githubRepo") or None,
+                }
         except Exception as exc:
             logger.error("解析 HF 条目失败：%s，跳过", exc)
 
@@ -312,10 +331,10 @@ async def fetch_huggingface(client: httpx.AsyncClient, date: str) -> dict[str, i
 # 3-4: 合并 arXiv + HF 数据
 # ──────────────────────────────────────────────────────────────────────────────
 
-def merge_papers(arxiv_papers: list[dict], hf_map: dict[str, int]) -> list[dict]:
+def merge_papers(arxiv_papers: list[dict], hf_map: dict[str, dict]) -> list[dict]:
     """
     以 arxiv_id 为主键合并 arXiv 和 HuggingFace 数据，去除重复条目。
-    HF 数据仅补充 hf_upvotes，基础记录以 arXiv 为准。
+    HF 数据补充 hf_upvotes、github_stars、code_url，基础记录以 arXiv 为准。
     """
     seen: set[str] = set()
     merged: list[dict] = []
@@ -327,13 +346,19 @@ def merge_papers(arxiv_papers: list[dict], hf_map: dict[str, int]) -> list[dict]
             continue
         seen.add(pid)
 
-        # 补充 HF 点赞数
-        if pid in hf_map:
-            paper["hf_upvotes"] = hf_map[pid]
+        # 补充 HF 数据（点赞数、GitHub Stars、代码链接）
+        hf = hf_map.get(pid)
+        if hf:
+            if hf["upvotes"] > 0:
+                paper["hf_upvotes"] = hf["upvotes"]
+            if hf["github_stars"] > 0:
+                paper["pwc_stars"] = hf["github_stars"]
+            if hf["code_url"]:
+                paper["code_url"] = hf["code_url"]
 
         merged.append(paper)
 
-    hf_matched = sum(1 for p in merged if p["hf_upvotes"] > 0)
+    hf_matched = sum(1 for p in merged if p.get("hf_upvotes", 0) > 0)
     logger.info("合并完成：%d 篇（去重后），其中 %d 篇有 HF 点赞数", len(merged), hf_matched)
     return merged
 
@@ -385,15 +410,20 @@ async def fetch_pwc(
         except Exception as exc:
             logger.error("解析 PWC 条目失败：%s，跳过", exc)
 
-    # 按 arxiv_id 匹配补充
+    # 按 arxiv_id 匹配补充（只写入有效值）
     matched = 0
     for paper in papers:
-        if paper["id"] in pwc_map:
-            paper["code_url"] = pwc_map[paper["id"]]["code_url"]
-            paper["pwc_stars"] = pwc_map[paper["id"]]["pwc_stars"]
+        entry = pwc_map.get(paper["id"])
+        if entry is None:
+            continue
+        if entry["code_url"]:
+            paper["code_url"] = entry["code_url"]
+        if entry["pwc_stars"] > 0:
+            paper["pwc_stars"] = entry["pwc_stars"]
+        if entry["code_url"] or entry["pwc_stars"] > 0:
             matched += 1
 
-    logger.info("PWC 匹配完成：%d / %d 篇有代码链接", matched, len(papers))
+    logger.info("PWC 匹配完成：%d / %d 篇有代码链接或 Stars", matched, len(papers))
     return papers
 
 
@@ -408,43 +438,51 @@ async def enrich_citations(
     """
     批量请求 Semantic Scholar API 补充引用数（可选增强）。
     端点：POST https://api.semanticscholar.org/graph/v1/paper/batch
-    429 限流或任何失败时静默跳过，citation_count 保持 0。
+    429 限流或任何失败时静默跳过，citation_count 不写入（字段不存在表示未获取到）。
     """
     logger.info("开始补充 Semantic Scholar 引用数（共 %d 篇）...", len(papers))
 
-    s2_ids = [f"ARXIV:{p['id'].removeprefix('arxiv:')}" for p in papers]
     headers = {"Content-Type": "application/json"}
     if S2_API_KEY:
         headers["x-api-key"] = S2_API_KEY
 
-    resp = await fetch_with_retry(
-        client, "POST", S2_BATCH_URL,
-        json={"ids": s2_ids},
-        params={"fields": "citationCount"},
-        headers=headers,
-    )
-
-    if resp is None or resp.status_code == 429:
-        logger.warning("Semantic Scholar 不可用（限流或失败），跳过引用数补充")
-        return papers
-
-    if resp.status_code != 200:
-        logger.warning("Semantic Scholar 返回 HTTP %d，跳过", resp.status_code)
-        return papers
-
-    try:
-        results = resp.json()
-    except Exception as exc:
-        logger.warning("Semantic Scholar 响应解析失败：%s，跳过", exc)
-        return papers
-
+    BATCH_SIZE = 50
     enriched = 0
-    for paper, s2 in zip(papers, results):
-        if isinstance(s2, dict):
-            count = s2.get("citationCount") or 0
-            if count > 0:
-                paper["citation_count"] = count
-                enriched += 1
+
+    for i in range(0, len(papers), BATCH_SIZE):
+        batch = papers[i: i + BATCH_SIZE]
+        s2_ids = [f"ARXIV:{p['id'].removeprefix('arxiv:')}" for p in batch]
+
+        resp = await fetch_with_retry(
+            client, "POST", S2_BATCH_URL,
+            json={"ids": s2_ids},
+            params={"fields": "citationCount"},
+            headers=headers,
+        )
+
+        if resp is None or resp.status_code == 429:
+            logger.warning("Semantic Scholar 不可用（限流或失败），跳过剩余批次")
+            break
+
+        if resp.status_code != 200:
+            logger.warning("Semantic Scholar 返回 HTTP %d，跳过该批", resp.status_code)
+            await asyncio.sleep(3)
+            continue
+
+        try:
+            results = resp.json()
+            for paper, s2 in zip(batch, results):
+                if isinstance(s2, dict):
+                    count = s2.get("citationCount") or 0
+                    if count > 0:
+                        paper["citation_count"] = count
+                        enriched += 1
+        except Exception as exc:
+            logger.warning("Semantic Scholar 响应解析失败：%s，跳过", exc)
+
+        # 每批间隔 3s，降低 429 风险
+        if i + BATCH_SIZE < len(papers):
+            await asyncio.sleep(3)
 
     logger.info("引用数补充完成：%d / %d 篇有引用数据", enriched, len(papers))
     return papers
@@ -497,25 +535,25 @@ async def main() -> None:
 
         # Step 2：合并去重
         papers = merge_papers(arxiv_papers, hf_map)
-        counts["hf_matched"] = sum(1 for p in papers if p["hf_upvotes"] > 0)
+        counts["hf_matched"] = sum(1 for p in papers if p.get("hf_upvotes", 0) > 0)
 
         # arXiv 全空（节假日）：保存空列表并提前退出
         if not papers:
             output_path = save_output([], date, output_dir)
             print(f"\n{'=' * 60}")
-            print(f"⚠️  今日（{date}）无新论文（arXiv 未更新）")
+            print(f"[WARN] 今日 ({date}) 无新论文（arXiv 未更新）")
             print(f"输出路径：{output_path}")
             print(f"{'=' * 60}")
             return
 
         # Step 3：串行补充 PWC 数据
         papers = await fetch_pwc(client, date, papers)
-        counts["pwc_matched"] = sum(1 for p in papers if p["code_url"])
+        counts["pwc_matched"] = sum(1 for p in papers if p.get("code_url"))
 
         # Step 4：批量补充引用数（可跳过）
         if not skip_citations:
             papers = await enrich_citations(client, papers)
-            counts["citation_enriched"] = sum(1 for p in papers if p["citation_count"] > 0)
+            counts["citation_enriched"] = sum(1 for p in papers if p.get("citation_count", 0) > 0)
         else:
             logger.info("已跳过 Semantic Scholar 引用数补充（--skip-citations）")
 
@@ -525,14 +563,14 @@ async def main() -> None:
     # 最终摘要报告（供 ranker Skill 和用户读取）
     separator = "=" * 60
     print(f"\n{separator}")
-    print(f"✅ AI 论文抓取完成 — {date}")
+    print(f"AI 论文抓取完成 - {date}")
     print(f"{separator}")
-    print(f"📄 输出路径：{output_path}")
-    print(f"📊 论文总数：{len(papers)} 篇")
-    print(f"   ├── arXiv 来源：     {counts['arxiv']} 篇")
-    print(f"   ├── HF 有点赞数：    {counts['hf_matched']} 篇")
-    print(f"   ├── PWC 有代码链接： {counts['pwc_matched']} 篇")
-    print(f"   └── 有引用数据：     {counts['citation_enriched']} 篇")
+    print(f"输出路径: {output_path}")
+    print(f"论文总数: {len(papers)} 篇")
+    print(f"  arXiv 来源:       {counts['arxiv']} 篇")
+    print(f"  HF 有点赞数:      {counts['hf_matched']} 篇")
+    print(f"  PWC 有代码链接:   {counts['pwc_matched']} 篇")
+    print(f"  有引用数据:       {counts['citation_enriched']} 篇")
     print(f"{separator}\n")
 
 
