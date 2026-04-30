@@ -1,0 +1,50 @@
+[
+  {
+    "_comment": "场景 1：PWC 已匹配 + HF 热门 — code_url 非空，hf_upvotes 高，有引用数",
+    "id": "arxiv:2404.07143",
+    "title": "RLVR: Reinforcement Learning with Verifiable Rewards for Large Language Models",
+    "authors": ["Wei Liu", "Shuang Qiu", "Jiaming Ji", "Yaodong Yang"],
+    "abstract": "We propose RLVR, a reinforcement learning framework that uses verifiable rewards to align large language models without human preference labels. By defining reward functions over structured outputs (e.g., code execution, math verification), RLVR achieves competitive alignment quality with significantly reduced annotation cost.",
+    "url": "https://arxiv.org/abs/2404.07143",
+    "pdf_url": "https://arxiv.org/pdf/2404.07143",
+    "published_date": "2026-04-30",
+    "categories": ["cs.LG", "cs.AI", "cs.CL"],
+    "source": "arxiv",
+    "hf_upvotes": 312,
+    "pwc_stars": 1847,
+    "code_url": "https://github.com/example-org/rlvr",
+    "citation_count": 43
+  },
+  {
+    "_comment": "场景 2：HF 热门但 PWC 未匹配 — hf_upvotes 较高，code_url 为 null，有引用数",
+    "id": "arxiv:2404.09856",
+    "title": "Visual Grounding with Spatial Chain-of-Thought in Multimodal Large Language Models",
+    "authors": ["Yichen Zhu", "Minjie Zhu", "Ning Liu", "Zhicai Ou"],
+    "abstract": "We introduce Spatial-CoT, a chain-of-thought prompting strategy that enables multimodal LLMs to perform fine-grained visual grounding by explicitly reasoning about object positions and spatial relationships before generating bounding box predictions.",
+    "url": "https://arxiv.org/abs/2404.09856",
+    "pdf_url": "https://arxiv.org/pdf/2404.09856",
+    "published_date": "2026-04-30",
+    "categories": ["cs.CV", "cs.AI", "cs.CL"],
+    "source": "arxiv",
+    "hf_upvotes": 87,
+    "pwc_stars": 0,
+    "code_url": null,
+    "citation_count": 11
+  },
+  {
+    "_comment": "场景 3：全新论文 — 刚提交，Semantic Scholar 无引用数，HF/PWC 均未收录",
+    "id": "arxiv:2404.11201",
+    "title": "DiffPose: Diffusion-Based Human Pose Estimation with Uncertainty Quantification",
+    "authors": ["Hao Chen", "Wenguan Wang", "Luc Van Gool"],
+    "abstract": "DiffPose models human pose estimation as a conditional diffusion process, iteratively denoising from a random pose prior conditioned on image features. This formulation naturally yields uncertainty estimates for each predicted joint, enabling reliable detection of occluded or ambiguous body parts.",
+    "url": "https://arxiv.org/abs/2404.11201",
+    "pdf_url": "https://arxiv.org/pdf/2404.11201",
+    "published_date": "2026-04-30",
+    "categories": ["cs.CV"],
+    "source": "arxiv",
+    "hf_upvotes": 0,
+    "pwc_stars": 0,
+    "code_url": null,
+    "citation_count": 0
+  }
+]
