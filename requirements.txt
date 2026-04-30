@@ -10,6 +10,9 @@ feedparser>=6.0.11      # arXiv Atom XML 解析
 python-dateutil>=2.9    # 日期解析与时区转换
 PyYAML>=6.0             # config.yaml 配置文件解析
 
+# ── Skill 3: summarizer ──────────────────────────────────────
+openai>=1.30.0          # DeepSeek API 兼容接口（OpenAI SDK）
+
 # ── Skill 4: storage ────────────────────────────────────────
 # SQLite3 为 Python 内置模块，无需额外安装
 
