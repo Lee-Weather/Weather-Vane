@@ -378,23 +378,17 @@ def write_ranked(result: dict, date: str) -> str:
 def print_summary(
     date: str,
     total: int,
-    filtered: int,
     stats: dict,
     weekly: dict | None,
     monthly: dict | None,
     out_path: str,
-    degraded: bool = False,
 ) -> None:
     """打印摘要统计到控制台。"""
     sep = "=" * 60
     print(f"\n{sep}")
     print(f"✅ Ranker 完成 — {date}")
     print(sep)
-    print(f"📥 原始论文：{total} 篇")
-    if degraded:
-        print(f"⚠️  硬过滤后：0 篇 → 降级保留全部 {total} 篇（score=0）")
-    else:
-        print(f"🔍 硬过滤后：{filtered} 篇（丢弃 {total - filtered} 篇无热度信号）")
+    print(f"📥 原始论文：{total} 篇（每日精选全量进入分组，不按热度过滤）")
     print(f"📊 每日筛选：")
     print(f"   ├── 🤖 机器人组： {stats['robot_selected']} 篇（候选 {stats['robot_candidates']} 篇）")
     print(f"   └── 🧠 AI 组：      {stats['ai_selected']} 篇（候选 {stats['ai_candidates']} 篇）")
@@ -453,26 +447,18 @@ def main() -> None:
             "monthly_hot": None,
         }
         out_path = write_ranked(result, args.date)
-        print_summary(args.date, 0, 0, {
+        print_summary(args.date, 0, {
             "robot_candidates": 0, "ai_candidates": 0,
             "robot_selected": 0, "ai_selected": 0,
         }, None, None, out_path)
         return
 
-    # Step 2: 硬过滤（降级：若全部被过滤则保留全部，按 score=0 参与排序）
-    filtered_papers = hard_filter(raw_papers)
-    filtered_count = len(filtered_papers)
+    # Step 2: 每日筛选（评分 + 分组 + 截取）
+    # 每日精选不按热度信号过滤：新论文尚未积累 hf_upvotes/pwc_stars，
+    # 全量进入分组后按 score 降序排列，score=0 的论文自然落底。
+    # hard_filter 仅在周/月热门场景下按需使用。
+    daily_result = select_daily(raw_papers, args.robot_top, args.ai_top)
     degraded = False
-    logger.info("硬过滤：%d → %d 篇", total, filtered_count)
-
-    if filtered_count == 0:
-        logger.warning("硬过滤后无论文，降级：保留全部 %d 篇（score 均为 0）", total)
-        filtered_papers = raw_papers
-        filtered_count = total
-        degraded = True
-
-    # Step 3-5: 每日筛选（评分 + 分组 + 截取）
-    daily_result = select_daily(filtered_papers, args.robot_top, args.ai_top)
 
     # Step 6: 周热门
     weekly_hot = None
@@ -499,10 +485,9 @@ def main() -> None:
 
     # Step 10: 摘要
     print_summary(
-        args.date, total, filtered_count,
+        args.date, total,
         daily_result["stats"],
         weekly_hot, monthly_hot, out_path,
-        degraded=degraded,
     )
 
 

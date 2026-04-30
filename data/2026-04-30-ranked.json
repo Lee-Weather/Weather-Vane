@@ -1,6 +1,36 @@
 {
-  "date": "2026-04-29",
+  "date": "2026-04-30",
   "daily_robot": [
+    {
+      "id": "arxiv:2604.26694",
+      "title": "Unified 4D World Action Modeling from Video Priors with Asynchronous Denoising",
+      "authors": [
+        "Jun Guo",
+        "Qiwei Li",
+        "Peiyan Li",
+        "Zilong Chen",
+        "Nan Sun",
+        "Yifei Su",
+        "Heyun Wang",
+        "Yuan Zhang",
+        "Xinghang Li",
+        "Huaping Liu"
+      ],
+      "abstract": "We propose X-WAM, a Unified 4D World Model that unifies real-time robotic action execution and high-fidelity 4D world synthesis (video + 3D reconstruction) in a single framework, addressing the critical limitations of prior unified world models (e.g., UWM) that only model 2D pixel-space and fail to balance action efficiency and world modeling quality. To leverage the strong visual priors of pretrained video diffusion models, X-WAM imagines the future world by predicting multi-view RGB-D videos, and obtains spatial information efficiently through a lightweight structural adaptation: replicating the final few blocks of the pretrained Diffusion Transformer into a dedicated depth prediction branch for the reconstruction of future spatial information. Moreover, we propose Asynchronous Noise Sampling (ANS) to jointly optimize generation quality and action decoding efficiency. ANS applies a specialized asynchronous denoising schedule during inference, which rapidly decodes actions with fewer steps to enable efficient real-time execution, while dedicating the full sequence of steps to generate high-fidelity video. Rather than entirely decoupling the timesteps during training, ANS samples from their joint distribution to align with the inference distribution. Pretrained on over 5,800 hours of robotic data, X-WAM achieves 79.2% and 90.7% average success rate on RoboCasa and RoboTwin 2.0 benchmarks, while producing high-fidelity 4D reconstruction and generation surpassing existing methods in both visual and geometric metrics.",
+      "url": "https://arxiv.org/abs/2604.26694",
+      "pdf_url": "https://arxiv.org/pdf/2604.26694v1",
+      "published_date": "2026-04-29",
+      "categories": [
+        "cs.RO",
+        "cs.AI",
+        "cs.CV"
+      ],
+      "source": "arxiv",
+      "hf_upvotes": 2,
+      "score": 4.0,
+      "group": "robot",
+      "rank": 1
+    },
     {
       "id": "arxiv:2604.26946",
       "title": "Three-Step Nav: A Hierarchical Global-Local Planner for Zero-Shot Vision-and-Language Navigation",
@@ -18,13 +48,9 @@
         "cs.RO"
       ],
       "source": "arxiv",
-      "hf_upvotes": 0,
-      "pwc_stars": 0,
-      "code_url": null,
-      "citation_count": 0,
       "score": 0.0,
       "group": "robot",
-      "rank": 1
+      "rank": 2
     },
     {
       "id": "arxiv:2604.26910",
@@ -43,13 +69,9 @@
         "cs.RO"
       ],
       "source": "arxiv",
-      "hf_upvotes": 0,
-      "pwc_stars": 0,
-      "code_url": null,
-      "citation_count": 0,
       "score": 0.0,
       "group": "robot",
-      "rank": 2
+      "rank": 3
     },
     {
       "id": "arxiv:2604.26899",
@@ -68,13 +90,9 @@
         "cs.RO"
       ],
       "source": "arxiv",
-      "hf_upvotes": 0,
-      "pwc_stars": 0,
-      "code_url": null,
-      "citation_count": 0,
       "score": 0.0,
       "group": "robot",
-      "rank": 3
+      "rank": 4
     },
     {
       "id": "arxiv:2604.26897",
@@ -95,13 +113,9 @@
         "eess.SY"
       ],
       "source": "arxiv",
-      "hf_upvotes": 0,
-      "pwc_stars": 0,
-      "code_url": null,
-      "citation_count": 0,
       "score": 0.0,
       "group": "robot",
-      "rank": 4
+      "rank": 5
     },
     {
       "id": "arxiv:2604.26857",
@@ -121,13 +135,9 @@
         "eess.IV"
       ],
       "source": "arxiv",
-      "hf_upvotes": 0,
-      "pwc_stars": 0,
-      "code_url": null,
-      "citation_count": 0,
       "score": 0.0,
       "group": "robot",
-      "rank": 5
+      "rank": 6
     },
     {
       "id": "arxiv:2604.26848",
@@ -150,13 +160,9 @@
         "cs.RO"
       ],
       "source": "arxiv",
-      "hf_upvotes": 0,
-      "pwc_stars": 0,
-      "code_url": null,
-      "citation_count": 0,
       "score": 0.0,
       "group": "robot",
-      "rank": 6
+      "rank": 7
     },
     {
       "id": "arxiv:2604.26839",
@@ -185,13 +191,9 @@
         "cs.RO"
       ],
       "source": "arxiv",
-      "hf_upvotes": 0,
-      "pwc_stars": 0,
-      "code_url": null,
-      "citation_count": 0,
       "score": 0.0,
       "group": "robot",
-      "rank": 7
+      "rank": 8
     },
     {
       "id": "arxiv:2604.26833",
@@ -210,43 +212,6 @@
         "cs.LG"
       ],
       "source": "arxiv",
-      "hf_upvotes": 0,
-      "pwc_stars": 0,
-      "code_url": null,
-      "citation_count": 0,
-      "score": 0.0,
-      "group": "robot",
-      "rank": 8
-    },
-    {
-      "id": "arxiv:2604.26694",
-      "title": "Unified 4D World Action Modeling from Video Priors with Asynchronous Denoising",
-      "authors": [
-        "Jun Guo",
-        "Qiwei Li",
-        "Peiyan Li",
-        "Zilong Chen",
-        "Nan Sun",
-        "Yifei Su",
-        "Heyun Wang",
-        "Yuan Zhang",
-        "Xinghang Li",
-        "Huaping Liu"
-      ],
-      "abstract": "We propose X-WAM, a Unified 4D World Model that unifies real-time robotic action execution and high-fidelity 4D world synthesis (video + 3D reconstruction) in a single framework, addressing the critical limitations of prior unified world models (e.g., UWM) that only model 2D pixel-space and fail to balance action efficiency and world modeling quality. To leverage the strong visual priors of pretrained video diffusion models, X-WAM imagines the future world by predicting multi-view RGB-D videos, and obtains spatial information efficiently through a lightweight structural adaptation: replicating the final few blocks of the pretrained Diffusion Transformer into a dedicated depth prediction branch for the reconstruction of future spatial information. Moreover, we propose Asynchronous Noise Sampling (ANS) to jointly optimize generation quality and action decoding efficiency. ANS applies a specialized asynchronous denoising schedule during inference, which rapidly decodes actions with fewer steps to enable efficient real-time execution, while dedicating the full sequence of steps to generate high-fidelity video. Rather than entirely decoupling the timesteps during training, ANS samples from their joint distribution to align with the inference distribution. Pretrained on over 5,800 hours of robotic data, X-WAM achieves 79.2% and 90.7% average success rate on RoboCasa and RoboTwin 2.0 benchmarks, while producing high-fidelity 4D reconstruction and generation surpassing existing methods in both visual and geometric metrics.",
-      "url": "https://arxiv.org/abs/2604.26694",
-      "pdf_url": "https://arxiv.org/pdf/2604.26694v1",
-      "published_date": "2026-04-29",
-      "categories": [
-        "cs.RO",
-        "cs.AI",
-        "cs.CV"
-      ],
-      "source": "arxiv",
-      "hf_upvotes": 0,
-      "pwc_stars": 0,
-      "code_url": null,
-      "citation_count": 0,
       "score": 0.0,
       "group": "robot",
       "rank": 9
@@ -270,10 +235,6 @@
         "cs.AI"
       ],
       "source": "arxiv",
-      "hf_upvotes": 0,
-      "pwc_stars": 0,
-      "code_url": null,
-      "citation_count": 0,
       "score": 0.0,
       "group": "robot",
       "rank": 10
@@ -295,10 +256,6 @@
         "cs.AI"
       ],
       "source": "arxiv",
-      "hf_upvotes": 0,
-      "pwc_stars": 0,
-      "code_url": null,
-      "citation_count": 0,
       "score": 0.0,
       "group": "robot",
       "rank": 11
@@ -320,10 +277,6 @@
         "cs.RO"
       ],
       "source": "arxiv",
-      "hf_upvotes": 0,
-      "pwc_stars": 0,
-      "code_url": null,
-      "citation_count": 0,
       "score": 0.0,
       "group": "robot",
       "rank": 12
@@ -345,10 +298,6 @@
         "cs.RO"
       ],
       "source": "arxiv",
-      "hf_upvotes": 0,
-      "pwc_stars": 0,
-      "code_url": null,
-      "citation_count": 0,
       "score": 0.0,
       "group": "robot",
       "rank": 13
@@ -368,10 +317,6 @@
         "cs.RO"
       ],
       "source": "arxiv",
-      "hf_upvotes": 0,
-      "pwc_stars": 0,
-      "code_url": null,
-      "citation_count": 0,
       "score": 0.0,
       "group": "robot",
       "rank": 14
@@ -394,10 +339,6 @@
         "eess.SY"
       ],
       "source": "arxiv",
-      "hf_upvotes": 0,
-      "pwc_stars": 0,
-      "code_url": null,
-      "citation_count": 0,
       "score": 0.0,
       "group": "robot",
       "rank": 15
@@ -423,38 +364,12 @@
         "cs.LG"
       ],
       "source": "arxiv",
-      "hf_upvotes": 0,
-      "pwc_stars": 0,
-      "code_url": null,
-      "citation_count": 0,
-      "score": 0.0,
+      "hf_upvotes": 26,
+      "pwc_stars": 3,
+      "code_url": "https://github.com/PKU-YuanGroup/TIDE",
+      "score": 52.15,
       "group": "ai",
       "rank": 1
-    },
-    {
-      "id": "arxiv:2604.26919",
-      "title": "Causal Learning with Neural Assemblies",
-      "authors": [
-        "Evangelia Kopadi",
-        "Dimitris Kalles"
-      ],
-      "abstract": "Can Neural Assemblies -- groups of neurons that fire together and strengthen through co-activation -- learn the direction of causal influence between variables? While established as a computationally general substrate for classification, parsing, and planning, neural assemblies have not yet been shown to internalize causal directionality. We demonstrate that the inherent operations of neural assemblies -- projection, local plasticity control, and sparse winner selection -- are sufficient for directional learning. We introduce DIRECT (DIRectional Edge Coupling/Training), a mechanism that co-activates source and target assemblies under an adaptive gain schedule to internalize directed relations. Unlike backpropagation-based methods, DIRECT relies solely on local plasticity, making the resulting causal claims auditable at the mechanism level. Our findings are verified through a dual-readout validation strategy: (i) synaptic-strength asymmetry, measuring the emergent weight gap between forward and reverse links, and (ii) functional propagation overlap, quantifying the reliability of directional signal flow. Across multiple domains, the framework achieves perfect structural recovery under a supervised, known-structure setting. These results establish neural assemblies as an auditable bridge between biologically plausible dynamics and formal causal models, offering an \"explainable by design\" framework where causal claims are traceable to specific neural winners and synaptic asymmetries.",
-      "url": "https://arxiv.org/abs/2604.26919",
-      "pdf_url": "https://arxiv.org/pdf/2604.26919v1",
-      "published_date": "2026-04-30",
-      "categories": [
-        "cs.LG",
-        "cs.AI",
-        "cs.NE"
-      ],
-      "source": "arxiv",
-      "hf_upvotes": 0,
-      "pwc_stars": 0,
-      "code_url": null,
-      "citation_count": 0,
-      "score": 0.0,
-      "group": "ai",
-      "rank": 2
     },
     {
       "id": "arxiv:2604.26904",
@@ -484,10 +399,28 @@
         "cs.LG"
       ],
       "source": "arxiv",
-      "hf_upvotes": 0,
-      "pwc_stars": 0,
-      "code_url": null,
-      "citation_count": 0,
+      "hf_upvotes": 21,
+      "score": 42.0,
+      "group": "ai",
+      "rank": 2
+    },
+    {
+      "id": "arxiv:2604.26919",
+      "title": "Causal Learning with Neural Assemblies",
+      "authors": [
+        "Evangelia Kopadi",
+        "Dimitris Kalles"
+      ],
+      "abstract": "Can Neural Assemblies -- groups of neurons that fire together and strengthen through co-activation -- learn the direction of causal influence between variables? While established as a computationally general substrate for classification, parsing, and planning, neural assemblies have not yet been shown to internalize causal directionality. We demonstrate that the inherent operations of neural assemblies -- projection, local plasticity control, and sparse winner selection -- are sufficient for directional learning. We introduce DIRECT (DIRectional Edge Coupling/Training), a mechanism that co-activates source and target assemblies under an adaptive gain schedule to internalize directed relations. Unlike backpropagation-based methods, DIRECT relies solely on local plasticity, making the resulting causal claims auditable at the mechanism level. Our findings are verified through a dual-readout validation strategy: (i) synaptic-strength asymmetry, measuring the emergent weight gap between forward and reverse links, and (ii) functional propagation overlap, quantifying the reliability of directional signal flow. Across multiple domains, the framework achieves perfect structural recovery under a supervised, known-structure setting. These results establish neural assemblies as an auditable bridge between biologically plausible dynamics and formal causal models, offering an \"explainable by design\" framework where causal claims are traceable to specific neural winners and synaptic asymmetries.",
+      "url": "https://arxiv.org/abs/2604.26919",
+      "pdf_url": "https://arxiv.org/pdf/2604.26919v1",
+      "published_date": "2026-04-30",
+      "categories": [
+        "cs.LG",
+        "cs.AI",
+        "cs.NE"
+      ],
+      "source": "arxiv",
       "score": 0.0,
       "group": "ai",
       "rank": 3
@@ -511,10 +444,6 @@
         "eess.SY"
       ],
       "source": "arxiv",
-      "hf_upvotes": 0,
-      "pwc_stars": 0,
-      "code_url": null,
-      "citation_count": 0,
       "score": 0.0,
       "group": "ai",
       "rank": 4
@@ -536,73 +465,66 @@
         "cs.AI"
       ],
       "source": "arxiv",
-      "hf_upvotes": 0,
-      "pwc_stars": 0,
-      "code_url": null,
-      "citation_count": 0,
       "score": 0.0,
       "group": "ai",
       "rank": 5
     }
   ],
   "weekly_hot": {
-    "id": "arxiv:2604.20796",
-    "title": "LLaDA2.0-Uni: Unifying Multimodal Understanding and Generation with Diffusion Large Language Model",
+    "id": "arxiv:2604.26951",
+    "title": "Turning the TIDE: Cross-Architecture Distillation for Diffusion Large Language Models",
     "authors": [
-      "Inclusion AI",
-      "Tiwei Bie",
-      "Haoxing Chen",
-      "Tieyuan Chen",
-      "Zhenglin Cheng",
-      "Long Cui",
-      "Kai Gan",
-      "Zhicheng Huang",
-      "Zhenzhong Lan",
-      "Haoquan Li",
-      "Jianguo Li",
-      "Tao Lin",
-      "Qi Qin",
-      "Hongjun Wang",
-      "Xiaomei Wang",
-      "Haoyuan Wu",
-      "Yi Xin",
-      "Junbo Zhao"
+      "Gongbo Zhang",
+      "Wen Wang",
+      "Ye Tian",
+      "Li Yuan"
     ],
-    "abstract": "We present LLaDA2.0-Uni, a unified discrete diffusion large language model (dLLM) that supports multimodal understanding and generation within a natively integrated framework. Its architecture combines a fully semantic discrete tokenizer, a MoE-based dLLM backbone, and a diffusion decoder. By discretizing continuous visual inputs via SigLIP-VQ, the model enables block-level masked diffusion for both text and vision inputs within the backbone, while the decoder reconstructs visual tokens into high-fidelity images. Inference efficiency is enhanced beyond parallel decoding through prefix-aware optimizations in the backbone and few-step distillation in the decoder. Supported by carefully curated large-scale data and a tailored multi-stage training pipeline, LLaDA2.0-Uni matches specialized VLMs in multimodal understanding while delivering strong performance in image generation and editing. Its native support for interleaved generation and reasoning establishes a promising and scalable paradigm for next-generation unified foundation models. Codes and models are available at https://github.com/inclusionAI/LLaDA2.0-Uni.",
-    "url": "https://arxiv.org/abs/2604.20796",
-    "pdf_url": "https://arxiv.org/pdf/2604.20796",
-    "published_date": "2026-04-23",
-    "categories": [],
-    "hf_upvotes": 235,
-    "pwc_stars": 706,
-    "code_url": "https://github.com/inclusionAI/LLaDA2.0-Uni",
-    "citation_count": 0,
-    "score": 505.3,
+    "abstract": "Diffusion large language models (dLLMs) offer parallel decoding and bidirectional context, but state-of-the-art dLLMs require billions of parameters for competitive performance. While existing distillation methods for dLLMs reduce inference steps within a single architecture, none address cross-architecture knowledge transfer, in which the teacher and student differ in architecture, attention mechanism, and tokenizer. We present TIDE, the first framework for cross-architecture dLLM distillation, comprising three modular components: (1) TIDAL, which jointly modulates distillation strength across training progress and diffusion timestep to account for the teacher's noise-dependent reliability; (2) CompDemo, which enriches the teacher's context via complementary mask splitting to improve predictions under heavy masking; and (3) Reverse CALM, a cross-tokenizer objective that inverts chunk-level likelihood matching, yielding bounded gradients and dual-end noise filtering. Distilling 8B dense and 16B MoE teachers into a 0.6B student via two heterogeneous pipelines outperforms the baseline by an average of 1.53 points across eight benchmarks, yielding notable gains in code generation, where HumanEval scores reach 48.78 compared to 32.3 for the AR baseline.",
+    "url": "https://arxiv.org/abs/2604.26951",
+    "pdf_url": "https://arxiv.org/pdf/2604.26951v1",
+    "published_date": "2026-04-30",
+    "categories": [
+      "cs.CL",
+      "cs.AI",
+      "cs.LG"
+    ],
+    "source": "arxiv",
+    "hf_upvotes": 26,
+    "pwc_stars": 3,
+    "code_url": "https://github.com/PKU-YuanGroup/TIDE",
+    "score": 52.15,
     "hot_type": "weekly_hot"
   },
   "monthly_hot": {
-    "id": "arxiv:2604.02176",
-    "title": "Adam's Law: Textual Frequency Law on Large Language Models",
+    "id": "arxiv:2604.26904",
+    "title": "ClawGym: A Scalable Framework for Building Effective Claw Agents",
     "authors": [
-      "Hongyuan Adam Lu",
-      "Z. L.",
-      "Victor Wei",
-      "Zefan Zhang",
-      "Zhao Hong",
-      "Qiqi Xiang",
-      "Bowen Cao",
-      "Wai Lam"
+      "Fei Bai",
+      "Huatong Song",
+      "Shuang Sun",
+      "Daixuan Cheng",
+      "Yike Yang",
+      "Chuan Hao",
+      "Renyuan Li",
+      "Feng Chang",
+      "Yuan Wei",
+      "Ran Tao",
+      "Bryan Dai",
+      "Jian Yang",
+      "Wayne Xin Zhao"
     ],
-    "abstract": "While textual frequency has been validated as relevant to human cognition in reading speed, its relatedness to Large Language Models (LLMs) is seldom studied. We propose a novel research direction in terms of textual data frequency, which is an understudied topic, to the best of our knowledge. Our framework is composed of three units. First, this paper proposes Textual Frequency Law (TFL), which indicates that frequent textual data should be preferred for LLMs for both prompting and fine-tuning. Since many LLMs are closed-source in their training data, we propose using online resources to estimate the sentence-level frequency. We then utilize an input paraphraser to paraphrase the input into a more frequent textual expression. Next, we propose Textual Frequency Distillation (TFD) by querying LLMs to conduct story completion by further extending the sentences in the datasets, and the resulting corpora are used to adjust the initial estimation. Finally, we propose Curriculum Textual Frequency Training (CTFT) that fine-tunes LLMs in an increasing order of sentence-level frequency. Experiments are conducted on our curated dataset Textual Frequency Paired Dataset (TFPD) on math reasoning, machine translation, commonsense reasoning and agentic tool calling. Results show the effectiveness of our framework.",
-    "url": "https://arxiv.org/abs/2604.02176",
-    "pdf_url": "https://arxiv.org/pdf/2604.02176",
-    "published_date": "2026-04-07",
-    "categories": [],
-    "hf_upvotes": 497,
-    "pwc_stars": 509,
-    "code_url": "https://github.com/HongyuanLuke/frequencylaw",
-    "citation_count": 0,
-    "score": 1019.45,
+    "abstract": "Claw-style environments support multi-step workflows over local files, tools, and persistent workspace states. However, scalable development around these environments remains constrained by the absence of a systematic framework, especially one for synthesizing verifiable training data and integrating it with agent training and diagnostic evaluation. To address this challenge, we present ClawGym, a scalable framework that supports the full lifecycle of Claw-style personal agent development. Concretely, we construct ClawGym-SynData, a diverse dataset of 13.5K filtered tasks synthesized from persona-driven intents and skill-grounded operations, paired with realistic mock workspaces and hybrid verification mechanisms. We then train a family of capable Claw-style models, termed ClawGym-Agents, through supervised fine-tuning on black-box rollout trajectories, and further explore reinforcement learning via a lightweight pipeline that parallelizes rollouts across per-task sandboxes.To support reliable evaluation, we further construct ClawGym-Bench, a benchmark of 200 instances calibrated through automated filtering and human-LLM review. Relevant resources will be soon released at https://github.com/ClawGym.",
+    "url": "https://arxiv.org/abs/2604.26904",
+    "pdf_url": "https://arxiv.org/pdf/2604.26904v1",
+    "published_date": "2026-04-30",
+    "categories": [
+      "cs.CL",
+      "cs.AI",
+      "cs.LG"
+    ],
+    "source": "arxiv",
+    "hf_upvotes": 21,
+    "score": 42.0,
     "hot_type": "monthly_hot"
   }
 }
