@@ -2,7 +2,11 @@
   "permissions": {
     "allow": [
       "Skill(Fetcher)",
-      "Skill(Ranker)"
+      "Skill(Ranker)",
+      "Bash(git *)",
+      "Bash(python3 *)",
+      "Skill(Summarizer)",
+      "Skill(Storage)"
     ]
   }
 }
