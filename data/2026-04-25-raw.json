@@ -1,0 +1,1059 @@
+[
+  {
+    "id": "arxiv:2604.23776",
+    "title": "From Noisy Historical Maps to Time-Series Oil Palm Mapping Without Annotation in Malaysia and Indonesia (2020-2024)",
+    "authors": [
+      "Nuttaset Kuapanich",
+      "Juepeng Zheng",
+      "Bohan Shi",
+      "Jiaying Liu",
+      "Jiayin Jiang",
+      "Jiatao Huang",
+      "Shenghan Tan",
+      "Qingmei Li",
+      "Haohuan Fu"
+    ],
+    "abstract": "Accurate monitoring of oil palm plantations is critical for balancing economic development with environmental conservation in Southeast Asia. However, existing plantation maps often suffer from low spatial resolution and a lack of recent temporal coverage, impeding effective surveillance of rapid land-use changes. In this study, we propose a deep learning framework to generate 10-meter resolution oil palm plantation maps for Indonesia and Malaysia from 2020 to 2024, utilizing Sentinel-2 imagery without requiring new manual annotations. To address the resolution mismatch between coarse 100-meter historical labels and 10-meter imagery, we employ a U-Net architecture optimized with Determinant-based Mutual Information (DMI). This approach effectively mitigates the influence of label noise. We validated our method against 2,058 manually verified points, achieving overall accuracies of 70.64%, 63.53%, and 60.06% for the years 2020, 2022, and 2024, respectively. Our comprehensive analysis reveals that oil palm coverage in the region peaked in 2022 before experiencing a decline in 2024. Furthermore, land cover transition analysis highlights a concerning trajectory of plantation expansion into flooded vegetation areas, despite a general stabilization in rotations with other crop types. These high-resolution maps provide essential data for monitoring sustainability commitments and deforestation dynamics in the region, and the generated datasets are made publicly available at https://doi.org/10.5281/zenodo.17768444.",
+    "url": "https://arxiv.org/abs/2604.23776",
+    "pdf_url": "https://arxiv.org/pdf/2604.23776v1",
+    "published_date": "2026-04-26",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "source": "arxiv",
+    "hf_upvotes": 0,
+    "pwc_stars": 0,
+    "code_url": null,
+    "citation_count": 0
+  },
+  {
+    "id": "arxiv:2604.23770",
+    "title": "Bootstrapping with AI/ML-generated labels",
+    "authors": [
+      "Timothy Christensen",
+      "Silvia Goncalves",
+      "Benoit Perron"
+    ],
+    "abstract": "AI/ML methods are increasingly used in economics to generate binary variables (or labels) via classification algorithms. When these generated variables are included as covariates in regressions, even small misclassification errors can induce large biases in OLS estimators and invalidate standard inference. We study whether the bootstrap can correct this bias and deliver valid inference. We first show that a seemingly natural fixed-label bootstrap, which generates data using estimated labels but relies on a corrupted version in estimation, is generally invalid unless a strong independence condition between the latent true labels and other covariates holds. We then propose a coupled-label bootstrap that jointly resamples the true and imputed labels, and show it is valid without this condition. Two finite-sample adjustments further improve coverage: a variance correction for uncertainty in estimated misclassification rates and a Hessian rotation for near-singular designs. We illustrate the methods in simulations and apply them to investigate the relationship between wages and remote work status.",
+    "url": "https://arxiv.org/abs/2604.23770",
+    "pdf_url": "https://arxiv.org/pdf/2604.23770v1",
+    "published_date": "2026-04-26",
+    "categories": [
+      "econ.EM",
+      "stat.ML"
+    ],
+    "source": "arxiv",
+    "hf_upvotes": 0,
+    "pwc_stars": 0,
+    "code_url": null,
+    "citation_count": 0
+  },
+  {
+    "id": "arxiv:2604.23767",
+    "title": "WISE-FM:Operation-Aware, Engineering-Informed Foundation Model for Multi-Task Well Design",
+    "authors": [
+      "Carine de Menezes Rebello",
+      "Anderson Rapello dos Santos",
+      "Idelfonso B. R. Nogueira"
+    ],
+    "abstract": "Deploying machine learning models across diverse well portfolios requires generalisation to wells with design parameters outside the training distribution. Current data-driven approaches to virtual flow metering (VFM) and bottomhole estimation typically treat each well independently or ignore the influence of well design on operational behaviour. We present WISE (Well Intelligence and Systems Engineering Foundation Model), a design-aware, physics-informed multi-task model that integrates three complementary mechanisms: Feature-wise Linear Modulation (FiLM) and cross-modal attention to condition operational embeddings on well design parameters; multi-task learning for simultaneous prediction of flow rates, bottomhole conditions, and flow regime classification; and structural mass conservation with soft physics constraints derived from well engineering principles. Evaluation on the ManyWells benchmark (2000 simulated wells, $10^6$ data points) demonstrates that design-aware models reduce VFM prediction error by up to $13\\times$ compared to design-unaware baselines, and that physics constraints reduce negative flow predictions by 65%. Flow regime classification achieves 97.7% bottomhole accuracy, providing continuous well integrity monitoring without additional sensors. The methodology transfers to real operational data from five Equinor Volve producers (oil rate $R^2 = 0.89$, bottomhole pressure $R^2 = 0.98$, water rate $R^2 = 0.97$). The trained model additionally serves as a fast surrogate for integrity-aware well design optimisation over a 24-dimensional design space, with more than $1000\\times$ speedup over drift-flux simulations. These results demonstrate that design awareness, physics enforcement, and multi-task learning are essential and complementary ingredients for foundation models intended to operate across large well portfolios.",
+    "url": "https://arxiv.org/abs/2604.23767",
+    "pdf_url": "https://arxiv.org/pdf/2604.23767v1",
+    "published_date": "2026-04-26",
+    "categories": [
+      "cs.LG"
+    ],
+    "source": "arxiv",
+    "hf_upvotes": 0,
+    "pwc_stars": 0,
+    "code_url": null,
+    "citation_count": 0
+  },
+  {
+    "id": "arxiv:2604.23765",
+    "title": "Necessary and sufficient conditions for universality of Kolmogorov-Arnold networks",
+    "authors": [
+      "Vugar Ismailov"
+    ],
+    "abstract": "We analyze the universal approximation property of Kolmogorov-Arnold Networks (KANs) in terms of their edge functions. If these functions are all affine, then universality clearly fails. How many non-affine functions are needed, in addition to affine ones, to ensure universality? We show that a single one suffices. More precisely, we prove that deep KANs in which all edge functions are either affine or equal to a fixed continuous function $σ$ are dense in $C(K)$ for every compact set $K\\subset\\mathbb{R}^n$ if and only if $σ$ is non-affine. In contrast, for KANs with exactly two hidden layers, universality holds if and only if $σ$ is nonpolynomial. We further show that the full class of affine functions is not required; it can be replaced by a finite set without affecting universality. In particular, in the nonpolynomial case, a fixed family of five affine functions suffices when the depth is arbitrary. More generally, for every continuous non-affine function $σ$, there exists a finite affine family $A_σ$ such that deep KANs with edge functions in $A_σ\\cup\\{σ\\}$ remain universal. We also prove that KANs with the spline-based edge parameterization introduced by Liu et al.~\\cite{Liu2024} are universal approximators in the classical sense, even when the spline degree and knot sequence are fixed in advance.",
+    "url": "https://arxiv.org/abs/2604.23765",
+    "pdf_url": "https://arxiv.org/pdf/2604.23765v1",
+    "published_date": "2026-04-26",
+    "categories": [
+      "cs.LG",
+      "cs.NE",
+      "math.FA"
+    ],
+    "source": "arxiv",
+    "hf_upvotes": 0,
+    "pwc_stars": 0,
+    "code_url": null,
+    "citation_count": 0
+  },
+  {
+    "id": "arxiv:2604.23763",
+    "title": "Edit Where You Mean: Region-Aware Adapter Injection for Mask-Free Local Image Editing",
+    "authors": [
+      "Honghao Cai",
+      "Xiangyuan Wang",
+      "Yunhao Bai",
+      "Haohua Chen",
+      "Tianze Zhou",
+      "Runqi Wang",
+      "Wei Zhu",
+      "Yibo Chen",
+      "Xu Tang",
+      "Yao Hu",
+      "Zhen Li"
+    ],
+    "abstract": "Large diffusion transformers (DiTs) follow global editing instructions well but consistently leak local edits into unrelated regions, because joint-attention architectures offer no explicit channel telling the network where to apply the edit. We introduce REDEdit, a co-trained, instruction- and region-aware adapter framework that retrofits a frozen DiT into a precise local editor without modifying its backbone weights. A lightweight Block Adapter at every transformer block injects a structured condition stream that factorizes what to edit (instruction semantics) from where to edit (spatial mask); a learned SpatialGate routes the adapter signal selectively into the edit region while keeping the rest of the image near-identical to the source; and a Region-Aware Loss focuses the training objective on the changing pixels. Because these components make the backbone's internal representation mask-aware end-to-end, a thin MaskPredictor head trained jointly with the editor can ground the edit region directly from the instruction and source image eliminating any user-mask requirement at deployment. We evaluate on two complementary benchmarks: MagicBrush (paired ground-truth targets) to measure pixel-level preservation and edit accuracy, and Emu-Edit Test (no ground-truth images, 9 diverse edit categories) to stress-test instruction following and generalization across edit types. On both, REDEdit achieves state-of-the-art results, simultaneously outperforming mask-free and oracle-mask baselines. A seven-variant ablation cleanly isolates the contribution of each component.",
+    "url": "https://arxiv.org/abs/2604.23763",
+    "pdf_url": "https://arxiv.org/pdf/2604.23763v1",
+    "published_date": "2026-04-26",
+    "categories": [
+      "cs.CV"
+    ],
+    "source": "arxiv",
+    "hf_upvotes": 0,
+    "pwc_stars": 0,
+    "code_url": null,
+    "citation_count": 0
+  },
+  {
+    "id": "arxiv:2604.23758",
+    "title": "Agentic Fusion of Large Atomic and Language Models to Accelerate Superconductors Discovery",
+    "authors": [
+      "Mingze Li",
+      "Yu Rong",
+      "Songyou Li",
+      "Lihong Wang",
+      "Jiacheng Cen",
+      "Liming Wu",
+      "Anyi Li",
+      "Zongzhao Li",
+      "Qiuliang Liu",
+      "Rui Jiao",
+      "Tian Bian",
+      "Pengju Wang",
+      "Hao Sun",
+      "Jianfeng Zhang",
+      "Ji-Rong Wen",
+      "Deli Zhao",
+      "Shifeng Jin",
+      "Tingyang Xu",
+      "Wenbing Huang"
+    ],
+    "abstract": "The discovery of novel materials is critical for global energy and quantum technology transitions. While deep learning has fundamentally reshaped this landscape, existing predictive or generative models typically operate in isolation, lacking the autonomous orchestration required to execute the full discovery process. Here we present ElementsClaw, an agentic framework for materials discovery that synergizes Large Atomic Models (LAMs) with Large Language Models (LLMs). In response to varied human queries, ElementsClaw orchestrates a suite of LAM tools finetuned from our proposed 1-billion-parameter model Elements for atomic-scale numerical computation, while leveraging LLMs for high-level semantic reasoning. This shift moves AI-driven materials science from isolated processes toward integrated and human interactive discovery. Applied to superconductors, ElementsClaw screens 2.4 million crystals in just 28 GPU hours to identify 68,000 high-confidence candidates (The complete dataset of screened superconductors is available at https://developer.damo-academy.com/material), expanding known superconducting space by orders of magnitude compared to datasets curated over decades. Critically, ElementsClaw achieves a high success rate in identifying superconductors hidden in literature and discovers four novel experimentally verified superconductors, exemplified by Zr3ScRe8 with a transition temperature of 6.8 K and HfZrRe4 at 6.7 K. Together, our results establish a knowledge integrated, autonomously orchestrated, and experimentally grounded paradigm for materials discovery.",
+    "url": "https://arxiv.org/abs/2604.23758",
+    "pdf_url": "https://arxiv.org/pdf/2604.23758v2",
+    "published_date": "2026-04-26",
+    "categories": [
+      "cs.LG",
+      "cond-mat.mtrl-sci"
+    ],
+    "source": "arxiv",
+    "hf_upvotes": 0,
+    "pwc_stars": 0,
+    "code_url": null,
+    "citation_count": 0
+  },
+  {
+    "id": "arxiv:2604.23753",
+    "title": "Modeling Induced Pleasure through Cognitive Appraisal Prediction via Multimodal Fusion",
+    "authors": [
+      "Nastaran Dab",
+      "Raziyeh Zall",
+      "Mohammadreza Kangavari"
+    ],
+    "abstract": "Multimodal affective computing analyzes user-generated social media content to predict emotional states. However, a critical gap remains in understanding how visual content shapes cognitive interpretations and elicits specific affective experiences such as pleasure. This study introduces a novel computational model to infer video-induced pleasure via cognitive appraisal variables. The proposed model addresses four challenges: (1) noisy and inconsistent human labels, (2) the semantic gap between \"positive emotions\" and \"pleasure,\" (3) the scarcity of pleasure-specific datasets, and (4) the limited interpretability of existing black-box fusion methods. Our approach integrates data-driven and cognitive theory-driven methods, using cognitive appraisal theory and a fuzzy model within an innovative framework. The model employs transformer-based architectures and attention mechanisms for fine-grained multimodal feature extraction and interpretable fusion to capture both inter- and intra-modal dynamics associated with pleasure. This enables the prediction of underlying appraisal variables, thereby bridging the semantic gap and enhancing model explainability beyond conventional statistical associations. Experimental results validate the efficacy of the proposed method in detecting video-induced pleasure, achieving a peak accuracy of 0.6624 in predicting pleasure levels. These findings highlight promising implications for affective content recommendation, intelligent media creation, and advancing our understanding of how digital media influences human emotions.",
+    "url": "https://arxiv.org/abs/2604.23753",
+    "pdf_url": "https://arxiv.org/pdf/2604.23753v1",
+    "published_date": "2026-04-26",
+    "categories": [
+      "cs.AI",
+      "cs.HC",
+      "cs.LG"
+    ],
+    "source": "arxiv",
+    "hf_upvotes": 0,
+    "pwc_stars": 0,
+    "code_url": null,
+    "citation_count": 0
+  },
+  {
+    "id": "arxiv:2604.23750",
+    "title": "The Override Gap: A Magnitude Account of Knowledge Conflict Failure in Hypernetwork-Based Instant LLM Adaptation",
+    "authors": [
+      "Shuaizhi Cheng",
+      "Xiang Shi",
+      "Mingwei Li"
+    ],
+    "abstract": "Hypernetwork-based methods such as Doc-to-LoRA internalize a document into an LLM's weights in a single forward pass, but they fail systematically on conflicts: when the document contradicts pretraining knowledge, accuracy collapses to 46.4% on the deepest facts. We show the failure is a magnitude problem rather than a representational one. The hypernetwork already targets the right layers, but its adapter margin is approximately constant across documents while the pretrained margin grows with training frequency, so deep conflicts lose by construction. The account predicts that failure should track prior strength: sorting 194 conflicts by the base model's log-probability on the contradicted fact, baseline accuracy falls from 68% on weak-prior questions to 16% on strong-prior ones, a 52 percentage-point gap. The cure is amplitude. Selective Layer Boosting scales the adapter at its top-norm layers, and Conflict-Aware Internalization triggers boosting only when the base model is confident. Both are training-free; together they raise deep-conflict accuracy from 46.4% to 71.0% on Gemma-2B and from 53.6% to 72.5% on Mistral-7B while preserving novel-knowledge recall, and beat vanilla retrieval-augmented generation on medium conflicts by 18 percentage points despite operating entirely in parameter space. We release KID-Bench, a 489-question benchmark that separates novel recall, cross-knowledge combination, and prior-graded conflicts.",
+    "url": "https://arxiv.org/abs/2604.23750",
+    "pdf_url": "https://arxiv.org/pdf/2604.23750v1",
+    "published_date": "2026-04-26",
+    "categories": [
+      "cs.LG",
+      "cs.AI"
+    ],
+    "source": "arxiv",
+    "hf_upvotes": 0,
+    "pwc_stars": 0,
+    "code_url": null,
+    "citation_count": 0
+  },
+  {
+    "id": "arxiv:2604.23747",
+    "title": "SFT-then-RL Outperforms Mixed-Policy Methods for LLM Reasoning",
+    "authors": [
+      "Alexis Limozin",
+      "Eduard Durech",
+      "Torsten Hoefler",
+      "Imanol Schlag",
+      "Valentina Pyatkin"
+    ],
+    "abstract": "Recent mixed-policy optimization methods for LLM reasoning that interleave or blend supervised and reinforcement learning signals report improvements over the standard SFT-then-RL pipeline. We show that numerous recently published research papers rely on a faulty baseline caused by two distinct bugs: a CPU-offloaded optimizer bug in DeepSpeed that silently drops intermediate micro-batches during gradient accumulation (affecting multiple downstream frameworks including TRL, OpenRLHF and Llama-Factory), and a loss aggregation bug in OpenRLHF that incorrectly weights per-mini-batch losses. Together they suppress SFT performance, with the optimizer bug accounting for most of the gap and the loss aggregation bug contributing a smaller additional effect. Once corrected, the standard SFT-then-RL pipeline surpasses every published mixed-policy method we evaluate by +3.8 points on math benchmarks with Qwen2.5-Math-7B and by +22.2 points with Llama-3.1-8B. Even a truncated variant with just 50 RL steps outperforms mixed-policy methods on math benchmarks while using fewer FLOPs.",
+    "url": "https://arxiv.org/abs/2604.23747",
+    "pdf_url": "https://arxiv.org/pdf/2604.23747v1",
+    "published_date": "2026-04-26",
+    "categories": [
+      "cs.LG",
+      "cs.AI",
+      "cs.CL"
+    ],
+    "source": "arxiv",
+    "hf_upvotes": 0,
+    "pwc_stars": 0,
+    "code_url": null,
+    "citation_count": 0
+  },
+  {
+    "id": "arxiv:2604.23743",
+    "title": "Fixed-Reservoir vs Variational Quantum Architectures for Chaotic Dynamics: Benchmarking QRC and QPINN on the Lorenz System",
+    "authors": [
+      "Tushar Pandey"
+    ],
+    "abstract": "Deploying quantum machine learning on NISQ devices requires architectures where training overhead does not negate computational advantages. We systematically compare two quantum approaches for chaotic time-series prediction on the Lorenz system: a variational Quantum Physics-Informed Neural Network (QPINN) and a Quantum Reservoir Computing (QRC) framework utilizing a fixed transverse-field Ising Hamiltonian. Under matched resources ($4$--$5$ qubits, $2$--$3$ layers), QRC achieves an $81\\%$ lower mean-squared error (test MSE $3.2 \\pm 0.6$ vs. $47.9 \\pm 36.6$ for QPINN) while training $\\sim 52,000\\times$ faster ($0.2$\\,s vs. $\\sim 2.4$\\,h per seed). Drawing on the classical delay-embedding principle, we formalize a temporal windowing technique within the QRC pipeline that improves attractor reconstruction by providing bounded, structured input history. Analysis reveals that QPINN instability stems from capacity limitations and competing loss terms rather than barren plateaus; gradient norms remained large ($10^3$--$10^4$), ruling out exponential suppression at this scale. These failure modes are absent by construction in the non-variational QRC approach. We validate robustness across three canonical systems (Lorenz, Rössler, and Lorenz-96), where QRC consistently achieves low test MSE ($3.1 \\pm 0.6$, $1.8 \\pm 0.1$, and $12.4 \\pm 0.6$, respectively) with sub-second training. Our findings suggest the fixed-reservoir architecture is a primary driver of QRC's advantage at these scales, warranting further investigation at larger qubit counts and on hardware where quantum-specific advantages are expected to emerge.",
+    "url": "https://arxiv.org/abs/2604.23743",
+    "pdf_url": "https://arxiv.org/pdf/2604.23743v1",
+    "published_date": "2026-04-26",
+    "categories": [
+      "quant-ph",
+      "cs.LG"
+    ],
+    "source": "arxiv",
+    "hf_upvotes": 0,
+    "pwc_stars": 0,
+    "code_url": null,
+    "citation_count": 0
+  },
+  {
+    "id": "arxiv:2604.23740",
+    "title": "Transformer as an Euler Discretization of Score-based Variational Flow",
+    "authors": [
+      "Huadong Liao"
+    ],
+    "abstract": "Despite the Transformer's dominance across machine learning, its architecture remains largely heuristic and lacks a unified theoretical foundation. We introduce Score-based Variational Flow (SVFlow), a continuous-time dynamical system for representation learning in which the state evolves according to a variational posterior-weighted average of conditional log-likelihood scores, and provide a principled basis for regularization through variational consistency. We show that forward Euler discretization of spherical SVFlow exactly recovers the Transformer architecture. Multi-head attention approximates SVFlow vector field via a vMF kernel-smoothed posterior, while MoE/FFN approximates it in a relaxed network-based way, and the residual-normalization block implements a relaxed retraction that maintains spherical geometry. This unification explains why attention trains stably without explicit regularization while MoE requires auxiliary balancing losses. Experiments on pre-trained language models with prefix shuffling show that SVFlow-induced metrics correlate with task performance, reveal depth-dependent sensitivity, and reflect the intrinsic dynamics of attention.",
+    "url": "https://arxiv.org/abs/2604.23740",
+    "pdf_url": "https://arxiv.org/pdf/2604.23740v1",
+    "published_date": "2026-04-26",
+    "categories": [
+      "cs.LG"
+    ],
+    "source": "arxiv",
+    "hf_upvotes": 0,
+    "pwc_stars": 0,
+    "code_url": null,
+    "citation_count": 0
+  },
+  {
+    "id": "arxiv:2604.23733",
+    "title": "Multimodal QUD: Inquisitive Questions from Scientific Figures",
+    "authors": [
+      "Yating Wu",
+      "William Rudman",
+      "Venkata S Govindarajan",
+      "Alexandros G. Dimakis",
+      "Junyi Jessy Li"
+    ],
+    "abstract": "Asking inquisitive questions while reading, and looking for their answers, is an important part in human discourse comprehension, curiosity, and creative ideation, and prior work has investigated this in text-only scenarios. However, in scientific or research papers, many of the critical takeaways are conveyed through both figures and the text that analyzes them. While scientific visualizations have been used to evaluate Vision-Language Models (VLMs) capabilities, current benchmarks are limited to questions that focus simply on extracting information from them. Such questions only require lower-level reasoning, do not take into account the context in which a figure appears, and do not reflect the communicative goals the authors wish to achieve. We generate inquisitive questions that reach the depth of questions humans generate when engaging with scientific papers, conditioned on both the figure and the paper's context, and require reasoning across both modalities. To do so, we extend the linguistic theory of Questions Under Discussion (QUD) from being text-only to multimodal, where implicit questions are raised and resolved as discourse progresses. We present MQUD, a dataset of research papers in which such questions are made explicit and annotated by the original authors. We show that fine-tuning a VLM on MQUD shifts the model from generating generic low-level visual questions to content-specific grounding that requires a high-level of multimodal reasoning, yielding higher-quality, more visually grounded multimodal QUD generation.",
+    "url": "https://arxiv.org/abs/2604.23733",
+    "pdf_url": "https://arxiv.org/pdf/2604.23733v1",
+    "published_date": "2026-04-26",
+    "categories": [
+      "cs.CL"
+    ],
+    "source": "arxiv",
+    "hf_upvotes": 0,
+    "pwc_stars": 0,
+    "code_url": null,
+    "citation_count": 0
+  },
+  {
+    "id": "arxiv:2604.23732",
+    "title": "Impact of Age Specialized Models for Hypoglycemia Classification",
+    "authors": [
+      "Beyza Cinar",
+      "Maria Maleshkova"
+    ],
+    "abstract": "Disease progression varies with age and is influenced by underlying genetic, biochemical, and hormonal etiologies, suggesting the need for tailored monitoring, care, and medication beyond standard clinical guidelines. Specifically, in autoimmune diseases like type 1 diabetes (T1D), where patients depend on exogenous insulin to compensate for insulin deficiency, medication dosing and the physiological response reflected in vital signs can differ. Insulin therapy can lead to hypoglycemia, a dangerous condition characterized by decreased blood glucose levels ($\\leq$70). This risk can be mitigated through improved diabetes management supported by data analytics. Notably, leveraging data from continuous glucose monitoring (CGM) devices, hypoglycemia onset can be predicted. However, while glucose variability, auto-antibody levels, and hypoglycemia occurrence differ across age groups, hypoglycemia classification most often only relies on population-based models specialized in specific age ranges. In this work, we classify hypoglycemia 0, 5-15, 20-45, and 50-120 minutes before onset using DiaData, a large CGM dataset of patients with T1D ranging from children to seniors. In particular, we investigate: 1) the generalizability of a population-based model including all age groups, 2) the impact of age-segmented models trained separately per age group, and 3) the effect of model individualization through transfer learning. The results show that a global population-based model yields similar or superior performance compared to age-segmented models. These findings suggest that data from children, teenagers, and adults can be combined for training models on hypoglycemia classification. While glucose variation differs across age groups, short-term hypoglycemic patterns are similar. However, data of children obtain their best recall with age specialized model.",
+    "url": "https://arxiv.org/abs/2604.23732",
+    "pdf_url": "https://arxiv.org/pdf/2604.23732v1",
+    "published_date": "2026-04-26",
+    "categories": [
+      "cs.LG",
+      "cs.AI",
+      "cs.HC"
+    ],
+    "source": "arxiv",
+    "hf_upvotes": 0,
+    "pwc_stars": 0,
+    "code_url": null,
+    "citation_count": 0
+  },
+  {
+    "id": "arxiv:2604.23730",
+    "title": "Expert Evaluation of LLM's Open-Ended Legal Reasoning on the Japanese Bar Exam Writing Task",
+    "authors": [
+      "Jungmin Choi",
+      "Keisuke Sakaguchi",
+      "Hiroaki Yamada"
+    ],
+    "abstract": "Large language models (LLMs) have shown strong performance on legal benchmarks, including multiple-choice components of bar exams. However, their capacity for generating open-ended legal reasoning in realistic scenarios remains insufficiently explored. Notably, to our best knowledge, there are no prior studies or datasets addressing this issue in the Japanese context.   This study presents the first dataset designed to evaluate the open-ended legal reasoning performance of LLMs within the Japanese jurisdiction. The dataset is based on the writing component of the Japanese bar examination, which requires examinees to identify multiple legal issues from long narratives and to construct structured legal arguments in free text format. Our key contribution is the manual evaluation of LLMs' generated responses by legal experts, which reveals limitations and challenges in legal reasoning. Moreover, we conducted a manual analysis of hallucinations to characterize when and how the models introduce content not supported by precedent or law.   Our real exam questions, model-generated responses, and expert evaluations reveal the milestones of current LLMs in the Japanese legal domain. Our dataset and relevant resources will be available online.",
+    "url": "https://arxiv.org/abs/2604.23730",
+    "pdf_url": "https://arxiv.org/pdf/2604.23730v1",
+    "published_date": "2026-04-26",
+    "categories": [
+      "cs.AI"
+    ],
+    "source": "arxiv",
+    "hf_upvotes": 0,
+    "pwc_stars": 0,
+    "code_url": null,
+    "citation_count": 0
+  },
+  {
+    "id": "arxiv:2604.23729",
+    "title": "DynProto: Dynamic Prototype Evolution for Out-of-Distribution Detection",
+    "authors": [
+      "Yanqi Wu",
+      "Xinhua Lu",
+      "Runhe Lai",
+      "Qichao Chen",
+      "Jia-Xin Zhuang",
+      "Wei-Shi Zheng",
+      "Ruixuan Wang"
+    ],
+    "abstract": "Recent studies show that using potential out-of-distribution (OOD) labels from large corpora as auxiliary information can improve OOD detection in vision-language models (VLMs). However, these methods often fail when real-world OOD samples fall outside the predefined OOD label set. To address this limitation, we propose DynProto, a novel approach that learns OOD prototypes dynamically during testing using only in-distribution (ID) information. DynProto is inspired by a key observation: OOD samples predicted as the same ID class tend to cluster in the feature space. With this insight, we leverage easy-to-detect OOD samples as ``anchors'' to find their harder-to-detect, similar counterparts. To this end, DynProto introduces two modules: \\textbf{Coarse OOD Pattern Capturing Module} caches OOD patterns that are easily confused with each ID class during testing, and \\textbf{Fine-grained OOD Pattern Refinement Module} subsequently clusters these patterns within each cache and aggregates them into representative OOD prototypes. By measuring similarity to ID and dynamic OOD prototypes, DynProto enables accurate OOD detection. DynProto significantly outperforms prior methods across multiple benchmarks. On ImageNet OOD benchmark, DynProto reduces FPR95 by 11.60\\% and improves AUROC by 4.70\\%. Moreover, the framework is architecture-agnostic and can be integrated into various backbones.",
+    "url": "https://arxiv.org/abs/2604.23729",
+    "pdf_url": "https://arxiv.org/pdf/2604.23729v1",
+    "published_date": "2026-04-26",
+    "categories": [
+      "cs.CV"
+    ],
+    "source": "arxiv",
+    "hf_upvotes": 0,
+    "pwc_stars": 0,
+    "code_url": null,
+    "citation_count": 0
+  },
+  {
+    "id": "arxiv:2604.23728",
+    "title": "ESIA: An Energy-Based Spatiotemporal Interaction-Aware Framework for Pedestrian Intention Prediction",
+    "authors": [
+      "Yanping Wu",
+      "Meiting Dang",
+      "Lin Wu",
+      "Edmond S. L. Ho",
+      "Zhenghua Chen",
+      "Chongfeng Wei"
+    ],
+    "abstract": "Recent advances in autonomous driving have motivated research on pedestrian intention prediction, which aims to infer future crossing decisions and actions by modeling temporal dynamics, social interactions, and environmental context. However, existing studies remain constrained by oversimplified multi-agent interaction patterns, opaque reasoning logic, and a lack of global consistency in behavioral predictions, which compromise both robustness and interpretability. In this work, we propose ESIA (Energy-based Spatiotemporal Interaction-Aware framework), a novel Conditional Random Field (CRF)-based paradigm. We cast the intention prediction task as a structured prediction problem over a unified graph-based representation, treating pedestrians and the environment as spatiotemporal nodes. To characterize their distinct roles, we assign unary potentials to nodes to capture individual intentions, and pairwise potentials to edges to encode social and environmental interactions. These potentials are integrated into a unified global energy function to ensure scene-level consistency across behavioral predictions. To further constrain inference without ground-truth supervision, we introduce structural consistency terms to penalize logical contradictions. This optimization is efficiently solved via a novel Unary-Seeded Simulated Annealing (U-SSA) algorithm, which leverages high-confidence unary priors to rapidly converge to a high-quality solution. Extensive experiments on standard benchmarks demonstrate that ESIA achieves state-of-the-art performance with improved interpretability over existing methods.",
+    "url": "https://arxiv.org/abs/2604.23728",
+    "pdf_url": "https://arxiv.org/pdf/2604.23728v1",
+    "published_date": "2026-04-26",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "source": "arxiv",
+    "hf_upvotes": 0,
+    "pwc_stars": 0,
+    "code_url": null,
+    "citation_count": 0
+  },
+  {
+    "id": "arxiv:2604.23724",
+    "title": "Zoom In, Reason Out: Efficient Far-field Anomaly Detection in Expressway Surveillance Videos via Focused VLM Reasoning Guided by Bayesian Inference",
+    "authors": [
+      "Xiaowei Mao",
+      "Bowen Sui",
+      "Weijie Zhang",
+      "Yawen Yang",
+      "Shengnan Guo",
+      "Shilong Zhao",
+      "Jiaqi Lin",
+      "Tingrui Wu",
+      "Youfang Lin",
+      "Huaiyu Wa"
+    ],
+    "abstract": "Expressway video anomaly detection is essential for safety management. However, identifying anomalies across diverse scenes remains challenging, particularly for far-field targets exhibiting subtle abnormal vehicle motions. While Vision-Language Models (VLMs) demonstrate strong semantic reasoning capabilities, processing global frames causes attention dilution for these far-field objects and incurs prohibitive computational costs. To address these issues, we propose VIBES, an asynchronous collaborative framework utilizing VLMs guided by Bayesian inference. Specifically, to overcome poor generalization across varying expressway environments, we introduce an online Bayesian inference module. This module continuously evaluates vehicle trajectories to dynamically update the probabilistic boundaries of normal driving behaviors, serving as an asynchronous trigger to precisely localize anomalies in space and time. Instead of processing the continuous video stream, the VLM processes only the localized visual regions indicated by the trigger. This targeted visual input prevents attention dilution and enables accurate semantic reasoning. Extensive evaluations demonstrate that VIBES improves detection accuracy for far-field anomalies and reduces computational overhead, achieving high real-time efficiency and explainability while demonstrating generalization across diverse expressway conditions.",
+    "url": "https://arxiv.org/abs/2604.23724",
+    "pdf_url": "https://arxiv.org/pdf/2604.23724v2",
+    "published_date": "2026-04-26",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "source": "arxiv",
+    "hf_upvotes": 0,
+    "pwc_stars": 0,
+    "code_url": null,
+    "citation_count": 0
+  },
+  {
+    "id": "arxiv:2604.23720",
+    "title": "Quasi-Equivariant Metanetworks",
+    "authors": [
+      "Viet-Hoang Tran",
+      "An Nguyen",
+      "Benoît Guérand",
+      "Thieu N. Vo",
+      "Tan M. Nguyen"
+    ],
+    "abstract": "Metanetworks are neural architectures designed to operate directly on pretrained weights to perform downstream tasks. However, the parameter space serves only as a proxy for the underlying function class, and the parameter-function mapping is inherently non-injective: distinct parameter configurations may yield identical input-output behaviors. As a result, metanetworks that rely solely on raw parameters risk overlooking the intrinsic symmetries of the architecture. Reasoning about functional identity is therefore essential for effective metanetwork design, motivating the development of equivariant metanetworks, which incorporate equivariance principles to respect architectural symmetries. Existing approaches, however, typically enforce strict equivariance, which imposes rigid constraints and often leads to sparse and less expressive models. To address this limitation, we introduce the novel concept of quasi-equivariance, which allows metanetworks to move beyond the rigidity of strict equivariance while still preserving functional identity. We lay down a principled basis for this framework and demonstrate its broad applicability across diverse neural architectures, including feedforward, convolutional, and transformer networks. Through empirical evaluation, we show that quasi-equivariant metanetworks achieve good trade-offs between symmetry preservation and representational expressivity. These findings advance the theoretical understanding of weight-space learning and provide a principled foundation for the design of more expressive and functionally robust metanetworks.",
+    "url": "https://arxiv.org/abs/2604.23720",
+    "pdf_url": "https://arxiv.org/pdf/2604.23720v1",
+    "published_date": "2026-04-26",
+    "categories": [
+      "cs.LG"
+    ],
+    "source": "arxiv",
+    "hf_upvotes": 0,
+    "pwc_stars": 0,
+    "code_url": null,
+    "citation_count": 0
+  },
+  {
+    "id": "arxiv:2604.23719",
+    "title": "AIPsy-Affect: A Keyword-Free Clinical Stimulus Battery for Mechanistic Interpretability of Emotion in Language Models",
+    "authors": [
+      "Michael Keeman"
+    ],
+    "abstract": "Mechanistic interpretability research on emotion in large language models -- linear probing, activation patching, sparse autoencoder (SAE) feature analysis, causal ablation, steering vector extraction -- depends on stimuli that contain the words for the emotions they test. When a probe fires on \"I am furious\", it is unclear whether the model has detected anger or detected the word \"furious\". The two readings have very different consequences for every downstream claim about emotion circuits, features, and interventions. We release AIPsy-Affect, a 480-item clinical stimulus battery that removes the confound at the stimulus level: 192 keyword-free vignettes evoking each of Plutchik's eight primary emotions through narrative situation alone, 192 matched neutral controls that share characters, setting, length, and surface structure with the affect surgically removed, plus moderate-intensity and discriminant-validity splits. The matched-pair structure supports linear probing, activation patching, SAE feature analysis, causal ablation, and steering vector extraction under a strong methodological guarantee: any internal representation that distinguishes a clinical item from its matched neutral cannot be doing so on the basis of emotion-keyword presence. A three-method NLP defense battery -- bag-of-words sentiment, an emotion-category lexicon, and a contextual transformer classifier -- confirms the property: bag-of-words methods see only situational vocabulary, and a contextual classifier detects affect (p < 10^-15) but cannot identify the category (5.2% top-1 vs. 82.5% on a keyword-rich control). AIPsy-Affect extends our earlier 96-item battery (arXiv:2603.22295) by a factor of four and is released openly under MIT license.",
+    "url": "https://arxiv.org/abs/2604.23719",
+    "pdf_url": "https://arxiv.org/pdf/2604.23719v2",
+    "published_date": "2026-04-26",
+    "categories": [
+      "cs.CL",
+      "cs.AI"
+    ],
+    "source": "arxiv",
+    "hf_upvotes": 0,
+    "pwc_stars": 0,
+    "code_url": null,
+    "citation_count": 0
+  },
+  {
+    "id": "arxiv:2604.23718",
+    "title": "Caries DETR: Tooth Structure-aware Prior and Lesion-aware Dynamic Loss Refinement for DETR Based Caries Detection",
+    "authors": [
+      "Xuefen Liu",
+      "Xinquan Yang",
+      "Mianjie Zheng",
+      "Kun Tang",
+      "Xuguang Li",
+      "Xiaoqi Guo",
+      "Linlin Shen",
+      "He Meng"
+    ],
+    "abstract": "As dental caries appear as subtle, low-contrast lesions in intraoral imaging, existing deep learning models face significant challenges in the early detection of caries. While recent Transformer-based detectors have shown promising results in natural images, they often fail to capture the domain-specific anatomical priors crucial for dental caries detection. In this paper, we propose Caries-DETR, a specialized Transformer framework for caries detection in intraoral images. A Tooth Structure-aware Query Initialization (TSQI) is designed, leveraging large-scale intraoral photograph pre-training and a structure perception branch (SPB) to integrate high-frequency structural priors, guiding the model to focus on anatomically significant lesion areas. Furthermore, we design a Lesion-aware Dynamic Loss Refinement (LDLR) to implement quality-driven hard mining through adaptive loss reweighting based on lesion size, anatomical relevance, and prediction quality, optimizing detection for subtle lesions. Extensive experiments on two public datasets (i.e., AlphaDent and DentalAI) demonstrate that Caries-DETR achieves a state-of-the-art performance compared to existing methods and exhibits good generalization and robustness. Code and data at https://github.com/XuefenLiu-SZU/Caries-DETR}{https://github.com/XuefenLiu-SZU/Caries-DETR.",
+    "url": "https://arxiv.org/abs/2604.23718",
+    "pdf_url": "https://arxiv.org/pdf/2604.23718v1",
+    "published_date": "2026-04-26",
+    "categories": [
+      "cs.CV"
+    ],
+    "source": "arxiv",
+    "hf_upvotes": 0,
+    "pwc_stars": 0,
+    "code_url": null,
+    "citation_count": 0
+  },
+  {
+    "id": "arxiv:2604.23717",
+    "title": "HeadRouter: Dynamic Head-Weight Routing for Task-Adaptive Audio Token Pruning in Large Audio Language Models",
+    "authors": [
+      "Peize He",
+      "Yaodi Luo",
+      "Xiaoqian Liu",
+      "Xuyang Liu",
+      "Jiahang Deng",
+      "Yaosong Du",
+      "Bangyu Li",
+      "Xiyan Gui",
+      "Yuxuan Chen",
+      "Linfeng Zhang"
+    ],
+    "abstract": "Recent large audio language models (LALMs) demonstrate remarkable capabilities in processing extended multi-modal sequences, yet incur high inference costs. Token compression is an effective method that directly reduces redundant tokens in the sequence. Existing compression methods usually assume that all attention heads in LALMs contribute equally to various audio tasks and calculate token importance by averaging scores across all heads. However, our analysis demonstrates that attention heads exhibit distinct behaviors across diverse audio domains. We further reveal that only a sparse subset of attention heads actively responds to audio, with completely different performance when handling semantic and acoustic tasks. In light of this observation, we propose HeadRouter, a head-importance-aware token pruning method that perceives the varying importance of attention heads in different audio tasks to maximize the retention of crucial tokens. HeadRouter is training-free and can be applied to various LALMs. Extensive experiments on the AudioMarathon and MMAU-Pro benchmarks demonstrate that HeadRouter achieves state-of-the-art compression performance, exceeding the baseline model even when retaining 70% of the audio tokens and achieving 101.8% and 103.0% of the vanilla average on Qwen2.5-Omni-3B and Qwen2.5-Omni-7B, respectively.",
+    "url": "https://arxiv.org/abs/2604.23717",
+    "pdf_url": "https://arxiv.org/pdf/2604.23717v1",
+    "published_date": "2026-04-26",
+    "categories": [
+      "cs.SD",
+      "cs.CL"
+    ],
+    "source": "arxiv",
+    "hf_upvotes": 0,
+    "pwc_stars": 0,
+    "code_url": null,
+    "citation_count": 0
+  },
+  {
+    "id": "arxiv:2604.23716",
+    "title": "Information-Theoretic Measures in AI: A Practical Decision Guide",
+    "authors": [
+      "Nikolaos Al. Papadopoulos",
+      "Konstantinos E. Psannis"
+    ],
+    "abstract": "Information-theoretic (IT) measures are ubiquitous in artificial intelligence: entropy drives decision-tree splits and uncertainty quantification, cross-entropy is the default classification loss, mutual information underpins representation learning and feature selection, and transfer entropy reveals directed influence in dynamical systems.   A second, less consolidated family of measures, integrated information (Phi), effective information (EI), and autonomy, has emerged for characterizing agent complexity. Despite wide adoption, measure selection is often decoupled from estimator assumptions, failure modes, and safe inferential claims.   This paper provides a practical decision framework for all seven measures, organized around three prescriptive questions for each: (i) what question does the measure answer and in which AI context; (ii) which estimator is appropriate for the data type and dimensionality; and (iii) what is the most dangerous misuse. The framework is operationalized in two complementary artifacts: a measure-selection flowchart and a master decision table. We cover both AI/ML and decision-making agent application domains per measure, with standardized Bridge Boxes linking IT quantities to cognitive constructs. Three worked examples illustrate the framework on concrete practitioner scenarios spanning representation learning, temporal influence analysis, and evolved agent complexity.",
+    "url": "https://arxiv.org/abs/2604.23716",
+    "pdf_url": "https://arxiv.org/pdf/2604.23716v1",
+    "published_date": "2026-04-26",
+    "categories": [
+      "cs.AI",
+      "cs.IT",
+      "cs.LG",
+      "cs.MA"
+    ],
+    "source": "arxiv",
+    "hf_upvotes": 0,
+    "pwc_stars": 0,
+    "code_url": null,
+    "citation_count": 0
+  },
+  {
+    "id": "arxiv:2604.23712",
+    "title": "OptProver: Bridging Olympiad and Optimization through Continual Training in Formal Theorem Proving",
+    "authors": [
+      "Chenyi Li",
+      "Yanchen Nie",
+      "Zhenyu Ming",
+      "Gong Zhang",
+      "Kun Yuan",
+      "Zaiwen Wen"
+    ],
+    "abstract": "Recent advances in formal theorem proving have focused on Olympiad-level mathematics, leaving undergraduate domains largely unexplored. Optimization, fundamental to machine learning, operations research, and scientific computing, remains underserved by existing provers. Its reliance on domain-specific formalisms (convexity, optimality conditions, and algorithmic analysis) creates significant distribution shift, making naive domain transfer ineffective. We present OptProver, a trained model that achieves robust transfer from Olympiad to undergraduate optimization. Starting from a strong Olympiad-level prover, our pipeline mitigates distribution shift through two key innovations. First, we employ large-scale optimization-focused data curation via expert iteration. Second, we introduce a specialized preference learning objective that integrates perplexity-weighted optimization with a mechanism to penalize valid but non-progressing proof steps. This not only addresses distribution shifts but also guides the search toward efficient trajectories. To enable rigorous evaluation, we construct a novel benchmark in Lean 4 focused on optimization. On this benchmark, OptProver achieves state-of-the-art Pass@1 and Pass@32 among comparably sized models while maintaining competitive performance on general theorem-proving tasks, demonstrating effective domain transfer without catastrophic forgetting.",
+    "url": "https://arxiv.org/abs/2604.23712",
+    "pdf_url": "https://arxiv.org/pdf/2604.23712v2",
+    "published_date": "2026-04-26",
+    "categories": [
+      "cs.LG",
+      "cs.AI"
+    ],
+    "source": "arxiv",
+    "hf_upvotes": 0,
+    "pwc_stars": 0,
+    "code_url": null,
+    "citation_count": 0
+  },
+  {
+    "id": "arxiv:2604.23709",
+    "title": "ZID-Net: Zero-Inference Diffusion Prior Decoupling Network for Single Image Dehazing",
+    "authors": [
+      "Xinheng Li",
+      "Minghao Chen",
+      "Mengqing Wu",
+      "Yan Liu",
+      "Guanying Huo"
+    ],
+    "abstract": "Single image dehazing is often constrained by a trade-off between restoration quality and computational efficiency. While efficient, CNN networks struggle to learn robust priors for dense and non-homogeneous haze. Conversely, diffusion models provide strong generative priors but suffer from severe inference latency and sampling instability. To address these limitations, we propose ZID-Net, a novel framework that explicitly decouples diffusion supervision from feed-forward inference. For efficient inference, we design a frequency-spatial decoupled feed-forward backbone. Within this backbone, a Channel-Spatial Laplacian Mask (CSLM) filters haze-amplified noise to extract purified structural details, while Lightweight Global Context Blocks (LGCBs) establish long-range spatial dependencies to capture the global variations of haze. A Dynamic Feature Arbitration Block (DFAB) then adaptively fuses these semantic and structural features for robust reconstruction. To provide this backbone with physical priors without the inference cost, we introduce a Zero-Inference Prior Propagation Head (ZI-PPH) during training. ZI-PPH leverages a conditional diffusion process to predict residual noise, providing degradation-aware structural supervision to the backbone. By discarding the diffusion branch at test time, ZID-Net integrates diffusion priors into a pure feed-forward architecture for accurate and efficient restoration. ZID-Net achieves 40.75 dB PSNR on the synthetic RESIDE dataset and outperforms existing methods with a 1.13 dB gain on real-world datasets. Additionally, it yields a 3.06 dB PSNR gain on the StateHaze1k remote sensing dataset with an inference time of just 19.35 ms. The project code is available at: https://github.com/XoomitLXH/ZID-Net.",
+    "url": "https://arxiv.org/abs/2604.23709",
+    "pdf_url": "https://arxiv.org/pdf/2604.23709v1",
+    "published_date": "2026-04-26",
+    "categories": [
+      "cs.CV",
+      "eess.IV"
+    ],
+    "source": "arxiv",
+    "hf_upvotes": 0,
+    "pwc_stars": 0,
+    "code_url": null,
+    "citation_count": 0
+  },
+  {
+    "id": "arxiv:2604.23706",
+    "title": "Weakly Supervised Multicenter Nancy Index Scoring in Ulcerative Colitis Using Foundation Models",
+    "authors": [
+      "Adam Kukučka",
+      "Ondřej Fabián",
+      "Vít Musil",
+      "Tomáš Brázdil"
+    ],
+    "abstract": "Histologic assessment of ulcerative colitis (UC) activity is an important endpoint in clinical trials and routine care, but manual grading with indices such as the Nancy histological index (NHI) is time-consuming and prone to observer variability. While computational pathology methods can automate scoring, many approaches depend on dense region-level annotations, which are costly to obtain, particularly in heterogeneous, multicenter cohorts.   We propose a weakly supervised multiple instance learning (MIL) approach for whole-slide images that learns from case- and slide-level NHI labels, leveraging foundation models. Our method targets clinically relevant endpoints, including neutrophilic activity and derived Nancy-low/high groupings, enabling full five-grade NHI prediction.   On a multicenter dataset of H&E-stained colon biopsies from three hospitals (2019-2025), we evaluate multiple foundation model encoders and aggregation strategies. We find that foundation model choice and resolution substantially affect performance, with Virchow2 providing the most consistent gains, and that a simple ensembling rule improves five-grade NHI prediction compared to a hierarchical gating baseline.   Overall, our results demonstrate that weakly supervised MIL with modern foundation-model representations can provide robust, interpretable UC histology activity assessment in realistic multicenter settings.",
+    "url": "https://arxiv.org/abs/2604.23706",
+    "pdf_url": "https://arxiv.org/pdf/2604.23706v1",
+    "published_date": "2026-04-26",
+    "categories": [
+      "cs.CV"
+    ],
+    "source": "arxiv",
+    "hf_upvotes": 0,
+    "pwc_stars": 0,
+    "code_url": null,
+    "citation_count": 0
+  },
+  {
+    "id": "arxiv:2604.23705",
+    "title": "Can an MLP Absorb Its Own Skip Connection?",
+    "authors": [
+      "Antonij Mijoski",
+      "Marko Karbevski"
+    ],
+    "abstract": "We study when a skip connection around a single-hidden-layer MLP can be absorbed into a residual-free MLP of the same width. We first show that for any architecture whose skip branch is an invertible linear map (including Hyper-Connections and their manifold-constrained variants), the problem reduces to the identity skip case. For homogeneous activations of degree $k \\neq 1$, such as ReLU$^2$ and ReGLU, absorption is unconditionally impossible by a degree argument. For gated activations whose gate is differentiable at the origin with $g(0) = 0$, including SwiGLU and GeGLU, a linearization argument gives the same conclusion. These impossibility results extend to arbitrary depth: a composition of $L$ residual blocks using such activations cannot be replicated by any composition of $L$ residual-free blocks of the same width. For ungated ReLU and GELU, the situation is richer. For generic weight matrices, absorption holds at the single-block level if and only if there exists an index set $S$ of size at least $d$ such that $W_{\\mathrm{down}}[:,S]\\,W_{\\mathrm{up}}[S,:] = -I_d$. This condition is non-generic (it fails with probability one under continuous weight distributions), so skip-connected and residual-free MLPs of the same width represent generically disjoint function classes. Whether this disjointness persists for deep compositions of ReLU or GELU blocks remains open.",
+    "url": "https://arxiv.org/abs/2604.23705",
+    "pdf_url": "https://arxiv.org/pdf/2604.23705v1",
+    "published_date": "2026-04-26",
+    "categories": [
+      "cs.LG"
+    ],
+    "source": "arxiv",
+    "hf_upvotes": 0,
+    "pwc_stars": 0,
+    "code_url": null,
+    "citation_count": 0
+  },
+  {
+    "id": "arxiv:2604.23704",
+    "title": "A Pose-only Geometric Constraint for Multi-Camera Pose Adjustment",
+    "authors": [
+      "Shunkun Liang",
+      "Banglei Guan",
+      "Bin Li",
+      "Qifeng Yu",
+      "Yang Shang"
+    ],
+    "abstract": "Multi-camera systems offer rich observation capabilities for visual navigation and 3D scene reconstruction; however, the resulting feature redundancy often compromises computational efficiency. This challenge is particularly pronounced during bundle adjustment, where the non-linear optimization of both system poses and scene points incurs substantial computational overhead. To address this challenge, this paper introduces a pose-only geometric constraint for multi-camera systems and proposes a corresponding pose adjustment algorithm. Specifically, we use generalized camera model to establish a unified representation of the multi-camera system. Building upon this model, we formulate the multi-camera pose-only constraint, which implicitly represents a 3D scene point using two base observations and their associated poses, thereby achieving a pose-only representation of the projection geometry. Subsequently, we introduce a multi-camera pose adjustment algorithm that eliminates 3D points from the parameter space, thereby achieving efficient and focused pose optimization. Experimental results on both synthetic and real-world datasets demonstrate that the proposed algorithm outperforms baseline bundle adjustment methods in computational efficiency, while maintaining or even improving pose estimation accuracy.",
+    "url": "https://arxiv.org/abs/2604.23704",
+    "pdf_url": "https://arxiv.org/pdf/2604.23704v1",
+    "published_date": "2026-04-26",
+    "categories": [
+      "cs.CV"
+    ],
+    "source": "arxiv",
+    "hf_upvotes": 0,
+    "pwc_stars": 0,
+    "code_url": null,
+    "citation_count": 0
+  },
+  {
+    "id": "arxiv:2604.23703",
+    "title": "Talking Slide Avatars: Open-Source Multimodal Communication Approach for Teaching",
+    "authors": [
+      "Xinxing Wu"
+    ],
+    "abstract": "Slide-based teaching is widely used in higher education, yet in online, hybrid, and asynchronous contexts, slides often lose the instructor presence, narrative continuity, and expressive framing that help learners connect with content. Full lecture video can partly restore these qualities, but it is time-consuming to record, revise, and reuse. This study addresses that pedagogical and production challenge by presenting a practice-based analysis of an open-source workflow for creating talking slide avatars for slide-based teaching. The workflow integrates OpenVoice for text-to-speech generation and voice cloning with Ditto-TalkingHead for audio-driven talking-image synthesis, enabling instructors to transform a script and a static portrait into a short narrated video that can be embedded in slide decks or HTML-based lecture materials. Rather than treating this workflow merely as a technical solution, the study frames talking slide avatars as multimodal communication artifacts at the intersection of digital pedagogy, aesthetic education, and art-technology practice. Using a practice-based implementation and analytic reflection approach, the study documents the production pipeline, examines its communicative and aesthetic affordances, and proposes practical guidelines for script length, image selection, pacing, disclosure, accessibility, and ethical use. The study makes three primary contributions: it presents an educator-oriented open-source production model, reframes talking avatars as an educational communication design problem, and proposes a responsible pathway for incorporating generative synthetic media into teaching. It concludes that short, transparent, and carefully designed avatars can humanize slide-based instruction while providing a reusable communicative layer for introductions, transitions, reminders, and recaps across online, hybrid, and asynchronous learning environments.",
+    "url": "https://arxiv.org/abs/2604.23703",
+    "pdf_url": "https://arxiv.org/pdf/2604.23703v1",
+    "published_date": "2026-04-26",
+    "categories": [
+      "cs.HC",
+      "cs.AI",
+      "cs.CY"
+    ],
+    "source": "arxiv",
+    "hf_upvotes": 0,
+    "pwc_stars": 0,
+    "code_url": null,
+    "citation_count": 0
+  },
+  {
+    "id": "arxiv:2604.23701",
+    "title": "Agri-CPJ: A Training-Free Explainable Framework for Agricultural Pest Diagnosis Using Caption-Prompt-Judge and LLM-as-a-Judge",
+    "authors": [
+      "Wentao Zhang",
+      "Qi Zhang",
+      "Mingkun Xu",
+      "Mu You",
+      "Henghua Shen",
+      "Zhongzhi He",
+      "Keyan Jin",
+      "Derek F. Wong",
+      "Tao Fang"
+    ],
+    "abstract": "Crop disease diagnosis from field photographs faces two recurring problems: models that score well on benchmarks frequently hallucinate species names, and when predictions are correct, the reasoning behind them is typically inaccessible to the practitioner. This paper describes Agri-CPJ (Caption-Prompt-Judge), a training-free few-shot framework in which a large vision-language model first generates a structured morphological caption, iteratively refined through multi-dimensional quality gating, before any diagnostic question is answered. Two candidate responses are then generated from complementary viewpoints, and an LLM judge selects the stronger one based on domain-specific criteria. Caption refinement is the component with the largest individual impact: ablations confirm that skipping it consistently degrades downstream accuracy across both models tested. On CDDMBench, pairing GPT-5-Nano with GPT-5-mini-generated captions yields \\textbf{+22.7} pp in disease classification and \\textbf{+19.5} points in QA score over no-caption baselines. Evaluated without modification on AgMMU-MCQs, GPT-5-Nano reached 77.84\\% and Qwen-VL-Chat reached 64.54\\%, placing them at or above most open-source models of comparable scale despite the format shift from open-ended to multiple-choice. The structured caption and judge rationale together constitute a readable audit trail: a practitioner who disagrees with a diagnosis can identify the specific caption observation that was incorrect. Code and data are publicly available https://github.com/CPJ-Agricultural/CPJ-Agricultural-Diagnosis",
+    "url": "https://arxiv.org/abs/2604.23701",
+    "pdf_url": "https://arxiv.org/pdf/2604.23701v1",
+    "published_date": "2026-04-26",
+    "categories": [
+      "cs.CL",
+      "cs.AI",
+      "cs.CV"
+    ],
+    "source": "arxiv",
+    "hf_upvotes": 0,
+    "pwc_stars": 0,
+    "code_url": null,
+    "citation_count": 0
+  },
+  {
+    "id": "arxiv:2604.23699",
+    "title": "Beyond coauthorship: semantic structure and phantom collaborators in transportation research, 1967--2025",
+    "authors": [
+      "Seongjin Choi"
+    ],
+    "abstract": "We present a semantic-structural atlas of transportation research built from 120{,}323 papers across 34 peer-reviewed journals published between 1967 and 2025, roughly an order of magnitude larger than and a decade beyond Sun and Rahwan's~(2017) coauthorship study. We use OpenAlex and Crossref as open, CC0-licensed data sources, resolve author identity through OpenAlex author IDs, ORCID records, and manual alias resolution, and embed every paper with SPECTER2 with Arora-style whitening concatenated with concept TF--IDF and venue linear-discriminant projections. On this substrate we report three findings. First, Leiden on the author-level semantic k-nearest-neighbor graph yields 23 topic communities that agree only weakly with the 172 coauthor communities (normalized mutual information $0.23$), opening room for a predictive layer that neither source encodes alone. Second, a multiplex Leiden partition combining both edge types recovers 181 communities and localizes where collaboration and topic structure decouple. Third -- the paper's core methodological contribution -- we define \\emph{phantom collaborators}, pairs of authors who are top-$K$ semantic neighbors yet $\\geq 3$ hops apart in the coauthor graph, and show via a temporal hold-out (training cutoff 2019) that phantom pairs become real coauthors in 2020--2025 at a rate $16$ to $33$ times above random, popularity-weighted, and same-venue baselines, with a $68$-fold monotone gradient between the highest- and lowest-similarity buckets. All artifacts are released as a live, reproducible web atlas at https://choi-seongjin.github.io/transport-atlas/.",
+    "url": "https://arxiv.org/abs/2604.23699",
+    "pdf_url": "https://arxiv.org/pdf/2604.23699v1",
+    "published_date": "2026-04-26",
+    "categories": [
+      "cs.DL",
+      "cs.LG"
+    ],
+    "source": "arxiv",
+    "hf_upvotes": 0,
+    "pwc_stars": 0,
+    "code_url": null,
+    "citation_count": 0
+  },
+  {
+    "id": "arxiv:2604.23698",
+    "title": "Benchmarking Testing in Automated Theorem Proving",
+    "authors": [
+      "Jongyoon Kim",
+      "Hojae Han",
+      "Seung-won Hwang"
+    ],
+    "abstract": "Recent advances in large language models (LLMs) have shown promise in formal theorem proving, yet evaluating semantic correctness remains challenging. Existing evaluations rely on indirect proxies such as lexical overlap with human-annotated proof, or expensive manual inspection. Inspired by the shift from lexical comparison to test-based evaluation in code generation, we propose T , a framework that evaluates the semantic correctness of formal theorems: a generated theorem is considered correct only if all dependent successor theorems compile successfully, analogous to integration testing. We construct a benchmark from 5 real-world Lean 4 repositories, comprising 2,206 problems paired with 41 successor theorems on average, automatically extracted without human effort. Experiments demonstrate that while state-of-the-art models achieve high compilation success, they perform significantly worse under our semantic metric. The best model, Claude-Sonnet-4.5, achieves only 38.9% Testing Accuracy on the full set, given both natural language proof and successor theorems as context, revealing a critical gap in current theorem generation capabilities.",
+    "url": "https://arxiv.org/abs/2604.23698",
+    "pdf_url": "https://arxiv.org/pdf/2604.23698v1",
+    "published_date": "2026-04-26",
+    "categories": [
+      "cs.CL",
+      "cs.FL"
+    ],
+    "source": "arxiv",
+    "hf_upvotes": 0,
+    "pwc_stars": 0,
+    "code_url": null,
+    "citation_count": 0
+  },
+  {
+    "id": "arxiv:2604.23692",
+    "title": "Personalizing Causal Audio-Driven Facial Motion via Dynamic Multi-modal Retrieval",
+    "authors": [
+      "Xuangeng Chu",
+      "Yu Han",
+      "Wei Mao",
+      "Shih-En Wei"
+    ],
+    "abstract": "Audio-driven facial animation is essential for immersive digital interaction, yet existing frameworks fail to reconcile real-time streaming with high-fidelity personalization. Current methods often rely on latency-inducing audio look-ahead, or require high user compliance to pre-encode static embeddings that fails to capture dynamic idiosyncrasies. We present an end-to-end causal framework for personalizing causal facial motion generation via dynamic multi-modal style retrieval, enabling ultra-low latency while uniquely leveraging unstructured style references. We introduce two key innovations: (1) a temporal hierarchical motion representation that captures global temporal context and high-frequency details while maintaining decoding causality, and (2) a multi-modal style retriever that jointly queries audio and motion to dynamically extract stylistic priors without breaking causality. This mechanism allows for scalable personalization with total flexibility regarding the number and contents of templates. By integrating these components into a causal autoregressive architecture, our method significantly outperforms state-of-the-art approaches in lip-sync accuracy, identity consistency, and perceived realism, supported by extensive quantitative evaluations and user studies.",
+    "url": "https://arxiv.org/abs/2604.23692",
+    "pdf_url": "https://arxiv.org/pdf/2604.23692v1",
+    "published_date": "2026-04-26",
+    "categories": [
+      "cs.GR",
+      "cs.CV"
+    ],
+    "source": "arxiv",
+    "hf_upvotes": 0,
+    "pwc_stars": 0,
+    "code_url": null,
+    "citation_count": 0
+  },
+  {
+    "id": "arxiv:2604.23688",
+    "title": "Do Protective Perturbations Really Protect Portrait Privacy under Real-world Image Transformations?",
+    "authors": [
+      "Ruiqing Sun",
+      "Xingshan Yao",
+      "Zhijing Wu",
+      "Tian Lan",
+      "Chenhao Cui",
+      "Huiyang Zhao",
+      "Jialing Shi",
+      "Chen Yang",
+      "Xianling Mao"
+    ],
+    "abstract": "Proactive defense methods protect portrait images from unauthorized editing or talking face generation (TFG) by introducing pixel-level protective perturbations, and have already attracted increasing attention for privacy protection. In real-world scenarios, images inevitably undergo various transformations during cross-device display and dissemination--such as scale transformations and color compression--that directly alter pixel values. However, it remains unclear whether such pixel-level modifications affect the effectiveness of existing proactive defense methods that rely on pixel-level perturbations. To solve this problem, we conduct a systematic evaluation of representative proactive defenses under image transformation. The evaluated methods are selected to span different generation architectures such as diffusion and GAN-based models, as well as defense scopes covering both portrait and natural images, and are assessed using both qualitative and quantitative metrics for subjective and objective comparison. Experimental results indicate that defense methods based on pixel-level perturbations struggle to withstand common image transformations, posing a risk of defense failure in real-world applications. To further highlight this risk, we propose a simple yet effective purification framework by leveraging the vulnerabilities induced by real-world image transformations. Experimental results demonstrate that the proposed method can efficiently remove protective perturbations with low computational cost, highlighting previously overlooked risks to the research community.",
+    "url": "https://arxiv.org/abs/2604.23688",
+    "pdf_url": "https://arxiv.org/pdf/2604.23688v1",
+    "published_date": "2026-04-26",
+    "categories": [
+      "cs.CV"
+    ],
+    "source": "arxiv",
+    "hf_upvotes": 0,
+    "pwc_stars": 0,
+    "code_url": null,
+    "citation_count": 0
+  },
+  {
+    "id": "arxiv:2604.23685",
+    "title": "Reading in the Dark: Low-light Scene Text Recognition",
+    "authors": [
+      "Xuanshuo Fu",
+      "Lei Kang",
+      "Ernest Valveny",
+      "Dimosthenis Karatzas",
+      "Javier Vazquez-Corral"
+    ],
+    "abstract": "Accurate text recognition in low-light environments is essential for intelligent systems in applications ranging from autonomous vehicles to smart surveillance. However, challenges such as poor illumination and noise interference remain underexplored. To address this gap, we introduce LSTR, a large-scale Low-light Scene Text Recognition dataset comprising 11,273 low-light images generated from well-lit datasets (ICDAR2015, IIIT5K, and WordArt), along with ESTR, which includes 60 real nighttime street-scene images in English and Spanish for exclusive evaluation. We explore two solution strategies: (1) employing Optical Character Recognition (OCR) models with fine-tuning and LoRA-based fine-tuning and (2) a joint training strategy that integrates a low-light image enhancement (LLIE) module with an OCR model. In particular, we propose a novel re-render LLIE (RLLIE) module, which demonstrates improved performance on real-world data. Through extensive experimentation, we analyze various training strategies and address a key research question: \\emph{How bright is bright enough for effective scene text recognition?} Our results indicate that standalone LLIE or OCR models perform inadequately under low-light conditions, highlighting the advantages of specialized, jointly trained text-centric approaches. Additionally, we provide a comprehensive benchmark to support future research in robust low-light scene text recognition. https://huggingface.co/datasets/lumimusta/Low-light_Scene_Text_Dataset.",
+    "url": "https://arxiv.org/abs/2604.23685",
+    "pdf_url": "https://arxiv.org/pdf/2604.23685v1",
+    "published_date": "2026-04-26",
+    "categories": [
+      "cs.CV"
+    ],
+    "source": "arxiv",
+    "hf_upvotes": 0,
+    "pwc_stars": 0,
+    "code_url": null,
+    "citation_count": 0
+  },
+  {
+    "id": "arxiv:2604.23683",
+    "title": "Learning to Decipher from Pixels -- A Case Study of Copiale",
+    "authors": [
+      "Lei Kang",
+      "Giuseppe De Gregorio",
+      "Raphaela Heil",
+      "Alicia Fornés",
+      "Beáta Megyesi"
+    ],
+    "abstract": "Historical encrypted manuscripts require both paleographic interpretation of cipher symbols and cryptanalytic recovery of plaintext. Most existing computational workflows rely on a transcription-first paradigm, in which handwritten symbols are transcribed prior to decipherment. This intermediate step is labor-intensive, error-prone, and not always aligned with the goal of direct plaintext recovery. We propose an end-to-end, transcription-free approach that directly maps handwritten cipher images to plaintext. Using the Copiale cipher as a case study, we introduce the first text-line-level dataset pairing cipher images with German plaintext. We show that pretraining on generic handwriting data followed by cipher-specific fine-tuning substantially improves decipherment accuracy. Our results demonstrate that transcription-free image-to-plaintext decipherment is both feasible and effective for historical substitution ciphers, offering a simplified and scalable alternative to traditional pipelines. https://github.com/leitro/Decipher-from-Pixels-Copiale",
+    "url": "https://arxiv.org/abs/2604.23683",
+    "pdf_url": "https://arxiv.org/pdf/2604.23683v1",
+    "published_date": "2026-04-26",
+    "categories": [
+      "cs.CV"
+    ],
+    "source": "arxiv",
+    "hf_upvotes": 0,
+    "pwc_stars": 0,
+    "code_url": null,
+    "citation_count": 0
+  },
+  {
+    "id": "arxiv:2604.23681",
+    "title": "Rank, Head-Channel Non-Identifiability, and Symmetry Breaking: A Precise Analysis of Representational Collapse in Transformers",
+    "authors": [
+      "Giansalvo Cirrincione"
+    ],
+    "abstract": "A widely cited result by Dong et al. (2021) showed that Transformers built from self-attention alone, without skip connections or feed-forward layers, suffer from rapid rank collapse: all token representations converge to a single direction. The proposed remedy was the MLP. We show that this picture, while correct in the regime studied by Dong, is incomplete in ways that matter for architectural understanding.   Three results are established. First, layer normalisation is precisely affine-rank-neutral: it preserves the affine rank of the token representation set exactly. The widespread claim that LN \"plays no role\" is imprecise; the correct statement is sharper. Second, residual connections generically obstruct rank collapse in real Transformers such as BERT-base, in a measure-theoretic sense, without contribution from the MLP. The MLP's irreplaceable function is different: generating feature directions outside the linear span of the original token embeddings, which no stack of attention layers can produce. Third, a phenomenon distinct from rank collapse is identified: head-channel non-identifiability. After multi-head attention sums per-head outputs through the output projection, individual contributions cannot be canonically attributed to a specific head; n(H-1)d_k degrees of freedom per layer remain ambiguous when recovering a single head from the mixed signal. The MLP cannot remedy this because it acts on the post-summation signal.   A constructive partial remedy is proposed: a position-gated output projection (PG-OP) at parameter overhead below 1.6% of the standard output projection. The four collapse phenomena identified in the literature -- rank collapse in depth, in width, head-channel non-identifiability, and entropy collapse -- are unified under a symmetry-breaking framework, each corresponding to a distinct symmetry of the Transformer's forward pass.",
+    "url": "https://arxiv.org/abs/2604.23681",
+    "pdf_url": "https://arxiv.org/pdf/2604.23681v1",
+    "published_date": "2026-04-26",
+    "categories": [
+      "cs.LG",
+      "cs.CL",
+      "stat.ML"
+    ],
+    "source": "arxiv",
+    "hf_upvotes": 0,
+    "pwc_stars": 0,
+    "code_url": null,
+    "citation_count": 0
+  },
+  {
+    "id": "arxiv:2604.23678",
+    "title": "Transferable Human Mobility Network Reconstruction with neuroGravity",
+    "authors": [
+      "Jinming Yang",
+      "Shaoyu Huang",
+      "Zongyuan Huang",
+      "Yaohui Jin",
+      "Xiaokang Yang",
+      "Marta C. Gonzalez",
+      "Yanyan Xu"
+    ],
+    "abstract": "Accurate modeling of human mobility is critical for tackling urban planning and public health challenges. In undeveloped regions, the absence of comprehensive travel surveys necessitates reconstructing mobility networks from publicly available data. Here we develop neuroGravity, a physics-informed deep learning model that reliably reconstructs mobility flows from limited observations and transfers to unobserved cities. Using only urban facility and population distributions, we find that neuroGravity's regional representations strongly correlate with socioeconomic and livability status, offering scalable proxies for costly surveys. Furthermore, we uncover that spatial income segregation plays a key role in model transferability: mobility networks are most reliably reconstructed when target cities share similar segregation levels with the source. We design an index to quantify this segregation and accurately predict transferability. Finally, we generate mobility flow proxies for over 1,200 cities worldwide, highlighting neuroGravity's potential to mitigate critical data shortages in resource-limited, underdeveloped areas.",
+    "url": "https://arxiv.org/abs/2604.23678",
+    "pdf_url": "https://arxiv.org/pdf/2604.23678v1",
+    "published_date": "2026-04-26",
+    "categories": [
+      "cs.AI"
+    ],
+    "source": "arxiv",
+    "hf_upvotes": 0,
+    "pwc_stars": 0,
+    "code_url": null,
+    "citation_count": 0
+  },
+  {
+    "id": "arxiv:2604.23675",
+    "title": "GS-DOT: Gaussian splatting-based image reconstruction for diffuse optical tomography",
+    "authors": [
+      "Jingjing Jiang"
+    ],
+    "abstract": "This work presents GS-DOT, a novel image reconstruction framework based on Gaussian Splatting (GS) for diffuse optical tomography (DOT). Inspired by GS for rendering applications, absorption coefficients are represented as a sparse sum of anisotropic Gaussian primitives optimized to fit measured time-resolved point-spread functions through analytic gradients and Adam optimization. This is the first adaptation of GS algorithms in the photon diffusion regime, where the ray transport function is replaced by the diffusion functions to enable accurate modeling of light transport in highly scattering media. Validation on synthetic tissue models demonstrate high accuracy in localization and quantification of reconstructed absorption maps for both clean and noisy signals. GS-DOT has demonstrated high robustness to noise and showed a huge reduction in memory demand.",
+    "url": "https://arxiv.org/abs/2604.23675",
+    "pdf_url": "https://arxiv.org/pdf/2604.23675v1",
+    "published_date": "2026-04-26",
+    "categories": [
+      "eess.IV",
+      "cs.CV",
+      "physics.med-ph"
+    ],
+    "source": "arxiv",
+    "hf_upvotes": 0,
+    "pwc_stars": 0,
+    "code_url": null,
+    "citation_count": 0
+  },
+  {
+    "id": "arxiv:2604.23674",
+    "title": "Vibe Medicine: Redefining Biomedical Research Through Human-AI Co-Work",
+    "authors": [
+      "Zihao Wu",
+      "Steven Xu",
+      "Bowen Chen",
+      "Shaowen Wan",
+      "Yiwei Li",
+      "Wei Ruan",
+      "Yanjun Lyu",
+      "Siyuan Li",
+      "Dajiang Zhu",
+      "Tianming Liu",
+      "Lin Zhao"
+    ],
+    "abstract": "With the emergence of large language models (LLMs) and AI agent frameworks, the human-AI co-work paradigm known as Vibe Coding is changing how people code, making it more accessible and productive. In scientific research, where workflows are more complex and the burden of specialized labor limits independent researchers and those in low-resource areas, the potential impact is even greater, particularly in biomedicine, which involves heterogeneous data modalities and multi-step analytical pipelines. In this paper, we introduce Vibe Medicine, a co-work paradigm in which clinicians and researchers direct skill-augmented AI agents through natural language to execute complex, multi-step biomedical workflows, while retaining the role of research director who specifies objectives, reviews intermediate results, and makes domain-informed decisions. The enabling infrastructure consists of three layers: capable LLMs, agent frameworks such as OpenClaw and Hermes Agent, and the OpenClaw medical skills collection, which includes more than 1,000 curated skills from multiple open-source repositories. We analyze the architecture and skill categories of this collection across ten biomedical domains, and present case studies covering rare disease diagnosis, drug repurposing, and clinical trial design that demonstrate end-to-end workflows in practice. We also identify the principal risks, such as hallucination, data privacy, and over-reliance, and outline directions toward more reliable, trustworthy, and clinically integrated agent-assisted research that advances research and technological equity and reduces health care resource disparities.",
+    "url": "https://arxiv.org/abs/2604.23674",
+    "pdf_url": "https://arxiv.org/pdf/2604.23674v1",
+    "published_date": "2026-04-26",
+    "categories": [
+      "cs.AI"
+    ],
+    "source": "arxiv",
+    "hf_upvotes": 0,
+    "pwc_stars": 0,
+    "code_url": null,
+    "citation_count": 0
+  },
+  {
+    "id": "arxiv:2604.23670",
+    "title": "Deploy DINO with Many-to-Many Association",
+    "authors": [
+      "Haodong Jiang",
+      "Mingzhe Li",
+      "Junfeng Wu"
+    ],
+    "abstract": "Motivated by the limited generalization of supervised image matching models to unseen image domains, we explore the zero-shot deployment of DINO features for this task. The generalist visual representation extracted from DINO has inherent ambiguity when used to match feature points among semantically similar instances, prompting us to adopt a many-to-many (m-to-m) matching paradigm. However, the existing robust mechanism under m-to-m data association is computationally heavy, which requires finding a maximum-cardinality matching in the inlier association graph for each parameter evaluation. To address this inefficiency, we introduce a novel likelihood perspective, which interprets the existing method as a zeroth-order approximation of otherwise intractable likelihood calculation,and inspires us to propose a faster and finer-grained robust mechanism, termed as Harmonic Consensus Maximization (HCM). Take camera pose estimation as an exemplifying downstream task, we demonstrate that general-purpose visual features, used out of the box without any adaptation, can compete with specialized matching models on out-of-distribution datasets when mated with m-to-m association and the HCM mechanism.",
+    "url": "https://arxiv.org/abs/2604.23670",
+    "pdf_url": "https://arxiv.org/pdf/2604.23670v1",
+    "published_date": "2026-04-26",
+    "categories": [
+      "cs.CV"
+    ],
+    "source": "arxiv",
+    "hf_upvotes": 0,
+    "pwc_stars": 0,
+    "code_url": null,
+    "citation_count": 0
+  },
+  {
+    "id": "arxiv:2604.24796",
+    "title": "A multi-stage soft computing framework for complex disease modelling and decision support: A liver cirrhosis case study",
+    "authors": [
+      "Xueyuan Huang",
+      "Yuheng Wang",
+      "Yuanzhi He",
+      "Siqi Gou",
+      "Lu Bai",
+      "Wenqian Wu",
+      "Peifeng Liu",
+      "Aijia Wang",
+      "Tianhui Fan",
+      "Ze Zhou",
+      "Jiayu Xu"
+    ],
+    "abstract": "Liver cirrhosis is a major global health problem causing millions of deaths annually, and timely detection with aggressive treatment can significantly improve patients' quality of life. Modelling complex diseases from biomedical data is computationally challenging due to high dimensionality, strong feature correlations, noise, and limited labelled samples. Conventional Machine Learning (ML) pipelines often struggle with robustness, interpretability, and generalisation under such conditions. In this study, we propose an ML-driven multi-stage decision framework for complex disease modelling and therapeutic exploration. The framework integrates single-cell transcriptomic profiling, high-dimensional network-based feature stabilisation, multi-model learning, deep representation construction, and post-hoc decision support. Specifically, single-cell sequencing data were analysed to identify key cellular subpopulations, followed by high-dimensional weighted gene co-expression network analysis (hdWGCNA) to stabilise gene modules under sparsity and noise. To enhance non-linear feature interaction modelling, tabular molecular features were restructured into two-dimensional disease maps and analysed using a CNN. Finally, molecular docking was incorporated as a decision-support module to evaluate candidate therapeutic compounds. Using liver cirrhosis as a representative case, the framework identified a disease-associated endothelial subpopulation and extracted seven robust signature genes (HSPB1, GADD45A, CLDN5, ATP1B3, C1QBP, ENPP2, and PARL). The CNN-based representation learning module outperformed conventional pipelines in classification. The framework is disease-agnostic and readily extends to other omics-driven biomedical applications involving uncertainty, heterogeneity, and limited samples.",
+    "url": "https://arxiv.org/abs/2604.24796",
+    "pdf_url": "https://arxiv.org/pdf/2604.24796v1",
+    "published_date": "2026-04-26",
+    "categories": [
+      "q-bio.OT",
+      "cs.LG"
+    ],
+    "source": "arxiv",
+    "hf_upvotes": 0,
+    "pwc_stars": 0,
+    "code_url": null,
+    "citation_count": 0
+  },
+  {
+    "id": "arxiv:2604.23666",
+    "title": "An AI-Based Supervisory Measurement Integrity Validation Layer for Cyber-Resilient AC/DC Protection in Inverter-Based Microgrids",
+    "authors": [
+      "Ahmad Mohammad Saber",
+      "Ahmed Saber Refae",
+      "Davor Svetinovic",
+      "Hatem Zeineldin",
+      "Amr Youssef",
+      "Ehab F. El-Saadany",
+      "Deepa Kundur"
+    ],
+    "abstract": "Line current differential relays (LCDRs) are measurement-driven relays that rely on time-synchronized multi-phase current waveforms to infer internal faults in AC and DC power networks. In inverter-based microgrids, however, the increasing reliance on digitally communicated measurements exposes LCDRs to false-data injection attacks (FDIAs), in which adversaries manipulate remote measurement streams to create protection-triggering yet physically inconsistent current trajectories. This paper addresses this emerging measurement integrity problem by introducing a measurement integrity validation scheme that operates as a supervisory instrumentation layer for modern LCDRs. The proposed scheme interprets short windows of synchronized instantaneous current measurements recorded during relay operation and assesses their physical consistency to distinguish genuine fault-induced trajectories from cyber-manipulated measurement streams. A recurrent neural network is trained offline using only relay-available current measurements and exploits the temporal structure of differential current waveforms, which remains informative in inverter-dominated systems where current magnitude is no longer a reliable observable. The method requires no additional sensors, auxiliary protection elements, or prior knowledge of network topology, and is applicable to both AC and DC LCDRs without structural modification. The proposed measurement validation scheme is evaluated on an islanded inverter-based microgrid under a comprehensive set of fault and FDIA scenarios, demonstrating high detection accuracy while preserving relay dependability. Hardware-in-the-loop validation using an OPAL-RT real-time simulator confirms that the scheme satisfies protection timing constraints and can operate in real time under realistic operating conditions.",
+    "url": "https://arxiv.org/abs/2604.23666",
+    "pdf_url": "https://arxiv.org/pdf/2604.23666v1",
+    "published_date": "2026-04-26",
+    "categories": [
+      "cs.CR",
+      "cs.AI",
+      "eess.SP",
+      "eess.SY"
+    ],
+    "source": "arxiv",
+    "hf_upvotes": 0,
+    "pwc_stars": 0,
+    "code_url": null,
+    "citation_count": 0
+  },
+  {
+    "id": "arxiv:2604.23665",
+    "title": "HAC: Parameter-Efficient Hyperbolic Adaptation of CLIP for Zero-Shot VQA",
+    "authors": [
+      "Francesco Dibitonto",
+      "Cigdem Beyan",
+      "Vittorio Murino"
+    ],
+    "abstract": "Recent advances in representation learning have shown that hyperbolic geometry can offer a more expressive alternative to the Euclidean embeddings used in CLIP models, capturing hierarchical structures and leading to better-organized representations. However, current hyperbolic CLIP variants are trained entirely from scratch, which is computationally expensive and resource-intensive. In this work, we propose HAC (Hyperbolic Adaptation of CLIP), a parameter-efficient framework that enables pretrained CLIP models to transition into hyperbolic space via lightweight fine-tuning. We apply HAC to Visual Question Answering (VQA), where models must interpret visual elements and align them with textual queries. Notably, HAC's training is performed on a dataset with no overlap with any VQA benchmark, resulting in a strict zero-shot evaluation paradigm that underscores HAC's task-agnostic adaptability. We evaluate HAC across a diverse suite of VQA benchmarks spanning General, Reasoning, and OCR categories. Both HAC-S (small) and HAC-B (medium) consistently surpass Euclidean baselines and prior hyperbolic approaches, with HAC-B delivering up to a +1.9 point average improvement over CLIP-B on reasoning-intensive tasks. Our code is available at https://github.com/fdibiton/HAC",
+    "url": "https://arxiv.org/abs/2604.23665",
+    "pdf_url": "https://arxiv.org/pdf/2604.23665v1",
+    "published_date": "2026-04-26",
+    "categories": [
+      "cs.CV"
+    ],
+    "source": "arxiv",
+    "hf_upvotes": 0,
+    "pwc_stars": 0,
+    "code_url": null,
+    "citation_count": 0
+  },
+  {
+    "id": "arxiv:2604.23662",
+    "title": "SolarFCD: A Large-Scale Dataset and Benchmark for Solar Fault Classification in Photovoltaic Systems",
+    "authors": [
+      "Misbah Ijaz",
+      "Saif Ur Rehman Khan",
+      "Abd Ur Rehman",
+      "Arooj Zaib",
+      "Sebastian Vollmer",
+      "Andreas Dengel",
+      "Muhammad Nabeel Asim"
+    ],
+    "abstract": "The increasing global deployment of solar photovoltaic (PV) systems needs robust, scalable, and automated inspection technologies capable of detecting a wide range of panel flaws under a variety of operating situations. The lack of large-scale, multi-modal, publicly available annotated datasets is a major obstacle preventing advancement in this field. We introduce SolarFCD, an extensive dataset of solar panel defects created by methodically combining and reconciling three publicly accessible datasets covering two imaging modalities: RGB/Drone images and Thermal Infrared. The dataset consist of 4,435 images arranged under four unified defect classes such as: healthy images, Surface Obstruction, structural fault, and electrical fault. The dataset was divided into training, validation, and test splits at an 80:10:10 ratio through methodical label mapping, near-duplicate removal, and targeted augmentation of minority classes. Sixteen classification architectures from five design families were trained and assessed on the dataset to provide repeatable benchmark baselines. With an accuracy of 86.68%, precision of 88.65%, recall of 88.62%, and F1-score of 88.17%, ResNet101V2 performed the best overall. Per-class results showed balanced detection across all four defect categories within a narrow performance band of less than 1.2 percentage points. To promote open and repeatable research in automated PV inspection and solar energy operations and maintenance, the dataset, annotation files, and baseline code are made openly available.",
+    "url": "https://arxiv.org/abs/2604.23662",
+    "pdf_url": "https://arxiv.org/pdf/2604.23662v1",
+    "published_date": "2026-04-26",
+    "categories": [
+      "cs.CV"
+    ],
+    "source": "arxiv",
+    "hf_upvotes": 0,
+    "pwc_stars": 0,
+    "code_url": null,
+    "citation_count": 0
+  }
+]

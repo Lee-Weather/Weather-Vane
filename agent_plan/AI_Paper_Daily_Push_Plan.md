@@ -81,7 +81,7 @@ effort: high               # 推理深度
 ```yaml
 ---
 name: fetcher
-description: 从 arXiv、HuggingFace Daily Papers、Papers With Code 抓取当日最新 AI 论文元数据。当需要获取今日 AI 论文列表时使用。
+description: 从 arXiv、HuggingFace Daily Papers 抓取当日最新 AI 论文元数据。当需要获取今日 AI 论文列表时使用。
 argument-hint: "[YYYY-MM-DD]"
 allowed-tools: WebFetch Bash Read Write
 context: fork
@@ -89,13 +89,15 @@ effort: high
 ---
 ```
 
-**辅助脚本**：`scripts/fetch.py`（执行多源并发抓取、去重、标准化输出）
+**辅助脚本**：
+- `scripts/fetch.py`（每日多源并发抓取、去重、标准化输出）
+- `scripts/hot_papers.py`（历史热榜工具，按需手动调用，不接入主流水线）
 
-**数据源**：arXiv API / HuggingFace Daily Papers / Papers With Code / Semantic Scholar（引用数补充）
+**数据源**：arXiv API / HuggingFace Daily Papers（内含 GitHub 链接和 Stars）/ Semantic Scholar（引用数，可选）
 
-**输出**：`data/YYYY-MM-DD-raw.json`，每条记录含 `id / title / authors / abstract / url / pdf_url / categories / hf_upvotes / pwc_stars / code_url`
+**输出**：`data/YYYY-MM-DD-raw.json`，每条记录含 `id / title / authors / abstract / url / pdf_url / categories / hf_upvotes / github_stars / code_url / citation_count`
 
-**详细计划**：见 `.claude/skills/fetcher/SKILL.md`（待创建）及 `.claude/skills/Fether.md`（当前设计文档）
+**详细计划**：见 `agent_plan/skills/Fetcher.md` 及 `.claude/skills/Fetcher/SKILL.md`
 
 ---
 
@@ -116,10 +118,15 @@ context: fork
 
 **辅助脚本**：`scripts/rank.py`
 
+**评分公式**：
+```
+score = hf_upvotes × 2.0 + github_stars × 0.05 + citation_count × 0.5
+```
+
 **策略**：
-- 热度权重：引用数 × 0.3 + HF 点赞 × 0.4 + PWC stars × 0.3
-- 主题分类：LLM / 多模态 / 强化学习 / 计算机视觉 / AI Agent / 其他
-- 每类保留 Top-N（默认 Top-3，可通过 `$ARGUMENTS` 传入覆盖）
+- 硬过滤：hf_upvotes / github_stars / citation_count 三项全为 0 的论文丢弃
+- 主题分类：LLM / 多模态 / AI Agent / 计算机视觉 / 强化学习 / 其他
+- 按 score 降序截取 Top-N（默认 Top-20，可通过 `$ARGUMENTS` 传入覆盖）
 
 **输出**：`data/YYYY-MM-DD-ranked.json`
 
@@ -261,7 +268,8 @@ effort: high
 ├── agent_plan/
 │   ├── AI_Paper_Daily_Push_Plan.md    # 本文件（总计划）
 │   └── skills/
-│       └── Fether.md                  # Skill 1 详细设计文档
+│       ├── Fetcher.md                 # Skill 1 详细设计文档
+│       └── Ranker.md                  # Skill 2 详细设计文档
 data/
 ├── papers.db                          # SQLite 持久化
 └── YYYY-MM-DD-*.json                  # 每日中间产物
@@ -306,15 +314,15 @@ EMAIL_TO=...
 ## 实施阶段
 
 ### Phase 1 — 基础 Skill 骨架（第 1-2 天）
-- [ ] 创建 `.claude/skills/fetcher/SKILL.md`，编写 frontmatter 和抓取指令
-- [ ] 编写 `fetcher/scripts/fetch.py`（arXiv + HF 双源抓取）
+- [x] 创建 `.claude/skills/Fetcher/SKILL.md`，编写 frontmatter 和抓取指令
+- [x] 编写 `Fetcher/scripts/fetch.py`（arXiv + HF 双源抓取）
+- [x] 编写 `Fetcher/scripts/hot_papers.py`（历史热榜独立工具）
 - [ ] 手动触发 `/fetcher` 验证输出 JSON 格式正确
 - [ ] 创建 `.claude/skills/storage/SKILL.md` + `save.py`，验证 SQLite 写入
 
 ### Phase 2 — 核心处理 Skill（第 3-4 天）
-- [ ] 创建 `.claude/skills/ranker/SKILL.md` + `rank.py`，验证排名逻辑
+- [ ] 创建 `.claude/skills/Ranker/SKILL.md` + `rank.py`，验证排名逻辑
 - [ ] 创建 `.claude/skills/summarizer/SKILL.md`，验证中文摘要生成质量
-- [ ] 补充 `fetcher/scripts/fetch.py` 对 PWC / Semantic Scholar 的支持
 
 ### Phase 3 — 推送与编排（第 5-6 天）
 - [ ] 创建 `.claude/skills/notifier/SKILL.md` + `notify.py`（先实现本地文件输出）

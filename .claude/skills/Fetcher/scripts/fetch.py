@@ -41,7 +41,7 @@ DEFAULT_OUTPUT_DIR = PROJECT_ROOT / "data"
 TZ_CST = timezone(timedelta(hours=8))
 
 # arXiv API
-ARXIV_API_URL = "http://export.arxiv.org/api/query"
+ARXIV_API_URL = "https://export.arxiv.org/api/query"  # 使用 HTTPS，避免 301 重定向
 ARXIV_CATEGORIES = "cat:cs.AI+OR+cat:cs.LG+OR+cat:cs.CV+OR+cat:cs.CL+OR+cat:stat.ML"
 ARXIV_MAX_RESULTS = 100
 
@@ -191,20 +191,33 @@ async def fetch_arxiv(client: httpx.AsyncClient, date: str) -> list[dict]:
     """
     logger.info("开始抓取 arXiv（日期：%s）...", date)
 
-    # 过滤范围：目标日期前一天，防止跨时区漏抓
     target_dt = datetime.strptime(date, "%Y-%m-%d")
+    # 过滤范围：前一天到后一天，防止跨时区漏抓
     date_filter_from = (target_dt - timedelta(days=1)).strftime("%Y-%m-%d")
+    date_filter_to   = (target_dt + timedelta(days=1)).strftime("%Y-%m-%d")
+
+    # arXiv submittedDate 范围格式：YYYYMMDD0000
+    # 前后各扩一天防止时区边界漏抓
+    date_from_arxiv = (target_dt - timedelta(days=1)).strftime("%Y%m%d") + "0000"
+    date_to_arxiv   = (target_dt + timedelta(days=1)).strftime("%Y%m%d") + "2359"
+    date_range = f"submittedDate:[{date_from_arxiv}+TO+{date_to_arxiv}]"
 
     # arXiv 限速等待
     await asyncio.sleep(ARXIV_RATE_LIMIT_SECONDS)
 
-    params = {
-        "search_query": ARXIV_CATEGORIES,
-        "sortBy": "submittedDate",
-        "sortOrder": "descending",
-        "max_results": ARXIV_MAX_RESULTS,
-    }
-    resp = await fetch_with_retry(client, "GET", ARXIV_API_URL, params=params)
+    # 注意：直接拼接 URL 字符串，不使用 params={}。
+    # httpx 会将 params 中的 ":" 编码为 "%3A"，"+" 编码为 "%2B"，
+    # 但 arXiv API 要求这两个字符保持原样（未编码），否则返回空 feed。
+    # 查询格式：(分类过滤) AND submittedDate:[from TO to]
+    search_query = f"({ARXIV_CATEGORIES})+AND+{date_range}"
+    raw_url = (
+        f"{ARXIV_API_URL}"
+        f"?search_query={search_query}"
+        f"&sortBy=submittedDate"
+        f"&sortOrder=descending"
+        f"&max_results={ARXIV_MAX_RESULTS}"
+    )
+    resp = await fetch_with_retry(client, "GET", raw_url)
     if resp is None or resp.status_code != 200:
         logger.warning("arXiv API 请求失败，返回空列表")
         return []
@@ -224,8 +237,8 @@ async def fetch_arxiv(client: httpx.AsyncClient, date: str) -> list[dict]:
             published_dt = date_parser.parse(published_raw).astimezone(TZ_CST)
             published_date = published_dt.strftime("%Y-%m-%d")
 
-            # 仅保留目标日期范围内的论文
-            if published_date < date_filter_from:
+            # 仅保留目标日期 ±1 天范围内的论文（双边过滤，防止 arXiv 返回其他日期数据）
+            if published_date < date_filter_from or published_date > date_filter_to:
                 continue
 
             # 提取 PDF 链接
@@ -474,7 +487,7 @@ async def main() -> None:
 
     counts = {"arxiv": 0, "hf_matched": 0, "pwc_matched": 0, "citation_enriched": 0}
 
-    async with httpx.AsyncClient(timeout=HTTP_TIMEOUT) as client:
+    async with httpx.AsyncClient(timeout=HTTP_TIMEOUT, follow_redirects=True) as client:
         # Step 1：并发请求 arXiv + HuggingFace
         arxiv_papers, hf_map = await asyncio.gather(
             fetch_arxiv(client, date),
