@@ -17,8 +17,9 @@ openai>=1.30.0          # DeepSeek API 兼容接口（OpenAI SDK）
 # SQLite3 为 Python 内置模块，无需额外安装
 
 # ── Skill 5: notifier ───────────────────────────────────────
-python-telegram-bot>=21.0   # Telegram Bot 推送（可选）
-# smtplib 为 Python 内置模块，无需额外安装
+Jinja2>=3.1.0            # Jinja2 日报模板渲染
+markdown>=3.6            # Markdown → HTML 转换（邮件正文）
+# smtplib / email.mime 为 Python 内置模块，无需额外安装
 
 # ── 通用工具 ────────────────────────────────────────────────
 python-dotenv>=1.0.0    # 从 .env 文件加载环境变量

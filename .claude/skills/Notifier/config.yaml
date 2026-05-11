@@ -1,0 +1,20 @@
+# ============================================================
+# Notifier 推送配置
+# 密码/Token 等敏感信息请放在 .env 中
+# 此文件仅存放地址和格式选项，可安全提交到版本库
+# ============================================================
+
+email:
+  enabled: true
+  smtp_host: smtp.gmail.com
+  smtp_port: 587
+  use_tls: true
+  sender: "czy1122334455@gmail.com"             # 发件人 Gmail 地址
+  sender_name: "Weather-Vane 论文日报"         # 发件人显示名称
+  recipients:                                  # 收件人列表（支持多人）
+    - "czy1122334455@gmail.com"
+  subject_template: "📅 AI & 机器人论文日报 — {date}"   # 邮件主题模板
+
+local:
+  enabled: true                                # 本地 Markdown 归档（建议始终开启）
+  output_dir: "reports"                        # 输出目录（相对于项目根目录）
