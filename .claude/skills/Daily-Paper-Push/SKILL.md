@@ -37,7 +37,14 @@ python3 scripts/run_pipeline.py --start-from ranker
 
 ### 通过 Claude Code 触发
 
-直接告诉 Claude："推送今日论文" 或 "/daily-paper-push 2026-04-30"。
+- 用户说"推送论文"且**未指定日期**时，**不要传 `--date`**，让脚本自动选取上一个工作日（周一→周五，周末→周五）：
+  ```bash
+  python3 scripts/run_pipeline.py
+  ```
+- 仅当用户**明确指定日期**时才传 `--date`：
+  ```bash
+  python3 scripts/run_pipeline.py --date 2026-04-30
+  ```
 
 ## 日期逻辑
 

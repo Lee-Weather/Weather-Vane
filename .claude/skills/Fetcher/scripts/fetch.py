@@ -247,15 +247,24 @@ async def fetch_arxiv(client: httpx.AsyncClient, date: str) -> list[dict]:
             return []
 
     target_dt = datetime.strptime(date, "%Y-%m-%d")
-    # published_date 过滤范围：±2 天
+
+    # arXiv 周一公告包含上周四/五/周末的提交，需扩大查询窗口
+    # weekday(): 0=Mon, 1=Tue, ..., 6=Sun
+    if target_dt.weekday() == 0:  # 周一
+        submit_lookback = 4       # submittedDate 回溯到上周四
+        filter_lookback = 5       # published_date 过滤回溯到上周三（含时区余量）
+    else:
+        submit_lookback = 1       # 正常 ±1 天
+        filter_lookback = 2
+
+    # published_date 过滤范围
     # arXiv submittedDate 查询用 UTC，但 published 转 UTC+8 后日期可能 +1 天，
     # 因此过滤窗口需要比查询窗口更宽，避免时区偏移导致误过滤
-    date_filter_from = (target_dt - timedelta(days=2)).strftime("%Y-%m-%d")
+    date_filter_from = (target_dt - timedelta(days=filter_lookback)).strftime("%Y-%m-%d")
     date_filter_to   = (target_dt + timedelta(days=2)).strftime("%Y-%m-%d")
 
     # arXiv submittedDate 范围格式：YYYYMMDD0000
-    # 前后各扩一天防止时区边界漏抓
-    date_from_arxiv = (target_dt - timedelta(days=1)).strftime("%Y%m%d") + "0000"
+    date_from_arxiv = (target_dt - timedelta(days=submit_lookback)).strftime("%Y%m%d") + "0000"
     date_to_arxiv   = (target_dt + timedelta(days=1)).strftime("%Y%m%d") + "2359"
     date_range = f"submittedDate:[{date_from_arxiv}+TO+{date_to_arxiv}]"
 
