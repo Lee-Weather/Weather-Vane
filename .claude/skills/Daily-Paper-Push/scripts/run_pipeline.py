@@ -134,6 +134,32 @@ def build_step_args(step_name: str, date_str: str, dry_run: bool, skip_email: bo
 # 步骤执行
 # ──────────────────────────────────────────────────────────────────────────────
 
+def run_hot_papers(date_str: str, dry_run: bool) -> None:
+    """
+    Fetcher 完成后，运行 hot_papers.py 生成 7d / 30d 热门论文 JSON。
+    Ranker 依赖这些文件获取真实热度（hf_upvotes / pwc_stars / score），
+    若文件缺失则回退到 raw.json（所有 score=0，周/月热门无意义）。
+    本步骤非关键：失败仅记录 WARNING，不终止流水线。
+    """
+    hot_papers_script = SKILLS_DIR / "Fetcher" / "scripts" / "hot_papers.py"
+    if not hot_papers_script.exists():
+        logger.warning("hot_papers.py 不存在，跳过热度数据生成")
+        return
+
+    for days in [7, 30]:
+        cmd = [PYTHON, str(hot_papers_script), "--days", str(days), "--skip-citations"]
+        logger.info("  🌡️  生成 %dd 热门论文 JSON...", days)
+        try:
+            result = subprocess.run(
+                cmd, cwd=str(PROJECT_ROOT),
+                capture_output=False, timeout=300,
+            )
+            if result.returncode != 0:
+                logger.warning("  hot_papers.py --days %d 执行失败（非关键，继续）", days)
+        except Exception as exc:
+            logger.warning("  hot_papers.py --days %d 异常：%s（非关键，继续）", days, exc)
+
+
 def run_step(step: dict, date_str: str, dry_run: bool, skip_email: bool) -> bool:
     """
     执行单个流水线步骤。
@@ -206,7 +232,15 @@ def main() -> None:
     if args.date:
         date_str = args.date
     else:
-        date_str = (datetime.now(TZ_CST) - timedelta(days=1)).strftime("%Y-%m-%d")
+        yesterday = datetime.now(TZ_CST) - timedelta(days=1)
+        # 跳过周末：周一(0)取上周五，周日(6)同样回退到周五
+        if yesterday.weekday() == 0:    # 昨天是周一 → 今天是周二，正常取周一
+            pass
+        elif yesterday.weekday() == 5:  # 昨天是周六 → 今天是周日，回退到周五
+            yesterday -= timedelta(days=1)
+        elif yesterday.weekday() == 6:  # 昨天是周日 → 今天是周一，回退到周五
+            yesterday -= timedelta(days=2)
+        date_str = yesterday.strftime("%Y-%m-%d")
 
     sep = "=" * 60
     logger.info(sep)
@@ -248,6 +282,10 @@ def main() -> None:
         # 执行步骤
         success = run_step(step, date_str, args.dry_run, args.skip_email)
         results[name] = "成功" if success else "失败"
+
+        # Fetcher 成功后生成热门论文 JSON（供 Ranker 获取真实热度）
+        if name == "fetcher" and success:
+            run_hot_papers(date_str, args.dry_run)
 
         # 关键步骤失败 → 终止
         if not success and step["critical"]:

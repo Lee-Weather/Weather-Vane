@@ -38,12 +38,13 @@ effort: high
    - （可选）通过 Semantic Scholar 补充引用数
    - 输出标准化 JSON 到 `data/YYYY-MM-DD-raw.json`
 
-3. **验证输出**：读取输出文件，确认每条记录包含以下字段（均非空或有合理默认值）：
-   - `id` / `title` / `authors` / `abstract`
-   - `url` / `pdf_url` / `published_date` / `categories`
-   - `hf_upvotes` / `pwc_stars` / `code_url` / `citation_count`
+3. **验证输出**：读取输出文件，确认每条记录包含以下字段：
+   - **始终存在**：`id` / `title` / `authors` / `abstract` / `url` / `pdf_url` / `published_date` / `categories`
+   - **有值时才存在**：`hf_upvotes` / `pwc_stars` / `code_url` / `citation_count`（为 0 或无数据时不输出该字段）
 
 4. **处理异常**：
+   - arXiv API 不可用时，每 5 分钟重试，最多 3 次，全部失败则跳过 arXiv 抓取。
+   - 日期过滤用 ±2 天窗口（published_date UTC→8 可能 +1 天，防止时区偏移误过滤）。
    - 若 arXiv 返回空（节假日/周末），输出空列表并附带 WARN 日志，退出码为 0。
    - 若 HuggingFace API 失败，降级跳过，不中断主流程，仅记录 WARN。
    - 若 Semantic Scholar 返回 429，静默跳过引用数补充，`citation_count` 保持 0。

@@ -18,7 +18,7 @@ effort: high
 ### 通过独立脚本运行（推荐）
 
 ```bash
-# 完整流水线（默认昨天 UTC+8）
+# 完整流水线（默认取上一个工作日：周一取周五，周末取周五，其余取前一天）
 python3 scripts/run_pipeline.py
 
 # 指定日期
@@ -38,6 +38,16 @@ python3 scripts/run_pipeline.py --start-from ranker
 ### 通过 Claude Code 触发
 
 直接告诉 Claude："推送今日论文" 或 "/daily-paper-push 2026-04-30"。
+
+## 日期逻辑
+
+未指定 `--date` 时，自动选取**上一个工作日**（arXiv 周末不更新）：
+
+| 今天 | 默认取 | 说明 |
+|------|--------|------|
+| 周二～周六 | 前一天 | 正常取前一天 |
+| 周一 | 上周五 | 跳过周末 |
+| 周日 | 上周五 | 跳过周六 |
 
 ## 错误处理
 

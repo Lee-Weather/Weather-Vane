@@ -27,11 +27,12 @@ effort: medium
    ```
    脚本将依次完成：
    - 读取 `data/YYYY-MM-DD-raw.json`
-   - 硬过滤：去除三项热度信号（hf_upvotes / pwc_stars / citation_count）均为 0 的论文
    - 计算热度评分：`score = hf_upvotes × 2.0 + pwc_stars × 0.05 + citation_count × 0.5`
    - 按 `categories` 分组：机器人组（含 cs.RO）取 Top-15，AI 组（含 cs.AI 且不含 cs.RO）取 Top-5
+   - **每日精选不按热度过滤**：新论文尚未积累热度信号，全量进入分组，score=0 自然落底
    - 选取周热门（过去 7 天 score 最高 1 篇，查推送历史去重）
    - 选取月热门（过去 30 天 score 最高 1 篇，查推送历史去重）
+   - 周/月热门数据源：优先读取 `reports/hot-papers-*-{7d,30d}.json`（含真实 HF 热度），缺失时回退到多日 `raw.json` 合并
    - 输出 `data/YYYY-MM-DD-ranked.json`
 
 3. **验证输出**：读取输出文件，确认包含四个板块：
