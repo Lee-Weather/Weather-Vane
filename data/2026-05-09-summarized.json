@@ -1,0 +1,553 @@
+{
+  "date": "2026-05-09",
+  "daily_robot": [
+    {
+      "id": "arxiv:2605.09811",
+      "title": "Above and Below: Heterogeneous Multi-robot SLAM Across Surface and Underwater Domains",
+      "authors": [
+        "John McConnell",
+        "Armon Shariati",
+        "Paul Szenher",
+        "Yaxuan Li"
+      ],
+      "abstract": "Multi-robot simultaneous localization and mapping (SLAM) is a fundamental task in multi-robot operations. Robots must have a common understanding of their location and that of their team members to complete coordinated actions. However, multi-robot SLAM between Uncrewed Surface Vessels (USVs) and Autonomous Underwater Vehicles (AUVs) has primarily been achieved through acoustic pinging between robots to retrieve range measurements; a measurement technique requires that robots to be in similar locations simultaneously, have an uninterrupted path for signal propagation, and may necessitate synchronized clocks. This is especially challenging in complex, cluttered maritime environments, where structures may impede signals. However, these same structures may be observable above and below the water's surface, presenting an opportunity for inter-robot SLAM loop closure between USV and AUV data streams. This work builds upon recent research on inter-robot SLAM loop closure between USV and AUV data, extending it to propose a centralized multi-robot SLAM system. Each robot performs its state estimation, and we detect loop closures between each AUV and the USV data. These inter-robot loop closures are used to merge each robot's state estimate into a centralized graph, yielding estimates for the whole time history of the USV and all AUVs in the system. Validation is performed using real-world perceptual data in three different environments. Results show improved errors for AUVs in the multi-robot SLAM system compared to single-robot SLAM over the same trajectories. To our knowledge, this is the first instance of a multi-robot SLAM system with AUVs and USVs built on loop closures rather than acoustic distance measurements.",
+      "url": "https://arxiv.org/abs/2605.09811",
+      "pdf_url": "https://arxiv.org/pdf/2605.09811v1",
+      "published_date": "2026-05-11",
+      "categories": [
+        "cs.RO"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 1,
+      "summary_zh": "核心问题：现有基于声学测距的USV-AUV多机器人SLAM在复杂海洋环境中受信号阻碍限制。  \n方法与创新点：提出基于闭环检测的集中式多机器人SLAM系统，利用水面和水下可观测的共同结构实现USV与AUV数据流间的闭环，首次用闭环替代声学距离测量融合状态估计。  \n关键结论：在三个真实环境验证，相比单机器人SLAM，多机器人SLAM系统中AUV的定位误差显著改善。"
+    },
+    {
+      "id": "arxiv:2605.09801",
+      "title": "Efficient Multi-Robot Motion Planning with Precomputed Translation-Invariant Edge Bundles",
+      "authors": [
+        "Himanshu Gupta",
+        "Paul Motter",
+        "Aritra Chakrabarty",
+        "Rishabh Sodani",
+        "Srikrishna Bangalore Raghu",
+        "Alessandro Roncone",
+        "Bradley Hayes",
+        "Zachary Sunberg"
+      ],
+      "abstract": "Solving multi-robot motion planning (MRMP) requires generating collision-free kinodynamically feasible trajectories for multiple interacting robots. We introduce Kinodynamic Translation-Invariant Edge Bundles or KiTE-Extend, a planner-agnostic action selection mechanism for sampling-based kinodynamic motion planning. KiTE-Extend uses a library of trajectory segments computed offline to guide action selection during online planning, improving the ability of existing planners to identify feasible motion segments without altering state propagation, collision checking, or cost evaluation, and without changing their theoretical guarantees. While KiTE-Extend can modestly improve single-agent planners, its benefits are most clear in the multi-agent setting, where it is able to explore more effectively and significantly improve planning through the dense spatiotemporal constraints introduced by robot-robot interaction. Through experiments on multiple kinodynamic systems and environments, we show that KiTE-Extend reduces planning time and improves scalability across the three most common MRMP paradigms: centralized, prioritized, and conflict-based.",
+      "url": "https://arxiv.org/abs/2605.09801",
+      "pdf_url": "https://arxiv.org/pdf/2605.09801v1",
+      "published_date": "2026-05-11",
+      "categories": [
+        "cs.RO"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 2,
+      "summary_zh": "针对多机器人运动规划中生成无碰撞动力学可行轨迹的难题，提出一种与规划器无关的动作选择机制KiTE-Extend。其创新在于利用离线预计算的轨迹段库指导在线动作选择，不改变状态传播、碰撞检测或理论保证。实验表明，该方法在集中式、优先级和冲突基础的三种主流MRMP范式中均能显著减少规划时间并提升可扩展性。"
+    },
+    {
+      "id": "arxiv:2605.09789",
+      "title": "Zero-Shot Sim-to-Real Robot Learning: A Dexterous Manipulation Study on Reactive Catching",
+      "authors": [
+        "Kejia Ren",
+        "Gaotian Wang",
+        "Andrew S. Morgan",
+        "Kaiyu Hang"
+      ],
+      "abstract": "Dexterous manipulation is physics-intensive and highly sensitive to modeling errors and perception noise, making sim-to-real transfer prohibitively challenging. Domain randomization (DR) is commonly used to improve the robustness of learned policies for such tasks, but conventional DR randomizes one instance per episode, offering very limited exposure to the variability of real-world dynamics. To this end, we propose Domain-Randomized Instance Set (DRIS), which represents and propagates a set of randomized instances simultaneously, providing richer approximation of uncertain dynamics and enabling policies to learn actions that account for multiple possible outcomes. Supported by theoretical analysis, we show that DRIS yields more robust policies and alleviates the need for real-world fine-tuning, even with a modest number of instances (e.g., 10). We demonstrate this on a challenging reactive catching task. Unlike traditional catching setups that use end-effectors designed to mechanically stabilize the object (e.g., curved or enclosing surfaces), our system uses a flat plate that offers no passive stabilization, making the task highly sensitive to noise and requiring rapid reactive motions. The learned policies exhibit strong robustness to uncertainties and achieve reliable zero-shot sim-to-real transfer.",
+      "url": "https://arxiv.org/abs/2605.09789",
+      "pdf_url": "https://arxiv.org/pdf/2605.09789v1",
+      "published_date": "2026-05-11",
+      "categories": [
+        "cs.RO"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 3,
+      "summary_zh": "这篇论文解决了灵巧操作中由于建模误差和感知噪声导致的仿真到现实迁移难题。提出域随机化实例集（DRIS），通过同时传播一组随机化实例来更充分地近似不确定动力学，使策略学习考虑多种可能结果。理论分析表明，仅用10个实例即可获得更鲁棒的策略，在无被动稳定的平板抓取任务中实现了可靠的零样本仿真到现实迁移。"
+    },
+    {
+      "id": "arxiv:2605.09772",
+      "title": "Safe Exploration for Nonlinear Processes Using Online Gaussian Process Learning",
+      "authors": [
+        "Stefano Tonini",
+        "Soroush Rastegarpour",
+        "Hamid Reza Feyzmahdavian",
+        "Nicola Bastianello",
+        "Karl Henrik Johansson"
+      ],
+      "abstract": "This paper proposes a safe data-driven control framework for nonlinear systems with partially known dynamics. The method ensures stability and constraint satisfaction during online learning, assuming only a stabilizable linear approximation of the process is available. Unmodeled nonlinear dynamics are captured by a Gaussian process residual learned in real time. Safety is enforced through a probabilistic control-invariant set derived from Lyapunov theory, guaranteeing high-probability stability. A convex quadratic program computes control inputs that maximize information gain while respecting probabilistic safety constraints. The framework provides finite-sample safety guarantees and allows adaptive expansion of the invariant set as uncertainty decreases. Numerical results validate the approach, demonstrating safe and informative exploration under model uncertainty: the safe set expands by about 30% while the Gaussian process root-mean-square error drops from 1.11 to 0.03.",
+      "url": "https://arxiv.org/abs/2605.09772",
+      "pdf_url": "https://arxiv.org/pdf/2605.09772v1",
+      "published_date": "2026-05-11",
+      "categories": [
+        "eess.SY",
+        "cs.RO",
+        "math.OC"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 4,
+      "summary_zh": "本文针对动力学部分未知的非线性系统，提出一种安全数据驱动控制方法。该方法利用在线高斯过程学习未建模非线性残差，基于Lyapunov理论构造概率控制不变集以保证高概率稳定，并通过凸二次规划最大化信息增益同时满足安全约束。实验表明，安全集扩大约30%，高斯过程均方根误差从1.11降至0.03。"
+    },
+    {
+      "id": "arxiv:2605.09672",
+      "title": "MVB-Grasp: Minimum-Volume-Box Filtering of Diffusion-based Grasps for Frontal Manipulation",
+      "authors": [
+        "Bibek Poudel",
+        "Abdul Basit",
+        "Muhammad Shafique"
+      ],
+      "abstract": "State-of-the-art 6-DoF grasp generators excel on tabletop benchmarks with overhead cameras but struggle in frontal grasping scenarios on low-cost manipulators with constrained workspaces, where kinematic limits and approach-direction constraints cause high failure rates. We address this challenge for the Unitree Z1 arm by proposing MVB-Grasp, a novel grasping stack that injects a Minimum Volume Bounding Box (MVBB) geometric prior into diffusion-based grasp generation to dramatically improve success rates in frontal, workspace-constrained settings. Our key scientific contributions are threefold: (i) an MVBB-based geometric filter that exploits oriented bounding-box face normals to reject grasps approaching through the table or misaligned with accessible object faces in O(N) time; (ii) a combined re-scoring function that blends learned discriminator scores with face-alignment geometry α=0.85, specifically calibrated for the Z1's frontal workspace and kinematic constraints; and (iii) a systematic MuJoCo evaluation protocol measuring grasp success across object types, distances, lateral positions, and pitch orientations to validate embodiment-specific performance. We implement MVB-Grasp on a Unitree Z1 arm with an Intel RealSense D405 camera, integrating YOLOv8 object detection, GraspGen for candidate generation, Principal Component Analysis (PCA)-based MVBB fitting, and inverse-kinematics trajectory planning. Experiments across 81 MuJoCo episodes (cylinder, asymmetric box, waterbottle) demonstrate that MVB-Grasp achieves 59.3% success versus 24.7% for vanilla GraspGen, a 2.4x improvement, by filtering geometrically infeasible candidates and prioritizing face-aligned grasps suited to the Z1's frontal approach constraints. Real-world trials confirm that the MVBB prior substantially improves grasp reliability on constrained, low-cost manipulators without requiring model retraining.",
+      "url": "https://arxiv.org/abs/2605.09672",
+      "pdf_url": "https://arxiv.org/pdf/2605.09672v1",
+      "published_date": "2026-05-11",
+      "categories": [
+        "cs.RO"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 5,
+      "summary_zh": "针对低成本机械臂在正面抓取场景中因运动学限制和接近方向约束导致成功率低的问题，提出MVB-Grasp方法，通过在扩散模型抓取生成中注入最小体积包围盒（MVBB）几何先验，设计O(N)时间复杂度的MVBB滤波器剔除不可行抓取，并采用融合判别分数与面对齐几何的重新评分函数（α=0.85）。在Unitree Z1机械臂上的81组MuJoCo实验表明，成功率从24.7%提升至59.3%，提升2.4倍，无需重新训练模型即可显著改善受限低成本机械臂的抓取可靠性。"
+    },
+    {
+      "id": "arxiv:2605.09670",
+      "title": "Towards Generative Predictive Display for Vision-Based Teleoperation: A Zero-Shot Benchmark of Off-the-Shelf Video Models",
+      "authors": [
+        "Aws Khalil",
+        "Jaerock Kwon"
+      ],
+      "abstract": "Teleoperation systems are fundamentally limited by communication latency, which degrades situational awareness and control performance. Predictive display aims to mitigate this limitation by presenting an estimate of the current visual state rather than delayed observations. While recent advances in generative video models enable high-quality video synthesis, their suitability for latency-sensitive predictive display remains unclear. This paper presents a zero-shot benchmark of off-the-shelf generative video models for short-horizon predictive display, without task-specific fine-tuning. We formulate the problem as rollout-based future frame prediction and develop a unified benchmarking pipeline using simulated driving data from the CARLA simulator. Five publicly released video models spanning transformer-based and diffusion-based families are evaluated across two resolutions and two conditioning regimes (multi-frame and single-frame). Performance is assessed using prediction accuracy (mean absolute difference), per-rollout latency, peak GPU memory usage, and temporal error evolution across the prediction horizon. On this zero-shot benchmark, no tested model simultaneously achieves low rollout error, non-divergent per-step error behavior, and real-time inference at the source frame rate. Increasing model scale or resolution yields limited and, in some cases, inverted improvements. These findings highlight a gap between general-purpose generative video synthesis and the requirements of predictive display in teleoperation, suggesting that practical deployment will require either explicit short-horizon temporal supervision, in-domain adaptation, or aggressive inference optimization rather than direct application of off-the-shelf models. Code, configurations, and qualitative results are released on the project page: https://bimilab.github.io/paper-GenPD",
+      "url": "https://arxiv.org/abs/2605.09670",
+      "pdf_url": "https://arxiv.org/pdf/2605.09670v1",
+      "published_date": "2026-05-11",
+      "categories": [
+        "cs.RO",
+        "cs.CV"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 6,
+      "summary_zh": "核心问题：生成式视频模型能否满足遥操作中延迟敏感的预测显示需求？  \n方法与创新点：提出零样本基准测试，利用CARLA模拟驾驶数据构建统一评估流程，无需任务微调，对比五个开源视频模型（Transformer与扩散模型）在两种分辨率和两种条件（多帧/单帧）下的性能。  \n关键结论：无模型同时实现低预测误差、非发散逐帧误差和实时推理；扩大规模或分辨率改进有限甚至倒挂，揭示了通用视频合成与预测显示需求间的显著差距。"
+    },
+    {
+      "id": "arxiv:2605.09659",
+      "title": "ASACK : Adaptive Safe Active Continual Koopman Learning for Uncertain Systems with Contractive Guarantees",
+      "authors": [
+        "Chandan Kumar Sah",
+        "Rajpal Singh",
+        "Jishnu Keshavan"
+      ],
+      "abstract": "Koopman operator theory provides a powerful framework for representing nonlinear dynamics through a linear operator acting on lifted observables, enabling the use of linear control techniques for nonlinear systems. However, Koopman models are typically learned from data and often degrade in performance under model uncertainty and distributional shifts between training and deployment. Although several works have explored online adaptation to address this issue, many rely on neural network-based updates that introduce significant computational overhead and lack formal safety guarantees, limiting their suitability for real-time and safety-critical robotic applications. In this work, we propose a unified framework for continual adaptive Koopman learning that enables safe and efficient online refinement of learned models during task execution. An autoencoder-based Koopman model is first learned offline and subsequently refined online through a contractive adaptation law, which provides theoretical convergence guarantees under distributional shifts and model uncertainty. To improve data efficiency and accelerate model refinement, the adaptation mechanism is integrated with an active learning strategy that drives the system to collect informative data while accomplishing task objectives. The resulting control problem is formulated as a nonconvex optimization problem incorporating both active learning objectives and safety constraints. We further derive theoretical bounds on model approximation error and show how these bounds can be incorporated within a robust Model Predictive Control (MPC) framework to provide formal safety guarantees. The proposed approach unifies learning, excitation, and safety within a single control framework without sacrificing real-time feasibility. Extensive simulation and experimental studies demonstrate superior performance compared to state-of-the-art baselines.",
+      "url": "https://arxiv.org/abs/2605.09659",
+      "pdf_url": "https://arxiv.org/pdf/2605.09659v1",
+      "published_date": "2026-05-11",
+      "categories": [
+        "cs.RO"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 7,
+      "summary_zh": "这篇论文针对非线性系统中Koopman模型在分布偏移和模型不确定性下性能退化的问题，提出一个统一框架。方法上，采用离线自编码器Koopman模型结合在线收缩自适应律（理论收敛保证），并集成主动学习策略以高效收集数据，将控制问题建模为包含安全约束的非凸优化，推导误差界并融入鲁棒MPC。实验表明，该方法在实时性与安全性上显著优于现有基线。"
+    },
+    {
+      "id": "arxiv:2605.09656",
+      "title": "ORICF -- Open Robotics Inference and Control Framework",
+      "authors": [
+        "Andrés Meseguer Valenzuela",
+        "Luís Miguel Bartolín Arnau"
+      ],
+      "abstract": "Recent advances in artificial intelligence (AI) have enabled effective perception and language models for robots, but their deployment remains computationally expensive, increasing latency and energy use. This work presents the Open Robotics Inference and Control Framework (ORICF), a modular, declarative, and model-agnostic platform for composing multimodal robotic inference pipelines. ORICF integrates input/output (I/O) adapters, pluggable inference back ends, and post-processing logic, while lightweight YAML specifications allow models, hardware targets, and data channels to be changed without code modification. The framework also supports edge offloading, i.e., executing inference on nearby external computers instead of onboard the robot. ORICF is evaluated on a mobile robot that answers spoken queries about people detected in its camera stream by combining automatic speech recognition (ASR), a large language model (LLM), and a convolutional neural network (CNN) detector through Robot Operating System 2 (ROS2). Compared with onboard execution, ORICF-based edge deployment reduces robot-side compute utilization by up to 83.16% and estimated energy consumption by 65.8%, while preserving modularity and reproducibility.",
+      "url": "https://arxiv.org/abs/2605.09656",
+      "pdf_url": "https://arxiv.org/pdf/2605.09656v1",
+      "published_date": "2026-05-11",
+      "categories": [
+        "cs.RO"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 8,
+      "summary_zh": "当前机器人的AI模型部署存在计算成本高、延迟大和能耗高的问题。本文提出开放机器人推理与控制框架（ORICF），一个模块化、声明式、模型无关的平台，通过轻量YAML配置实现模型、硬件与数据通道的零代码切换，并支持边缘卸载。在结合ASR、LLM与CNN的移动机器人实验中，基于ORICF的边缘部署相比机载执行，机器人端计算利用率降低83.16%，估计能耗降低65.8%，同时保持模块化和可重复性。"
+    },
+    {
+      "id": "arxiv:2605.09633",
+      "title": "Minimizing Worst-Case Weighted Latency for Multi-Robot Persistent Monitoring: Theory and RL-Based Solutions",
+      "authors": [
+        "Weizhen Wang",
+        "Ziheng Wang",
+        "Jianping He",
+        "Xinping Guan",
+        "Xiaoming Duan"
+      ],
+      "abstract": "We study multi-robot persistent monitoring on weighted graphs, where node weights encode monitoring priorities and edge weights encode travel distances. The goal is to design joint robot trajectories that minimize the worst-case weighted latency across all nodes over an infinite time horizon. The widely adopted worst-case latency objective evaluates team performance over the entire time horizon and therefore may fail to distinguish strategies with poor transient behavior but strong asymptotic performance. To address this limitation, we propose a family of tail-performance objectives that generalize the standard objective and study the resulting functional optimization problems. We establish several key theoretical properties, including the existence of optimal strategies, relationships among the proposed objectives and their corresponding optimization problems, approximation by periodic solutions to arbitrary accuracy, and reductions to event-driven decision models with discretized waiting times. Building on these results, we construct an equivalent event-driven Markov decision process (MDP), called the Tail Worst-case Latency-Optimizing Markov Decision Process (TWLO-MDP), which reformulates the tail-performance objective as a standard average-reward criterion. We then develop reinforcement-learning-based solution methods for the TWLO-MDP and introduce the multi-robot monitoring benchmark (M2Bench), a unified platform that supports the evaluation and comparison of heuristic and learning-based monitoring algorithms. Experiments on synthetic and realistic monitoring scenarios show that our methods effectively reduce the worst-case weighted latency and outperform representative baselines.",
+      "url": "https://arxiv.org/abs/2605.09633",
+      "pdf_url": "https://arxiv.org/pdf/2605.09633v1",
+      "published_date": "2026-05-11",
+      "categories": [
+        "cs.RO",
+        "eess.SY"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 9,
+      "summary_zh": "本文研究多机器人在加权图上持久监控中最小化最坏情况加权延迟的问题。提出尾部性能目标族，并建立存在最优策略、可任意精度逼近周期解等理论性质，据此构造等效的TWLO-MDP，将目标转化为平均奖励准则，开发强化学习求解方法并创建M2Bench基准。实验表明，该方法有效降低最坏情况加权延迟，优于代表性基线。"
+    },
+    {
+      "id": "arxiv:2605.09613",
+      "title": "SABER: A Scalable Action-Based Embodied Dataset for Real-World VLA Adaptation",
+      "authors": [
+        "Narsimha Menga",
+        "Parikshit Sakurikar",
+        "Amirreza Rouhi",
+        "Satya Sai Reddy",
+        "Anirudh Govil",
+        "Sri Harsha Chittajallu",
+        "Rajat Aggarwal",
+        "Anoop Namboodiri",
+        "Sashi Reddi"
+      ],
+      "abstract": "Robotic deployment in real-world environments depends on rich, domain-specific action data as much as on strong model architecture. General-purpose robot foundation models show modest performance in complex unseen tasks such as manipulation in a retail domain when applied out of the box. The root cause is a data gap: retail environments are structurally absent from general robot pretraining distributions, and the path to filling that gap through teleoperation is prohibitively expensive, logistically constrained, and difficult to scale. We introduce SABER, a high-fidelity retail robotics action dataset built from over 100 hours of natural in-store capture across multiple real grocery environments. Egocentric footage from head-mounted cameras records fine-grained hand activity at the point of interaction, while exocentric 360-degree scene footage from DreamVu's ALIA camera simultaneously observes all actors and activities across the entire space. This combination yields a uniquely complete picture of human retail behavior: dexterous hand activity, whole-body motion, and scene dynamics, all captured without staging, scripting, or teleoperation overhead. The SABER corpus contains 44.8K training samples across three action representation streams: 25K latent action sequences via LAPA-style encoding, 18.6K dexterous hand-pose trajectories retargeted to robot joint space, and 1.2K whole-body synchronized motion sequences retargeted to a humanoid embodiment. When applied to GR00T N1.6 via a shared-backbone multi-task post-training recipe, SABER yields a mean success rate of 29.3% across ten retail manipulation tasks -- more than 2.19x over fine-tuning baselines (13.4%). SABER demonstrates that the path to capable retail robots runs through better data, which can be collected today, at scale, without a robot in the loop. The dataset and code are available at https://dreamvu.ai/saber",
+      "url": "https://arxiv.org/abs/2605.09613",
+      "pdf_url": "https://arxiv.org/pdf/2605.09613v1",
+      "published_date": "2026-05-10",
+      "categories": [
+        "cs.RO",
+        "cs.CV"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 10,
+      "summary_zh": "核心问题：零售机器人在复杂未见任务中性能低下，源于通用预训练数据缺少零售领域数据，且遥操作采集成本高、难以规模化。  \n方法与创新点：提出SABER数据集，利用头戴摄像头与360度全景相机同时捕捉真实商店中人类自然操作行为，无需脚本或遥操作；包含LAPA潜在动作序列、灵巧手轨迹与全身运动序列三种动作表示。  \n关键结论：基于GR00T N1.6的多任务微调后，在十项零售操作任务上平均成功率29.3%，较基线（13.4%）提升2.19倍。"
+    },
+    {
+      "id": "arxiv:2605.09595",
+      "title": "Neuromorphic Reinforcement Learning for Quadruped Locomotion Control on Uneven Terrain",
+      "authors": [
+        "Zhuangyu Han",
+        "Abhronil Sengupta"
+      ],
+      "abstract": "Reinforcement learning (RL) has enabled robust quadruped locomotion over complex terrain, but most learned controllers are trained offline with backpropagation in massively parallel simulation and deployed as fixed policies, limiting adaptation to terrain variation, payload changes, actuator wear, and other real-world conditions under onboard power constraints. Local learning provides a potential path toward energy-aware on-robot adaptation by replacing global backpropagation graphs with updates driven by local neural states, making the learning rule more compatible with neuromorphic and in-memory computing substrates. This work proposes an equilibrium-propagation (EP)-based proximal policy optimization (PPO) framework for uneven-terrain quadruped locomotion. The controller combines a bio-inspired central pattern generator (CPG) policy with a residual postural adjustment policy, while replacing conventional backpropagation-trained policy and value networks with EP-enabled local learning. To train stochastic continuous-control policies with EP, we derive an EP-compatible PPO output-nudging signal and introduce a two-sided ratio clipping mechanism that stabilizes policy updates during relaxation. Experiments on a 12-DoF A1 quadruped show that the proposed controller achieves stable policy convergence in a two-stage uneven terrain locomotion task. Its locomotion performance is comparable to a backpropagation-trained PPO baseline in success rate, velocity tracking, actuator power, and body stability, while improving GPU memory efficiency by 4.3\\(\\times\\) compared with backpropagation through time (BPTT). These results suggest that local equilibrium-based learning can support high-dimensional embodied locomotion and provide an algorithmic foundation for low-power on-robot adaptation and fine-tuning.",
+      "url": "https://arxiv.org/abs/2605.09595",
+      "pdf_url": "https://arxiv.org/pdf/2605.09595v1",
+      "published_date": "2026-05-10",
+      "categories": [
+        "cs.NE",
+        "cs.RO"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 11,
+      "summary_zh": "强化学习使四足机器人能在复杂地形运动，但离线训练的策略难以在线适应地形变化与功耗限制。本文提出基于平衡传播（EP）的PPO框架，结合生物启发CPG策略与残差姿态调整策略，用EP局部学习替代反向传播训练。在12自由度A1四足机器人上，该控制器在成功率、速度跟踪、功率和稳定性上媲美反向传播PPO基线，GPU内存效率较BPTT提升4.3倍，为低功耗机器人自适应微调提供了算法基础。"
+    },
+    {
+      "id": "arxiv:2605.09586",
+      "title": "DeformMaster: An Interactive Physics-Neural World Model for Deformable Objects from Videos",
+      "authors": [
+        "Can Li",
+        "Zhoujian Li",
+        "Ren Li",
+        "Jie Gu",
+        "Lei Lei",
+        "Jingmin Chen",
+        "Lei Sun"
+      ],
+      "abstract": "World models for deformable objects should recover not only geometry and appearance, but also underlying physical dynamics, interaction grounding, and material behavior. Learning such a model from real videos is challenging because deformable linear, planar, and volumetric objects evolve under high-dimensional deformation, noisy interactions, and complex material response. The model must therefore infer a physical state from visual observations, roll it forward under new interactions, and render the resulting dynamics with high visual fidelity. We present DeformMaster, a video-derived interactive physics--neural world model that turns real interaction videos into an online interactive model of deformable objects within a unified dynamics-and-appearance framework. DeformMaster preserves structured physical rollout while using a neural residual to compensate for unmodeled effects, grounds sparse hand motion as distributed compliant actuator for hand--continuum interaction, represents material response with spatially varying constitutive experts, and drives high-fidelity 4D appearance from the predicted physical evolution. Experiments on real-world deformable-object sequences demonstrate DeformMaster's ability to roll out future dynamics and render dynamic appearance, outperforming state-of-the-art baselines while supporting novel action rollout, material-parameter variation, and dynamic novel-view synthesis.",
+      "url": "https://arxiv.org/abs/2605.09586",
+      "pdf_url": "https://arxiv.org/pdf/2605.09586v1",
+      "published_date": "2026-05-10",
+      "categories": [
+        "cs.CV",
+        "cs.RO"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 12,
+      "summary_zh": "核心问题：从真实视频中学习可变形物体的物理动态、交互与材料行为。  \n方法与创新点：提出DeformMaster，融合结构化物理滚动与神经残差补偿未建模效应，以稀疏手运动作分布式柔顺执行器，并用空间变化材料专家建模响应，驱动高保真4D外观。  \n关键结论：在真实序列上超越基线，支持新动作推演、材料参数变化及动态新视图合成。"
+    },
+    {
+      "id": "arxiv:2605.09538",
+      "title": "PhysHanDI: Physics-Based Reconstruction of Hand-Deformable Object Interactions",
+      "authors": [
+        "Jihyun Lee",
+        "Changmin Lee",
+        "Donghwan Kim",
+        "Tae-Kyun Kim"
+      ],
+      "abstract": "While existing methods for reconstructing hand-object interactions have made impressive progress, they either focus on rigid or part-wise rigid objects-limiting their ability to model real-world objects (e.g., cloth, stuffed animals) that exhibit highly non-rigid deformations-or model deformable objects without full 3D hand reconstruction. To bridge this gap, we present PhysHanDI (Physics-based Reconstruction of Hand and Deformable Object Interactions), a framework that enables full 3D reconstruction of both interacting hands and non-rigid objects. Our key idea is to physically simulate object deformations driven by forces induced from densely reconstructed 3D hand motions, ensuring that the reconstructed object dynamics are both physically plausible and coherent with the interacting hand movements. Furthermore, we demonstrate that such simulation of object deformations can, in turn, refine and improve hand reconstruction via inverse physics. In experiments, PhysHanDI outperforms the state-of-the-art baseline across reconstruction and future prediction.",
+      "url": "https://arxiv.org/abs/2605.09538",
+      "pdf_url": "https://arxiv.org/pdf/2605.09538v1",
+      "published_date": "2026-05-10",
+      "categories": [
+        "cs.CV",
+        "cs.AI",
+        "cs.RO"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 13,
+      "summary_zh": "核心问题：现有手-物交互重建方法难以处理非刚体变形物体，或缺乏完整3D手部重建。  \n方法与创新点：提出PhysHanDI框架，通过物理模拟由密集3D手部运动驱动的物体变形，确保物理合理性与手-物一致性，并利用逆物理优化手部重建。  \n关键结论/指标：PhysHanDI在重建和未来预测任务中均优于当前最优基线。"
+    },
+    {
+      "id": "arxiv:2605.09537",
+      "title": "Drift is a Sampling Error: SNR-Aware Power Distributions for Long-Horizon Robotic Planning",
+      "authors": [
+        "Kewei Chen",
+        "Yayu Long",
+        "Mingsheng Shang"
+      ],
+      "abstract": "Despite rapid progress in Vision-Language-Action (VLA) models for robotic control, instruction drift remains a persistent failure mode in long-horizon tasks. This paper reconceptualizes this phenomenon, positing that instruction drift is fundamentally a systematic sampling error: local greedy sampling is prone to collapsing into \"Negative Pivotal Windows\"--irreversible local optima with high local probability that sever global success pathways. To address this, we propose Context-Aware Power Sampling (CAPS), a training-free inference-time computation framework. CAPS leverages power distributions to sharpen global trajectory probabilities, enabling lookahead search over the model's conditional generative trajectory distribution. Furthermore, we introduce a metacognitive control mechanism based on Signal-to-Noise Ratio (SNR). This mechanism triggers adaptive MCMC search solely when drift risk is detected, enabling a dynamic transition from \"intuitive fast thinking\" to \"rational slow search.\" Experiments on RoboTwin, Simpler-WindowX, and Libero-long benchmarks show that CAPS achieves substantial improvements over strong baselines, including OpenVLA and TACO, without parameter updates. These results support the effectiveness of adaptive inference-time computation for improving long-horizon robustness in embodied control.",
+      "url": "https://arxiv.org/abs/2605.09537",
+      "pdf_url": "https://arxiv.org/pdf/2605.09537v1",
+      "published_date": "2026-05-10",
+      "categories": [
+        "cs.RO"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 14,
+      "summary_zh": "指令漂移是长期机器人任务中的持久失败模式，本文将其重新定义为系统性采样误差。为此提出CAPS——无需训练的推理时计算框架，利用幂分布锐化全局轨迹概率，并引入基于信噪比的元认知控制，仅在检测到漂移风险时触发自适应MCMC搜索。在RoboTwin、Simpler-WindowX和Libero-long基准上，CAPS在不更新参数的情况下显著优于OpenVLA和TACO等强基线。"
+    },
+    {
+      "id": "arxiv:2605.09513",
+      "title": "QueST: Persistent Queries as Semantic Monitors for Drift Suppression in Long-Horizon Tracking",
+      "authors": [
+        "Mayank Anand",
+        "Mohammad Saqlain",
+        "Kyan Mahajan",
+        "Priya Shukla",
+        "Gora Chand Nandi",
+        "Andrew Melnik"
+      ],
+      "abstract": "Tracking points in videos is typically formulated as frame-to-frame correspondence, where each point is matched locally to the next frame. While this works over short horizons, errors accumulate under articulation, occlusion, and viewpoint change, leading to silent semantic drift that existing trackers cannot detect or correct. In this work, we revisit long-horizon tracking from a monitoring perspective and introduce QueST, a monitoring-by-design framework that treats interaction-relevant entities as persistent semantic queries rather than transient point tracks. Instead of local propagation, each query attends globally over spatio-temporal video features at every time-step, providing a stable semantic anchor across time. We further constrain query trajectories with lightweight 3D physical grounding, using geometric plausibility to suppress unbounded drift under occlusion. We evaluate QueST on long-horizon articulated sequences from PartNet-Mobility in SAPIEN and compare against RAFT-3D, CoTracker, and TAP-Net. QueST substantially reduces terminal drift achieving a 67.7% Absolute Point Error (APE) improvement over TAP-Net while better preserving identity over extended horizons. Our results show that embedding semantic monitoring directly into perception enables more reliable long-horizon tracking under distribution shift.",
+      "url": "https://arxiv.org/abs/2605.09513",
+      "pdf_url": "https://arxiv.org/pdf/2605.09513v1",
+      "published_date": "2026-05-10",
+      "categories": [
+        "cs.CV",
+        "cs.RO"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 15,
+      "summary_zh": "核心问题：长时点跟踪中因局部传播导致的语义漂移无法被现有方法检测或修正。  \n方法与创新点：提出QueST框架，将交互实体视为持久语义查询，全局关注时空视频特征，并引入轻量3D物理约束抑制遮挡下的漂移。  \n关键结论：在PartNet-Mobility长时序列上，QueST相比TAP-Net降低67.7%的绝对点误差（APE），显著提升长时间跟踪的稳定性。"
+    }
+  ],
+  "daily_ai": [
+    {
+      "id": "arxiv:2605.09823",
+      "title": "CalBench: Evaluating Coordination-Privacy Trade-offs in Multi-Agent LLMs",
+      "authors": [
+        "Chelsea Zou",
+        "Yiheng Yao",
+        "Selena She",
+        "Robert D. Hawkins"
+      ],
+      "abstract": "We introduce CalBench, a controlled evaluation environment for studying multi-agent coordination through calendar scheduling. In CalBench, N agents each manage a private calendar containing pre-existing commitments and must coordinate to schedule a stream of M incoming meetings while minimizing disruption costs. Because agents observe only their own calendars, successful scheduling requires communication across private information boundaries. Each scenario is generated with an oracle solution, enabling precise measurement of coordination quality via realized-to-optimal cost, as well as a Distributed Constraint Optimization (DCOP) baseline to provide a fair comparison under the same private-information constraints. CalBench enables precise verification of task success, communication efficiency, and fairness in the distribution of disruption costs. Our environment also studies privacy-preserving coordination by augmenting calendar entries with private semantic contexts of varying sensitivity and measuring whether agents reveal task-irrelevant private information during negotiation. Unlike multi-agent benchmarks where a single capable agent can often substitute for the group, CalBench is inherently decentralized: no agent has access to another agent's private calendar, yet agents must still reach mutually consistent decisions over shared meeting scheduling. CalBench therefore provides a practical and verifiable setting for studying coordination protocols, communication efficiency, negotiation strategies, fairness, and privacy leakage in multi-agent systems.",
+      "url": "https://arxiv.org/abs/2605.09823",
+      "pdf_url": "https://arxiv.org/pdf/2605.09823v1",
+      "published_date": "2026-05-11",
+      "categories": [
+        "cs.MA",
+        "cs.AI"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "ai",
+      "rank": 1,
+      "summary_zh": "CalBench 解决多智能体 LLM 在日历调度中协调与隐私权衡的评估问题。通过构建私有日历环境，每个智能体仅知自身日程，需通信协调会议，并引入 DCOP 基线，同时增加语义隐私上下文以测量隐私泄露。该环境实现了对协调质量、通信效率和公平性的精确量化评估。"
+    },
+    {
+      "id": "arxiv:2605.09822",
+      "title": "Oracle Poisoning: Corrupting Knowledge Graphs to Weaponise AI Agent Reasoning",
+      "authors": [
+        "Ben Kereopa-Yorke",
+        "Guillermo Diaz",
+        "Holly Wright",
+        "Reagan Johnston",
+        "Ron F. Del Rosario",
+        "Timothy Lynar"
+      ],
+      "abstract": "We define Oracle Poisoning, an attack class in which an adversary corrupts a structured knowledge graph that AI agents query at runtime via tool-use protocols, causing incorrect conclusions through correct reasoning. Unlike prompt injection, Oracle Poisoning manipulates the data agents reason over, not their instructions. We demonstrate six attack scenarios against a production 42-million-node code knowledge graph, providing the first empirical demonstration of knowledge graph poisoning against a production-scale agentic system, distinct from CTI embedding poisoning. Primary evaluation uses real SDK tool-use across nine models from three providers (N=30 per model), where models autonomously invoke a graph query tool and reason from results. The result is unambiguous: every tested model trusts poisoned data at 100% at moderate attacker sophistication(L2), with 269 valid trials (of 270) accepting fabricated security claims under directed queries. Under open-ended prompts, trust drops to 3-55%, confirming prompt framing as a confound; we report both conditions. An attacker sophistication gradient reveals discrete break points, a minimum skill at which trust flips from 0% to 100%, reframing the attack as a question not of whether but of how much. A controlled delivery-mode comparison shows that inline evaluation produces false negatives: GPT-5.1 shows 0% trust inline but 100% under both simulated and real agentic tool-use, demonstrating that delivery mode is a first-order confound. We evaluate five defences; read-only access control eliminates the direct mutation vector, while the remaining four are partial and model-dependent. Analysis of four additional platforms suggests the attack may generalise across the knowledge-graph ecosystem.",
+      "url": "https://arxiv.org/abs/2605.09822",
+      "pdf_url": "https://arxiv.org/pdf/2605.09822v1",
+      "published_date": "2026-05-11",
+      "categories": [
+        "cs.CR",
+        "cs.AI"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "ai",
+      "rank": 2,
+      "summary_zh": "这篇论文定义了Oracle Poisoning攻击，即通过污染AI代理运行时查询的知识图谱，使其在正确推理下得出错误结论。首次在4200万节点生产级代码知识图谱上实证六种攻击场景，使用三提供商9个模型（每模型30次）进行真实SDK工具调用。结果显示：中等攻击复杂度下所有模型100%信任中毒数据（270次有效试验中269次接受虚假声明），开放提示下信任降至3-55%；内联评估产生假阴性。只读访问控制可消除直接突变，其余四种防御部分有效。"
+    },
+    {
+      "id": "arxiv:2605.09806",
+      "title": "LEAD: Length-Efficient Adaptive and Dynamic Reasoning for Large Language Models",
+      "authors": [
+        "Songtao Wei",
+        "Yi Li",
+        "Zhikai Li",
+        "Xu Hu",
+        "Yuede Ji",
+        "Guanpeng Li",
+        "Feng Chen",
+        "Carl Yang",
+        "Zhichun Guo",
+        "Bingzhe Li"
+      ],
+      "abstract": "Large reasoning models, such as OpenAI o1 and DeepSeek-R1, tend to become increasingly verbose as their reasoning capabilities improve. These inflated Chain-of-Thought (CoT) trajectories often exceed what the underlying problems require, wasting compute, latency, and context budgets. While introducing length-based efficiency rewards during reinforcement learning offers a natural remedy, existing methods struggle with two fundamental challenges: the optimal balance between correctness and efficiency is non-stationary throughout training, and intrinsic reasoning budgets vary drastically across problems. Relying on static reward weights and global length constraints inevitably forces a compromise between degraded accuracy and unrealized compression. To overcome these limitations, we propose LEAD (Length-Efficient Adaptive and Dynamic reasoning), a method that replaces static heuristics with online, self-adaptive mechanisms. LEAD dynamically calibrates the correctness-efficiency trade-off at each step using a Potential-Scaled Instability, directing optimization capacity to the most informative learning signal. Furthermore, it estimates an adaptive per-problem target length online based on the model's own correct rollouts, applying a symmetric efficiency reward that penalizes both overthinking and over-compression. Evaluated on five mathematical reasoning benchmarks, LEAD achieves the highest accuracy and Accuracy-Efficiency Score among RL-trained efficient-reasoning methods while producing substantially shorter outputs than the base model.",
+      "url": "https://arxiv.org/abs/2605.09806",
+      "pdf_url": "https://arxiv.org/pdf/2605.09806v1",
+      "published_date": "2026-05-11",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "ai",
+      "rank": 3,
+      "summary_zh": "大推理模型（如OpenAI o1、DeepSeek-R1）的链式思维日益冗长，导致计算、延迟和上下文浪费。现有方法因静态奖励权重和全局长度约束难以平衡正确性与效率。本文提出LEAD，通过在线自适应机制动态校准每一步的正确-效率权衡，并基于模型自身正确轨迹估计自适应目标长度，应用对称效率惩罚。在五个数学推理基准上，LEAD在RL训练方法中取得最高准确率和准确-效率分数，输出显著缩短。"
+    },
+    {
+      "id": "arxiv:2605.09803",
+      "title": "Insight: Enhancing Mobile Accessibility for Blind and Visually Impaired Users with LLMs",
+      "authors": [
+        "Joshua Owusu Ansah",
+        "Anuj Kapoor",
+        "Ayush Khanna",
+        "Manvika Vinod",
+        "Precious Njeck",
+        "Shuai Gao"
+      ],
+      "abstract": "This research paper addresses the limitations of current mobile accessibility services like TalkBack, which provide manual gesture-based sequential feedback to BVI users. Motivated by the promise of large language models (LLMs), this paper introduces Insight, an Android accessibility service that provides natural language interaction and real-time summarization of the screen. The paper performs a within-subject experimental study with users to compare Insight and TalkBack on usability factors. Results show Insight reduced mental effort and task time, and was preferred because of its dialogue interface, but users felt the need for interruption management. Results show LLM-based interfaces can significantly improve mobile accessibility, and describe the potential of hybrid solutions combining gesture and dialogue modalities towards more inclusive design.",
+      "url": "https://arxiv.org/abs/2605.09803",
+      "pdf_url": "https://arxiv.org/pdf/2605.09803v1",
+      "published_date": "2026-05-11",
+      "categories": [
+        "cs.HC",
+        "cs.AI"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "ai",
+      "rank": 4,
+      "summary_zh": "这篇论文针对当前移动无障碍服务（如TalkBack）依赖手动手势顺序反馈、对盲人用户支持不足的问题，提出了基于大语言模型（LLM）的Android无障碍服务Insight，支持自然语言交互与实时屏幕摘要。通过用户内实验对比Insight和TalkBack，结果显示Insight降低了脑力负荷和任务时间，用户更偏好其对话界面，但需注意中断管理。研究表明LLM可显著提升移动无障碍体验，并揭示了结合手势与对话模态的混合设计潜力。"
+    },
+    {
+      "id": "arxiv:2605.09802",
+      "title": "CrossVL: Complexity-Aware Feature Routing and Paired Curriculum for Cross-View Vision-Language Detection",
+      "authors": [
+        "Zhipeng Liu",
+        "Chunbo Luo"
+      ],
+      "abstract": "Vision-language models (VLMs) enable text-guided object detection but degrade severely under cross-view scenarios where ground and aerial viewpoints differ in altitude, scale, and spatial layout. These geometric changes introduce systematic complexity variations between viewpoints, e.g., ground view images contain dense and highly occluded structures, while aerial images are sparse and globally organized. Fixed VLM fusion mechanisms cannot handle this discrepancy. We propose CrossVL, a framework combining Complexity-Aware Pathway Aggregation (CPA) and Paired Curriculum Learning (PCL) for enhanced cross-view detection for VLM. CPA estimates scene complexity from multimodal statistics and routes visual features through multiple pathways to obtain view-specific representations. PCL leverages semantic consistency of synchronized ground-aerial pairs to provide stable early supervision and then gradually shifts toward randomized sampling. On MAVREC, CrossVL improves Florence-2's aerial mAP from 58.66% to 61.03% and reduces the ground-aerial performance gap from 8.63pp to 6.65pp, while also achieving a 3.3x reduction in variance across random seeds. CPA provides stable complexity-aware feature aggregation, and PCL enhances optimization dynamics. Together, they demonstrate that coordinated architectural and training adaptations are crucial for robust cross-view VLM detection.",
+      "url": "https://arxiv.org/abs/2605.09802",
+      "pdf_url": "https://arxiv.org/pdf/2605.09802v1",
+      "published_date": "2026-05-11",
+      "categories": [
+        "cs.CV",
+        "cs.AI",
+        "cs.LG"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "ai",
+      "rank": 5,
+      "summary_zh": "该论文提出CrossVL框架，解决跨视角（地面-航空）场景下视觉语言模型（VLM）因高度、尺度差异导致检测性能严重下降的问题。创新在于：复杂度感知通路聚合（CPA）利用多模态统计估计场景复杂度并路由特征；配对课程学习（PCL）利用同步地面-航空对语义一致性提供早期监督后逐渐过渡到随机采样。在MAVREC上，CrossVL将Florence-2航拍mAP从58.66%提升至61.03%，地面-航拍性能差距从8.63pp降至6.65pp，随机种子方差降低3.3倍。"
+    }
+  ],
+  "weekly_hot": {
+    "id": "arxiv:2605.03042",
+    "title": "ARIS: Autonomous Research via Adversarial Multi-Agent Collaboration",
+    "authors": [
+      "Ruofeng Yang",
+      "Yongcan Li",
+      "Shuai Li"
+    ],
+    "abstract": "This report describes ARIS (Auto-Research-in-sleep), an open-source research harness for autonomous research, including its architecture, assurance mechanisms, and early deployment experience. The performance of agent systems built on LLMs depends on both the model weights and the harness around them, which governs what information to store, retrieve, and present to the model. For long-horizon research workflows, the central failure mode is not a visible breakdown but a plausible unsupported success: a long-running agent can produce claims whose evidential support is incomplete, misreported, or silently inherited from the executor's framing. Therefore, we present ARIS as a research harness that coordinates machine-learning research workflows through cross-model adversarial collaboration as a default configuration: an executor model drives forward progress while a reviewer from a different model family is recommended to critique intermediate artifacts and request revisions. ARIS has three architectural layers. The execution layer provides more than 65 reusable Markdown-defined skills, model integrations via MCP, a persistent research wiki for iterative reuse of prior findings, and deterministic figure generation. The orchestration layer coordinates five end-to-end workflows with adjustable effort settings and configurable routing to reviewer models. The assurance layer includes a three-stage process for checking whether experimental claims are supported by evidence: integrity verification, result-to-claim mapping, and claim auditing that cross-checks manuscript statements against the claim ledger and raw evidence, as well as a five-pass scientific-editing pipeline, mathematical-proof checks, and visual inspection of the rendered PDF. A prototype self-improvement loop records research traces and proposes harness improvements that are adopted only after reviewer approval.",
+    "url": "https://arxiv.org/abs/2605.03042",
+    "pdf_url": "https://arxiv.org/pdf/2605.03042",
+    "published_date": "2026-05-06",
+    "categories": [],
+    "hf_upvotes": 107,
+    "pwc_stars": 8890,
+    "score": 658.5,
+    "code_url": "https://github.com/wanshuiyin/Auto-claude-code-research-in-sleep",
+    "hot_type": "weekly_hot",
+    "summary_zh": "这篇论文解决LLM智能体在长期研究任务中易产生看似合理但证据不足的虚假成果的问题。提出ARIS自主研究框架，通过跨模型对抗协作（执行模型推进，推荐不同家族的评审模型批评）及三层架构（执行层、编排层、保证层）实现可信研究。框架包含65+可复用技能、五阶段科学编辑与数学证明检查，自改进循环需经评审批准后实施。",
+    "detail_zh": "**1. 研究背景与动机**  \n当前基于大语言模型（LLM）的智能体系统在长期研究工作流中面临一个关键陷阱：失败并非明显的崩溃，而是表现为“看似合理的无证据成功”——长时间运行的智能体会生成断言，但这些断言的证据支撑不完整、被误报，或沉默地继承了执行者的预设框架。这种隐蔽的不可靠性严重阻碍了自主科研的可信度与可复现性，亟需一种能够持续验证、交叉审计的研究框架。\n\n**2. 核心问题定义**  \nARIS 旨在解决如何构建一个可保证长期自主研究产出可信性的系统架构，核心是通过跨模型对抗协作与多层次保证机制，使得自动化生成的实验结论始终有明确的、可追溯的证据支撑。\n\n**3. 方法论详解**  \nARIS 采用三层架构：**执行层**提供超过 65 个可复用的、以 Markdown 定义的技能，通过 MCP（Model Context Protocol）集成多种模型，并维护一个持久化研究 Wiki 用于迭代复用先前发现；**编排层**协调五种端到端工作流，支持可调节的努力水平（effort settings）与可配置的审阅者路由；**保证层**包含三阶段检查（完整性验证 → 结果到主张映射 → 主张审计，后者将稿件陈述与主张账本及原始证据交叉比对），以及五轮科学编辑流水线、数学证明检查与渲染 PDF 的视觉审查。默认配置采用**对抗性多智能体协作**：执行模型驱动进展，建议使用来自不同模型家族的审阅者批评中间产物并要求修改。此外，原型自改进回路会记录研究轨迹并提议框架改进，仅在被审阅者批准后采纳。\n\n**4. 实验结果与关键指标**  \n论文报告了早期部署经验，但未给出特定数据集上的量化指标（如准确率或成功率）。系统在 GitHub 上获得 8890 Stars，Hugging Face 获 107 点赞，表明社区对其架构设计和开源实现的高度认可；学术引用数目前为 0，属于最新发布工作。\n\n**5. 与现有工作对比**  \n相比传统单一智能体或仅依赖后验验证的方法，ARIS 将对抗性审查内生为标准流程，避免“无证据成功”的隐蔽失败。其三层保证机制（完整性验证、主张审计、多轮编辑）覆盖从原始证据到最终文稿的全链路，而现有系统通常仅检查最终输出，缺乏对中间推理与证据溯源的可审计性。\n\n**6. 实际意义与未来展望**  \nARIS 为自主科研领域提供了一个开源、可审计的基础设施，有望推动机器学习实验室将 AI 智能体应用于完整的假设提出→实验→论文撰写闭环，同时降低人为审查负担。未来可扩展至更多科学领域，并进一步优化自改进回路中审阅者模型的多样性策略。\n\n**7. 推荐理由**  \n本周特别值得关注是因为 ARIS 以“对抗性多智能体协作 + 证据链审计”的创新范式直击自主科研的可信度痛点，且 GitHub 超 8800 星的火爆社区反响预示着它可能成为下一代科研自动化框架的标杆。"
+  },
+  "monthly_hot": {
+    "id": "arxiv:2604.27393",
+    "title": "MiniCPM-o 4.5: Towards Real-Time Full-Duplex Omni-Modal Interaction",
+    "authors": [
+      "Junbo Cui",
+      "Bokai Xu",
+      "Chongyi Wang",
+      "Tianyu Yu",
+      "Weiyue Sun",
+      "Yingjing Xu",
+      "Tianran Wang",
+      "Zhihui He",
+      "Wenshuo Ma",
+      "Tianchi Cai",
+      "Jiancheng Gui",
+      "Luoyuan Zhang",
+      "Xian Sun",
+      "Fuwei Huang",
+      "Moye Chen",
+      "Zhuo Lin",
+      "Hanyu Liu",
+      "Qingxin Gui",
+      "Qingzhe Han",
+      "Yuyang Wen",
+      "Huiping Liu",
+      "Rongkang Wang",
+      "Yaqi Zhang",
+      "Hongliang Wei",
+      "Chi Chen",
+      "You Li",
+      "Kechen Fang",
+      "Jie Zhou",
+      "Yuxuan Li",
+      "Guoyang Zeng",
+      "Chaojun Xiao",
+      "Yankai Lin",
+      "Xu Han",
+      "Maosong Sun",
+      "Zhiyuan Liu",
+      "Yuan Yao"
+    ],
+    "abstract": "Recent progress in multimodal large language models (MLLMs) has brought AI capabilities from static offline data processing to real-time streaming interaction, yet they still remain far from human-level multimodal interaction. The key bottlenecks are no longer modality coverage or latency alone, but the interaction paradigm itself. First, perception and response are still separated into alternating phases, preventing models from incorporating new inputs for timely adjustment during generation. Second, most current models remain reactive, responding only to explicit user requests instead of acting proactively in the evolving multimodal environment. We present MiniCPM-o 4.5, our latest effort towards human-like multimodal interaction, which mitigates these gaps by real-time full-duplex omni-modal interaction. It can see, listen, and speak simultaneously in real-time, while also exhibiting proactive behaviors such as issuing reminders or comments based on its continuous understanding of the live scene. The key technique behind MiniCPM-o 4.5 is Omni-Flow, a unified streaming framework that aligns omni-modal inputs and outputs along a shared temporal axis. This formulation converts conventional turn-based interaction into a full-duplex, time-aligned process, enabling simultaneous perception and response and allowing proactive behavior to arise within the same framework. With a total of 9B parameters, MiniCPM-o 4.5 approaches Gemini 2.5 Flash in vision-language capabilities, delivering state-of-the-art open-source performance at its scale. It also surpasses Qwen3-Omni-30B-A3B in omni-modal understanding and delivers better speech generation, with significantly higher computation efficiency. Driven by its efficient architecture design and inference optimization, the model can perform real-time full-duplex omni-modal interaction on edge devices with less than 12GB RAM cost.",
+    "url": "https://arxiv.org/abs/2604.27393",
+    "pdf_url": "https://arxiv.org/pdf/2604.27393",
+    "published_date": "2026-05-07",
+    "categories": [],
+    "hf_upvotes": 64,
+    "pwc_stars": 24581,
+    "score": 1357.0500000000002,
+    "code_url": "https://github.com/OpenBMB/MiniCPM-o",
+    "hot_type": "monthly_hot",
+    "summary_zh": "当前多模态大模型仍采用感知与响应分离的交替交互范式，且仅被动响应，缺乏实时全双工和主动行为。本文提出MiniCPM-o 4.5，通过Omni-Flow统一流式框架将全模态输入输出沿共享时间轴对齐，实现实时全双工交互和主动行为。该9B参数模型视觉语言能力接近Gemini 2.5 Flash，全模态理解超越Qwen3-Omni-30B-A3B，语音生成更优，可在12GB RAM边缘设备上实时运行。",
+    "detail_zh": "### 1. 研究背景与动机\n近年来，多模态大语言模型（MLLMs）在实时流式交互上取得了显著进展，但它们仍远未达到人类水平的多模态交互能力。核心瓶颈不再是模态覆盖或推理延迟，而在于交互范式本身：一方面，感知与响应被严格分为交替阶段，模型在生成过程中无法实时融入新输入以动态调整输出；另一方面，现有模型多为被动响应，仅对用户显式请求做出反馈，缺乏主动根据环境变化发出提醒或评论的能力。这些局限阻碍了AI向人类式、双向、连续对话能力的演进。\n\n### 2. 核心问题定义\n本文旨在解决多模态大语言模型在实时交互中的两个根本性缺失：**同时感知与响应的全双工能力**，以及**基于持续场景理解的主动行为生成**。论文提出MiniCPM-o 4.5，试图将传统轮次（turn-based）交互重新定义为时间对齐的全双工过程。\n\n### 3. 方法论详解\nMiniCPM-o 4.5的核心创新是**Omni-Flow**——一个统一流式框架，将视觉、听觉、语音等多模态输入与输出沿共享时间轴对齐。具体地，模型采用流式编码器持续接收并处理音频/视频流，输出生成过程不再等待输入结束，而是通过时间同步机制将生成的文本或语音与输入的时间戳对齐。这使得模型能在生成中途实时吸收新的视觉或听觉输入，并动态调整已开始输出的内容，真正实现“边看、边听、边说”。同时，Omni-Flow框架使主动行为得以自然涌现：模型基于对现场画面的连续理解，自行决策何时插入提醒或评论，而无需等待用户指令。整个模型参数量为9B，兼顾实时性与能力。\n\n### 4. 实验结果与关键指标\n在视觉-语言能力上，MiniCPM-o 4.5逼近Google Gemini 2.5 Flash，在其参数量级下取得开源最优性能。在全模态理解与语音生成任务中，它超越Qwen3-Omni-30B-A3B，且计算效率显著更高（具体指标如推理速度或内存占用未在摘要中细列）。得益于高效架构与推理优化，该模型能在**内存低于12GB**的边缘设备上实现实时全双工全模态交互，无需云端算力。\n\n### 5. 与现有工作对比\n与当前主流多模态模型（如Qwen3-Omni、Gemini系列）相比，MiniCPM-o 4.5的核心优势在于**交互范式的根本变革**：不再是“用户输入→模型响应”的交替轮次，而是感知与反馈并行、模型可主动介入的全双工对话。且9B参数使其在低算力设备上即可部署，而同类竞品往往需要更大模型或专用硬件。\n\n### 6. 实际意义与未来展望\n该工作为边缘设备上实现人类级别的多模态交互提供了可行路径，推动AI从被动问答工具向“具备情境意识的主动伙伴”演进。工业界可基于此开发智能眼镜、家居机器人等低延迟交互产品；学术界可进一步探索主动行为的长时记忆机制与多模态对齐优化。未来方向包括丰富主动行为的多样性并提升长对话稳定性。\n\n### 7. 推荐理由\nMiniCPM-o 4.5以9B开源模型实现了全双工、主动式多模态交互，性能接近顶级闭源模型且可在12GB内存边缘设备运行，同时GitHub超2.4万星与64次HF点赞也印证了社区对其落地潜力的高度认可，是本月在低成本类人交互方向上最值得关注的工作之一。"
+  }
+}

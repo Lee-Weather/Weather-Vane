@@ -22,12 +22,21 @@ import json
 import logging
 import os
 import smtplib
+import socket
 import sys
+
 import time
 from datetime import datetime, timedelta, timezone
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from pathlib import Path
+
+try:
+    import socks
+    socks.setdefaultproxy(socks.PROXY_TYPE_SOCKS5, "10.12.201.122", 39000)
+    socket.socket = socks.socksocket
+except ImportError:
+    pass  # PySocks 未安装时跳过（直连模式）
 
 import yaml
 from dotenv import load_dotenv
