@@ -25,6 +25,12 @@ import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
+# Windows 终端 GBK 编码兼容：强制 stdout/stderr 使用 UTF-8
+if sys.platform == "win32":
+    import io
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", errors="replace")
+
 # ──────────────────────────────────────────────────────────────────────────────
 # 常量与配置
 # ──────────────────────────────────────────────────────────────────────────────

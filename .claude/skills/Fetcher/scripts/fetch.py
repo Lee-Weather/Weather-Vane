@@ -78,6 +78,10 @@ RETRY_DELAYS = [1, 2, 4]  # 指数退避间隔（秒）
 # arXiv 限速：单 IP 每秒不超过 3 次请求
 ARXIV_RATE_LIMIT_SECONDS = 1.0 / 3
 
+# arXiv API 可用性检查：不可用时等待后重试
+ARXIV_CHECK_INTERVAL    = 300  # 重试间隔（秒），即 5 分钟
+ARXIV_CHECK_MAX_RETRIES = 3    # 最大重试次数
+
 # 日志配置
 logging.basicConfig(
     level=logging.INFO,
@@ -198,6 +202,24 @@ async def fetch_with_retry(
 # 3-2: 抓取 arXiv
 # ──────────────────────────────────────────────────────────────────────────────
 
+async def check_arxiv_available(client: httpx.AsyncClient) -> bool:
+    """
+    发送轻量探测请求，检查 arXiv API 当前是否可用。
+    使用 max_results=1 的最小查询，成功响应且 feed 可解析则返回 True。
+    """
+    probe_url = f"{ARXIV_API_URL}?search_query=cat:cs.AI&max_results=1"
+    try:
+        resp = await client.get(probe_url, timeout=15)
+        if resp.status_code != 200:
+            return False
+        feed = feedparser.parse(resp.text)
+        # feed 结构存在即视为可用（entries 可为空，如周末正常）
+        return feed.get("feed") is not None or hasattr(feed, "entries")
+    except (httpx.TimeoutException, httpx.ConnectError) as exc:
+        logger.debug("arXiv 探测失败：%s", exc)
+        return False
+
+
 async def fetch_arxiv(client: httpx.AsyncClient, date: str) -> list[dict]:
     """
     从 arXiv API 抓取当日论文（分类由 config.yaml 配置）。
@@ -206,10 +228,30 @@ async def fetch_arxiv(client: httpx.AsyncClient, date: str) -> list[dict]:
     """
     logger.info("开始抓取 arXiv（日期：%s）...", date)
 
+    # 正式抓取前先检查 API 可用性，不可用时等待 5 分钟重试，最多 3 次
+    for check_attempt in range(1, ARXIV_CHECK_MAX_RETRIES + 1):
+        if await check_arxiv_available(client):
+            logger.debug("arXiv API 可用（第 %d 次检查通过）", check_attempt)
+            break
+        if check_attempt < ARXIV_CHECK_MAX_RETRIES:
+            logger.warning(
+                "arXiv API 暂不可用（第 %d/%d 次），%d 分钟后重试...",
+                check_attempt, ARXIV_CHECK_MAX_RETRIES, ARXIV_CHECK_INTERVAL // 60,
+            )
+            await asyncio.sleep(ARXIV_CHECK_INTERVAL)
+        else:
+            logger.error(
+                "arXiv API 连续 %d 次检查均不可用，跳过本次抓取",
+                ARXIV_CHECK_MAX_RETRIES,
+            )
+            return []
+
     target_dt = datetime.strptime(date, "%Y-%m-%d")
-    # 过滤范围：前一天到后一天，防止跨时区漏抓
-    date_filter_from = (target_dt - timedelta(days=1)).strftime("%Y-%m-%d")
-    date_filter_to   = (target_dt + timedelta(days=1)).strftime("%Y-%m-%d")
+    # published_date 过滤范围：±2 天
+    # arXiv submittedDate 查询用 UTC，但 published 转 UTC+8 后日期可能 +1 天，
+    # 因此过滤窗口需要比查询窗口更宽，避免时区偏移导致误过滤
+    date_filter_from = (target_dt - timedelta(days=2)).strftime("%Y-%m-%d")
+    date_filter_to   = (target_dt + timedelta(days=2)).strftime("%Y-%m-%d")
 
     # arXiv submittedDate 范围格式：YYYYMMDD0000
     # 前后各扩一天防止时区边界漏抓
