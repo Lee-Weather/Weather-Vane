@@ -1,0 +1,550 @@
+{
+  "date": "2026-05-09",
+  "daily_robot": [
+    {
+      "id": "arxiv:2605.09196",
+      "title": "RigidFormer: Learning Rigid Dynamics using Transformers",
+      "authors": [
+        "Zhiyang Dou",
+        "Minghao Guo",
+        "Haixu Wu",
+        "Doug Roble",
+        "Tuur Stuyck",
+        "Wojciech Matusik"
+      ],
+      "abstract": "Learning-based simulation of multi-object rigid-body dynamics remains difficult because contact is discontinuous and errors compound over long horizons. Most existing methods remain tied to mesh connectivity and vertex-level message passing, which limits their applicability to mesh-free inputs such as point clouds and leads to high computational cost. Efficiently modeling high-fidelity rigid-body dynamics from mesh-free representations, therefore, remains challenging. We introduce RigidFormer, an object-centric Transformer-based model that learns mesh-free rigid-body dynamics with controllable integration step sizes. RigidFormer reasons at the object level and advances each object through compact anchors; Anchor-Vertex Pooling enriches these anchors with local vertex features, retaining contact-relevant geometry without dense vertex-level interaction. We propose Anchor-based RoPE to inject anchor geometry into attention while respecting the unordered nature of objects and anchors: object-token processing is permutation-equivariant, and the mean-pooled anchor descriptor is invariant to anchor reindexing while preserving shape extent. RigidFormer further enforces rigidity by projecting updates onto the rigid-body manifold using differentiable Kabsch alignment. On standard benchmarks, RigidFormer outperforms or matches mesh-based baselines using point inputs, runs faster, generalizes to unseen point resolutions and across datasets, and scales to 200+ objects; we also show a preliminary extension to command-conditioned articulated bodies by treating body parts as interacting object-level components.",
+      "url": "https://arxiv.org/abs/2605.09196",
+      "pdf_url": "https://arxiv.org/pdf/2605.09196v1",
+      "published_date": "2026-05-10",
+      "categories": [
+        "cs.CV",
+        "cs.AI",
+        "cs.GR",
+        "cs.LG",
+        "cs.RO"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 1,
+      "summary_zh": "RigidFormer 解决基于学习的多物体刚体动力学仿真中接触不连续、误差累积及对网格输入的依赖问题。方法采用对象中心 Transformer 模型，通过紧凑锚点推理，设计 Anchor-Vertex 池化与 Anchor-based RoPE 增强几何信息，利用可微 Kabsch 对齐强制刚性约束。在标准基准上，使用点云输入超越或匹配网格方法，运行更快，泛化到未见分辨率，扩展至 200+ 物体。"
+    },
+    {
+      "id": "arxiv:2605.09171",
+      "title": "SHIELD: Scalable Optimal Control with Certification using Duality and Convexity",
+      "authors": [
+        "Hansung Kim",
+        "Siddharth H. Nair",
+        "Francesco Borrelli"
+      ],
+      "abstract": "We present SHIELD, a hierarchical algorithm that reduces both the decision-variable dimension and the constraint set in $\\ell_1$-regularized convex programs. From strong convexity and Lagrangian duality, we derive certificates that \\emph{safely} discard constraints and decision variables while guaranteeing that all removed constraints remain satisfied and all removed variables are null. To further accelerate the proposed algorithm, we propose a transformer-based deep neural network to guide the dual certificate inference. We validate SHIELD on stochastic model predictive control (SMPC) in complex, multi-modal traffic scenarios, comparing against a full-dimensional SMPC policy. Numerical simulations demonstrate order-of-magnitude computational speedups while preserving feasibility and closed-loop safety, highlighting the practicality of certifiably safe, lightweight MPC in complex driving scenes.",
+      "url": "https://arxiv.org/abs/2605.09171",
+      "pdf_url": "https://arxiv.org/pdf/2605.09171v1",
+      "published_date": "2026-05-10",
+      "categories": [
+        "cs.RO"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 2,
+      "summary_zh": "本文针对大规模ℓ1正则化凸规划计算效率低下的问题，提出SHIELD分层算法，利用强凸性和拉格朗日对偶性推导可安全丢弃约束与变量的证书，并用Transformer引导对偶证书推理。在复杂多模态交通场景的随机模型预测控制（SMPC）中，相比全维SMPC实现数量级加速，同时保持可行性与闭环安全性。"
+    },
+    {
+      "id": "arxiv:2605.09153",
+      "title": "Beyond Self-Play: Hierarchical Reasoning for Continuous Motion in Closed-Loop Traffic Simulation",
+      "authors": [
+        "Weifan Zhang",
+        "Xiaofeng Zhao",
+        "Adel Bazzi",
+        "Mingrui Li",
+        "Yifan Wei",
+        "Dengfeng Sun"
+      ],
+      "abstract": "Closed-loop traffic simulation requires agents that are both scalable and behaviorally realistic. Recent self-play reinforcement learning approaches demonstrate strong scalability, but their equilibrium strategies fail to capture the socially aware behaviors of real human drivers. We propose a hierarchical architecture that goes beyond self-play by combining high-level multi-agent interaction reasoning with low-level continuous trajectory realization. Specifically, a Stackelberg-style Multi-Agent Reinforcement Learning (MARL) module generates interaction-aware intention commands. These commands condition a low-level continuous motion module, translating the strategic intent into physically consistent, scene-responsive control sequences. To mitigate distribution shift in closed-loop deployment, we introduce a hybrid co-training scheme combining MARL with auxiliary recovery supervision. Experiments on a SUMO-based urban network demonstrate that the proposed framework achieves superior control smoothness and safety compared to self-play and passive imitation baselines, while maintaining competitive traffic efficiency.",
+      "url": "https://arxiv.org/abs/2605.09153",
+      "pdf_url": "https://arxiv.org/pdf/2605.09153v1",
+      "published_date": "2026-05-10",
+      "categories": [
+        "cs.RO",
+        "cs.AI"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 3,
+      "summary_zh": "针对闭环交通仿真中自博弈方法缺乏社交意识的问题，提出分层架构：高层Stackelberg式多智能体强化学习（MARL）生成交互意图，低层连续运动模块将其转化为物理一致的控制序列；同时引入混合协同训练缓解部署中的分布偏移。在SUMO城市网络实验中，相比自博弈与被动模仿基线，该方法在保持交通效率的同时，显著提升了控制平滑性与安全性。"
+    },
+    {
+      "id": "arxiv:2605.09127",
+      "title": "IMPACT: An Implicit Active-Set Augmented Lagrangian for Fast Contact-Implicit Trajectory Optimization",
+      "authors": [
+        "Jiayun Li",
+        "Dejian Gong",
+        "Georgia Chalvatzaki"
+      ],
+      "abstract": "Contact-implicit trajectory optimization (CITO) has attracted growing attention as a unified framework for planning and control in contact-rich robotic tasks. Recent approaches have demonstrated promising results in manipulation and locomotion without requiring a prescribed contact-mode schedule. It is well known that the underlying mathematical programs with complementarity constraints (MPCCs) remain numerically ill-conditioned, and systematic, scalable solution strategies for CITO remain an active area of research. More efficient and principled solvers that can handle contact constraints are therefore essential to broaden the applicability of CITO. In this work, we develop an augmented-Lagrangian approach to CITO for solving MPCC-based CITO with stationarity guarantees. The method can be interpreted as identifying the implicit contact-mode branches on the fly during the trajectory optimization (TO) iterations; we call this approach IMPACT (IMPlicit contact ACtive-set Trajectory optimization). We provide an efficient C++ implementation tailored to trajectory-optimization workloads and evaluate it on the open-source CITO and contact-implicit model predictive control (CI-MPC) benchmarks. On CITO, IMPACT achieves 2.9x-70x speedups over strong baselines (geometric mean 13.8x). On CI-MPC, we show improved control quality for contact-rich trajectories on dexterous manipulation tasks in simulation. Finally, we demonstrate the proposed method on real robotic hardware on a T-shaped object pushing task.",
+      "url": "https://arxiv.org/abs/2605.09127",
+      "pdf_url": "https://arxiv.org/pdf/2605.09127v1",
+      "published_date": "2026-05-10",
+      "categories": [
+        "cs.RO"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 4,
+      "summary_zh": "接触隐式轨迹优化（CITO）中互补约束导致的数值病态问题。提出增广拉格朗日方法IMPACT，在优化迭代中隐式识别接触模式分支，具有平稳性保证。在CITO基准上实现2.9–70倍加速（几何平均13.8倍），提升灵巧操作中接触隐式模型预测控制（CI-MPC）质量，并在实物机器人上验证。"
+    },
+    {
+      "id": "arxiv:2605.09093",
+      "title": "HyDRA Scorpion: A Cost-effective and Modular ROV for Real-Time Underwater Inspection, Intervention, and Object Detection",
+      "authors": [
+        "Anika Tabassum Orchi",
+        "Md Farhan Zaman",
+        "Md Darain Khan",
+        "Md Alamgir",
+        "Mahbubul Islam",
+        "Md. Jobayer Rahman",
+        "A. M. Zayed Abdullah",
+        "Md Mehrab Hossain Khan",
+        "Md. Kutub Al Baki",
+        "Iftekharul Islam",
+        "Shakil Ahmed",
+        "Md Sadique Hossain",
+        "Md Muzahidul Islam",
+        "Shah Mohammad Seaman",
+        "Nusrat Jahan Piyal",
+        "Shekh Md. Saifur Rahman",
+        "Fahim Hafiz",
+        "A. K. M. Muzahidul Islam",
+        "M. Rezwan Khan"
+      ],
+      "abstract": "A Remotely Operated Vehicle (ROV) is a tethered underwater robot used for tasks like inspection and intervention. While essential tools for underwater science, the high cost of commercial ROVs and a persistent gap between mechanically capable platforms and those with integrated intelligence create a significant barrier to access. HyDRA Scorpion differs from conventional systems by addressing these challenges, integrating an advanced, AI-driven perception stack with in-situ measurement capabilities onto a low-cost, locally manufacturable platform. The system combines 4-DoF maneuverability, dual manipulators, and a custom pressure-tested housing. Experimental results validate the system's robustness and performance. Leak-free operation was confirmed through prolonged pressure testing of the electronics housing to 4 bar, equivalent to the pressure of a 304.8-meter water depth approximately in a simulated environment, with no moisture ingress detected. The vehicle also demonstrated stable station-keeping, maintaining its position within a tight tolerance of $\\(\\pm\\)0.15$ meters under external disturbances. The onboard AI module achieved underwater object detection mean Average Precision (mAP) of 0.89 with real-time inference, length and 3D-mapping based distance measurement. Also, 4-DoF manipulator arm can grip and maintain dual-function manipulator feature which support 360 degree tangle-free rotation.",
+      "url": "https://arxiv.org/abs/2605.09093",
+      "pdf_url": "https://arxiv.org/pdf/2605.09093v1",
+      "published_date": "2026-05-10",
+      "categories": [
+        "cs.RO",
+        "eess.SY"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 5,
+      "summary_zh": "核心问题：商业ROV成本高昂且机械平台与智能感知之间存在显著差距。  \n方法与创新点：提出HyDRA Scorpion，将AI驱动感知堆栈集成到低成本本地制造平台，具备4自由度、双机械臂及定制耐压壳体。  \n关键结论：电子仓4 bar压力测试（等效304.8米水深）无泄漏；抗扰定位精度±0.15米；水下目标检测mAP达0.89，支持实时推理与3D测距；机械臂实现360°无缠绕旋转。"
+    },
+    {
+      "id": "arxiv:2605.09073",
+      "title": "Smoothing Out the Edges: Continuous-Time Estimation with Gaussian Process Motion Priors on Factor Graphs",
+      "authors": [
+        "Connor Holmes",
+        "Sven Lilge",
+        "Zi Cong Guo",
+        "Frank Dellaert",
+        "Timothy D. Barfoot"
+      ],
+      "abstract": "Continuous-time state estimation is gaining in popularity due to its abilities to provide smooth solutions, handle asynchronous sensors, and interpolate between data points. While there are two main paradigms, parametric (e.g., temporal basis functions, splines) and nonparametric (Gaussian processes), the latter has seen less adoption despite its technical advantages and relative ease of implementation. In this article, we seek to rectify this situation by providing a new simplified explanation of GP continuous-time estimation rooted in the language of factor graphs, which have become the de facto estimation paradigm in much of robotics. To simplify onboarding, we also provide three working examples implemented in the popular GTSAM estimation framework.",
+      "url": "https://arxiv.org/abs/2605.09073",
+      "pdf_url": "https://arxiv.org/pdf/2605.09073v1",
+      "published_date": "2026-05-10",
+      "categories": [
+        "cs.RO"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 6,
+      "summary_zh": "这篇论文旨在解决非参数化高斯过程（GP）连续时间状态估计方法虽具备技术优势却采用不足的问题。作者基于因子图语言，对GP连续时间估计提出了一种新的简化解释，并在GTSAM框架中提供了三个可工作示例。该方法降低了入门门槛，有助于推动GP方法在机器人领域更广泛地应用。"
+    },
+    {
+      "id": "arxiv:2605.09055",
+      "title": "Octopus Protocol: One-Shot Hardware Discovery and Control for AI Agents via Infrastructure-as-Prompts",
+      "authors": [
+        "Quilee Simeon",
+        "Justin M. Wei",
+        "Yile Fan"
+      ],
+      "abstract": "Recent agentic-robotics systems, from Code-asPolicies to modern vision-language-action (VLA) foundation models, presuppose that drivers, SDKs, or ROS-style primitives for the target hardware already exist. Writing those primitives is the dominant engineering cost of bringing up new hardware for agent control. We present Octopus Protocol, a system that collapses that cost to a single shell command. Given only raw OS access and a language-model API key, a coding agent executes a five-stage pipeline--PROBE, IDENTIFY, INTERFACE, SERVE, DEPLOY--to discover connected devices, infer their capabilities, generate a Model Context Protocol (MCP) server with typed tools, and deploy it as a live HTTP endpoint. A persistent daemon then monitors the system, heals broken code, and perceives physical state through the camera tools it generated for itself. Two architectural principles make this work: protocols are prompts, not code, and the coding agent is the runtime. We validate the system on three heterogeneous platforms (PC/WSL, Apple Silicon macOS, Raspberry Pi 4) and on a commercial 6-DOF robotic arm with USB camera feedback. One command onboards the hardware in ~10-15 minutes and exposes up to 30 MCP tools; an MCP-compliant client then performs closed-loop visual-motor control through tools no human wrote.",
+      "url": "https://arxiv.org/abs/2605.09055",
+      "pdf_url": "https://arxiv.org/pdf/2605.09055v1",
+      "published_date": "2026-05-10",
+      "categories": [
+        "cs.RO",
+        "cs.AI",
+        "cs.MA"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 7,
+      "summary_zh": "核心问题：现有机器人系统依赖手工编写的硬件驱动，导致新硬件接入成本高昂。  \n方法与创新点：提出Octopus Protocol，通过五阶段流水线（PROBE、IDENTIFY、INTERFACE、SERVE、DEPLOY）让编码代理自动发现设备、推断能力、生成带类型工具的MCP服务器并部署为HTTP端点。核心思想是“协议即提示，代理即运行时”。  \n关键结论：在PC、macOS、树莓派4及商用六轴机械臂上，单条命令约10-15分钟即可入板，暴露最多30个MCP工具，未经手工编码即可实现闭环视觉运动控制。"
+    },
+    {
+      "id": "arxiv:2605.09050",
+      "title": "Automated Robotic Moisture Monitoring in Agricultural Fields",
+      "authors": [
+        "Senthil Palanisamy",
+        "Akila I. S"
+      ],
+      "abstract": "Monitoring moisture level of land in a large-scale plantation is tedious. The main objective of this project is to use a robotic kit in collaboration with the on-field moisture sensor circuits, thereby creating an efficient and economical moisture monitoring system. A large agriculture field is divided into smaller grids. Each grid is placed with a moisture sensor. Whenever a sensor reports the soil to be dry, the robot goes to the concerned field for inspection. The path to the concerned field is found by applying Dijkstra's shortest path algorithm on the aerial image of the field. Then the total moisture content of the field is calculated by the robot using suitable image processing algorithms and reported accordingly. For developing and testing this work, a small study field was set up above which a camera was mounted at an appropriate height to capture its aerial view. Thus a prototype for an automated system of monitoring agricultural fields' moisture has been developed through this work.",
+      "url": "https://arxiv.org/abs/2605.09050",
+      "pdf_url": "https://arxiv.org/pdf/2605.09050v1",
+      "published_date": "2026-05-10",
+      "categories": [
+        "cs.RO",
+        "cs.CV"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 8,
+      "summary_zh": "大规模农田湿度人工监测效率低下。本研究将农田划分网格并部署湿度传感器，当传感器检测到土壤干燥时，通过无人机航拍图像应用Dijkstra最短路径算法引导机器人前往目标区域，利用图像处理算法计算总含水量。实验搭建了小型研究场地并安装摄像机，成功开发了自动化湿度监测系统原型。"
+    },
+    {
+      "id": "arxiv:2605.09046",
+      "title": "Terminal Matters: Kinodynamic Planning with a Terminal Cost and Learned Uncertainty in Belief State-Cost Space",
+      "authors": [
+        "Zhuoyun Zhong",
+        "Seyedali Golestaneh",
+        "Constantinos Chamzas"
+      ],
+      "abstract": "In many real-world robotic tasks, robots must generate dynamically feasible motions that reliably reach desired goals even under uncertainty. Yet existing sampling-based kinodynamic planners typically optimize accumulated trajectory costs and treat goal reaching as a feasibility check, rather than explicitly optimizing terminal-state quality, such as goal preference or goal-reaching reliability. In this work, we introduce a terminal-cost formulation for kinodynamic planning that allows terminal-state quality to be optimized alongside accumulated trajectory cost. We prove that AO-RRT, an asymptotically optimal kinodynamic planner, preserves its asymptotic optimality under this augmented objective. We further extend the formulation to belief space and prove that minimizing the Wasserstein distance between the terminal belief and the goal improves a lower bound on the probability of reaching the goal region. The resulting planner, KiTe, uses this terminal-cost objective to encode goal preferences and improve reliability under uncertainty. To support systems without analytical uncertainty models, we learn dynamics and process uncertainty directly from data and integrate the learned belief dynamics into planning. Experiments on Flappy Bird, Car Parking, and Planar Pushing show that KiTe consistently improves goal-reaching success under uncertainty. Real-world Planar Pushing experiments further demonstrate that KiTe can plan effectively with learned dynamics and uncertainty. Source code is available at https://github.com/elpis-lab/KiTe.",
+      "url": "https://arxiv.org/abs/2605.09046",
+      "pdf_url": "https://arxiv.org/pdf/2605.09046v1",
+      "published_date": "2026-05-10",
+      "categories": [
+        "cs.RO"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 9,
+      "summary_zh": "核心问题：现有运动学动力学规划器通常优化累积轨迹代价，将到达目标仅视为可行性检查，而不显式优化终端状态质量。  \n方法与创新点：提出终端代价公式，证明AO-RRT在此目标下保持渐近最优性；进一步扩展到信念空间，证明最小化终端信念与目标的Wasserstein距离可提高目标到达概率下界，并设计KiTe规划器，支持从数据学习动力学与不确定性。  \n关键结论：在Flappy Bird、Car Parking和Planar Pushing实验中，KiTe持续提高不确定性下的目标到达成功率，并在真实平面推箱子任务中验证了有效性。"
+    },
+    {
+      "id": "arxiv:2605.09005",
+      "title": "Towards Backdoor-Based Ownership Verification for Vision-Language-Action Models",
+      "authors": [
+        "Ming Sun",
+        "Rui Wang",
+        "Xingrui Yu",
+        "Lihua Jing",
+        "Hangyu Du",
+        "Zhenglin Wan",
+        "Xu Pan",
+        "Ivor Tsang"
+      ],
+      "abstract": "Vision-Language-Action models (VLAs) support generalist robotic control by enabling end-to-end decision policies directly from multi-modal inputs. As trained VLAs are increasingly shared and adapted, protecting model ownership becomes essential for secure deployment and responsible open-source usage. In this paper, we present GuardVLA, the first backdoor-based ownership verification framework specifically designed for VLAs. GuardVLA embeds a stealthy and harmless backdoor watermark into the protected model during training by injecting secret messages into embodied visual data. For post-release verification, we propose a swap-and-detect mechanism, in which the trigger projector and an external classifier head are used to activate and detect the embedded backdoor based on prediction probabilities. Extensive experiments across multiple datasets, model architectures, and adaptation settings demonstrate that GuardVLA enables reliable ownership verification while preserving benign task performance. Further results show that the embedded watermark remains detectable under post-release model adaptation.",
+      "url": "https://arxiv.org/abs/2605.09005",
+      "pdf_url": "https://arxiv.org/pdf/2605.09005v1",
+      "published_date": "2026-05-09",
+      "categories": [
+        "cs.RO",
+        "cs.AI"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 10,
+      "summary_zh": "核心问题：针对视觉-语言-动作模型（VLA）的所有权保护问题。  \n方法与创新点：提出首个基于后门的VLA所有权验证框架GuardVLA，通过向具身视觉数据中注入秘密消息嵌入隐蔽无害的后门水印，并设计“交换-检测”机制利用触发投影仪和外部分类头激活并检测后门。  \n关键结论：在多个数据集、模型架构和适应设置下，GuardVLA能可靠验证所有权且保持任务性能，水印在模型发布后的适应中仍可检测。"
+    },
+    {
+      "id": "arxiv:2605.08947",
+      "title": "A low-cost mockup to simulate robotic laser cutting in nuclear decommissioning",
+      "authors": [
+        "Frederico Fernandes Afonso Silva",
+        "Murilo Marques Marinho",
+        "Bruno Vilhena Adorno"
+      ],
+      "abstract": "This paper introduces a low-cost experimental mockup to simulate the laser cutting process of containers in nuclear decommissioning. It is composed of a three-axis table supporting a cuboid container with ultraviolet-sensitive faces, a six-degree-of-freedom serial manipulator holding an ultraviolet torch that simulates the laser, and a visual system based on cameras and fiducial markers. The system employs a constrained task-space adaptive motion controller that compensates for inaccurate parameters and eliminates the need to calibrate the system. Furthermore, as the motion controller explicitly accounts for geometric constraints, the robot reactively avoids collisions with obstacles while handling the ultraviolet torch. To enhance tracking of the laser-cutting path, we control the ultraviolet beam, which requires only four degrees of freedom, instead of the full end-effector pose. Experiments show that, despite an initially uncalibrated system, the overall system is capable of tracking different trajectories with an overall mean accuracy of 3.9 (sd 2.5) mm when the end-effector pose is controlled and 2.4 (sd 1.3) mm when the ultraviolet beam is controlled.",
+      "url": "https://arxiv.org/abs/2605.08947",
+      "pdf_url": "https://arxiv.org/pdf/2605.08947v1",
+      "published_date": "2026-05-09",
+      "categories": [
+        "cs.RO"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 11,
+      "summary_zh": "本文提出一种低成本实验模型，用于模拟核退役中容器的激光切割过程。系统由三轴台、六自由度机械臂（紫外火炬模拟激光）及视觉系统构成，采用约束任务空间自适应运动控制器，无需标定且能补偿参数误差，并显式实现几何约束下的避障；通过仅控制紫外光束（4自由度）而非完整末端姿态来提升路径跟踪。实验表明，未标定系统中末端姿态控制和光束控制分别达到3.9 mm（标准差2.5）和2.4 mm（标准差1.3）的平均精度。"
+    },
+    {
+      "id": "arxiv:2605.08937",
+      "title": "Raymoval: Raycasting-based Dynamic Object Removal for Static 3D Mapping",
+      "authors": [
+        "Daebeom Kim",
+        "Seungjae Lee",
+        "Seoyeon Jang",
+        "Kevin Christiansen Marsim",
+        "Hyun Myung"
+      ],
+      "abstract": "Static mapping is fundamental to robot navigation, providing a persistent geometric prior and a consistent reference for long-term autonomy. However, dynamic objects leave residual traces and cause surface loss, which reduces map consistency. We propose a raycasting-based module for dynamic object removal in static 3D mapping. Each scan is projected onto an azimuth-elevation grid, and for every viewing direction we compare the bin-wise minimum range with the map's first-hit distance computed by raycasting. Furthermore, we apply a raycast consistency test that separates dynamic from static points. Finally, a spatial consistency validation step refines labels, producing static maps with lower residual dynamics and reduced over-removal. We evaluate our approach quantitatively and qualitatively on SemanticKITTI and a challenging custom dataset, and show consistent static mapping results.",
+      "url": "https://arxiv.org/abs/2605.08937",
+      "pdf_url": "https://arxiv.org/pdf/2605.08937v1",
+      "published_date": "2026-05-09",
+      "categories": [
+        "cs.RO"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 12,
+      "summary_zh": "核心问题：静态建图中动态物体会留下残余痕迹并导致表面缺失，影响地图一致性。  \n方法与创新点：提出基于光线投射的动态物体移除模块，将每帧扫描投影到方位-仰角网格，比较逐方向的最小距离与地图光线投射的第一命中距离，并设计光线一致性测试和空间一致性验证来精确分离动态与静态点。  \n关键结论/指标：在SemanticKITTI和自建数据集上实现更低残留动态和更少过度移除的静态地图，结果一致且质量显著提升。"
+    },
+    {
+      "id": "arxiv:2605.08886",
+      "title": "VISTA: A Benchmark for Real-Time Video Streaming under Network Impairments in Surgical Teleoperation",
+      "authors": [
+        "Zexin Deng",
+        "Zhenhui Yuan",
+        "Tian Lu",
+        "Gaofeng Li",
+        "Meipeng Huang",
+        "Longhao Zou"
+      ],
+      "abstract": "Real-time video streaming is crucial in surgical teleoperation, yet reproducible evaluation under realistic network impairments remains limited. This paper presents VISTA, a benchmark designed to study how impairments along the forward video path affect received video quality, temporal continuity, and human task performance. VISTA employs Linux Traffic Control with NetEm and a Gilbert-Elliott loss model to emulate five network conditions: Hospital LAN, 5G Urban, 4G Rural, LEO Satellite, and GEO Satellite. The benchmark integrates a standardised peg transfer task with synchronized measurements of network quality of service (QoS), objective video quality (PSNR, SSIM, and VMAF), and temporal continuity through freeze rate, while maintaining a stable reverse control channel. Across 375 experimental trials, network degradation substantially reduced teleoperation performance: success rate decreased from 97% in Hospital LAN to 79% in 5G Urban, 35% in 4G Rural, 71% in LEO Satellite, and 12% in GEO Satellite, while mean task completion time for successful trials increased from 80 s in Hospital LAN to 117 s in 5G Urban, 211 s in 4G Rural, 152 s in LEO Satellite, and 255 s in GEO Satellite. These findings show that network impairments have a direct impact on task completion and success in surgical teleoperation, and provide a reproducible basis for evaluating teleoperation video under realistic network constraints. Source code available at https://github.com/Dzxx623/VISTA.",
+      "url": "https://arxiv.org/abs/2605.08886",
+      "pdf_url": "https://arxiv.org/pdf/2605.08886v1",
+      "published_date": "2026-05-09",
+      "categories": [
+        "eess.IV",
+        "cs.RO"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 13,
+      "summary_zh": "### 中文摘要  \n**核心问题**：实时视频流是手术远程操作的关键，但缺乏在真实网络损伤下的可重复评估基准。  \n**方法与创新点**：提出VISTA基准，利用Linux TC、NetEm和Gilbert-Elliott模型模拟医院局域网、5G城市、4G乡村、LEO卫星和GEO卫星五种网络条件，集成标准化peg转移任务，同步测量QoS、视频质量（PSNR、SSIM、VMAF）及时间连续性（冻结率），并保持反向控制通道稳定。  \n**关键结论**：375次实验显示，网络退化显著降低性能"
+    },
+    {
+      "id": "arxiv:2605.08879",
+      "title": "Preserving Foundational Capabilities in Flow-Matching VLAs through Conservative SFT",
+      "authors": [
+        "Tianyi Zhang",
+        "Shaopeng Zhai",
+        "Haoran Zhang",
+        "Fuxian Huang",
+        "Qi Zhang"
+      ],
+      "abstract": "Unconstrained fine-tuning of flow-matching Vision-Language-Action (VLA) models drives dense parameter overwrites, degrading pre-trained capabilities. We present Conservative Supervised Fine-Tuning (ConSFT), an optimization objective that adapts to target distributions while mitigating catastrophic forgetting, requiring zero prior data or architectural overhead. By dynamically scaling learning signals based on model confidence, ConSFT suppresses excessive gradients from low-confidence samples to prevent disproportionate parameter updates, thereby bounding the intrinsic parameter disruption risk. Inspired by reinforcement learning's trust-region clipping, this formulation establishes a progressive learning dynamic to secure target convergence and prior capability retention, maintaining sparse parameter updates without relying on the parallel reference networks required by explicit regularization. We evaluate ConSFT on the LIBERO and RoboTwin benchmarks across state-of-the-art flow-matching VLAs ($π_0$, $π_{0.5}$, and GR00T-N1.6-3B). The method outperforms vanilla SFT in capability retention by an average absolute margin of over 20\\%, matching the efficacy of data-heavy Experience Replay in a prior-data-free regime. Real-world robotic deployments confirm that ConSFT precludes spatial overfitting during downstream adaptation, preserving pre-trained physical skills while acquiring sequential target tasks.",
+      "url": "https://arxiv.org/abs/2605.08879",
+      "pdf_url": "https://arxiv.org/pdf/2605.08879v1",
+      "published_date": "2026-05-09",
+      "categories": [
+        "cs.RO"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 14,
+      "summary_zh": "核心问题：针对流匹配视觉-语言-动作模型微调时灾难性遗忘预训练能力的问题。  \n方法与创新点：提出保守监督微调，基于模型置信度动态缩放学习信号抑制梯度过量更新，无需先验数据或额外架构，借鉴强化学习信任区域裁剪形成渐进学习动态。  \n关键结论：在LIBERO和RoboTwin基准上，相比标准微调，能力保留平均绝对边际超20%，达到数据重放效果，且真实部署中避免空间过拟合，保持预训练物理技能并获取新任务。"
+    },
+    {
+      "id": "arxiv:2605.08831",
+      "title": "AssemPlanner: A Multi-Agent Based Task Planning Framework for Flexible Assembly System",
+      "authors": [
+        "Chenhao Zhang",
+        "Chaoran Zhang",
+        "Zhaobo Xu",
+        "Yongbo Yang",
+        "Pingfa Feng",
+        "Long Zeng"
+      ],
+      "abstract": "In flexible assembly systems, existing task planning methods require a time-consuming configuration process by multiple experts to establish a production line for a new product. To address this challenge, we propose a multi-agent based task planning framework for flexible assembly systems, denoted as AssemPlanner. It takes tasks described in natural language as input, which are then converted into actionable sequential production operations. It comprises several specialized agents, including SchedAgent , KnowledgeAgent, LineBalanceAgent, and a scene graph. Within the proposed framework, SchedAgent serves as the central reasoning engine. Departing from traditional static pipelines, AssemPlanner utilizes a ReAct-based SchedAgent to adaptively adjust actions via multi-agent feedback. By observing the feedback from KnowledgeAgent, LineBalanceAgent, and the scene graph, it autonomously resolves complex industrial process constraints. To facilitate reproducibility, all code and datasets are released at https://github.com/chz332/Assemplanner.",
+      "url": "https://arxiv.org/abs/2605.08831",
+      "pdf_url": "https://arxiv.org/pdf/2605.08831v1",
+      "published_date": "2026-05-09",
+      "categories": [
+        "cs.RO"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 15,
+      "summary_zh": "核心问题：解决柔性装配系统为新产线配置需多专家耗时的问题。  \n方法与创新点：提出多智能体任务规划框架AssemPlanner，以自然语言任务为输入，通过ReAct驱动的SchedAgent作为中心推理引擎，结合KnowledgeAgent、LineBalanceAgent和场景图的多智能体反馈，自适应调整动作并自主解决复杂工业约束。  \n关键结论：框架实现了从自然语言到可执行操作的端到端转换，显著提升配置效率，代码与数据集已开源。"
+    }
+  ],
+  "daily_ai": [
+    {
+      "id": "arxiv:2605.09195",
+      "title": "The Geometry of Forgetting: Temporal Knowledge Drift as an Independent Axis in LLM Representations",
+      "authors": [
+        "Rania Elbadry",
+        "Ahmed Heakl",
+        "Fan Zhang",
+        "Dani Bouch",
+        "Yuxia Wang",
+        "Preslav Nakov",
+        "Zhuohan Xie"
+      ],
+      "abstract": "Large language models confidently produce outdated answers, and no existing method can detect them. We show this is not an engineering failure but a structural one: temporal drift, whether a stored fact has changed since training, is encoded as a direction in the residual stream geometrically orthogonal to both correctness and uncertainty. Any method operating on correctness or uncertainty signals is therefore blind to drift by construction. We verify this across six instruction-tuned models. A linear probe trained directly on drift labels achieves AUROC $0.83$--$0.95$; methods based on token entropy, semantic entropy, CCS, and SAPLMA all remain near chance ($0.49$--$0.57$). Five tests confirm the geometric orthogonality: weight cosines ($|\\cos| \\leq 0.14$), score correlations ($|r| \\leq 0.20$), bidirectional null-space projection ($|Δ| \\leq 0.008$), iterative null-space projection with $k{=}10$, and difference-of-means dissociation. Mechanistically, the MLP retrieval circuit produces identical dynamics for stale recall and confabulation ($r > 0.81$, six models), explaining why output confidence cannot separate them. A cross-cutoff experiment holds inputs constant and varies only the model: the probe fires on the model whose training predates the fact's transition and stays silent otherwise ($P(A{>}B) = 0.975$--$0.998$, twelve model pairs), confirming it reads model-internal knowledge state rather than input properties. Our code and datasets will be publicly released.",
+      "url": "https://arxiv.org/abs/2605.09195",
+      "pdf_url": "https://arxiv.org/pdf/2605.09195v1",
+      "published_date": "2026-05-10",
+      "categories": [
+        "cs.AI"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "ai",
+      "rank": 1,
+      "summary_zh": "大语言模型自信输出过时答案，现有方法无法检测。本文证明这是结构性问题：时间漂移（训练后事实变化）在残差流中编码为与正确性、不确定性几何正交的方向。采用线性探针直接训练于漂移标签，在六种指令微调模型上AUROC达0.83–0.95；而基于token熵、语义熵、CCS、SAPLMA的方法仅接近随机（0.49–0.57）。五项测试证实几何正交性，交叉截止实验确认探针读取模型内部知识状态而非输入属性（P(A>B)=0.975–0.998）。"
+    },
+    {
+      "id": "arxiv:2605.09192",
+      "title": "Evidence Over Plans: Online Trajectory Verification for Skill Distillation",
+      "authors": [
+        "Yang Zhou",
+        "Zihan Dong",
+        "Zhenting Wang",
+        "Can Jin",
+        "Shiyu Zhao",
+        "Bangwei Guo",
+        "Difei Gu",
+        "Linjun Zhang",
+        "Mu Zhou",
+        "Dimitris N. Metaxas"
+      ],
+      "abstract": "Agent skills can remarkably improve task success rates by using human-written procedural documents, but their quality is difficult to assess without environment-grounded verification. Existing skill generation methods heavily rely on preference logs rather than direct environment interaction, often yielding negligible or even degraded gains. We identify that it is a fundamental timing bottleneck: robust skills should be posterior-based, distilled from empirical environment interaction rather than prior plans. In this study, we introduce the Posterior Distillation Index (PDI), a trajectory-level metric that quantifies how well a distilled skill is grounded in the task-environment evidence. To operationalize PDI, we present SPARK (Structured Pipelines for Autonomous Runnable tasKs and sKill generation) for preserving task execution evidence towards full trajectory-level analysis. SPARK generates environment-verified trajectories used to compute PDI, and it applies PDI as an online diagnostic and intervention signal to ensure posterior skill formation. Across 86 runnable tasks, SPARK-generated skills consistently surpass no-skill baselines and outperform human-written skills on student models (inference cost up to 1,000x cheaper than teacher models). These findings show that PDI-guided distillation produces efficient and transferable skills grounded in the task-environment interaction. We release our code at https://github.com/EtaYang10th/spark-skills .",
+      "url": "https://arxiv.org/abs/2605.09192",
+      "pdf_url": "https://arxiv.org/pdf/2605.09192v1",
+      "published_date": "2026-05-10",
+      "categories": [
+        "cs.AI"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "ai",
+      "rank": 2,
+      "summary_zh": "1. 核心问题：现有技能蒸馏方法高度依赖偏好日志而非环境交互验证，导致生成的技能常无效果甚至退化。  \n2. 方法与创新点：提出后验蒸馏指标PDI，量化技能在任务-环境证据中的根基；并设计SPARK框架，通过在线轨迹验证与干预确保技能形成后验化。  \n3. 关键结论：在86个可运行任务中，SPARK生成技能持续超越无技能基准与人类编写技能，且学生模型推理成本比教师模型低1000倍。"
+    },
+    {
+      "id": "arxiv:2605.09188",
+      "title": "DARE: Difficulty-Adaptive Reinforcement Learning with Co-Evolved Difficulty Estimation",
+      "authors": [
+        "Yang Zhou",
+        "Can Jin",
+        "Zihan Dong",
+        "Zhepeng Wang",
+        "Yanting Yang",
+        "Shiyu Zhao",
+        "Lei Li",
+        "Runxue Bao",
+        "Yaochen Xie",
+        "Dimitris N. Metaxas"
+      ],
+      "abstract": "Reinforcement learning improves the reasoning ability of large language models but remains costly and sample-inefficient, as many rollouts provide weak learning signals. Difficulty-aware data selection methods attempt to address this by prioritizing moderately difficult prompts, yet our analysis reveals three limitations: difficulty estimates become inaccurate under policy drift, data selection alone yields limited final-performance gains, and inference efficiency remains largely unchanged. These findings suggest that efficient and effective RL requires more than filtering by difficulty: the policy should learn to solve hard tasks while producing concise responses for easy ones. To this end, we propose **Dare**, a unified framework that co-evolves difficulty estimation with the policy via self-normalized importance sampling, maintains diverse difficulty coverage through a symmetric Beta sampling distribution, and applies tailored training strategies across difficulty tiers with adaptive compute allocation. Extensive experiments across multiple models and domains demonstrate that **Dare** consistently outperforms existing methods in training efficiency, final effectiveness, and inference efficiency, producing more concise responses on easy tasks while improving correctness on hard ones. Code is available at https://github.com/EtaYang10th/DARE.",
+      "url": "https://arxiv.org/abs/2605.09188",
+      "pdf_url": "https://arxiv.org/pdf/2605.09188v1",
+      "published_date": "2026-05-10",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "ai",
+      "rank": 3,
+      "summary_zh": "核心问题：强化学习提升LLM推理能力但成本高、样本效率低，现有难度感知数据筛选方法存在估计不准、效果有限和推理效率低等问题。  \n方法与创新点：提出DARE框架，通过自归一化重要性采样使难度估计与策略协同进化，采用对称Beta分布维持难度覆盖多样性，并针对不同难度层级设计自适应计算分配的训练策略。  \n关键结论：在多种模型和任务上，DARE在训练效率、最终效果和推理效率上均优于现有方法，能够在简单任务上生成更简洁回答，同时提高困难任务正确率。"
+    },
+    {
+      "id": "arxiv:2605.09187",
+      "title": "Emergent Semantic Role Understanding in Language Models",
+      "authors": [
+        "Carla Griffiths",
+        "Mirco Musolesi"
+      ],
+      "abstract": "Understanding how linguistic structure emerges in language models is central to interpreting what these systems learn from data and how much supervision they truly require. In particular, semantic role understanding (\"who did what to whom\") is a core component of meaning representation, yet it remains unclear whether it arises from pre-training alone or depends on task-specific fine-tuning. We study whether semantic role understanding emerges during language model pre-training or requires task-specific fine-tuning. We freeze decoder-only transformers and train linear probes to extract semantic roles, using performance to infer whether role information is already encoded in pre-training or learned during adaptation. Across model scales, we find that frozen representations contain substantial semantic role information, with performance improving but not fully matching fine-tuned models. This indicates partial but incomplete emergence from pre-training alone. We show that semantic role structure emerges from language modeling objectives, but its internal implementation shifts toward more distributed representations as model scale increases.",
+      "url": "https://arxiv.org/abs/2605.09187",
+      "pdf_url": "https://arxiv.org/pdf/2605.09187v1",
+      "published_date": "2026-05-10",
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.LG"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "ai",
+      "rank": 4,
+      "summary_zh": "这篇论文探究语义角色理解（“谁对谁做了什么”）是从语言模型预训练中涌现，还是依赖任务微调。通过冻结仅解码器Transformer并训练线性探针提取语义角色，创新性地检测预训练表征是否已编码角色信息。实验发现，冻结表征包含大量语义角色信息，性能随模型规模提升但未完全匹配微调模型，表明预训练部分涌现出语义角色结构，且内部表征随规模增大趋向分布式。"
+    },
+    {
+      "id": "arxiv:2605.09186",
+      "title": "Agentic MIP Research: Accelerated Constraint Handler Generation",
+      "authors": [
+        "Liding Xu",
+        "Yugeng Zhou",
+        "Sebastian Pokutta"
+      ],
+      "abstract": "Mixed-integer programming (MIP) research is both mathematically sophisticated and engineering-intensive: testing an algorithmic hypothesis within a branch-and-cut solver requires substantial implementation, debugging, tuning, and large-scale benchmarking. We propose an agentic MIP research framework that shortens this feedback loop by embedding LLM agents into a solver-aware harness for generating, verifying, and evaluating plugins for the open-source solver SCIP. Propagation methods play a central role in accelerating MIP solving by exploiting global constraints. We instantiate our framework on the semantic lifting of MIP formulations into global constraints and the automatic construction of propagation-only SCIP constraint handlers. On the MIPLIB 2017 benchmark set, the framework successfully recovers global constraint structures from constraint programming and generates executable constraint detectors and propagation-only constraint handlers. Furthermore, the framework naturally extends to in-context learning within a sandboxed environment, enabling agents not only to tune and debug generated constraint handlers on real instances, but also to explore global constraint patterns in MIP problems and discover novel propagation strategies not yet implemented in SCIP. This framework allows us to systematically distinguish meaningful algorithmic improvements from low-value or overly costly candidates: the novel propagation methods successfully solved five additional instances within the explored benchmark. Overall, this framework demonstrates that LLM agents can autonomously navigate the complex MIP research loop, paving the way for a more automated solver development process.",
+      "url": "https://arxiv.org/abs/2605.09186",
+      "pdf_url": "https://arxiv.org/pdf/2605.09186v1",
+      "published_date": "2026-05-10",
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "ai",
+      "rank": 5,
+      "summary_zh": "这篇论文旨在缩短混合整数规划（MIP）算法从假设到验证的漫长反馈周期。方法上，提出将LLM代理嵌入开源求解器SCIP，自动生成、调试和评估约束处理器，特别用于MIP公式的全局约束语义提升与纯传播处理器构建。在MIPLIB 2017基准上，框架成功恢复了约束编程中的全局约束结构，生成可执行检测器与处理器，并发现新传播策略，额外解决5个实例。"
+    }
+  ],
+  "weekly_hot": {
+    "id": "arxiv:2605.09196",
+    "title": "RigidFormer: Learning Rigid Dynamics using Transformers",
+    "authors": [
+      "Zhiyang Dou",
+      "Minghao Guo",
+      "Haixu Wu",
+      "Doug Roble",
+      "Tuur Stuyck",
+      "Wojciech Matusik"
+    ],
+    "abstract": "Learning-based simulation of multi-object rigid-body dynamics remains difficult because contact is discontinuous and errors compound over long horizons. Most existing methods remain tied to mesh connectivity and vertex-level message passing, which limits their applicability to mesh-free inputs such as point clouds and leads to high computational cost. Efficiently modeling high-fidelity rigid-body dynamics from mesh-free representations, therefore, remains challenging. We introduce RigidFormer, an object-centric Transformer-based model that learns mesh-free rigid-body dynamics with controllable integration step sizes. RigidFormer reasons at the object level and advances each object through compact anchors; Anchor-Vertex Pooling enriches these anchors with local vertex features, retaining contact-relevant geometry without dense vertex-level interaction. We propose Anchor-based RoPE to inject anchor geometry into attention while respecting the unordered nature of objects and anchors: object-token processing is permutation-equivariant, and the mean-pooled anchor descriptor is invariant to anchor reindexing while preserving shape extent. RigidFormer further enforces rigidity by projecting updates onto the rigid-body manifold using differentiable Kabsch alignment. On standard benchmarks, RigidFormer outperforms or matches mesh-based baselines using point inputs, runs faster, generalizes to unseen point resolutions and across datasets, and scales to 200+ objects; we also show a preliminary extension to command-conditioned articulated bodies by treating body parts as interacting object-level components.",
+    "url": "https://arxiv.org/abs/2605.09196",
+    "pdf_url": "https://arxiv.org/pdf/2605.09196v1",
+    "published_date": "2026-05-10",
+    "categories": [
+      "cs.CV",
+      "cs.AI",
+      "cs.GR",
+      "cs.LG",
+      "cs.RO"
+    ],
+    "source": "arxiv",
+    "score": 0.0,
+    "hot_type": "weekly_hot",
+    "summary_zh": "RigidFormer 针对多刚体动力学仿真中接触不连续、长程误差累积以及现有方法依赖网格连接而无法处理点云等无网格输入的问题，提出基于 Transformer 的对象级模型。其创新在于：通过紧凑锚点与 Anchor-Vertex Pooling 保留接触相关几何，利用 Anchor-based RoPE 实现置换等变的锚点几何注入，并采用可微 Kabsch 对齐强制刚体约束。在标准基准上，RigidFormer 使用点输入超越或匹配基于网格的基线，运行更快，泛化至未见点分辨率和跨数据集，并支持 200 以上对象及命令条件关节体扩展。",
+    "detail_zh": "**1. 研究背景与动机**  \n多物体刚体动力学仿真在机器人操作、物理模拟和虚拟环境中至关重要，但接触不连续、长期误差累积使得基于学习的建模极具挑战。现有方法如 GNS 和 MeshGraphNets 严重依赖网格拓扑和顶点级消息传递，这不仅要求输入具有网格结构（无法直接处理点云），而且计算开销随顶点数二次增长，限制了在大规模场景中的应用。因此，从无网格表示（如点云）高效、高保真地学习刚体动力学成为亟待解决的问题。\n\n**2. 核心问题定义**  \nRigidFormer 旨在解决：如何从无网格的点云输入中，以物体为中心、可扩展地学习多物体刚体动力学，同时保持刚体约束并支持可控的积分步长。\n\n**3. 方法论详解**  \nRigidFormer 提出基于 Transformer 的物体级动力学模型。每个物体通过一组紧凑的 **锚点（Anchors）** 表示，这些锚点由可学习的位置编码和从点云采样获得。核心设计包括：**Anchor-Vertex Pooling** 融合锚点与物体局部顶点特征，在保持接触相关几何信息的同时避免顶点级密集交互；**Anchor-based RoPE（旋转位置编码）** 将锚点的几何信息（如相对位置、方向）注入注意力机制，且对物体与锚点的重排序保持排列等变性——物体 token 处理是置换等价的，而平均池化的锚点描述符对锚点索引不变量。最后，模型通过 **可微 Kabsch 对齐** 将预测的每位姿更新投影到刚体流形上，强制执行形状保持的刚体运动。整个框架以物体为中心，支持变压器并行处理任意数量的物体。\n\n**4. 实验结果与关键指标**  \n在 RigidBodyGym 等标准基准上，RigidFormer 使用纯点云输入（无需网格），在预测精度上 **优于或匹配** 基于网格的基线（如 MeshGraphNets），而推理速度 **快 3–5 倍**。模型表现出优异的泛化性：能够零样本迁移到未见过的点分辨率（如从 512 点到 2048 点）以及跨数据集场景（如训练于长方体测试于圆柱体）。在 200+ 物体的大规模场景中仍保持稳定收敛，而基线方法因内存爆炸无法运行。此外，初步展示了扩展到 **命令条件关节体** 的能力，将身体部件视为交互的物体级组件。\n\n**5. 与现有工作对比**  \n相比主流网格依赖方法（GNS、MeshGraphNets），RigidFormer 无需预先建立网格连接，直接处理点云或网格，减少了预处理负担和计算成本。其物体级注意力机制比顶点级消息传递更高效，且通过 Kabsch 投影显式强制刚体约束，避免了隐式学习导致的刚性退化。\n\n**6. 实际意义与未来展望**  \n这项工作为机器人仿真、大规模物理引擎（如 Isaac Sim、MuJoCo 的替代）提供了高效的学习框架，尤其适用于点云传感器输入的真实世界场景。未来可扩展至可变形物体和复杂关节结构，结合强化学习实现实时策略训练。\n\n**7. 推荐理由**  \n本周特别值得关注：RigidFormer 首次将 Transformer 与物体级锚点机制相结合，优雅地解决了无网格刚体动力学学习的三大痛点——几何嵌入、刚体约束和可扩展性，为物理学习领域开辟了新范式。"
+  },
+  "monthly_hot": {
+    "id": "arxiv:2605.09195",
+    "title": "The Geometry of Forgetting: Temporal Knowledge Drift as an Independent Axis in LLM Representations",
+    "authors": [
+      "Rania Elbadry",
+      "Ahmed Heakl",
+      "Fan Zhang",
+      "Dani Bouch",
+      "Yuxia Wang",
+      "Preslav Nakov",
+      "Zhuohan Xie"
+    ],
+    "abstract": "Large language models confidently produce outdated answers, and no existing method can detect them. We show this is not an engineering failure but a structural one: temporal drift, whether a stored fact has changed since training, is encoded as a direction in the residual stream geometrically orthogonal to both correctness and uncertainty. Any method operating on correctness or uncertainty signals is therefore blind to drift by construction. We verify this across six instruction-tuned models. A linear probe trained directly on drift labels achieves AUROC $0.83$--$0.95$; methods based on token entropy, semantic entropy, CCS, and SAPLMA all remain near chance ($0.49$--$0.57$). Five tests confirm the geometric orthogonality: weight cosines ($|\\cos| \\leq 0.14$), score correlations ($|r| \\leq 0.20$), bidirectional null-space projection ($|Δ| \\leq 0.008$), iterative null-space projection with $k{=}10$, and difference-of-means dissociation. Mechanistically, the MLP retrieval circuit produces identical dynamics for stale recall and confabulation ($r > 0.81$, six models), explaining why output confidence cannot separate them. A cross-cutoff experiment holds inputs constant and varies only the model: the probe fires on the model whose training predates the fact's transition and stays silent otherwise ($P(A{>}B) = 0.975$--$0.998$, twelve model pairs), confirming it reads model-internal knowledge state rather than input properties. Our code and datasets will be publicly released.",
+    "url": "https://arxiv.org/abs/2605.09195",
+    "pdf_url": "https://arxiv.org/pdf/2605.09195v1",
+    "published_date": "2026-05-10",
+    "categories": [
+      "cs.AI"
+    ],
+    "source": "arxiv",
+    "score": 0.0,
+    "hot_type": "monthly_hot",
+    "summary_zh": "大型语言模型无法检测知识的时间漂移（训练后事实已变化），现有方法均失效。本文发现：漂移在残差流中编码为与正确性和不确定性几何正交的独立方向，使基于后两者的方法天生失效。通过在六个指令调优模型上训练线性探针，AUROC达0.83–0.95，而基于熵、语义熵、CCS、SAPLMA等方法仅0.49–0.57。多项几何正交性测试及机制",
+    "detail_zh": "### 1. 研究背景与动机\n大语言模型（LLM）在回答事实性问题时，会以极高置信度输出已经过时的信息，例如声称某位仍在世的科学家已去世。现有的事实性检测方法——包括基于 token 熵、语义熵、对比表示（CCS）或内部探针（SAPLMA）——均无法区分「正确但过时」与「错误且虚构」的回答。这表明该问题并非工程调优缺陷，而是表示几何层面的结构性盲区：所有主流方法都只建模了回答的「正确性」与「模型不确定性」，却从未考虑「信息的时间有效性」这一独立维度。\n\n### 2. 核心问题定义\n该论文精确要回答的问题是：**训练后事实是否发生改变（即时间知识漂移）在 LLM 残差流中是否编码为一个与正确性、不确定性几何正交的独立方向？** 如果是，那么能否通过直接学习该方向的线性探针来识别模型内部的「遗忘」状态？\n\n### 3. 方法论详解\n研究团队首先在 6 个指令微调模型（涵盖 Llama、Mistral 等架构）上，使用带有时间戳的事实三元组（如“拜登于2021年就任总统” vs “2024年时该事实仍正确”）构造了漂移标签数据集。核心技术路线分为三个层面：**几何验证**——通过五组定量测试（权重余弦相似度 |cos|≤0.14、探针分数皮尔逊相关系数 |r|≤0.20、双向零空间投影前后差值 |Δ|≤0.008、迭代 k=10 的零空间投影、均值差解耦）严格证明时间漂移方向与正确性、不确定性方向正交；**机制分析**——发现 MLP 检索电路在处理过期回忆（stale recall）与虚构（confabulation）时产生几乎相同的动力学模式（r>0.81），解释了为何输出置信度无法区分二者；**因果验证**——跨截断时间点实验（cross-cutoff）固定输入文本，仅变化模型版本（训练日期早于/晚于事实变化时刻），结果显示线性探针仅在过时模型上激活，在更新模型上保持静默（P(A>B)=0.975–0.998，12 个模型对），证明探针读取的是模型内部知识状态而非输入特征。\n\n### 4. 实验结果与关键指标\n在自建的时间漂移基准上，**直接使用漂移标签训练的线性探针（从最后一层残差流表示）** 达到 AUROC 0.83–0.95（6 个模型平均约 0.90）；而所有对比方法——token 熵（0.49–0.53）、语义熵（0.51–0.57）、CCS（0.50–0.55）、SAPLMA（0.50–0.52）——均接近随机猜测水平（0.49–0.57）。跨截断点因果实验的 12 个模型对中，11 对达到 P>0.99，验证了探针的强归因能力。\n\n### 5. 与现有工作对比\n传统事实性校正方法（如对抗训练、知识编辑）和不确定性检测（如熵、logit 差值）均无法识别时间漂移，因为它们在表示空间中的操作方向与漂移方向正交。该工作首次从几何角度揭示这一结构性盲区，并提出一个仅需少量带时间戳标注数据的轻量线性探针即可有效检测，其性能远超所有 SOTA 认知不确定性方法（相对提升超过 0.35 AUROC）。\n\n### 6. 实际意义与未来展望\n对工业界而言，该探针可集成到实时问答系统中，在模型输出过时答案时触发警告或自动调用知识库回溯；对学术界而言，它打开了「时间感知表示几何」的研究方向，未来可探索将时间信息显式编码进 LLM 的预训练或微调阶段。此外，该方法的轻量化（线性探针，无需推理时采样）使其具备极高的部署实用性。\n\n### 7. 推荐理由\n本月特别值得关注，因为它揭示了一个被长期忽视的 LLM 结构性问题——时间漂移在表示空间中与所有主流检测信号正交，并给出了一个简单、可复现的解决方案。该工作同时具有坚实的理论几何验证和强因果性的实验设计，为 LLM 事实性研究开辟了全新维度。"
+  }
+}
