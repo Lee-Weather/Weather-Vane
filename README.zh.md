@@ -12,7 +12,7 @@
 |-------|------|
 | `Fetcher` | 从 arXiv / HuggingFace / Semantic Scholar 抓取当日论文 |
 | `Ranker` | 热度评分、主题分类、筛选 Top-N 及热门 |
-| `Summarizer` | 使用 DeepSeek 生成每篇论文的中文摘要（短摘要/详细介绍） |
+| `Summarizer` | 使用 DeepSeek 生成每篇论文的深度中文摘要（支持超时自动重试与 fallback 兜底） |
 | `Storage` | 持久化到 SQLite，支持推送历史查询去重 |
 | `Notifier` | 推送日报（Telegram / Email / 本地 Markdown）|
 | `Daily-Paper-Push` | 主调度器，串联以上所有 Skill |
@@ -40,14 +40,25 @@ conda activate ai_base
 pip install -r requirements.txt
 ```
 
-### 3. 手动触发流水线
+### 3. 运行完整流水线
 
 ```bash
-# 直接运行脚本（不依赖 Claude Code）
+# 一键执行抓取、排名、摘要、入库到推送的全流程
+python .claude/skills/Daily-Paper-Push/scripts/run_pipeline.py
+
+# 或者指定特定日期执行
+python .claude/skills/Daily-Paper-Push/scripts/run_pipeline.py --date 2026-04-30
+```
+
+### 4. 分步调试运行
+
+```bash
+# 直接分步运行各模块（用于调试或跳过某步骤）
 python .claude/skills/Fetcher/scripts/fetch.py        --date 2026-04-30
 python .claude/skills/Ranker/scripts/rank.py          --date 2026-04-30
 python .claude/skills/Summarizer/scripts/summarize.py --date 2026-04-30
 python .claude/skills/Storage/scripts/save.py         --save data/2026-04-30-summarized.json
+python .claude/skills/Notifier/scripts/notify.py      --date 2026-04-30
 ```
 
 ---
@@ -74,10 +85,10 @@ python .claude/skills/Storage/scripts/save.py         --save data/2026-04-30-sum
 
 - [x] Skill 1 Fetcher — 数据抓取
 - [x] Skill 2 Ranker — 过滤排名
-- [x] Skill 3 Summarizer — 摘要生成（DeepSeek 接入）
+- [x] Skill 3 Summarizer — 摘要生成（DeepSeek 接入，支持长文本深度解析与超时降级）
 - [x] Skill 4 Storage — 数据库存储去重
-- [ ] Skill 5 Notifier — 渲染与多渠道推送
-- [ ] Skill 0 Daily-Paper-Push — 流水线调度与自动化
+- [x] Skill 5 Notifier — 渲染与多渠道推送
+- [x] Skill 0 Daily-Paper-Push — 流水线调度与自动化
 
 ---
 

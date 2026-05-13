@@ -12,7 +12,7 @@
 |-------|----------------|
 | `Fetcher` | Fetches daily papers from arXiv / HuggingFace / Semantic Scholar |
 | `Ranker` | Scores popularity, classifies topics, and filters Top-N |
-| `Summarizer` | Generates Chinese summaries (short & detailed) via DeepSeek API |
+| `Summarizer` | Generates detailed Chinese summaries via DeepSeek API (with timeout retry & auto-fallback) |
 | `Storage` | Persists data to SQLite, supports history querying and deduplication |
 | `Notifier` | Pushes daily reports (Telegram / Email / Local Markdown) |
 | `Daily-Paper-Push` | Main orchestrator, pipelines all the Skills above |
@@ -40,14 +40,25 @@ conda activate ai_base
 pip install -r requirements.txt
 ```
 
-### 3. Manual Pipeline Run
+### 3. Automated Pipeline Run
 
 ```bash
-# Run each step directly (without Claude Code)
+# Run the complete pipeline: fetch, rank, summarize, save, and notify
+python .claude/skills/Daily-Paper-Push/scripts/run_pipeline.py
+
+# Or run for a specific date
+python .claude/skills/Daily-Paper-Push/scripts/run_pipeline.py --date 2026-04-30
+```
+
+### 4. Step-by-step Run (Debugging)
+
+```bash
+# Run each step directly
 python .claude/skills/Fetcher/scripts/fetch.py       --date 2026-04-30
 python .claude/skills/Ranker/scripts/rank.py         --date 2026-04-30
 python .claude/skills/Summarizer/scripts/summarize.py --date 2026-04-30
 python .claude/skills/Storage/scripts/save.py        --save data/2026-04-30-summarized.json
+python .claude/skills/Notifier/scripts/notify.py     --date 2026-04-30
 ```
 
 ---
@@ -74,10 +85,10 @@ python .claude/skills/Storage/scripts/save.py        --save data/2026-04-30-summ
 
 - [x] Skill 1 — Fetcher
 - [x] Skill 2 — Ranker
-- [x] Skill 3 — Summarizer (DeepSeek API integrated)
+- [x] Skill 3 — Summarizer (DeepSeek API integrated, with deep analysis and fallback model support)
 - [x] Skill 4 — Storage
-- [ ] Skill 5 — Notifier
-- [ ] Skill 0 — Daily-Paper-Push (Orchestrator)
+- [x] Skill 5 — Notifier
+- [x] Skill 0 — Daily-Paper-Push (Orchestrator)
 
 ---
 
