@@ -1,0 +1,603 @@
+{
+  "date": "2026-05-11",
+  "daily_robot": [
+    {
+      "id": "arxiv:2605.10942",
+      "title": "HarmoWAM: Harmonizing Generalizable and Precise Manipulation via Adaptive World Action Models",
+      "authors": [
+        "Qiuxuan Feng",
+        "Jiale Yu",
+        "Jiaming Liu",
+        "Yueru Jia",
+        "Zhuangzhe Wu",
+        "Hao Chen",
+        "Zezhong Qian",
+        "Shuo Gu",
+        "Peng Jia",
+        "Siwei Ma",
+        "Shanghang Zhang"
+      ],
+      "abstract": "World Action Models (WAMs) have emerged as a promising paradigm for robot control by modeling physical dynamics. Current WAMs generally follow two paradigms: the \"Imagine-then-Execute\" approach, which uses video prediction to infer actions via inverse dynamics, and the \"Joint Modeling\" approach, which jointly models actions and video representations. Based on systematic experiments, we observe a fundamental trade-off between these paradigms: the former explicitly leverages world models for generalizable transit but lacks interaction precision, whereas the latter enables fine-grained, temporally coherent action generation but is constrained by the exploration space of the training distribution. Motivated by these findings, we propose HarmoWAM, an end-to-end WAM that fully leverages a world model to unify predictive and reactive control, enabling both generalizable transit and precise manipulation. Specifically, the world model provides spatio-temporal physical priors that condition two complementary action experts: a predictive expert that leverages latent dynamics for iterative action generation, and a reactive expert that directly infers actions from predicted visual evolution. To enable adaptive coordination, a Process-Adaptive Gating Mechanism is proposed to automatically determine the timing and location of switching between them. This allows the world model to drive the reactive expert to expand the exploration space and the predictive expert to perform precise interactions across different stages of a task. For evaluation, we construct three training-unseen test environments across six real-world robotic tasks, covering variations in background, position, and object semantics. Notably, HarmoWAM achieves strong zero-shot generalization across these scenarios, significantly outperforming prior state-of-the-art VLA models and WAMs by margins of 33% and 29%, respectively.",
+      "url": "https://arxiv.org/abs/2605.10942",
+      "pdf_url": "https://arxiv.org/pdf/2605.10942v1",
+      "published_date": "2026-05-12",
+      "categories": [
+        "cs.RO"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 1
+    },
+    {
+      "id": "arxiv:2605.10934",
+      "title": "Variational Inference for Lévy Process-Driven SDEs via Neural Tilting",
+      "authors": [
+        "Yaman Kindap",
+        "Manfred Opper",
+        "Benjamin Dupuis",
+        "Umut Simsekli",
+        "Tolga Birdal"
+      ],
+      "abstract": "Modelling extreme events and heavy-tailed phenomena is central to building reliable predictive systems in domains such as finance, climate science, and safety-critical AI. While Lévy processes provide a natural mathematical framework for capturing jumps and heavy tails, Bayesian inference for Lévy-driven stochastic differential equations (SDEs) remains intractable with existing methods: Monte Carlo approaches are rigorous but lack scalability, whereas neural variational inference methods are efficient but rely on Gaussian assumptions that fail to capture discontinuities. We address this tension by introducing a neural exponential tilting framework for variational inference in Lévy-driven SDEs. Our approach constructs a flexible variational family by exponentially reweighting the Lévy measure using neural networks. This parametrization preserves the jump structure of the underlying process while remaining computationally tractable. To enable efficient inference, we develop a quadratic neural parametrization that yields closed-form normalization of the tilted measure, a conditional Gaussian representation for stable processes that facilitates simulation, and symmetry-aware Monte Carlo estimators for scalable optimization. Empirically, we demonstrate that the method accurately captures jump dynamics and yields reliable posterior inference in regimes where Gaussian-based variational approaches fail, on both synthetic and real-world datasets.",
+      "url": "https://arxiv.org/abs/2605.10934",
+      "pdf_url": "https://arxiv.org/pdf/2605.10934v1",
+      "published_date": "2026-05-12",
+      "categories": [
+        "cs.LG",
+        "cs.AI",
+        "cs.CV",
+        "cs.RO",
+        "stat.ML"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 2
+    },
+    {
+      "id": "arxiv:2605.10925",
+      "title": "PriorVLA: Prior-Preserving Adaptation for Vision-Language-Action Models",
+      "authors": [
+        "Xinyu Guo",
+        "Bin Xie",
+        "Wei Chai",
+        "Xianchi Deng",
+        "Tiancai Wang",
+        "Zhengxing Wu",
+        "Xingyu Chen"
+      ],
+      "abstract": "Large-scale pretraining has made Vision-Language-Action (VLA) models promising foundations for generalist robot manipulation, yet adapting them to downstream tasks remains necessary. However, the common practice of full fine-tuning treats pretraining as initialization and can shift broad priors toward narrow training-distribution patterns. We propose PriorVLA, a novel framework that preserves pretrained priors and learns to leverage them for effective adaptation. PriorVLA keeps a frozen Prior Expert as a read-only prior source and trains an Adaptation Expert for downstream specialization. Expert Queries capture scene priors from the pretrained VLM and motor priors from the Prior Expert, integrating both into the Adaptation Expert to guide adaptation. Together, PriorVLA updates only 25% of the parameters updated by full fine-tuning. Across RoboTwin 2.0, LIBERO, and real-world tasks, PriorVLA achieves stronger overall performance than full fine-tuning and state-of-the-art VLA baselines, with the largest gains under out-of-distribution (OOD) and few-shot settings. PriorVLA improves over pi0.5 by 11 points on RoboTwin 2.0-Hard and achieves 99.1% average success on LIBERO. Across eight real-world tasks and two embodiments, PriorVLA reaches 81% in-distribution (ID) and 57% OOD success with standard data. With only 10 demonstrations per task, PriorVLA reaches 48% ID and 32% OOD success, surpassing pi0.5 by 24 and 22 points, respectively.",
+      "url": "https://arxiv.org/abs/2605.10925",
+      "pdf_url": "https://arxiv.org/pdf/2605.10925v1",
+      "published_date": "2026-05-12",
+      "categories": [
+        "cs.RO"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 3
+    },
+    {
+      "id": "arxiv:2605.10921",
+      "title": "RoboMemArena: A Comprehensive and Challenging Robotic Memory Benchmark",
+      "authors": [
+        "Huashuo Lei",
+        "Wenxuan Song",
+        "Huarui Zhang",
+        "Jieyuan Pei",
+        "Jiayi Chen",
+        "Haodong Yan",
+        "Han Zhao",
+        "Pengxiang Ding",
+        "Zhipeng Zhang",
+        "Lida Huang",
+        "Donglin Wang",
+        "Yan Wang",
+        "Haoang Li"
+      ],
+      "abstract": "Memory is a critical component of robotic intelligence, as robots must rely on past observations and actions to accomplish long-horizon tasks in partially observable environments. However, existing robotic memory benchmarks still lack multimodal annotations for memory formation, provide limited task coverage and structural complexity, and remain restricted to simulation without real-world evaluation. We address this gap with RoboMemArena, a large-scale benchmark of 26 tasks, with average trajectory lengths exceeding 1,000 steps per task and 68.9% of subtasks being memory-dependent. The generation pipeline leverages a vision-language model (VLM) to design and compose subtasks, generates full trajectories through atomic functions, and provides memory-related annotations, including subtask instructions and native keyframe annotations, while paired real-world memory tasks support physical evaluation. We further design PrediMem, a dual-system VLA in which a high-level VLM planner manages a memory bank with recent and keyframe buffers and uses a predictive coding head to improve sensitivity to task dynamics. Extensive experiments on RoboMemArena show that PrediMem outperforms all baselines and provides insights into memory management, model architecture, and scaling laws for complex memory systems.",
+      "url": "https://arxiv.org/abs/2605.10921",
+      "pdf_url": "https://arxiv.org/pdf/2605.10921v1",
+      "published_date": "2026-05-12",
+      "categories": [
+        "cs.RO"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 4
+    },
+    {
+      "id": "arxiv:2605.10917",
+      "title": "Optimal and Scalable MAPF via Multi-Marginal Optimal Transport and Schrödinger Bridges",
+      "authors": [
+        "Usman A. Khan",
+        "Joseph W. Durham"
+      ],
+      "abstract": "We consider anonymous multi-agent path finding (MAPF) where a set of robots is tasked to travel to a set of targets on a finite, connected graph. We show that MAPF can be cast as a special class of multi-marginal optimal transport (MMOT) problems with an underlying Markovian structure, under which the exponentially large MMOT collapses to a linear program (LP) polynomial in size. Focusing on the anonymous setting, we establish conditions under which the corresponding LP is feasible, totally unimodular, and consequently, yields min-cost, integral $(\\{0,1\\})$ transports that do not overlap in both space and time. To adapt the approach to large-scale problems, we cast the MAPF-MMOT in a probabilistic framework via Schrödinger bridges. Under standard assumptions, we show that the Schrödinger bridge formulation reduces to an entropic regularization of the corresponding MMOT that admits an iterative Sinkhorn-type solution. The Schrödinger bridge, being a probabilistic framework, provides a shadow (fractional) transport that we use as a template to solve a reduced LP and demonstrate that it results in near-optimal, integral transports at a significant reduction in complexity. Extensive experiments highlight the optimality and scalability of the proposed approaches.",
+      "url": "https://arxiv.org/abs/2605.10917",
+      "pdf_url": "https://arxiv.org/pdf/2605.10917v1",
+      "published_date": "2026-05-12",
+      "categories": [
+        "cs.LG",
+        "cs.MA",
+        "cs.RO"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 5
+    },
+    {
+      "id": "arxiv:2605.10904",
+      "title": "MDrive: Benchmarking Closed-Loop Cooperative Driving for End-to-End Multi-agent Systems",
+      "authors": [
+        "Marco Coscoy",
+        "Zewei Zhou",
+        "Seth Z. Zhao",
+        "Henry Wei",
+        "Angela Magtoto",
+        "Johnson Liu",
+        "Rui Song",
+        "Walter Zimmer",
+        "Zhiyu Huang",
+        "Chen Tang",
+        "Bolei Zhou",
+        "Jiaqi Ma"
+      ],
+      "abstract": "Vehicle-to-Everything (V2X) communication has emerged as a promising paradigm for autonomous driving, enabling connected agents to share complementary perception information and negotiate with each other to benefit the final planning. Existing V2X benchmarks, however, fall short in two ways: (i) open-loop evaluations fail to capture the inherently closed-loop nature of driving, leading to evaluation gaps, and (ii) current closed-loop evaluations lack behavioral and interactive diversity to reflect real-world driving. Thus, it is still unclear the extent of benefits of multi-agent systems for closed-loop driving. In this paper, we introduce MDrive, a closed-loop cooperative driving benchmark comprising 225 scenarios grounded in both NHTSA pre-crash typologies and real-world V2X datasets. Our benchmark results demonstrate that multi-agent systems are generally better than single-agent counterparts. However, current multi-agent systems still face two important challenges: (i) perception sharing enhances perceptions, but doesn't always translate to better planning; (ii) negotiation improves planning performance but harms it in complex and dense traffic scenarios. MDrive further provides an open-source toolbox for scenario generation, Real2Sim conversion, and human-in-the-loop simulation. Together, MDrive establishes a reproducible foundation for evaluating and improving the generalization and robustness of cooperative driving systems.",
+      "url": "https://arxiv.org/abs/2605.10904",
+      "pdf_url": "https://arxiv.org/pdf/2605.10904v1",
+      "published_date": "2026-05-12",
+      "categories": [
+        "cs.RO"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 6
+    },
+    {
+      "id": "arxiv:2605.10903",
+      "title": "CapVector: Learning Transferable Capability Vectors in Parametric Space for Vision-Language-Action Models",
+      "authors": [
+        "Wenxuan Song",
+        "Han Zhao",
+        "Fuhao Li",
+        "Ziyang Zhou",
+        "Xi Wang",
+        "Jing Lyu",
+        "Pengxiang Ding",
+        "Yan Wang",
+        "Donglin Wang",
+        "Haoang Li"
+      ],
+      "abstract": "This paper proposes a novel approach to address the challenge that pretrained VLA models often fail to effectively improve performance and reduce adaptation costs during standard supervised finetuning (SFT). Some advanced finetuning methods with auxiliary training objectives can improve performance and reduce the number of convergence steps. However, they typically incur significant computational overhead due to the additional losses from auxiliary objectives. To simultaneously achieve the enhanced capabilities of auxiliary training with the simplicity of standard SFT, we decouple the two objectives of auxiliary-objective SFT within the parameter space, namely, enhancing general capabilities and fitting task-specific action distributions. To deliver the goal, we only need to train the model to converge on a small-scale task set using two distinct training strategies, resulting in two finetuned models. The parameters' difference between the two models can then be interpreted as capability vectors provided by auxiliary objectives. These vectors are then merged with pretrained parameters to form a capability-enhanced meta model. Moreover, when standard SFT is augmented with a lightweight orthogonal regularization loss, the merged model attains performance comparable to auxiliary finetuned baselines with reduced computational overhead. Internal and external experiments demonstrate that our capability vectors (1) are effective and versatile across diverse models, (2) can generalize to novel environments and embodiments out of the box.",
+      "url": "https://arxiv.org/abs/2605.10903",
+      "pdf_url": "https://arxiv.org/pdf/2605.10903v1",
+      "published_date": "2026-05-12",
+      "categories": [
+        "cs.CV",
+        "cs.RO"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 7
+    },
+    {
+      "id": "arxiv:2605.10880",
+      "title": "Safe Aerial 3D Path Planning for Autonomous UAVs using Magnetic Potential Fields",
+      "authors": [
+        "Haechan Mark Bong",
+        "Giovanni Beltrame"
+      ],
+      "abstract": "Safe autonomous Uncrewed Aerial Vehicle (UAV) navigation in urban environments requires real-time path planning that avoids obstacles. MaxConvNet is a potential-field planner that leverages properties of Maxwell's equations to generate a path to the goal without local minima. We extend the 2D MaxConvNet magnetic field planner to 3D, using a convolutional autoencoder to predict obstacle-aware potential fields from LiDAR-derived 101^3 voxel grids. Evaluation across 100 randomized closed-loop trials in two distinct Cosys-AirSim urban environments, a dense night-time cityscape and a suburban district shows a 100% path planning success rate on both maps without retraining. In offline path planning, 3DMaxConvNet produces path lengths comparable to A* on unseen maps while reducing runtime from 0.155--0.17s to 0.087--0.089s, or about 1.7--1.95 times faster than A*. Against RRT*(3k), 3DMaxConvNet achieves similar path quality while reducing planning runtime from 17.2--17.5s to about 0.09s, which is roughly 193--201 times faster than RRT*(3k).",
+      "url": "https://arxiv.org/abs/2605.10880",
+      "pdf_url": "https://arxiv.org/pdf/2605.10880v1",
+      "published_date": "2026-05-12",
+      "categories": [
+        "cs.RO"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 8
+    },
+    {
+      "id": "arxiv:2605.10858",
+      "title": "Is Your Driving World Model an All-Around Player?",
+      "authors": [
+        "Lingdong Kong",
+        "Ao Liang",
+        "Tianyi Yan",
+        "Hongsi Liu",
+        "Wesley Yang",
+        "Ziqi Huang",
+        "Xian Sun",
+        "Wei Yin",
+        "Jialong Zuo",
+        "Yixuan Hu",
+        "Dekai Zhu",
+        "Dongyue Lu",
+        "Youquan Liu",
+        "Guangfeng Jiang",
+        "Linfeng Li",
+        "Xiangtai Li",
+        "Long Zhuo",
+        "Lai Xing Ng",
+        "Benoit R. Cottereau",
+        "Changxin Gao",
+        "Liang Pan",
+        "Wei Tsang Ooi",
+        "Ziwei Liu"
+      ],
+      "abstract": "Today's driving world models can generate remarkably realistic dash-cam videos, yet no single model excels universally. Some generate photorealistic textures but violate basic physics; others maintain geometric consistency but fail when subjected to closed-loop planning. This disconnect exposes a critical gap: the field evaluates how real generated worlds appear, but rarely whether they behave realistically. We introduce WorldLens, a unified benchmark that measures world-model fidelity across the full spectrum, from pixel quality and 4D geometry to closed-loop driving and human perceptual alignment, through five complementary aspects and 24 standardized dimensions. Our evaluation of six representative models reveals that no existing approach dominates across all axes: texture-rich models violate geometry, geometry-aware models lack behavioral fidelity, and even the strongest performers achieve only 2-3 out of 10 on human realism ratings. To bridge algorithmic metrics with human perception, we further contribute WorldLens-26K, a 26,808-entry human-annotated preference dataset pairing numerical scores with textual rationales, and WorldLens-Agent, a vision-language evaluator distilled from these judgments that enables scalable, explainable auto-assessment. Together, the benchmark, dataset, and agent form a unified ecosystem for assessing generated worlds not merely by visual appeal, but by physical and behavioral fidelity.",
+      "url": "https://arxiv.org/abs/2605.10858",
+      "pdf_url": "https://arxiv.org/pdf/2605.10858v1",
+      "published_date": "2026-05-12",
+      "categories": [
+        "cs.CV",
+        "cs.RO"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 9
+    },
+    {
+      "id": "arxiv:2605.10821",
+      "title": "Unified Noise Steering for Efficient Human-Guided VLA Adaptation",
+      "authors": [
+        "Junjie Lu",
+        "Xinyao Qin",
+        "Yuhua Jiang",
+        "Kaixin Wang",
+        "Chuheng Zhang",
+        "Bin Liang",
+        "Jun Yang",
+        "Min Xu",
+        "Li Zhao"
+      ],
+      "abstract": "Diffusion-based vision-language-action (VLA) models have emerged as strong priors for robotic manipulation, yet adapting them to real-world distributions remains challenging. In particular, on-robot reinforcement learning (RL) is expensive and time-consuming, so effective adaptation depends on efficient policy improvement within a limited budget of real-world interactions. Noise-space RL lowers the cost by keeping the pretrained VLA fixed as a denoising generator while updating only a lightweight actor that predicts the noise. However, its performance is still limited due to inefficient autonomous exploration. Human corrective interventions can reduce this exploration burden, but they are naturally provided in action space, whereas noise-space finetuning requires supervision over noise variables. To address these challenges, we propose UniSteer, a Unified Noise Steering framework that combines human corrective guidance with noise-space RL through approximate action-to-noise inversion. Given a human corrective action, UniSteer inverts the frozen flow-matching decoder to recover a noise target, which provides supervised guidance for the same noise actor that is simultaneously optimized via reinforcement learning. Real-world experiments on diverse manipulation tasks show that UniSteer adapts more efficiently than strong noise-space RL and action-space human-in-the-loop baselines, improving the success rate from 20% to 90% in 66 minutes on average across four real-world adaptation tasks.",
+      "url": "https://arxiv.org/abs/2605.10821",
+      "pdf_url": "https://arxiv.org/pdf/2605.10821v1",
+      "published_date": "2026-05-12",
+      "categories": [
+        "cs.RO"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 10
+    },
+    {
+      "id": "arxiv:2605.10819",
+      "title": "ALAM: Algebraically Consistent Latent Transitions for Vision-Language-Action Models",
+      "authors": [
+        "Zuojin Tang",
+        "Haoyun Liu",
+        "Xinyuan Chang",
+        "Changjie Wu",
+        "Dongjie Huo",
+        "Yandan Yang",
+        "Bin Liu",
+        "Zhejia Cai",
+        "Feng Xiong",
+        "Mu Xu",
+        "jiachen Luo",
+        "De Ma",
+        "Zhiheng Ma",
+        "Gang Pan"
+      ],
+      "abstract": "Vision-language-action (VLA) models remain constrained by the scarcity of action-labeled robot data, whereas action-free videos provide abundant evidence of how the physical world changes. Latent action models offer a promising way to extract such priors from videos, but reconstruction-trained latent codes are not necessarily suitable for policy generation: they may predict future observations while lacking the structure needed to be reused or generated coherently with robot actions. We introduce ALAM (Algebraic Latent Action Model), an Algebraically Consistent Latent Action Model that turns temporal relations in action-free video into structural supervision. Given frame triplets, ALAM learns latent transitions that are grounded by reconstruction while being regularized by composition and reversal consistency, encouraging a locally additive transition space. For downstream VLA learning, we freeze the pretrained encoder and use its latent transition sequences as auxiliary generative targets, co-generated with robot actions under a joint flow-matching objective. This couples structured latent transitions with flow-based policy generation, allowing the policy to exploit ALAM's locally consistent transition geometry without requiring latent-to-action decoding. Representation probes show that ALAM reduces additivity and reversibility errors by 25-85 times over unstructured latent-action baselines and improves long-horizon cumulative reconstruction. When transferred to VLA policies, ALAM raises the average success rate from 47.9% to 85.0% on MetaWorld MT50 and from 94.1% to 98.1% on LIBERO, with consistent gains on real-world manipulation tasks. Ablations further confirm that the strongest improvements arise from the synergy between algebraically structured latent transitions and joint flow matching.",
+      "url": "https://arxiv.org/abs/2605.10819",
+      "pdf_url": "https://arxiv.org/pdf/2605.10819v1",
+      "published_date": "2026-05-12",
+      "categories": [
+        "cs.RO",
+        "cs.AI",
+        "cs.CV"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 11
+    },
+    {
+      "id": "arxiv:2605.10760",
+      "title": "MAGS-SLAM: Monocular Multi-Agent Gaussian Splatting SLAM for Geometrically and Photometrically Consistent Reconstruction",
+      "authors": [
+        "Zhihao Cao",
+        "Qi Shao",
+        "Shuhao Zhai",
+        "Jing Zhang",
+        "Anh Nguyen",
+        "Baoru Huang"
+      ],
+      "abstract": "Collaborative photorealistic 3D reconstruction from multiple agents enables rapid large-scale scene capture for virtual production and cooperative multi-robot exploration. While recent 3D Gaussian Splatting (3DGS) SLAM algorithms can generate high-fidelity real-time mapping, most of the existing multi-agent Gaussian SLAM methods still rely on RGB-D sensors to obtain metric depth and simplify cross-agent alignment, which limits the deployment on lightweight, low-cost, or power-constrained robotic platforms. To address this challenge, we propose MAGS-SLAM, the first RGB-only multi-agent 3DGS SLAM framework for collaborative scene reconstruction. Each agent independently builds local monocular Gaussian submaps and transmits compact submap summaries rather than raw observations or dense maps. To facilitate robust collaboration in the presence of monocular scale ambiguity, our framework integrates compact submap communication, geometry- and appearance-aware loop verification, and occupancy-aware Gaussian fusion, enabling coherent global reconstruction without active depth sensors. We further introduce ReplicaMultiagent Plus benchmark for evaluating collaborative Gaussian SLAM. Intensive experiments on synthetic and real-world datasets show that MAGS-SLAM achieves competitive tracking accuracy and comparable or superior rendering quality to state-of-the-art RGB-D collaborative Gaussian SLAM methods while relying only RGB images.",
+      "url": "https://arxiv.org/abs/2605.10760",
+      "pdf_url": "https://arxiv.org/pdf/2605.10760v1",
+      "published_date": "2026-05-11",
+      "categories": [
+        "cs.RO"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 12
+    },
+    {
+      "id": "arxiv:2605.10744",
+      "title": "C-CoT: Counterfactual Chain-of-Thought with Vision-Language Models for Safe Autonomous Driving",
+      "authors": [
+        "Kefei Tian",
+        "Yuansheng Lian",
+        "Kai Yang",
+        "Xiangdong Chen",
+        "Shen Li"
+      ],
+      "abstract": "Safety-critical planning in complex environments, particularly at urban intersections, remains a fundamental challenge for autonomous driving. Existing methods, whether rule-based or data-driven, frequently struggle to capture complex scene semantics, infer potential risks, and make reliable decisions in rare, high-risk situations. While vision-language models (VLMs) offer promising approaches for safe decision-making in these environments, most current approaches lack reflective and causal reasoning, thereby limiting their overall robustness. To address this, we propose a counterfactual chain-of-thought (C-CoT) framework that leverages VLMs to decompose driving decisions into five sequential stages: scene description, critical object identification, risk prediction, counterfactual risk reasoning, and final action planning. Within the counterfactual reasoning stage, we introduce a structured meta-action evaluation tree to explicitly assess the potential consequences of alternative action combinations. This self-reflective reasoning establishes causal links between action choices and safety outcomes, improving robustness in long-tail and out-of-distribution scenarios. To validate our approach, we construct the DeepAccident-CCoT dataset based on the DeepAccident benchmark and fine-tune a Qwen2.5-VL (7B) model using low-rank adaptation. Our model achieves a risk prediction recall of 81.9%, reduces the collision rate to 3.52%, and lowers L2 error to 1.98 m. Ablation studies further confirm the critical role of counterfactual reasoning and the meta-action evaluation tree in enhancing safety and interpretability.",
+      "url": "https://arxiv.org/abs/2605.10744",
+      "pdf_url": "https://arxiv.org/pdf/2605.10744v1",
+      "published_date": "2026-05-11",
+      "categories": [
+        "cs.CV",
+        "cs.RO"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 13
+    },
+    {
+      "id": "arxiv:2605.10738",
+      "title": "Decentralized Contingency MPC based on Safe Sets for Nonlinear Multi-agent Collision Avoidance",
+      "authors": [
+        "Max Studt",
+        "Georg Schildbach"
+      ],
+      "abstract": "Decentralized collision avoidance remains challenging, particularly when agents do not communicate any information related to planned trajectories. Most existing approaches either rely on conservative coordination mechanisms or provide limited guarantees on recursive feasibility and convergence. This paper develops a decentralized contingency MPC framework for multi-agent systems with nonlinear dynamics that achieves collision-free motion under a state-only information pattern. Each agent follows the same consensual rule set, enabling safe decentralized planning without communication. Each agent solves a local optimization problem that couples a nominal trajectory with a contingency certificate ensuring a feasible backup maneuver under receding-horizon operation. A novel geometric and decentralized safe-set update mechanism prevents feasibility loss between consecutive time steps. The resulting scheme guarantees recursive feasibility, including collision avoidance, and establishes a Lyapunov-type convergence result to an admissible safe equilibrium. Simulation results demonstrate performance in both sparse and dense multi-agent environments, including cluttered bottleneck scenarios and under plug-and-play operation.",
+      "url": "https://arxiv.org/abs/2605.10738",
+      "pdf_url": "https://arxiv.org/pdf/2605.10738v1",
+      "published_date": "2026-05-11",
+      "categories": [
+        "math.OC",
+        "cs.MA",
+        "cs.RO",
+        "eess.SY"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 14
+    },
+    {
+      "id": "arxiv:2605.10707",
+      "title": "ObjView-Bench: Rethinking Difficulty and Deployment for Object-Centric View Planning",
+      "authors": [
+        "Sicong Pan",
+        "Hao Hu",
+        "Xuying Huang",
+        "Benno Wingender",
+        "Maren Bennewitz"
+      ],
+      "abstract": "Object-centric view planning is a core component of active geometric 3D reconstruction in robotics, yet existing evaluations often conflate object complexity, planning difficulty, budget assumptions, and physical reachability constraints. As a result, conclusions drawn from idealized view-planning evaluations may not reliably predict performance under realistic reconstruction settings. We introduce ObjView-Bench, an evaluation framework for rethinking difficulty and deployment in object-centric view planning. First, we disentangle three quantities underlying view-planning evaluation: omnidirectional self-occlusion as an object-side attribute, observation saturation difficulty, and protocol-dependent planning difficulty defined through a set-cover formulation. This separation supports controlled dataset construction, analysis of slow-saturation objects, and a case study showing that planning difficulty-aware sampling can improve learned view planners. Second, we design deployment-oriented evaluation protocols that reveal how budget regimes and reachable-view constraints alter method behavior. Across classical, learned, and hybrid planners, ObjView-Bench shows that difficulty, budget, and reachability constraints substantially change method rankings and failure modes.",
+      "url": "https://arxiv.org/abs/2605.10707",
+      "pdf_url": "https://arxiv.org/pdf/2605.10707v1",
+      "published_date": "2026-05-11",
+      "categories": [
+        "cs.RO"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 15
+    }
+  ],
+  "daily_ai": [
+    {
+      "id": "arxiv:2605.10938",
+      "title": "ELF: Embedded Language Flows",
+      "authors": [
+        "Keya Hu",
+        "Linlu Qiu",
+        "Yiyang Lu",
+        "Hanhong Zhao",
+        "Tianhong Li",
+        "Yoon Kim",
+        "Jacob Andreas",
+        "Kaiming He"
+      ],
+      "abstract": "Diffusion and flow-based models have become the de facto approaches for generating continuous data, e.g., in domains such as images and videos. Their success has attracted growing interest in applying them to language modeling. Unlike their image-domain counterparts, today's leading diffusion language models (DLMs) primarily operate over discrete tokens. In this paper, we show that continuous DLMs can be made effective with minimal adaptation to the discrete domain. We propose Embedded Language Flows (ELF), a class of diffusion models in continuous embedding space based on continuous-time Flow Matching. Unlike existing DLMs, ELF predominantly stays within the continuous embedding space until the final time step, where it maps to discrete tokens using a shared-weight network. This formulation makes it straightforward to adapt established techniques from image-domain diffusion models, e.g., classifier-free guidance (CFG). Experiments show that ELF substantially outperforms leading discrete and continuous DLMs, achieving better generation quality with fewer sampling steps. These results suggest that ELF offers a promising path toward effective continuous DLMs.",
+      "url": "https://arxiv.org/abs/2605.10938",
+      "pdf_url": "https://arxiv.org/pdf/2605.10938v1",
+      "published_date": "2026-05-12",
+      "categories": [
+        "cs.CL",
+        "cs.AI",
+        "cs.LG"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "ai",
+      "rank": 1
+    },
+    {
+      "id": "arxiv:2605.10916",
+      "title": "Confidence-Guided Diffusion Augmentation for Enhanced Bangla Compound Character Recognition",
+      "authors": [
+        "Md. Sultan Al Rayhan",
+        "Maheen Islam"
+      ],
+      "abstract": "Recognition of handwritten Bangla compound characters remains a challenging problem due to complex character structures, large intra-class variation, and limited availability of high-quality annotated data. Existing Bangla handwritten character recognition systems often struggle to generalize across diverse writing styles, particularly for compound characters containing intricate ligatures and diacritical variations. In this work, we propose a confidence-guided diffusion augmentation framework for low-resolution Bangla compound character recognition. Our framework combines class-conditional diffusion modeling with classifier guidance to synthesize high-quality handwritten compound character samples. To further improve generation quality, we introduce Squeeze-and-Excitation enhanced residual blocks within the diffusion model's U-Net backbone. We additionally propose a confidence-based filtering mechanism where pre-trained classifiers act as quality gates to retain only highly class-consistent synthetic samples. The filtered synthetic images are fused with the original training data and used to retrain multiple classification architectures. Experiments conducted on the AIBangla compound character dataset demonstrate consistent performance improvements across ResNet50, DenseNet121, VGG16, and Vision Transformer architectures. Our best-performing model achieves 89.2\\% classification accuracy, surpassing the previously published AIBangla benchmark by a substantial margin. The results demonstrate that quality-aware diffusion augmentation can effectively enhance handwritten character recognition performance in low-resource script domains.",
+      "url": "https://arxiv.org/abs/2605.10916",
+      "pdf_url": "https://arxiv.org/pdf/2605.10916v1",
+      "published_date": "2026-05-12",
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "ai",
+      "rank": 2
+    },
+    {
+      "id": "arxiv:2605.10913",
+      "title": "Shepherd: A Runtime Substrate Empowering Meta-Agents with a Formalized Execution Trace",
+      "authors": [
+        "Simon Yu",
+        "Derek Chong",
+        "Ananjan Nandi",
+        "Dilara Soylu",
+        "Jiuding Sun",
+        "Christopher D Manning",
+        "Weiyan Shi"
+      ],
+      "abstract": "We introduce Shepherd, a functional programming model that formalizes meta-agent operations on target agents as functions, with core operations mechanized in Lean. Shepherd records every agent-environment interaction as a typed event in a Git-like execution trace, enabling any past state to be forked and replayed. The system forks the agent process and its filesystem $5\\times$ faster than Docker, achieving $>95\\%$ prompt-cache reuse on replay. We demonstrate the model through three applications. First, in runtime intervention, a live supervisor increases pair coding pass rates from 28.8% to 54.7% on CooperBench. Second, in counterfactual meta-optimization, branching exploration outperforms baselines across four benchmarks by up to 11 points while reducing wall-clock time by up to 58%. Third, in Tree-RL training, forking rollouts at selected turns improves TerminalBench-2 performance from 34.2% to 39.4%. These results establish Shepherd as an efficient infrastructure for programming meta-agents. We open-source the system to support future research.",
+      "url": "https://arxiv.org/abs/2605.10913",
+      "pdf_url": "https://arxiv.org/pdf/2605.10913v1",
+      "published_date": "2026-05-12",
+      "categories": [
+        "cs.AI",
+        "cs.PL",
+        "cs.SE"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "ai",
+      "rank": 3
+    },
+    {
+      "id": "arxiv:2605.10907",
+      "title": "Engineering Robustness into Personal Agents with the AI Workflow Store",
+      "authors": [
+        "Roxana Geambasu",
+        "Mariana Raykova",
+        "Pierre Tholoniat",
+        "Trishita Tiwari",
+        "Lillian Tsai",
+        "Wen Zhang"
+      ],
+      "abstract": "The dominant paradigm for AI agents is an \"on-the-fly\" loop in which agents synthesize plans and execute actions within seconds or minutes in response to user prompts. We argue that this paradigm short-circuits disciplined software engineering (SE) processes -- iterative design, rigorous testing, adversarial evaluation, staged deployment, and more -- that have delivered the (relatively) reliable and secure systems we use today. By focusing on rapid, real-time synthesis, are AI agents effectively delivering users improvised prototypes rather than systems fit for high-stakes scenarios in which users may unwittingly apply them?   This paper argues for the need to integrate rigorous SE processes into the agentic loop to produce production-grade, hardened, and deterministically-constrained agent *workflows* that substantially outperform the potentially brittle and vulnerable results of on-the-fly synthesis. Doing so may require extra compute and time, and if so, we must amortize the cost of rigor through reuse across a broad user community. We envision an *AI Workflow Store* that consists of hardened and reusable workflows that agents can invoke with far greater reliability and security than improvised tool chains. We outline the research challenges of this vision, which stem from a broader flexibility-robustness tension that we argue requires moving beyond the ``on-the-fly'' paradigm to navigate effectively.",
+      "url": "https://arxiv.org/abs/2605.10907",
+      "pdf_url": "https://arxiv.org/pdf/2605.10907v1",
+      "published_date": "2026-05-12",
+      "categories": [
+        "cs.CR",
+        "cs.AI"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "ai",
+      "rank": 4
+    },
+    {
+      "id": "arxiv:2605.10906",
+      "title": "DataMaster: Towards Autonomous Data Engineering for Machine Learning",
+      "authors": [
+        "Yaxin Du",
+        "Xiyuan Yang",
+        "Zhifan Zhou",
+        "Wanxu Liu",
+        "Zixing Lei",
+        "Zimeng Chen",
+        "Fenyi Liu",
+        "Haotian Wu",
+        "Yuzhu Cai",
+        "Zexi Liu",
+        "Xinyu Zhu",
+        "WenHao Wang",
+        "Linfeng Zhang",
+        "Chen Qian",
+        "Siheng Chen"
+      ],
+      "abstract": "As model families, training recipes, and compute budgets become increasingly standardized, further gains in machine learning systems depend increasingly on data. Yet data engineering remains largely manual and ad hoc: practitioners repeatedly search for external datasets, adapt them to existing pipelines, validate candidate data through downstream training, and carry forward lessons from prior attempts. We study task-conditioned autonomous data engineering, where an autonomous agent improves a fixed learning algorithm by optimizing only the data side, including external data discovery, data selection and composition, cleaning and transformation. The goal is to obtain a stronger downstream solution while leaving the learning algorithm unchanged. To address the open-ended search space, branch-dependent refinement, and delayed validation inherent in autonomous data engineering, we propose DataMaster, a data-agent framework that integrates tree-structured search, shared candidate data, and cumulative memory. DataMaster consists of three key components: a DataTree that organizes alternative data-engineering branches, a shared Data Pool that stores discovered external data sources for reuse, and a Global Memory that records node outcomes, artifacts, and reusable findings. Together, these components allow the agent to discover candidate data, construct executable training inputs, evaluate them through downstream feedback, and carry useful evidence across branches. We evaluate DataMaster on two types of benchmarks, MLE-Bench Lite and PostTrainBench. On MLE-Bench Lite, it improves medal rate by 32.27% over the initial score; on PostTrainBench, it surpasses the instruct model on GPQA (31.02% vs 30.35%).",
+      "url": "https://arxiv.org/abs/2605.10906",
+      "pdf_url": "https://arxiv.org/pdf/2605.10906v1",
+      "published_date": "2026-05-12",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "ai",
+      "rank": 5
+    }
+  ],
+  "weekly_hot": {
+    "id": "arxiv:2605.03042",
+    "title": "ARIS: Autonomous Research via Adversarial Multi-Agent Collaboration",
+    "authors": [
+      "Ruofeng Yang",
+      "Yongcan Li",
+      "Shuai Li"
+    ],
+    "abstract": "This report describes ARIS (Auto-Research-in-sleep), an open-source research harness for autonomous research, including its architecture, assurance mechanisms, and early deployment experience. The performance of agent systems built on LLMs depends on both the model weights and the harness around them, which governs what information to store, retrieve, and present to the model. For long-horizon research workflows, the central failure mode is not a visible breakdown but a plausible unsupported success: a long-running agent can produce claims whose evidential support is incomplete, misreported, or silently inherited from the executor's framing. Therefore, we present ARIS as a research harness that coordinates machine-learning research workflows through cross-model adversarial collaboration as a default configuration: an executor model drives forward progress while a reviewer from a different model family is recommended to critique intermediate artifacts and request revisions. ARIS has three architectural layers. The execution layer provides more than 65 reusable Markdown-defined skills, model integrations via MCP, a persistent research wiki for iterative reuse of prior findings, and deterministic figure generation. The orchestration layer coordinates five end-to-end workflows with adjustable effort settings and configurable routing to reviewer models. The assurance layer includes a three-stage process for checking whether experimental claims are supported by evidence: integrity verification, result-to-claim mapping, and claim auditing that cross-checks manuscript statements against the claim ledger and raw evidence, as well as a five-pass scientific-editing pipeline, mathematical-proof checks, and visual inspection of the rendered PDF. A prototype self-improvement loop records research traces and proposes harness improvements that are adopted only after reviewer approval.",
+    "url": "https://arxiv.org/abs/2605.03042",
+    "pdf_url": "https://arxiv.org/pdf/2605.03042",
+    "published_date": "2026-05-06",
+    "categories": [],
+    "hf_upvotes": 107,
+    "pwc_stars": 8890,
+    "score": 658.5,
+    "code_url": "https://github.com/wanshuiyin/Auto-claude-code-research-in-sleep",
+    "hot_type": "weekly_hot"
+  },
+  "monthly_hot": {
+    "id": "arxiv:2604.27393",
+    "title": "MiniCPM-o 4.5: Towards Real-Time Full-Duplex Omni-Modal Interaction",
+    "authors": [
+      "Junbo Cui",
+      "Bokai Xu",
+      "Chongyi Wang",
+      "Tianyu Yu",
+      "Weiyue Sun",
+      "Yingjing Xu",
+      "Tianran Wang",
+      "Zhihui He",
+      "Wenshuo Ma",
+      "Tianchi Cai",
+      "Jiancheng Gui",
+      "Luoyuan Zhang",
+      "Xian Sun",
+      "Fuwei Huang",
+      "Moye Chen",
+      "Zhuo Lin",
+      "Hanyu Liu",
+      "Qingxin Gui",
+      "Qingzhe Han",
+      "Yuyang Wen",
+      "Huiping Liu",
+      "Rongkang Wang",
+      "Yaqi Zhang",
+      "Hongliang Wei",
+      "Chi Chen",
+      "You Li",
+      "Kechen Fang",
+      "Jie Zhou",
+      "Yuxuan Li",
+      "Guoyang Zeng",
+      "Chaojun Xiao",
+      "Yankai Lin",
+      "Xu Han",
+      "Maosong Sun",
+      "Zhiyuan Liu",
+      "Yuan Yao"
+    ],
+    "abstract": "Recent progress in multimodal large language models (MLLMs) has brought AI capabilities from static offline data processing to real-time streaming interaction, yet they still remain far from human-level multimodal interaction. The key bottlenecks are no longer modality coverage or latency alone, but the interaction paradigm itself. First, perception and response are still separated into alternating phases, preventing models from incorporating new inputs for timely adjustment during generation. Second, most current models remain reactive, responding only to explicit user requests instead of acting proactively in the evolving multimodal environment. We present MiniCPM-o 4.5, our latest effort towards human-like multimodal interaction, which mitigates these gaps by real-time full-duplex omni-modal interaction. It can see, listen, and speak simultaneously in real-time, while also exhibiting proactive behaviors such as issuing reminders or comments based on its continuous understanding of the live scene. The key technique behind MiniCPM-o 4.5 is Omni-Flow, a unified streaming framework that aligns omni-modal inputs and outputs along a shared temporal axis. This formulation converts conventional turn-based interaction into a full-duplex, time-aligned process, enabling simultaneous perception and response and allowing proactive behavior to arise within the same framework. With a total of 9B parameters, MiniCPM-o 4.5 approaches Gemini 2.5 Flash in vision-language capabilities, delivering state-of-the-art open-source performance at its scale. It also surpasses Qwen3-Omni-30B-A3B in omni-modal understanding and delivers better speech generation, with significantly higher computation efficiency. Driven by its efficient architecture design and inference optimization, the model can perform real-time full-duplex omni-modal interaction on edge devices with less than 12GB RAM cost.",
+    "url": "https://arxiv.org/abs/2604.27393",
+    "pdf_url": "https://arxiv.org/pdf/2604.27393",
+    "published_date": "2026-05-07",
+    "categories": [],
+    "hf_upvotes": 64,
+    "pwc_stars": 24581,
+    "score": 1357.0500000000002,
+    "code_url": "https://github.com/OpenBMB/MiniCPM-o",
+    "hot_type": "monthly_hot"
+  }
+}

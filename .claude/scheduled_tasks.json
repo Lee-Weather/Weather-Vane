@@ -1,0 +1,15 @@
+{
+  "tasks": [
+    {
+      "id": "c491d3d3",
+      "cron": "3 8 * * 1-5",
+      "prompt": "推送今日 AI 论文日报，执行完整流程：抓取→排名→摘要→存储→推送。先 export http_proxy=\"http://10.12.201.122:39000\" https_proxy=\"http://10.12.201.122:39000\" HTTP_PROXY=\"http://10.12.201.122:39000\" HTTPS_PROXY=\"http://10.12.201.122:39000\"",
+      "createdAt": 1778579811879,
+      "recurring": true,
+      "createdBySessionId": "5443ba4b-643e-4b73-9a49-5231b67889cd",
+      "createdByPid": 4083811,
+      "createdByProcStart": "54945776",
+      "lastFiredAt": 1778632380562
+    }
+  ]
+}

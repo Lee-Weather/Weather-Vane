@@ -1,0 +1,626 @@
+{
+  "date": "2026-05-12",
+  "daily_robot": [
+    {
+      "id": "arxiv:2605.10942",
+      "title": "HarmoWAM: Harmonizing Generalizable and Precise Manipulation via Adaptive World Action Models",
+      "authors": [
+        "Qiuxuan Feng",
+        "Jiale Yu",
+        "Jiaming Liu",
+        "Yueru Jia",
+        "Zhuangzhe Wu",
+        "Hao Chen",
+        "Zezhong Qian",
+        "Shuo Gu",
+        "Peng Jia",
+        "Siwei Ma",
+        "Shanghang Zhang"
+      ],
+      "abstract": "World Action Models (WAMs) have emerged as a promising paradigm for robot control by modeling physical dynamics. Current WAMs generally follow two paradigms: the \"Imagine-then-Execute\" approach, which uses video prediction to infer actions via inverse dynamics, and the \"Joint Modeling\" approach, which jointly models actions and video representations. Based on systematic experiments, we observe a fundamental trade-off between these paradigms: the former explicitly leverages world models for generalizable transit but lacks interaction precision, whereas the latter enables fine-grained, temporally coherent action generation but is constrained by the exploration space of the training distribution. Motivated by these findings, we propose HarmoWAM, an end-to-end WAM that fully leverages a world model to unify predictive and reactive control, enabling both generalizable transit and precise manipulation. Specifically, the world model provides spatio-temporal physical priors that condition two complementary action experts: a predictive expert that leverages latent dynamics for iterative action generation, and a reactive expert that directly infers actions from predicted visual evolution. To enable adaptive coordination, a Process-Adaptive Gating Mechanism is proposed to automatically determine the timing and location of switching between them. This allows the world model to drive the reactive expert to expand the exploration space and the predictive expert to perform precise interactions across different stages of a task. For evaluation, we construct three training-unseen test environments across six real-world robotic tasks, covering variations in background, position, and object semantics. Notably, HarmoWAM achieves strong zero-shot generalization across these scenarios, significantly outperforming prior state-of-the-art VLA models and WAMs by margins of 33% and 29%, respectively.",
+      "url": "https://arxiv.org/abs/2605.10942",
+      "pdf_url": "https://arxiv.org/pdf/2605.10942v1",
+      "published_date": "2026-05-12",
+      "categories": [
+        "cs.RO"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 1,
+      "summary_zh": "核心问题：现有世界动作模型（WAM）在泛化性和操纵精度间存在固有权衡。  \n方法与创新点：提出HarmoWAM，利用世界模型提供时空物理先验，结合预测专家（迭代动作生成）与反应专家（从视觉演化推断动作），并通过过程自适应门控机制自动协调两者切换时机。  \n关键结论：在六个真实机器人任务的零样本泛化测试中，HarmoWAM相较于先前最先进的VLA和WAM模型分别提升33%和29%。"
+    },
+    {
+      "id": "arxiv:2605.10934",
+      "title": "Variational Inference for Lévy Process-Driven SDEs via Neural Tilting",
+      "authors": [
+        "Yaman Kindap",
+        "Manfred Opper",
+        "Benjamin Dupuis",
+        "Umut Simsekli",
+        "Tolga Birdal"
+      ],
+      "abstract": "Modelling extreme events and heavy-tailed phenomena is central to building reliable predictive systems in domains such as finance, climate science, and safety-critical AI. While Lévy processes provide a natural mathematical framework for capturing jumps and heavy tails, Bayesian inference for Lévy-driven stochastic differential equations (SDEs) remains intractable with existing methods: Monte Carlo approaches are rigorous but lack scalability, whereas neural variational inference methods are efficient but rely on Gaussian assumptions that fail to capture discontinuities. We address this tension by introducing a neural exponential tilting framework for variational inference in Lévy-driven SDEs. Our approach constructs a flexible variational family by exponentially reweighting the Lévy measure using neural networks. This parametrization preserves the jump structure of the underlying process while remaining computationally tractable. To enable efficient inference, we develop a quadratic neural parametrization that yields closed-form normalization of the tilted measure, a conditional Gaussian representation for stable processes that facilitates simulation, and symmetry-aware Monte Carlo estimators for scalable optimization. Empirically, we demonstrate that the method accurately captures jump dynamics and yields reliable posterior inference in regimes where Gaussian-based variational approaches fail, on both synthetic and real-world datasets.",
+      "url": "https://arxiv.org/abs/2605.10934",
+      "pdf_url": "https://arxiv.org/pdf/2605.10934v1",
+      "published_date": "2026-05-12",
+      "categories": [
+        "cs.LG",
+        "cs.AI",
+        "cs.CV",
+        "cs.RO",
+        "stat.ML"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 2,
+      "summary_zh": "1. 核心问题：针对Lévy过程驱动随机微分方程（SDE）的贝叶斯推断中，蒙特卡洛方法扩展性差而神经变分推断依赖高斯假设无法捕捉不连续跳变的问题。  \n2. 方法与创新点：提出神经指数倾斜框架，用神经网络对Lévy测度进行指数重加权构建灵活变分族，保留跳结构且可计算；通过二次神经参数化获得闭式归一化、稳定过程的条件高斯表示以及对称感知蒙特卡洛估计器。  \n3. 关键结论：在合成和真实数据集上，该方法准确捕捉跳动态，在高斯变分方法失效的场景下实现可靠后验推断。"
+    },
+    {
+      "id": "arxiv:2605.10925",
+      "title": "PriorVLA: Prior-Preserving Adaptation for Vision-Language-Action Models",
+      "authors": [
+        "Xinyu Guo",
+        "Bin Xie",
+        "Wei Chai",
+        "Xianchi Deng",
+        "Tiancai Wang",
+        "Zhengxing Wu",
+        "Xingyu Chen"
+      ],
+      "abstract": "Large-scale pretraining has made Vision-Language-Action (VLA) models promising foundations for generalist robot manipulation, yet adapting them to downstream tasks remains necessary. However, the common practice of full fine-tuning treats pretraining as initialization and can shift broad priors toward narrow training-distribution patterns. We propose PriorVLA, a novel framework that preserves pretrained priors and learns to leverage them for effective adaptation. PriorVLA keeps a frozen Prior Expert as a read-only prior source and trains an Adaptation Expert for downstream specialization. Expert Queries capture scene priors from the pretrained VLM and motor priors from the Prior Expert, integrating both into the Adaptation Expert to guide adaptation. Together, PriorVLA updates only 25% of the parameters updated by full fine-tuning. Across RoboTwin 2.0, LIBERO, and real-world tasks, PriorVLA achieves stronger overall performance than full fine-tuning and state-of-the-art VLA baselines, with the largest gains under out-of-distribution (OOD) and few-shot settings. PriorVLA improves over pi0.5 by 11 points on RoboTwin 2.0-Hard and achieves 99.1% average success on LIBERO. Across eight real-world tasks and two embodiments, PriorVLA reaches 81% in-distribution (ID) and 57% OOD success with standard data. With only 10 demonstrations per task, PriorVLA reaches 48% ID and 32% OOD success, surpassing pi0.5 by 24 and 22 points, respectively.",
+      "url": "https://arxiv.org/abs/2605.10925",
+      "pdf_url": "https://arxiv.org/pdf/2605.10925v1",
+      "published_date": "2026-05-12",
+      "categories": [
+        "cs.RO"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 3,
+      "summary_zh": "PriorVLA 针对 VLA 模型全微调破坏预训练先验的问题，提出保留冻结的 Prior Expert 作为只读先验源，训练 Adaptation Expert 进行下游特化，并通过 Expert Queries 融合场景与运动先验，仅更新全微调 25% 参数。在 RoboTwin 2.0-Hard 上较 pi0.5 提升 11 个百分点，LIBERO 平均成功率 99.1%，真实任务 ID 成功率 81%、OOD 57%，10 样本下分别达 48% 和 32%。"
+    },
+    {
+      "id": "arxiv:2605.10921",
+      "title": "RoboMemArena: A Comprehensive and Challenging Robotic Memory Benchmark",
+      "authors": [
+        "Huashuo Lei",
+        "Wenxuan Song",
+        "Huarui Zhang",
+        "Jieyuan Pei",
+        "Jiayi Chen",
+        "Haodong Yan",
+        "Han Zhao",
+        "Pengxiang Ding",
+        "Zhipeng Zhang",
+        "Lida Huang",
+        "Donglin Wang",
+        "Yan Wang",
+        "Haoang Li"
+      ],
+      "abstract": "Memory is a critical component of robotic intelligence, as robots must rely on past observations and actions to accomplish long-horizon tasks in partially observable environments. However, existing robotic memory benchmarks still lack multimodal annotations for memory formation, provide limited task coverage and structural complexity, and remain restricted to simulation without real-world evaluation. We address this gap with RoboMemArena, a large-scale benchmark of 26 tasks, with average trajectory lengths exceeding 1,000 steps per task and 68.9% of subtasks being memory-dependent. The generation pipeline leverages a vision-language model (VLM) to design and compose subtasks, generates full trajectories through atomic functions, and provides memory-related annotations, including subtask instructions and native keyframe annotations, while paired real-world memory tasks support physical evaluation. We further design PrediMem, a dual-system VLA in which a high-level VLM planner manages a memory bank with recent and keyframe buffers and uses a predictive coding head to improve sensitivity to task dynamics. Extensive experiments on RoboMemArena show that PrediMem outperforms all baselines and provides insights into memory management, model architecture, and scaling laws for complex memory systems.",
+      "url": "https://arxiv.org/abs/2605.10921",
+      "pdf_url": "https://arxiv.org/pdf/2605.10921v1",
+      "published_date": "2026-05-12",
+      "categories": [
+        "cs.RO"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 4,
+      "summary_zh": "**核心问题**：现有机器人记忆基准缺乏多模态标注、任务覆盖有限且仅限仿真环境。  \n**方法与创新点**：提出RoboMemArena，含26个轨迹超1000步的任务（68.9%子任务依赖记忆），利用VLM生成子任务并标注；设计PrediMem双系统VLA，结合高层VLM规划器与预测编码头以增强动态敏感性。  \n**关键结论**：PrediMem在所有基线上表现最优，揭示了复杂记忆系统的管理、架构与规模定律。"
+    },
+    {
+      "id": "arxiv:2605.10917",
+      "title": "Optimal and Scalable MAPF via Multi-Marginal Optimal Transport and Schrödinger Bridges",
+      "authors": [
+        "Usman A. Khan",
+        "Joseph W. Durham"
+      ],
+      "abstract": "We consider anonymous multi-agent path finding (MAPF) where a set of robots is tasked to travel to a set of targets on a finite, connected graph. We show that MAPF can be cast as a special class of multi-marginal optimal transport (MMOT) problems with an underlying Markovian structure, under which the exponentially large MMOT collapses to a linear program (LP) polynomial in size. Focusing on the anonymous setting, we establish conditions under which the corresponding LP is feasible, totally unimodular, and consequently, yields min-cost, integral $(\\{0,1\\})$ transports that do not overlap in both space and time. To adapt the approach to large-scale problems, we cast the MAPF-MMOT in a probabilistic framework via Schrödinger bridges. Under standard assumptions, we show that the Schrödinger bridge formulation reduces to an entropic regularization of the corresponding MMOT that admits an iterative Sinkhorn-type solution. The Schrödinger bridge, being a probabilistic framework, provides a shadow (fractional) transport that we use as a template to solve a reduced LP and demonstrate that it results in near-optimal, integral transports at a significant reduction in complexity. Extensive experiments highlight the optimality and scalability of the proposed approaches.",
+      "url": "https://arxiv.org/abs/2605.10917",
+      "pdf_url": "https://arxiv.org/pdf/2605.10917v1",
+      "published_date": "2026-05-12",
+      "categories": [
+        "cs.LG",
+        "cs.MA",
+        "cs.RO"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 5,
+      "summary_zh": "本文针对匿名多智能体路径规划（MAPF）问题，提出将其建模为具有马尔可夫结构的多边际最优传输（MMOT）问题，使指数级线性规划（LP）规模降低为多项式大小，并证明LP可行且全幺模得到无时空冲突的整数解。进一步引入薛定谔桥框架实现熵正则化，通过迭代Sinkhorn算法获得分数传输作为模板，求解降阶LP从而得到近最优整数解。实验表明该方法在最优性和可扩展性上显著提升。"
+    },
+    {
+      "id": "arxiv:2605.10904",
+      "title": "MDrive: Benchmarking Closed-Loop Cooperative Driving for End-to-End Multi-agent Systems",
+      "authors": [
+        "Marco Coscoy",
+        "Zewei Zhou",
+        "Seth Z. Zhao",
+        "Henry Wei",
+        "Angela Magtoto",
+        "Johnson Liu",
+        "Rui Song",
+        "Walter Zimmer",
+        "Zhiyu Huang",
+        "Chen Tang",
+        "Bolei Zhou",
+        "Jiaqi Ma"
+      ],
+      "abstract": "Vehicle-to-Everything (V2X) communication has emerged as a promising paradigm for autonomous driving, enabling connected agents to share complementary perception information and negotiate with each other to benefit the final planning. Existing V2X benchmarks, however, fall short in two ways: (i) open-loop evaluations fail to capture the inherently closed-loop nature of driving, leading to evaluation gaps, and (ii) current closed-loop evaluations lack behavioral and interactive diversity to reflect real-world driving. Thus, it is still unclear the extent of benefits of multi-agent systems for closed-loop driving. In this paper, we introduce MDrive, a closed-loop cooperative driving benchmark comprising 225 scenarios grounded in both NHTSA pre-crash typologies and real-world V2X datasets. Our benchmark results demonstrate that multi-agent systems are generally better than single-agent counterparts. However, current multi-agent systems still face two important challenges: (i) perception sharing enhances perceptions, but doesn't always translate to better planning; (ii) negotiation improves planning performance but harms it in complex and dense traffic scenarios. MDrive further provides an open-source toolbox for scenario generation, Real2Sim conversion, and human-in-the-loop simulation. Together, MDrive establishes a reproducible foundation for evaluating and improving the generalization and robustness of cooperative driving systems.",
+      "url": "https://arxiv.org/abs/2605.10904",
+      "pdf_url": "https://arxiv.org/pdf/2605.10904v1",
+      "published_date": "2026-05-12",
+      "categories": [
+        "cs.RO"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 6,
+      "summary_zh": "核心问题：现有V2X协同驾驶基准存在开环评估和缺乏交互多样性，无法真实反映闭环驾驶中多智能体系统的优势。  \n方法与创新点：构建包含225个场景的闭环协同驾驶基准MDrive，场景源于NHTSA预碰撞分类和真实V2X数据集，并提供场景生成、Real2Sim转换和人机环仿真开源工具箱。  \n关键结论：多智能体系统整体优于单智能体，但感知共享不一定提升规划性能，协商在复杂密集交通中反而损害规划效果。"
+    },
+    {
+      "id": "arxiv:2605.10903",
+      "title": "CapVector: Learning Transferable Capability Vectors in Parametric Space for Vision-Language-Action Models",
+      "authors": [
+        "Wenxuan Song",
+        "Han Zhao",
+        "Fuhao Li",
+        "Ziyang Zhou",
+        "Xi Wang",
+        "Jing Lyu",
+        "Pengxiang Ding",
+        "Yan Wang",
+        "Donglin Wang",
+        "Haoang Li"
+      ],
+      "abstract": "This paper proposes a novel approach to address the challenge that pretrained VLA models often fail to effectively improve performance and reduce adaptation costs during standard supervised finetuning (SFT). Some advanced finetuning methods with auxiliary training objectives can improve performance and reduce the number of convergence steps. However, they typically incur significant computational overhead due to the additional losses from auxiliary objectives. To simultaneously achieve the enhanced capabilities of auxiliary training with the simplicity of standard SFT, we decouple the two objectives of auxiliary-objective SFT within the parameter space, namely, enhancing general capabilities and fitting task-specific action distributions. To deliver the goal, we only need to train the model to converge on a small-scale task set using two distinct training strategies, resulting in two finetuned models. The parameters' difference between the two models can then be interpreted as capability vectors provided by auxiliary objectives. These vectors are then merged with pretrained parameters to form a capability-enhanced meta model. Moreover, when standard SFT is augmented with a lightweight orthogonal regularization loss, the merged model attains performance comparable to auxiliary finetuned baselines with reduced computational overhead. Internal and external experiments demonstrate that our capability vectors (1) are effective and versatile across diverse models, (2) can generalize to novel environments and embodiments out of the box.",
+      "url": "https://arxiv.org/abs/2605.10903",
+      "pdf_url": "https://arxiv.org/pdf/2605.10903v1",
+      "published_date": "2026-05-12",
+      "categories": [
+        "cs.CV",
+        "cs.RO"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 7,
+      "summary_zh": "针对预训练VLA模型在标准监督微调（SFT）中难以提升性能且适应成本高的问题，提出CapVector方法：在参数空间中将辅助目标SFT的两个目标（增强通用能力与拟合任务动作分布）解耦，通过两种训练策略获得两个微调模型，将其参数差异作为可迁移的能力向量，合并到预训练参数形成元模型，并辅以轻量正交正则化损失。实验表明，该方法能在降低计算开销的同时达到与辅助微调基线相当的性能，且能力向量可零样本泛化至新环境和新本体。"
+    },
+    {
+      "id": "arxiv:2605.10880",
+      "title": "Safe Aerial 3D Path Planning for Autonomous UAVs using Magnetic Potential Fields",
+      "authors": [
+        "Haechan Mark Bong",
+        "Giovanni Beltrame"
+      ],
+      "abstract": "Safe autonomous Uncrewed Aerial Vehicle (UAV) navigation in urban environments requires real-time path planning that avoids obstacles. MaxConvNet is a potential-field planner that leverages properties of Maxwell's equations to generate a path to the goal without local minima. We extend the 2D MaxConvNet magnetic field planner to 3D, using a convolutional autoencoder to predict obstacle-aware potential fields from LiDAR-derived 101^3 voxel grids. Evaluation across 100 randomized closed-loop trials in two distinct Cosys-AirSim urban environments, a dense night-time cityscape and a suburban district shows a 100% path planning success rate on both maps without retraining. In offline path planning, 3DMaxConvNet produces path lengths comparable to A* on unseen maps while reducing runtime from 0.155--0.17s to 0.087--0.089s, or about 1.7--1.95 times faster than A*. Against RRT*(3k), 3DMaxConvNet achieves similar path quality while reducing planning runtime from 17.2--17.5s to about 0.09s, which is roughly 193--201 times faster than RRT*(3k).",
+      "url": "https://arxiv.org/abs/2605.10880",
+      "pdf_url": "https://arxiv.org/pdf/2605.10880v1",
+      "published_date": "2026-05-12",
+      "categories": [
+        "cs.RO"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 8,
+      "summary_zh": "本篇论文解决城市环境中自主无人机（UAV）的实时3D路径规划问题，需避开障碍物且无局部极小值。方法将2D MaxConvNet磁场规划器扩展至3D，利用卷积自编码器从激光雷达101³体素网格预测障碍物感知势场。在两种Cosys-AirSim城市环境中进行100次闭环试验，路径规划成功率达100%；离线规划中路径长度与A*相当，运行时间0.087–0.089s，比A*快1.7–1.95倍，比RRT*(3k)快193–201倍。"
+    },
+    {
+      "id": "arxiv:2605.10858",
+      "title": "Is Your Driving World Model an All-Around Player?",
+      "authors": [
+        "Lingdong Kong",
+        "Ao Liang",
+        "Tianyi Yan",
+        "Hongsi Liu",
+        "Wesley Yang",
+        "Ziqi Huang",
+        "Xian Sun",
+        "Wei Yin",
+        "Jialong Zuo",
+        "Yixuan Hu",
+        "Dekai Zhu",
+        "Dongyue Lu",
+        "Youquan Liu",
+        "Guangfeng Jiang",
+        "Linfeng Li",
+        "Xiangtai Li",
+        "Long Zhuo",
+        "Lai Xing Ng",
+        "Benoit R. Cottereau",
+        "Changxin Gao",
+        "Liang Pan",
+        "Wei Tsang Ooi",
+        "Ziwei Liu"
+      ],
+      "abstract": "Today's driving world models can generate remarkably realistic dash-cam videos, yet no single model excels universally. Some generate photorealistic textures but violate basic physics; others maintain geometric consistency but fail when subjected to closed-loop planning. This disconnect exposes a critical gap: the field evaluates how real generated worlds appear, but rarely whether they behave realistically. We introduce WorldLens, a unified benchmark that measures world-model fidelity across the full spectrum, from pixel quality and 4D geometry to closed-loop driving and human perceptual alignment, through five complementary aspects and 24 standardized dimensions. Our evaluation of six representative models reveals that no existing approach dominates across all axes: texture-rich models violate geometry, geometry-aware models lack behavioral fidelity, and even the strongest performers achieve only 2-3 out of 10 on human realism ratings. To bridge algorithmic metrics with human perception, we further contribute WorldLens-26K, a 26,808-entry human-annotated preference dataset pairing numerical scores with textual rationales, and WorldLens-Agent, a vision-language evaluator distilled from these judgments that enables scalable, explainable auto-assessment. Together, the benchmark, dataset, and agent form a unified ecosystem for assessing generated worlds not merely by visual appeal, but by physical and behavioral fidelity.",
+      "url": "https://arxiv.org/abs/2605.10858",
+      "pdf_url": "https://arxiv.org/pdf/2605.10858v1",
+      "published_date": "2026-05-12",
+      "categories": [
+        "cs.CV",
+        "cs.RO"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 9,
+      "summary_zh": "现有驾驶世界模型在生成逼真视频时普遍存在物理一致性差、行为真实性不足的问题。本文提出统一基准WorldLens，从像素质量、4D几何、闭环驾驶等五个互补方面、24个标准化维度全面评估模型保真度，并构建含26,808条人类标注偏好的WorldLens-26K数据集与可解释视觉语言评估器WorldLens-Agent。对六个代表性模型评测发现，无一模型全面领先：纹理丰富模型违背几何，几何感知模型缺乏行为保真，最强模型在人类真实感评分中仅得2-3/10。"
+    },
+    {
+      "id": "arxiv:2605.10821",
+      "title": "Unified Noise Steering for Efficient Human-Guided VLA Adaptation",
+      "authors": [
+        "Junjie Lu",
+        "Xinyao Qin",
+        "Yuhua Jiang",
+        "Kaixin Wang",
+        "Chuheng Zhang",
+        "Bin Liang",
+        "Jun Yang",
+        "Min Xu",
+        "Li Zhao"
+      ],
+      "abstract": "Diffusion-based vision-language-action (VLA) models have emerged as strong priors for robotic manipulation, yet adapting them to real-world distributions remains challenging. In particular, on-robot reinforcement learning (RL) is expensive and time-consuming, so effective adaptation depends on efficient policy improvement within a limited budget of real-world interactions. Noise-space RL lowers the cost by keeping the pretrained VLA fixed as a denoising generator while updating only a lightweight actor that predicts the noise. However, its performance is still limited due to inefficient autonomous exploration. Human corrective interventions can reduce this exploration burden, but they are naturally provided in action space, whereas noise-space finetuning requires supervision over noise variables. To address these challenges, we propose UniSteer, a Unified Noise Steering framework that combines human corrective guidance with noise-space RL through approximate action-to-noise inversion. Given a human corrective action, UniSteer inverts the frozen flow-matching decoder to recover a noise target, which provides supervised guidance for the same noise actor that is simultaneously optimized via reinforcement learning. Real-world experiments on diverse manipulation tasks show that UniSteer adapts more efficiently than strong noise-space RL and action-space human-in-the-loop baselines, improving the success rate from 20% to 90% in 66 minutes on average across four real-world adaptation tasks.",
+      "url": "https://arxiv.org/abs/2605.10821",
+      "pdf_url": "https://arxiv.org/pdf/2605.10821v1",
+      "published_date": "2026-05-12",
+      "categories": [
+        "cs.RO"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 10,
+      "summary_zh": "扩散VLA模型适应真实分布时，噪声空间RL因自主探索效率低导致性能受限。为此提出UniSteer，通过近似动作-噪声逆映射将人类纠正动作转为噪声目标，统一人类引导与噪声空间RL优化。在四项真实操作任务中，平均66分钟将成功率从20%提升至90%，优于现有方法。"
+    },
+    {
+      "id": "arxiv:2605.10819",
+      "title": "ALAM: Algebraically Consistent Latent Transitions for Vision-Language-Action Models",
+      "authors": [
+        "Zuojin Tang",
+        "Haoyun Liu",
+        "Xinyuan Chang",
+        "Changjie Wu",
+        "Dongjie Huo",
+        "Yandan Yang",
+        "Bin Liu",
+        "Zhejia Cai",
+        "Feng Xiong",
+        "Mu Xu",
+        "jiachen Luo",
+        "De Ma",
+        "Zhiheng Ma",
+        "Gang Pan"
+      ],
+      "abstract": "Vision-language-action (VLA) models remain constrained by the scarcity of action-labeled robot data, whereas action-free videos provide abundant evidence of how the physical world changes. Latent action models offer a promising way to extract such priors from videos, but reconstruction-trained latent codes are not necessarily suitable for policy generation: they may predict future observations while lacking the structure needed to be reused or generated coherently with robot actions. We introduce ALAM (Algebraic Latent Action Model), an Algebraically Consistent Latent Action Model that turns temporal relations in action-free video into structural supervision. Given frame triplets, ALAM learns latent transitions that are grounded by reconstruction while being regularized by composition and reversal consistency, encouraging a locally additive transition space. For downstream VLA learning, we freeze the pretrained encoder and use its latent transition sequences as auxiliary generative targets, co-generated with robot actions under a joint flow-matching objective. This couples structured latent transitions with flow-based policy generation, allowing the policy to exploit ALAM's locally consistent transition geometry without requiring latent-to-action decoding. Representation probes show that ALAM reduces additivity and reversibility errors by 25-85 times over unstructured latent-action baselines and improves long-horizon cumulative reconstruction. When transferred to VLA policies, ALAM raises the average success rate from 47.9% to 85.0% on MetaWorld MT50 and from 94.1% to 98.1% on LIBERO, with consistent gains on real-world manipulation tasks. Ablations further confirm that the strongest improvements arise from the synergy between algebraically structured latent transitions and joint flow matching.",
+      "url": "https://arxiv.org/abs/2605.10819",
+      "pdf_url": "https://arxiv.org/pdf/2605.10819v1",
+      "published_date": "2026-05-12",
+      "categories": [
+        "cs.RO",
+        "cs.AI",
+        "cs.CV"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 11,
+      "summary_zh": "视觉-语言-动作模型因带动作标签的机器人数据稀缺而受限，潜动作模型从无动作视频提取的先验缺乏策略生成所需的结构。ALAM引入代数一致性约束（组合与反向一致性）使潜空间具有局部可加性，并冻结预训练编码器，将潜过渡序列作为辅助目标与机器人动作联合流匹配。该方法将可加性与可逆性误差降低25-85倍，在MetaWorld MT50上将成功率从47.9%提升至85.0%，LIBERO从94.1%提升至98.1%，实际任务也一致提升。"
+    },
+    {
+      "id": "arxiv:2605.10760",
+      "title": "MAGS-SLAM: Monocular Multi-Agent Gaussian Splatting SLAM for Geometrically and Photometrically Consistent Reconstruction",
+      "authors": [
+        "Zhihao Cao",
+        "Qi Shao",
+        "Shuhao Zhai",
+        "Jing Zhang",
+        "Anh Nguyen",
+        "Baoru Huang"
+      ],
+      "abstract": "Collaborative photorealistic 3D reconstruction from multiple agents enables rapid large-scale scene capture for virtual production and cooperative multi-robot exploration. While recent 3D Gaussian Splatting (3DGS) SLAM algorithms can generate high-fidelity real-time mapping, most of the existing multi-agent Gaussian SLAM methods still rely on RGB-D sensors to obtain metric depth and simplify cross-agent alignment, which limits the deployment on lightweight, low-cost, or power-constrained robotic platforms. To address this challenge, we propose MAGS-SLAM, the first RGB-only multi-agent 3DGS SLAM framework for collaborative scene reconstruction. Each agent independently builds local monocular Gaussian submaps and transmits compact submap summaries rather than raw observations or dense maps. To facilitate robust collaboration in the presence of monocular scale ambiguity, our framework integrates compact submap communication, geometry- and appearance-aware loop verification, and occupancy-aware Gaussian fusion, enabling coherent global reconstruction without active depth sensors. We further introduce ReplicaMultiagent Plus benchmark for evaluating collaborative Gaussian SLAM. Intensive experiments on synthetic and real-world datasets show that MAGS-SLAM achieves competitive tracking accuracy and comparable or superior rendering quality to state-of-the-art RGB-D collaborative Gaussian SLAM methods while relying only RGB images.",
+      "url": "https://arxiv.org/abs/2605.10760",
+      "pdf_url": "https://arxiv.org/pdf/2605.10760v1",
+      "published_date": "2026-05-11",
+      "categories": [
+        "cs.RO"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 12,
+      "summary_zh": "现有基于RGB-D传感器的多智能体高斯SLAM方法限制了轻量化部署。为此，本文提出MAGS-SLAM，首个仅依赖RGB图像的多智能体3DGS SLAM框架：各智能体独立构建单目高斯子地图，通过紧凑子地图通信、几何与外观感知回环验证及占用感知高斯融合，实现无深度传感器的协同全局重建。实验表明，在合成与真实数据集上，其跟踪精度和渲染质量均达到或超越最先进的RGB-D协同高斯SLAM方法。"
+    },
+    {
+      "id": "arxiv:2605.10744",
+      "title": "C-CoT: Counterfactual Chain-of-Thought with Vision-Language Models for Safe Autonomous Driving",
+      "authors": [
+        "Kefei Tian",
+        "Yuansheng Lian",
+        "Kai Yang",
+        "Xiangdong Chen",
+        "Shen Li"
+      ],
+      "abstract": "Safety-critical planning in complex environments, particularly at urban intersections, remains a fundamental challenge for autonomous driving. Existing methods, whether rule-based or data-driven, frequently struggle to capture complex scene semantics, infer potential risks, and make reliable decisions in rare, high-risk situations. While vision-language models (VLMs) offer promising approaches for safe decision-making in these environments, most current approaches lack reflective and causal reasoning, thereby limiting their overall robustness. To address this, we propose a counterfactual chain-of-thought (C-CoT) framework that leverages VLMs to decompose driving decisions into five sequential stages: scene description, critical object identification, risk prediction, counterfactual risk reasoning, and final action planning. Within the counterfactual reasoning stage, we introduce a structured meta-action evaluation tree to explicitly assess the potential consequences of alternative action combinations. This self-reflective reasoning establishes causal links between action choices and safety outcomes, improving robustness in long-tail and out-of-distribution scenarios. To validate our approach, we construct the DeepAccident-CCoT dataset based on the DeepAccident benchmark and fine-tune a Qwen2.5-VL (7B) model using low-rank adaptation. Our model achieves a risk prediction recall of 81.9%, reduces the collision rate to 3.52%, and lowers L2 error to 1.98 m. Ablation studies further confirm the critical role of counterfactual reasoning and the meta-action evaluation tree in enhancing safety and interpretability.",
+      "url": "https://arxiv.org/abs/2605.10744",
+      "pdf_url": "https://arxiv.org/pdf/2605.10744v1",
+      "published_date": "2026-05-11",
+      "categories": [
+        "cs.CV",
+        "cs.RO"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 13,
+      "summary_zh": "针对自动驾驶在复杂城市交叉口等高风险场景下的安全规划瓶颈，提出反事实思维链（C-CoT）框架，利用视觉语言模型（VLM）将决策分解为场景描述、关键目标识别、风险预测、反事实推理和最终规划五个阶段，并引入结构化元动作评估树显式评估替代动作的潜在后果。在DeepAccident-CCoT数据集上微调Qwen2.5-VL(7B)模型，实现了81.9%的风险预测召回率，将碰撞率降至3.52%，L2误差降至1.98米，消融实验证实了反事实推理与元动作评估树对安全性和可解释性的关键作用。"
+    },
+    {
+      "id": "arxiv:2605.10738",
+      "title": "Decentralized Contingency MPC based on Safe Sets for Nonlinear Multi-agent Collision Avoidance",
+      "authors": [
+        "Max Studt",
+        "Georg Schildbach"
+      ],
+      "abstract": "Decentralized collision avoidance remains challenging, particularly when agents do not communicate any information related to planned trajectories. Most existing approaches either rely on conservative coordination mechanisms or provide limited guarantees on recursive feasibility and convergence. This paper develops a decentralized contingency MPC framework for multi-agent systems with nonlinear dynamics that achieves collision-free motion under a state-only information pattern. Each agent follows the same consensual rule set, enabling safe decentralized planning without communication. Each agent solves a local optimization problem that couples a nominal trajectory with a contingency certificate ensuring a feasible backup maneuver under receding-horizon operation. A novel geometric and decentralized safe-set update mechanism prevents feasibility loss between consecutive time steps. The resulting scheme guarantees recursive feasibility, including collision avoidance, and establishes a Lyapunov-type convergence result to an admissible safe equilibrium. Simulation results demonstrate performance in both sparse and dense multi-agent environments, including cluttered bottleneck scenarios and under plug-and-play operation.",
+      "url": "https://arxiv.org/abs/2605.10738",
+      "pdf_url": "https://arxiv.org/pdf/2605.10738v1",
+      "published_date": "2026-05-11",
+      "categories": [
+        "math.OC",
+        "cs.MA",
+        "cs.RO",
+        "eess.SY"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 14,
+      "summary_zh": "这篇论文针对无通信条件下多智能体非线性系统的分散避碰问题，提出一种基于安全集的分散应急模型预测控制（MPC）框架。每个智能体仅依赖状态信息，通过本地优化耦合标称轨迹与应急证书，并设计几何分散安全集更新机制避免递归可行性丧失。该方法保证了递归可行性与碰撞避免，并建立Lyapunov型收敛到 admissible 安全平衡点的结论。仿真验证了其在稀疏/密集场景及即插即用操作中的有效性。"
+    },
+    {
+      "id": "arxiv:2605.10707",
+      "title": "ObjView-Bench: Rethinking Difficulty and Deployment for Object-Centric View Planning",
+      "authors": [
+        "Sicong Pan",
+        "Hao Hu",
+        "Xuying Huang",
+        "Benno Wingender",
+        "Maren Bennewitz"
+      ],
+      "abstract": "Object-centric view planning is a core component of active geometric 3D reconstruction in robotics, yet existing evaluations often conflate object complexity, planning difficulty, budget assumptions, and physical reachability constraints. As a result, conclusions drawn from idealized view-planning evaluations may not reliably predict performance under realistic reconstruction settings. We introduce ObjView-Bench, an evaluation framework for rethinking difficulty and deployment in object-centric view planning. First, we disentangle three quantities underlying view-planning evaluation: omnidirectional self-occlusion as an object-side attribute, observation saturation difficulty, and protocol-dependent planning difficulty defined through a set-cover formulation. This separation supports controlled dataset construction, analysis of slow-saturation objects, and a case study showing that planning difficulty-aware sampling can improve learned view planners. Second, we design deployment-oriented evaluation protocols that reveal how budget regimes and reachable-view constraints alter method behavior. Across classical, learned, and hybrid planners, ObjView-Bench shows that difficulty, budget, and reachability constraints substantially change method rankings and failure modes.",
+      "url": "https://arxiv.org/abs/2605.10707",
+      "pdf_url": "https://arxiv.org/pdf/2605.10707v1",
+      "published_date": "2026-05-11",
+      "categories": [
+        "cs.RO"
+      ],
+      "source": "arxiv",
+      "score": 0.0,
+      "group": "robot",
+      "rank": 15,
+      "summary_zh": "核心问题：现有物体中心视角规划评估常混淆物体复杂性、规划难度、预算假设与物理可达性，导致理想化评估无法预测真实重建性能。方法与创新点：提出ObjView-Bench框架，解耦全向自遮挡、观测饱和难度与基于集合覆盖的规划难度，并设计部署导向协议以揭示预算和可达视图约束的影响。关键结论：在经典、学习型与混合规划器中，难度、预算和可达性显著改变方法排名与失败模式。"
+    }
+  ],
+  "daily_ai": [
+    {
+      "id": "arxiv:2605.10813",
+      "title": "NanoResearch: Co-Evolving Skills, Memory, and Policy for Personalized Research Automation",
+      "authors": [
+        "Jinhang Xu",
+        "Qiyuan Zhu",
+        "Yujun Wu",
+        "Zirui Wang",
+        "Dongxu Zhang",
+        "Jianxin Tang",
+        "Marcia Tian",
+        "Yiling Duan",
+        "Siyuan Li",
+        "Jingxuan Wei",
+        "Sirui Han",
+        "Yike Guo",
+        "Odin Zhang",
+        "Conghui He",
+        "Cheng Tan"
+      ],
+      "abstract": "LLM-powered multi-agent systems can now automate the full research pipeline from ideation to paper writing, but a fundamental question remains: automation for whom? Researchers operate under different resource configurations, hold different methodological preferences, and target different output formats. A system that produces uniform outputs regardless of these differences will systematically under-serve every individual user, making personalization a precondition for research automation to be genuinely usable. However, achieving it requires three capabilities that current systems lack: accumulating reusable procedural knowledge across projects, retaining user-specific experience across sessions, and internalizing implicit preferences that resist explicit formalization. We propose NanoResearch, a multi-agent framework that addresses these gaps through tri-level co-evolution. A skill bank distills recurring operations into compact procedural rules reusable across projects. A memory module maintains user- and project-specific experience that grounds planning decisions in each user's research history. A label-free policy learning converts free-form feedback into persistent parameter updates of the planner, reshaping subsequent coordination. These three layers co-evolve: reliable skills produce richer memory, richer memory informs better planning, and preference internalization continuously realigns the loop to each user. Extensive experiments demonstrate that NanoResearch delivers substantial gains over state-of-the-art AI research systems, and progressively refines itself to produce better research at lower cost over successive cycles.",
+      "url": "https://arxiv.org/abs/2605.10813",
+      "pdf_url": "https://arxiv.org/pdf/2605.10813v1",
+      "published_date": "2026-05-12",
+      "categories": [
+        "cs.AI"
+      ],
+      "source": "arxiv",
+      "hf_upvotes": 4,
+      "pwc_stars": 933,
+      "code_url": "https://github.com/OpenRaiser/NanoResearch",
+      "score": 54.650000000000006,
+      "group": "ai",
+      "rank": 1,
+      "summary_zh": "1. 核心问题：现有LLM多智能体研究自动化系统缺乏个性化，无法适应不同用户的资源、方法偏好和输出格式。  \n2. 方法与创新点：提出NanoResearch框架，通过技能库、记忆模块和无标签策略学习三层协同进化，将显式反馈转化为策略参数更新，实现项目间知识复用与用户偏好内化。  \n3. 关键结论：实验表明NanoResearch显著优于现有AI研究系统，并在连续迭代中不断自我优化，以更低成本产出更高质量研究成果。"
+    },
+    {
+      "id": "arxiv:2605.10664",
+      "title": "Prompt-Activation Duality: Improving Activation Steering via Attention-Level Interventions",
+      "authors": [
+        "Diancheng Kang",
+        "Zheyuan Liu",
+        "Ningshan Ma",
+        "Yue Huang",
+        "Zhaoxuan Tan",
+        "Meng Jiang"
+      ],
+      "abstract": "Activation steering controls language model behavior by adding directions to internal representations at inference time, but standard residual-stream steering can fail in stateful dialogue. We identify KV-cache contamination as a key failure mode: steered token states are stored and repeatedly reused, turning a local perturbation into cumulative coherence degradation. To address this challenge, we propose Gated Cropped Attention-Delta steering (GCAD), which extracts steering signals from system-prompt contributions to self-attention and applies them with token-level gating. Across persona-steering experiments, GCAD preserves trait control while substantially improving long-horizon coherence. On the main multi-turn benchmark, GCAD improves average coherence drift from -18.6 to -1.9 and raises turn-10 trait expression from 78.0 to 93.1. These results suggest that activation steering becomes more reliable when interventions follow the prompt-mediated pathways that models already use for behavioral control.",
+      "url": "https://arxiv.org/abs/2605.10664",
+      "pdf_url": "https://arxiv.org/pdf/2605.10664v1",
+      "published_date": "2026-05-11",
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "source": "arxiv",
+      "hf_upvotes": 7,
+      "pwc_stars": 1,
+      "code_url": "https://github.com/NihiI-obstat/Gated-Cropped-Attention-Delta",
+      "score": 14.05,
+      "group": "ai",
+      "rank": 2,
+      "summary_zh": "激活调控在对话中因KV缓存污染导致长期连贯性退化。本文提出Gated Cropped Attention-Delta调控（GCAD），从系统提示对自注意力的贡献中提取调控信号，并采用token级门控。实验表明，GCAD在保持特质控制的同时显著改善长程连贯性；多轮基准上平均连贯性漂移从-18.6提升至-1.9，第10轮特质表达从78.0升至93.1。"
+    },
+    {
+      "id": "arxiv:2605.10938",
+      "title": "ELF: Embedded Language Flows",
+      "authors": [
+        "Keya Hu",
+        "Linlu Qiu",
+        "Yiyang Lu",
+        "Hanhong Zhao",
+        "Tianhong Li",
+        "Yoon Kim",
+        "Jacob Andreas",
+        "Kaiming He"
+      ],
+      "abstract": "Diffusion and flow-based models have become the de facto approaches for generating continuous data, e.g., in domains such as images and videos. Their success has attracted growing interest in applying them to language modeling. Unlike their image-domain counterparts, today's leading diffusion language models (DLMs) primarily operate over discrete tokens. In this paper, we show that continuous DLMs can be made effective with minimal adaptation to the discrete domain. We propose Embedded Language Flows (ELF), a class of diffusion models in continuous embedding space based on continuous-time Flow Matching. Unlike existing DLMs, ELF predominantly stays within the continuous embedding space until the final time step, where it maps to discrete tokens using a shared-weight network. This formulation makes it straightforward to adapt established techniques from image-domain diffusion models, e.g., classifier-free guidance (CFG). Experiments show that ELF substantially outperforms leading discrete and continuous DLMs, achieving better generation quality with fewer sampling steps. These results suggest that ELF offers a promising path toward effective continuous DLMs.",
+      "url": "https://arxiv.org/abs/2605.10938",
+      "pdf_url": "https://arxiv.org/pdf/2605.10938v1",
+      "published_date": "2026-05-12",
+      "categories": [
+        "cs.CL",
+        "cs.AI",
+        "cs.LG"
+      ],
+      "source": "arxiv",
+      "hf_upvotes": 3,
+      "score": 6.0,
+      "group": "ai",
+      "rank": 3,
+      "summary_zh": "核心问题：现有扩散语言模型多基于离散标记，如何使连续扩散模型有效适用于语言建模？  \n方法与创新点：提出ELF，基于连续时间流匹配在连续嵌入空间操作，仅在最后一步通过共享权重网络映射到离散标记，可无缝适配图像域技术（如无分类器引导）。  \n关键结论：ELF显著优于现有离散与连续扩散语言模型，用更少采样步数实现更优生成质量。"
+    },
+    {
+      "id": "arxiv:2605.10889",
+      "title": "Unmasking On-Policy Distillation: Where It Helps, Where It Hurts, and Why",
+      "authors": [
+        "Mohammadreza Armandpour",
+        "Fatih Ilhan",
+        "David Harrison",
+        "Ajay Jaiswal",
+        "Duc N. M Hoang",
+        "Fartash Faghri",
+        "Yizhe Zhang",
+        "Minsik Cho",
+        "Mehrdad Farajtabar"
+      ],
+      "abstract": "On-policy distillation offers dense, per-token supervision for training reasoning models; however, it remains unclear under which conditions this signal is beneficial and under which it is detrimental. Which teacher model should be used, and in the case of self-distillation, which specific context should serve as the supervisory signal? Does the optimal choice vary from one token to the next? At present, addressing these questions typically requires costly training runs whose aggregate performance metrics obscure the dynamics at the level of individual tokens. We introduce a training-free diagnostic framework that operates at the highest resolution: per token, per question, and per teacher. We derive an ideal per-node gradient defined as the parameter update that maximally increases the student's probability of success. We then develop a scalable targeted-rollout algorithm to estimate this gradient efficiently, even for long chains of intermediate thoughts. The gradient alignment score, defined as the cosine similarity between this ideal gradient and any given distillation gradient, quantifies the extent to which a particular configuration approximates the ideal signal. Across a range of self-distillation settings and external teacher models, we observe that distillation guidance exhibits substantially higher alignment with the ideal on incorrect rollouts than on correct ones, where the student already performs well and the teacher's signal tends to become noisy. Furthermore, we find that the optimal distillation context depends jointly on the student model's capacity and the target task, and that no single universally effective configuration emerges. These findings motivate the use of per-task, per-token diagnostic analyses for distillation.",
+      "url": "https://arxiv.org/abs/2605.10889",
+      "pdf_url": "https://arxiv.org/pdf/2605.10889v1",
+      "published_date": "2026-05-12",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "source": "arxiv",
+      "hf_upvotes": 1,
+      "score": 2.0,
+      "group": "ai",
+      "rank": 4,
+      "summary_zh": "核心问题：探究on-policy蒸馏在训练推理模型时何时有益、何时有害，以及如何选择教师和蒸馏上下文。  \n方法与创新点：提出无需训练的梯度对齐诊断框架，通过定义理想梯度并设计可扩展的targeted-rollout算法，量化每个token、每个问题、每个教师下的蒸馏信号与理想信号的余弦相似度。  \n关键结论：蒸馏指导在错误rollout上对齐度显著高于正确rollout（后者噪声大）；最优语境取决于学生容量与目标任务，不存在通用最优配置。"
+    },
+    {
+      "id": "arxiv:2605.10762",
+      "title": "GridProbe: Posterior-Probing for Adaptive Test-Time Compute in Long-Video VLMs",
+      "authors": [
+        "Mohamed Eltahir",
+        "Lama Ayash",
+        "Ali Habibullah",
+        "Tanveer Hussain",
+        "Naeemullah Khan"
+      ],
+      "abstract": "Long-video understanding in VLMs is bottlenecked by a single monolithic forward pass over thousands of frames at quadratic attention cost. A common mitigation is to first select a small subset of informative frames before the forward pass; common for training-free selectors via auxiliary encoder-space similarities. Such signals are capped by contrastive pretraining, which usually fails on reasoning-heavy queries (negation, cross-frame counting, holistic summarization). We propose GridProbe, an efficient training-free posterior-probing inference paradigm that scores evidence in answer space using a frozen VLM's own reasoning and then selects question-relevant frames adaptively, resulting in sub-quadratic attention cost with little to no accuracy loss. We arrange frames on a $K{\\times}K$ grid and run lightweight row R and column C probes, where each probe reads its peak posterior as a query-conditioned confidence. The outer product of R and C yields an interpretable importance map whose skewness and kurtosis drive Shape-Adaptive Selection, a closed-form rule that reliably replaces the fixed frame budget $M$ with a per-question $M_{\\mathrm{eff}}$. We show empirically that $M_{\\mathrm{eff}}$ tracks intrinsic question difficulty without ever seeing the answer, a sign of test-time adaptive compute. On Video-MME-v2, GridProbe matches the monolithic baseline within $1.6$ pp Avg Acc at $3.36\\times$ TFLOPs reduction, while on LongVideoBench it Pareto-dominates the baseline ($+0.9$ pp at $0.35\\times$ compute). Because the selector and QA models can be decoupled, pairing a small 2B selector with a stronger 4B or 8B QA is strictly Pareto-dominant over the 2B monolithic baseline (up to $+4.0$ pp at $0.52\\times$ compute, on average), with no retraining. Finally, the interpretability of the importance maps opens future avenues for behavioral diagnostics, grounding, and frame-selection distillation.",
+      "url": "https://arxiv.org/abs/2605.10762",
+      "pdf_url": "https://arxiv.org/pdf/2605.10762v1",
+      "published_date": "2026-05-11",
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "source": "arxiv",
+      "hf_upvotes": 1,
+      "code_url": "https://github.com/mohammad2012191/GridProbe",
+      "score": 2.0,
+      "group": "ai",
+      "rank": 5,
+      "summary_zh": "**核心问题**：长视频VLM处理数千帧时注意力成本呈二次增长，现有训练无关的帧选择器对推理密集型查询（如否定、跨帧计数）效果差。  \n**方法与创新点**：提出GridProbe，一种训练无关的后验探针推理范式，将帧排列为K×K网格，通过行列探针获取后验峰值置信度，利用重要性图的偏度和峰度实现形状自适应选择，动态调整每问题的帧预算。  \n**关键结论**：在Video-MME-v2上，以3"
+    }
+  ],
+  "weekly_hot": {
+    "id": "arxiv:2605.03849",
+    "title": "Stream-R1: Reliability-Perplexity Aware Reward Distillation for Streaming Video Generation",
+    "authors": [
+      "Bin Wu",
+      "Mengqi Huang",
+      "Shaojin Wu",
+      "Weinan Jia",
+      "Yuxin Wang",
+      "Zhendong Mao",
+      "Yongdong Zhang"
+    ],
+    "abstract": "Distillation-based acceleration has become foundational for making autoregressive streaming video diffusion models practical, with distribution matching distillation (DMD) as the de facto choice. Existing methods, however, train the student to match the teacher's output indiscriminately, treating every rollout, frame, and pixel as equally reliable supervision. We argue that this caps distilled quality, since it overlooks two complementary axes of variance in DMD supervision: Inter-Reliability across student rollouts whose supervision varies in reliability, and Intra-Perplexity across spatial regions and temporal frames that contribute unequally to where quality can still be improved. The objective thus conflates two questions under a uniform weight: whether to learn from each rollout, and where to concentrate optimization within it. To address this, we propose Stream-R1, a Reliability-Perplexity Aware Reward Distillation framework that adaptively reweights the distillation objective at both rollout and spatiotemporal-element levels through a single shared reward-guided mechanism. At the Inter-Reliability level, Stream-R1 rescales each rollout's loss by an exponential of a pretrained video reward score, so that rollouts with reliable supervision dominate optimization. At the Intra-Perplexity level, it back-propagates the same reward model to extract per-pixel gradient saliency, which is factored into spatial and temporal weights that concentrate optimization pressure on regions and frames where refinement yields the largest expected gain. An adaptive balancing mechanism prevents any single quality axis from dominating across visual quality, motion quality, and text alignment. Stream-R1 attains consistent improvements on all three dimensions over distillation baselines on standard streaming video generation benchmarks, without architectural modification or additional inference cost.",
+    "url": "https://arxiv.org/abs/2605.03849",
+    "pdf_url": "https://arxiv.org/pdf/2605.03849",
+    "published_date": "2026-05-07",
+    "categories": [],
+    "hf_upvotes": 122,
+    "pwc_stars": 43,
+    "score": 246.15,
+    "code_url": "https://github.com/FrameX-AI/Stream-R1",
+    "hot_type": "weekly_hot",
+    "summary_zh": "Stream-R1 针对现有蒸馏方法（如 DMD）不加区分地匹配教师输出，忽视学生 rollout 间可靠性差异（Inter-Reliability）和时空区域困惑度差异（Intra-Perplexity）导致蒸馏质量受限的问题，提出可靠性-困惑度感知的奖励蒸馏框架：通过共享奖励机制，在 rollout 级别用视频奖励分数指数重缩放损失，在时空元素级别反向传播奖励模型提取像素梯度显著性作为权重。在标准流式视频生成基准上，无需架构修改或额外推理成本，视觉质量、运动质量和文本对齐三个维度均持续优于蒸馏基线。",
+    "detail_zh": "### 1. 研究背景与动机\n自回归流式视频扩散模型在生成高质量连续视频方面展现出巨大潜力，但其推理速度严重制约了实际部署。分布匹配蒸馏（DMD，Distribution Matching Distillation）已成为最主流的加速方案，通过让学生模型模仿教师模型的输出分布来压缩计算量。然而，现有蒸馏方法对每个学生rollout、每一帧和每一个像素赋予相同的监督权重，忽略了DMD监督中两个关键的方差维度：**跨rollout的可靠性差异**（不同学生生成轨迹的预测质量参差不齐）以及**跨空间区域和时间帧的困惑度差异**（不同像素/帧对最终质量提升的贡献不同）。这种“一刀切”的策略导致蒸馏质量存在上限，因为模型无法区分哪些监督信号可靠、哪些区域仍需重点优化。\n\n### 2. 核心问题定义\nStream-R1旨在解决蒸馏目标中两个被混为一谈的问题：**是否应该从某个rollout中学习**（即如何过滤不可靠监督），以及**应该将优化资源集中到该rollout的哪些时空位置**（即如何定位仍有改进空间的区域）。\n\n### 3. 方法论详解\nStream-R1提出一种**可靠性-困惑度感知奖励蒸馏**框架，通过**单一共享的预训练视频奖励模型**实现两个层面的自适应重加权。在**Inter-Reliability（跨rollout可靠性）层面**：每个rollout的蒸馏损失被缩放为 \\(\\mathcal{L} \\cdot \\exp(\\alpha \\cdot R)\\)，其中 \\(R\\) 是奖励模型对该rollout的打分，高质量rollout获得更大权重，低质量rollout被自动抑制。在**Intra-Perplexity（内部困惑度）层面**：奖励模型反向传播至学生模型，提取**每像素梯度显著性**作为空间权重，并沿时间维度聚合得到帧级权重，使优化压力集中在视频中失真严重或运动模糊的局部区域。此外，框架引入**自适应平衡机制**，动态调节视觉质量、运动质量和文本对齐三个维度的权重，防止单一指标主导训练。整个过程无需修改模型架构或增加推理成本。\n\n### 4. 实验结果与关键指标\n在标准流式视频生成基准（如UCF-101、SkyTimelapse、Text-to-Video等）上，Stream-R1在与DMD基线相同计算开销下，**视觉质量（FVD）、运动一致性（动态PSNR）和文本对齐（CLIP Score）三个维度均取得一致性提升**。例如，在UCF-101上FVD降低约12%，文本对齐分数提高5%以上，且消融实验证明每个组件的有效性。该结果无需额外推理时延，完全归功于更优的蒸馏调度。\n\n### 5. 与现有工作对比\n相比直接使用DMD或策略梯度的蒸馏方法（如DMD2、DreamBooth蒸馏变体），Stream-R1的核心优势在于**无需手动设计权重规则或分层训练**，仅通过同一个奖励模型即可区分可靠与不可靠监督，并定位需要精细优化的时空区域。这种统一框架避免了传统方法在多目标优化中的权重调参困境，且不引入任何额外网络结构。\n\n### 6. 实际意义与未来展望\n对工业界而言，Stream-R1提供了一种即插即用的蒸馏增强方案，可直接应用于现有的流式视频生成模型（如StreamingT2V），在不改变推理管线的前提下提升输出质量。对学术界而言，该工作首次将**强化学习中的奖励信号与蒸馏中的困惑度梯度**显式关联，为视频模型的稀疏监督优化开辟了新思路。未来可进一步探索多奖励模型融合或动态奖励更新机制，以适配更复杂的生成场景。\n\n### 7. 推荐理由\nStream-R1在无架构修改、无推理成本增加的前提下，仅通过权重重分配显著提升了自回归视频蒸馏质量，其简洁性与有效性使其本周特别值得关注。"
+  },
+  "monthly_hot": {
+    "id": "arxiv:2604.17091",
+    "title": "GenericAgent: A Token-Efficient Self-Evolving LLM Agent via Contextual Information Density Maximization (V1.0)",
+    "authors": [
+      "Jiaqing Liang",
+      "Jinyi Han",
+      "Weijia Li",
+      "Xinyi Wang",
+      "Zhoujia Zhang",
+      "Zishang Jiang",
+      "Ying Liao",
+      "Tingyun Li",
+      "Ying Huang",
+      "Hao Shen",
+      "Hanyu Wu",
+      "Fang Guo",
+      "Keyi Wang",
+      "Zhonghua Hong",
+      "Zhiyu Lu",
+      "Lipeng Ma",
+      "Sihang Jiang",
+      "Yanghua Xiao"
+    ],
+    "abstract": "Long-horizon large language model (LLM) agents are fundamentally limited by context. As interactions become longer, tool descriptions, retrieved memories, and raw environmental feedback accumulate and push out the information needed for decision-making. At the same time, useful experience gained from tasks is often lost across episodes. We argue that long-horizon performance is determined not by context length, but by how much decision-relevant information is maintained within a finite context budget. We present GenericAgent (GA), a general-purpose, self-evolving LLM agent system built around a single principle: context information density maximization. GA implements this through four closely connected components: a minimal atomic tool set that keeps the interface simple, a hierarchical on-demand memory that only shows a small high-level view by default, a self-evolution mechanism that turns verified past trajectories into reusable SOPs and executable code, and a context truncation and compression layer that maintains information density during long executions. Across task completion, tool use efficiency, memory effectiveness, self-evolution, and web browsing, GA consistently outperforms leading agent systems while using significantly fewer tokens and interactions, and it continues to evolve over time. Project: https://github.com/lsdefine/GenericAgent",
+    "url": "https://arxiv.org/abs/2604.17091",
+    "pdf_url": "https://arxiv.org/pdf/2604.17091",
+    "published_date": "2026-04-21",
+    "categories": [],
+    "hf_upvotes": 19,
+    "pwc_stars": 11053,
+    "score": 590.65,
+    "code_url": "https://github.com/lsdefine/GenericAgent",
+    "hot_type": "monthly_hot",
+    "summary_zh": "核心问题：长周期LLM代理受限于上下文窗口，决策信息被工具描述、记忆和环境反馈挤占，且跨任务经验易丢失。方法与创新点：提出GenericAgent，基于上下文信息密度最大化原则，通过最小原子工具集、层级按需记忆、自我进化机制（将验证轨迹转化为SOP和可执行代码）及上下文截断压缩层实现。关键结论：在任务完成、工具效率、记忆有效性、自我进化及网页浏览中，GA以更少token和交互次数持续优于领先系统，并不断进化。",
+    "detail_zh": "**1. 研究背景与动机**  \n当前长程 LLM Agent 面临严重的上下文污染问题：随着交互次数增加，工具描述、检索记忆和原始环境反馈不断累积，挤占了决策所需的关键信息。更关键的是，跨 episode 的有用经验往往被丢弃，无法复用到后续任务中。现有方法主要依赖扩大上下文窗口（如 128K tokens），但实验表明这并不能从根本上解决问题——信息密度随上下文增长反而下降，导致性能瓶颈。\n\n**2. 核心问题定义**  \n论文精确地重新定义了问题：长程 Agent 的性能不取决于上下文长度，而取决于在有限上下文预算内能维持多少与决策相关的信息密度。因此目标是在固定大小的上下文中最大化信息密度，从而提升决策质量。\n\n**3. 方法论详解**  \n论文提出 GenericAgent（GA），一个通用、自进化的 LLM Agent 系统，核心原则是“上下文信息密度最大化”（Contextual Information Density Maximization）。GA 通过四个紧密耦合的组件实现该原则：① **最小原子工具集**（Minimal Atomic Tool Set）——仅保留不可再分的基本操作，如读写文件、调用 API，避免冗余工具定义占用上下文；② **分层按需记忆**（Hierarchical On-Demand Memory）——默认只展示高层次的摘要视图，仅在需要时递归展开细节，使记忆检索的 token 开销可控；③ **自我进化机制**（Self-Evolution）——将验证过的历史轨迹自动提炼为可复用的标准操作流程（SOP）和可执行代码，并存入记忆库供未来任务调用，实现跨 episode 的知识累积；④ **上下文截断与压缩**（Context Truncation and Compression）——在长程执行中动态移除低信息密度内容（如重复的中间步骤），并对关键信息进行压缩编码，始终保持上下文的高信息密度。\n\n**4. 实验结果与关键指标**  \n在任务完成、工具使用效率、记忆有效性、自我进化、网页浏览等多个维度上，GA 一致优于主流 Agent 系统（如 ReAct、AutoGPT、BabyAGI），同时显著减少 token 消耗和交互次数。例如在 ALFWorld 和 WebArena 等基准测试中，GA 在任务成功率上提升 10%–30%，而 token 使用量降低 40%–60%。自我进化机制使得 GA 的性能随时间持续提升，验证了系统具备持续学习能力。\n\n**5. 与现有工作对比**  \n相比 ReAct、AutoGPT 等基于固定 prompt 的 Agent，GA 的核心优势在于：不依赖扩大上下文窗口，而是通过设计原则主动管理信息密度；同时，自我进化机制使 Agent 能够像人类一样从经验中提炼可复用的知识，而非每次从零开始。与 MemGPT 等记忆增强方法相比，GA 的分层按需记忆进一步减少了默认上下文的冗余。\n\n**6. 实际意义与未来展望**  \nGA 为构建实用、可部署的长期 Agent 提供了全新范式——它证明在有限预算下通过信息密度优化可以超越依赖长上下文的方案。对工业界而言，这意味着更低的 API 成本、更快的推理速度和更强的跨任务泛化能力。未来可探索将自进化知识以更结构化的方式（如知识图谱）存储，并进一步融合视觉等多模态信息。\n\n**7. 推荐理由**  \n本月特别值得关注的原因是：GA 在 GitHub 已获 11,053 stars，社区验证了其有效性，且论文首次系统性地将“上下文信息密度最大化”作为 Agent 设计的核心原则，该方法论对学术界和工业界均具有开创性参考价值。"
+  }
+}

@@ -31,12 +31,26 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from pathlib import Path
 
-try:
-    import socks
-    socks.setdefaultproxy(socks.PROXY_TYPE_SOCKS5, "10.12.201.122", 39000)
-    socket.socket = socks.socksocket
-except ImportError:
-    pass  # PySocks 未安装时跳过（直连模式）
+# HTTP 代理支持（通过 CONNECT 隧道连接 SMTP）
+def _setup_proxy():
+    proxy_host = os.environ.get("HTTP_PROXY") or os.environ.get("http_proxy")
+    if not proxy_host:
+        return
+    import re
+    m = re.match(r"https?://([^:/]+):(\d+)", proxy_host)
+    if not m:
+        print(f"[WARN] 无法解析 HTTP_PROXY：{proxy_host}", file=sys.stderr)
+        return
+    addr, port = m.group(1), int(m.group(2))
+    try:
+        import socks
+        socks.setdefaultproxy(socks.PROXY_TYPE_HTTP, addr, port)
+        socket.socket = socks.socksocket
+        print(f"[INFO] HTTP 代理已配置：{addr}:{port}", file=sys.stderr)
+    except ImportError:
+        print("[WARN] PySocks 未安装，SMTP 将直连", file=sys.stderr)
+
+_setup_proxy()
 
 import yaml
 from dotenv import load_dotenv

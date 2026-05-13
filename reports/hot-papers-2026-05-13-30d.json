@@ -46,8 +46,8 @@
     "published_date": "2026-05-07",
     "categories": [],
     "hf_upvotes": 64,
-    "pwc_stars": 24581,
-    "score": 1357.0500000000002,
+    "pwc_stars": 24648,
+    "score": 1360.4,
     "code_url": "https://github.com/OpenBMB/MiniCPM-o"
   },
   {
@@ -64,8 +64,8 @@
     "published_date": "2026-05-06",
     "categories": [],
     "hf_upvotes": 107,
-    "pwc_stars": 8890,
-    "score": 658.5,
+    "pwc_stars": 8969,
+    "score": 662.45,
     "code_url": "https://github.com/wanshuiyin/Auto-claude-code-research-in-sleep"
   },
   {
@@ -96,9 +96,9 @@
     "pdf_url": "https://arxiv.org/pdf/2604.17091",
     "published_date": "2026-04-21",
     "categories": [],
-    "hf_upvotes": 18,
-    "pwc_stars": 10954,
-    "score": 583.7,
+    "hf_upvotes": 19,
+    "pwc_stars": 11053,
+    "score": 590.65,
     "code_url": "https://github.com/lsdefine/GenericAgent"
   },
   {
@@ -140,9 +140,9 @@
     "pdf_url": "https://arxiv.org/pdf/2605.02881",
     "published_date": "2026-05-05",
     "categories": [],
-    "hf_upvotes": 273,
-    "pwc_stars": 254,
-    "score": 558.7,
+    "hf_upvotes": 286,
+    "pwc_stars": 278,
+    "score": 585.9,
     "code_url": "https://github.com/allenai/molmoact2"
   },
   {
@@ -168,8 +168,8 @@
     "published_date": "2026-04-29",
     "categories": [],
     "hf_upvotes": 264,
-    "pwc_stars": 342,
-    "score": 545.1,
+    "pwc_stars": 347,
+    "score": 545.35,
     "code_url": "https://github.com/RecursiveMAS/RecursiveMAS"
   },
   {
@@ -200,8 +200,8 @@
     "published_date": "2026-04-13",
     "categories": [],
     "hf_upvotes": 245,
-    "pwc_stars": 539,
-    "score": 516.95,
+    "pwc_stars": 540,
+    "score": 517.0,
     "code_url": "https://github.com/allenai/WildDet3D"
   },
   {
@@ -233,8 +233,8 @@
     "published_date": "2026-04-23",
     "categories": [],
     "hf_upvotes": 239,
-    "pwc_stars": 737,
-    "score": 514.85,
+    "pwc_stars": 740,
+    "score": 515.0,
     "code_url": "https://github.com/inclusionAI/LLaDA2.0-Uni"
   },
   {
@@ -323,8 +323,8 @@
     "published_date": "2026-04-27",
     "categories": [],
     "hf_upvotes": 226,
-    "pwc_stars": 203,
-    "score": 462.15,
+    "pwc_stars": 209,
+    "score": 462.45,
     "code_url": "https://github.com/matrix-agent/awesome-agentic-world-modeling"
   },
   {
@@ -346,32 +346,10 @@
     "pdf_url": "https://arxiv.org/pdf/2604.27351",
     "published_date": "2026-05-01",
     "categories": [],
-    "hf_upvotes": 211,
+    "hf_upvotes": 212,
     "pwc_stars": 21,
-    "score": 423.05,
+    "score": 425.05,
     "code_url": "https://github.com/Violet24K/Eywa"
-  },
-  {
-    "id": "arxiv:2604.11784",
-    "title": "ClawGUI: A Unified Framework for Training, Evaluating, and Deploying GUI Agents",
-    "authors": [
-      "Fei Tang",
-      "Zhiqiong Lu",
-      "Boxuan Zhang",
-      "Weiming Lu",
-      "Jun Xiao",
-      "Yueting Zhuang",
-      "Yongliang Shen"
-    ],
-    "abstract": "GUI agents drive applications through their visual interfaces instead of programmatic APIs, interacting with arbitrary software via taps, swipes, and keystrokes, reaching a long tail of applications that CLI-based agents cannot. Yet progress in this area is bottlenecked less by modeling capacity than by the absence of a coherent full-stack infrastructure: online RL training suffers from environment instability and closed pipelines, evaluation protocols drift silently across works, and trained agents rarely reach real users on real devices. We present ClawGUI, an open-source framework addressing these three gaps within a single harness. ClawGUI-RL provides the first open-source GUI agent RL infrastructure with validated support for both parallel virtual environments and real physical devices, integrating GiGPO with a Process Reward Model for dense step-level supervision. ClawGUI-Eval enforces a fully standardized evaluation pipeline across 6 benchmarks and 11+ models, achieving 95.8\\% reproduction against official baselines. ClawGUI-Agent brings trained agents to Android, HarmonyOS, and iOS through 12+ chat platforms with hybrid CLI-GUI control and persistent personalized memory. Trained end to end within this pipeline, ClawGUI-2B achieves 17.1\\% Success Rate on MobileWorld GUI-Only, outperforming the same-scale MAI-UI-2B baseline by 6.0\\%.",
-    "url": "https://arxiv.org/abs/2604.11784",
-    "pdf_url": "https://arxiv.org/pdf/2604.11784",
-    "published_date": "2026-04-15",
-    "categories": [],
-    "hf_upvotes": 143,
-    "pwc_stars": 1216,
-    "score": 346.8,
-    "code_url": "https://github.com/ZJU-REAL/ClawGUI"
   },
   {
     "id": "arxiv:2604.14141",
@@ -395,9 +373,31 @@
     "published_date": "2026-04-16",
     "categories": [],
     "hf_upvotes": 20,
-    "pwc_stars": 6117,
-    "score": 345.85,
+    "pwc_stars": 6161,
+    "score": 348.05,
     "code_url": "https://github.com/robbyant/lingbot-map"
+  },
+  {
+    "id": "arxiv:2604.11784",
+    "title": "ClawGUI: A Unified Framework for Training, Evaluating, and Deploying GUI Agents",
+    "authors": [
+      "Fei Tang",
+      "Zhiqiong Lu",
+      "Boxuan Zhang",
+      "Weiming Lu",
+      "Jun Xiao",
+      "Yueting Zhuang",
+      "Yongliang Shen"
+    ],
+    "abstract": "GUI agents drive applications through their visual interfaces instead of programmatic APIs, interacting with arbitrary software via taps, swipes, and keystrokes, reaching a long tail of applications that CLI-based agents cannot. Yet progress in this area is bottlenecked less by modeling capacity than by the absence of a coherent full-stack infrastructure: online RL training suffers from environment instability and closed pipelines, evaluation protocols drift silently across works, and trained agents rarely reach real users on real devices. We present ClawGUI, an open-source framework addressing these three gaps within a single harness. ClawGUI-RL provides the first open-source GUI agent RL infrastructure with validated support for both parallel virtual environments and real physical devices, integrating GiGPO with a Process Reward Model for dense step-level supervision. ClawGUI-Eval enforces a fully standardized evaluation pipeline across 6 benchmarks and 11+ models, achieving 95.8\\% reproduction against official baselines. ClawGUI-Agent brings trained agents to Android, HarmonyOS, and iOS through 12+ chat platforms with hybrid CLI-GUI control and persistent personalized memory. Trained end to end within this pipeline, ClawGUI-2B achieves 17.1\\% Success Rate on MobileWorld GUI-Only, outperforming the same-scale MAI-UI-2B baseline by 6.0\\%.",
+    "url": "https://arxiv.org/abs/2604.11784",
+    "pdf_url": "https://arxiv.org/pdf/2604.11784",
+    "published_date": "2026-04-15",
+    "categories": [],
+    "hf_upvotes": 143,
+    "pwc_stars": 1224,
+    "score": 347.2,
+    "code_url": "https://github.com/ZJU-REAL/ClawGUI"
   },
   {
     "id": "arxiv:2604.13346",
@@ -480,8 +480,8 @@
     "published_date": "2026-04-17",
     "categories": [],
     "hf_upvotes": 118,
-    "pwc_stars": 1857,
-    "score": 328.85,
+    "pwc_stars": 1868,
+    "score": 329.4,
     "code_url": "https://github.com/Tencent-Hunyuan/HY-World-2.0"
   },
   {
@@ -573,8 +573,8 @@
     "published_date": "2026-04-30",
     "categories": [],
     "hf_upvotes": 104,
-    "pwc_stars": 2305,
-    "score": 323.25,
+    "pwc_stars": 2307,
+    "score": 323.35,
     "code_url": "https://github.com/zai-org/GLM-V"
   },
   {
@@ -786,8 +786,8 @@
     "published_date": "2026-05-05",
     "categories": [],
     "hf_upvotes": 152,
-    "pwc_stars": 106,
-    "score": 309.3,
+    "pwc_stars": 121,
+    "score": 310.05,
     "code_url": "https://github.com/S1s-Z/Ctx2Skill"
   },
   {
@@ -836,31 +836,35 @@
     "published_date": "2026-04-21",
     "categories": [],
     "hf_upvotes": 78,
-    "pwc_stars": 2134,
-    "score": 262.7,
+    "pwc_stars": 2150,
+    "score": 263.5,
     "code_url": "https://github.com/leigest519/OpenGame"
   },
   {
-    "id": "arxiv:2604.22446",
-    "title": "From Skills to Talent: Organising Heterogeneous Agents as a Real-World Company",
+    "id": "arxiv:2604.24764",
+    "title": "World-R1: Reinforcing 3D Constraints for Text-to-Video Generation",
     "authors": [
-      "Zhengxu Yu",
-      "Yu Fu",
+      "Weijie Wang",
+      "Xiaoxuan He",
+      "Youping Gu",
+      "Yifan Yang",
+      "Zeyu Zhang",
+      "Yefei He",
+      "Yanbo Ding",
+      "Xirui Hu",
+      "Donny Y. Chen",
       "Zhiyuan He",
-      "Yuxuan Huang",
-      "Lee Ka Yiu",
-      "Meng Fang",
-      "Weilin Luo",
-      "Jun Wang"
+      "Yuqing Yang",
+      "Bohan Zhuang"
     ],
-    "abstract": "Individual agent capabilities have advanced rapidly through modular skills and tool integrations, yet multi-agent systems remain constrained by fixed team structures, tightly coupled coordination logic, and session-bound learning. We argue that this reflects a deeper absence: a principled organisational layer that governs how a workforce of agents is assembled, governed, and improved over time, decoupled from what individual agents know. To fill this gap, we introduce OneManCompany (OMC), a framework that elevates multi-agent systems to the organisational level. OMC encapsulates skills, tools, and runtime configurations into portable agent identities called Talents, orchestrated through typed organisational interfaces that abstract over heterogeneous backends. A community-driven Talent Market enables on-demand recruitment, allowing the organisation to close capability gaps and reconfigure itself dynamically during execution. Organisational decision-making is operationalised through an Explore-Execute-Review (E^2R) tree search, which unifies planning, execution, and evaluation in a single hierarchical loop: tasks are decomposed top-down into accountable units and execution outcomes are aggregated bottom-up to drive systematic review and refinement. This loop provides formal guarantees on termination and deadlock freedom while mirroring the feedback mechanisms of human enterprises. Together, these contributions transform multi-agent systems from static, pre-configured pipelines into self-organising and self-improving AI organisations capable of adapting to open-ended tasks across diverse domains. Empirical evaluation on PRDBench shows that OMC achieves an 84.67% success rate, surpassing the state of the art by 15.48 percentage points, with cross-domain case studies further demonstrating its generality.",
-    "url": "https://arxiv.org/abs/2604.22446",
-    "pdf_url": "https://arxiv.org/pdf/2604.22446",
+    "abstract": "Recent video foundation models demonstrate impressive visual synthesis but frequently suffer from geometric inconsistencies. While existing methods attempt to inject 3D priors via architectural modifications, they often incur high computational costs and limit scalability. We propose World-R1, a framework that aligns video generation with 3D constraints through reinforcement learning. To facilitate this alignment, we introduce a specialized pure text dataset tailored for world simulation. Utilizing Flow-GRPO, we optimize the model using feedback from pre-trained 3D foundation models and vision-language models to enforce structural coherence without altering the underlying architecture. We further employ a periodic decoupled training strategy to balance rigid geometric consistency with dynamic scene fluidity. Extensive evaluations reveal that our approach significantly enhances 3D consistency while preserving the original visual quality of the foundation model, effectively bridging the gap between video generation and scalable world simulation.",
+    "url": "https://arxiv.org/abs/2604.24764",
+    "pdf_url": "https://arxiv.org/pdf/2604.24764",
     "published_date": "2026-04-28",
     "categories": [],
-    "hf_upvotes": 121,
-    "pwc_stars": 213,
-    "score": 252.65,
-    "code_url": "https://github.com/1mancompany/OneManCompany"
+    "hf_upvotes": 118,
+    "pwc_stars": 347,
+    "score": 253.35,
+    "code_url": "https://github.com/microsoft/World-R1"
   }
 ]

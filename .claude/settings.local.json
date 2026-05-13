@@ -7,7 +7,21 @@
       "Bash(python3 *)",
       "Skill(Summarizer)",
       "Skill(Storage)",
-      "Skill(Daily-Paper-Push)"
+      "Skill(Daily-Paper-Push)",
+      "Bash(ping -c 1 -W 3 smtp.gmail.com)",
+      "Bash(ping -c 1 -W 3 8.8.8.8)",
+      "Bash(curl -s --connect-timeout 5 https://www.google.com)",
+      "Bash(python *)",
+      "Skill(Notifier)",
+      "Bash(dpkg -l)",
+      "Bash(curl -s --connect-timeout 5 https://smtp.gmail.com)",
+      "Bash(pip install *)",
+      "Bash(export http_proxy=\"http://10.12.201.122:39000\")",
+      "Bash(export https_proxy=\"http://10.12.201.122:39000\")",
+      "Bash(export HTTP_PROXY=\"http://10.12.201.122:39000\")",
+      "Bash(export HTTPS_PROXY=\"http://10.12.201.122:39000\")",
+      "Bash(export NO_PROXY=\"localhost,127.0.0.1,mirrors.weichai.com\")",
+      "Bash(export no_proxy=\"localhost,127.0.0.1,mirrors.weichai.com\")"
     ]
   }
 }
