@@ -182,14 +182,14 @@ def render_report(data: dict, template_dir: Path = TEMPLATE_DIR) -> str:
 
     daily_robot = data.get("daily_robot", [])
     daily_ai    = data.get("daily_ai", [])
-    weekly_hot  = data.get("weekly_hot")
-    monthly_hot = data.get("monthly_hot")
+    weekly_hot  = data.get("weekly_hot", [])
+    monthly_hot = data.get("monthly_hot", [])
 
     stats = {
         "robot":   len(daily_robot),
         "ai":      len(daily_ai),
-        "weekly":  1 if weekly_hot else 0,
-        "monthly": 1 if monthly_hot else 0,
+        "weekly":  len(weekly_hot),
+        "monthly": len(monthly_hot),
     }
     stats["total"] = stats["robot"] + stats["ai"] + stats["weekly"] + stats["monthly"]
 
@@ -377,9 +377,9 @@ def main() -> None:
     # Step 6: 打印统计
     daily_robot = data.get("daily_robot", [])
     daily_ai    = data.get("daily_ai", [])
-    weekly_hot  = data.get("weekly_hot")
-    monthly_hot = data.get("monthly_hot")
-    total = len(daily_robot) + len(daily_ai) + (1 if weekly_hot else 0) + (1 if monthly_hot else 0)
+    weekly_hot  = data.get("weekly_hot", [])
+    monthly_hot = data.get("monthly_hot", [])
+    total = len(daily_robot) + len(daily_ai) + len(weekly_hot) + len(monthly_hot)
 
     sep = "=" * 60
     print(f"\n{sep}")

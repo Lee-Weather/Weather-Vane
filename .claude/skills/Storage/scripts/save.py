@@ -164,17 +164,17 @@ def save_summarized_data(json_path: Path, db_path: Path) -> None:
             stats["ai"] += 1
 
         # weekly_hot
-        weekly = data.get("weekly_hot")
-        if weekly:
-            save_paper(cursor, weekly)
-            record_push_history(cursor, weekly["id"], date_str, "weekly_hot")
+        for p in data.get("weekly_hot", []):
+            save_paper(cursor, p)
+            push_type = p.get("hot_type", "weekly_hot")
+            record_push_history(cursor, p["id"], date_str, push_type)
             stats["weekly"] += 1
 
         # monthly_hot
-        monthly = data.get("monthly_hot")
-        if monthly:
-            save_paper(cursor, monthly)
-            record_push_history(cursor, monthly["id"], date_str, "monthly_hot")
+        for p in data.get("monthly_hot", []):
+            save_paper(cursor, p)
+            push_type = p.get("hot_type", "monthly_hot")
+            record_push_history(cursor, p["id"], date_str, push_type)
             stats["monthly"] += 1
 
         conn.commit()

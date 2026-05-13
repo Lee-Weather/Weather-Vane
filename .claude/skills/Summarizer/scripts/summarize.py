@@ -317,7 +317,7 @@ def main() -> None:
     monthly_hot  = data.get("monthly_hot")
 
     total_input = len(daily_robot) + len(daily_ai)
-    hot_count   = (1 if weekly_hot else 0) + (1 if monthly_hot else 0)
+    hot_count   = len(weekly_hot or []) + len(monthly_hot or [])
     logger.info("输入论文：%d 篇每日 + %d 篇热门", total_input, hot_count)
 
     # 初始化 DeepSeek 客户端（OpenAI 兼容）
@@ -334,37 +334,42 @@ def main() -> None:
 
     # ── Step 1: 处理周热门 ───────────────────────────────────────────────────
     if weekly_hot and not args.skip_detail:
-        logger.info("Step 1: 处理周热门（详细介绍）...")
-        summary, detail = summarize_detail(client, weekly_hot, "weekly", args.model, args.dry_run)
-        weekly_hot["summary_zh"] = summary
-        weekly_hot["detail_zh"]  = detail
-        if detail: stats["detail_ok"] += 1
-        else:       stats["detail_fail"] += 1
-        if summary: stats["short_ok"] += 1
-        else:        stats["short_fail"] += 1
-    elif weekly_hot:
-        weekly_hot["summary_zh"] = None
-        weekly_hot["detail_zh"]  = None
-
-    # ── Step 2: 处理月热门 ───────────────────────────────────────────────────
-    if monthly_hot and not args.skip_detail:
-        # 若与周热门是同一篇，直接复用 detail_zh
-        if weekly_hot and monthly_hot.get("id") == weekly_hot.get("id"):
-            logger.info("Step 2: 月热门与周热门同篇，复用摘要")
-            monthly_hot["summary_zh"] = weekly_hot.get("summary_zh")
-            monthly_hot["detail_zh"]  = weekly_hot.get("detail_zh")
-        else:
-            logger.info("Step 2: 处理月热门（详细介绍）...")
-            summary, detail = summarize_detail(client, monthly_hot, "monthly", args.model, args.dry_run)
-            monthly_hot["summary_zh"] = summary
-            monthly_hot["detail_zh"]  = detail
+        logger.info("Step 1: 处理周热门（详细介绍）共 %d 篇...", len(weekly_hot))
+        for paper in weekly_hot:
+            summary, detail = summarize_detail(client, paper, "weekly", args.model, args.dry_run)
+            paper["summary_zh"] = summary
+            paper["detail_zh"]  = detail
             if detail: stats["detail_ok"] += 1
             else:       stats["detail_fail"] += 1
             if summary: stats["short_ok"] += 1
             else:        stats["short_fail"] += 1
+    elif weekly_hot:
+        for paper in weekly_hot:
+            paper["summary_zh"] = None
+            paper["detail_zh"]  = None
+
+    # ── Step 2: 处理月热门 ───────────────────────────────────────────────────
+    if monthly_hot and not args.skip_detail:
+        logger.info("Step 2: 处理月热门（详细介绍）共 %d 篇...", len(monthly_hot))
+        for paper in monthly_hot:
+            # 查找是否在周热门中已经生成过
+            cached_paper = next((p for p in (weekly_hot or []) if p.get("id") == paper.get("id")), None)
+            if cached_paper:
+                logger.info("Step 2: 月热门与周热门同篇 (%s)，复用摘要", paper.get("id"))
+                paper["summary_zh"] = cached_paper.get("summary_zh")
+                paper["detail_zh"]  = cached_paper.get("detail_zh")
+            else:
+                summary, detail = summarize_detail(client, paper, "monthly", args.model, args.dry_run)
+                paper["summary_zh"] = summary
+                paper["detail_zh"]  = detail
+                if detail: stats["detail_ok"] += 1
+                else:       stats["detail_fail"] += 1
+                if summary: stats["short_ok"] += 1
+                else:        stats["short_fail"] += 1
     elif monthly_hot:
-        monthly_hot["summary_zh"] = None
-        monthly_hot["detail_zh"]  = None
+        for paper in monthly_hot:
+            paper["summary_zh"] = None
+            paper["detail_zh"]  = None
 
     # ── Step 3: 处理 daily_robot 短摘要 ────────────────────────────────────
     if daily_robot and not args.skip_daily:

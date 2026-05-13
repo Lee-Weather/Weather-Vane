@@ -293,6 +293,7 @@ def select_hot(
     hot_type: str,
     db_path: Path,
     exclude_ids: set[str] | None = None,
+    group: str | None = None,
 ) -> dict | None:
     """
     从过去 N 天数据中选取 score 最高的 1 篇（排除已推送和指定 ID）。
@@ -312,6 +313,9 @@ def select_hot(
     if not papers:
         logger.warning("过去 %d 天无数据，无法选取 %s", days, hot_type)
         return None
+
+    if group:
+        papers = [p for p in papers if classify_group(p) == group]
 
     # 确保 score 字段存在
     for p in papers:
@@ -349,6 +353,7 @@ def resolve_collision(
     monthly: dict | None,
     end_date: str,
     db_path: Path,
+    group: str | None = None,
 ) -> dict | None:
     """
     若周热门与月热门为同一篇论文，月热门顺延至第 2 名。
@@ -362,8 +367,9 @@ def resolve_collision(
     logger.info("周热门与月热门撞号 (%s)，月热门顺延", weekly.get("id"))
     # 重新选取月热门，排除周热门的 ID
     return select_hot(
-        end_date, 30, "monthly_hot", db_path,
+        end_date, 30, f"monthly_hot_{group}" if group else "monthly_hot", db_path,
         exclude_ids={weekly["id"]},
+        group=group,
     )
 
 
@@ -385,8 +391,8 @@ def print_summary(
     date: str,
     total: int,
     stats: dict,
-    weekly: dict | None,
-    monthly: dict | None,
+    weekly: list[dict],
+    monthly: list[dict],
     out_path: str,
 ) -> None:
     """打印摘要统计到控制台。"""
@@ -400,14 +406,16 @@ def print_summary(
     print(f"   └── 🧠 AI 组：      {stats['ai_selected']} 篇（候选 {stats['ai_candidates']} 篇）")
 
     if weekly:
-        title_short = weekly["title"][:40] + "…" if len(weekly["title"]) > 40 else weekly["title"]
-        print(f"🔥 周热门：《{title_short}》(score={weekly['score']:.1f})")
+        for p in weekly:
+            title_short = p["title"][:40] + "…" if len(p["title"]) > 40 else p["title"]
+            print(f"🔥 周热门：《{title_short}》(score={p['score']:.1f})")
     else:
         print("🔥 周热门：无候选")
 
     if monthly:
-        title_short = monthly["title"][:40] + "…" if len(monthly["title"]) > 40 else monthly["title"]
-        print(f"🏆 月热门：《{title_short}》(score={monthly['score']:.1f})")
+        for p in monthly:
+            title_short = p["title"][:40] + "…" if len(p["title"]) > 40 else p["title"]
+            print(f"🏆 月热门：《{title_short}》(score={p['score']:.1f})")
     else:
         print("🏆 月热门：无候选")
 
@@ -449,14 +457,14 @@ def main() -> None:
             "date": args.date,
             "daily_robot": [],
             "daily_ai": [],
-            "weekly_hot": None,
-            "monthly_hot": None,
+            "weekly_hot": [],
+            "monthly_hot": [],
         }
         out_path = write_ranked(result, args.date)
         print_summary(args.date, 0, {
             "robot_candidates": 0, "ai_candidates": 0,
             "robot_selected": 0, "ai_selected": 0,
-        }, None, None, out_path)
+        }, [], [], out_path)
         return
 
     # Step 2: 每日筛选（评分 + 分组 + 截取）
@@ -467,17 +475,25 @@ def main() -> None:
     degraded = False
 
     # Step 6: 周热门
-    weekly_hot = None
+    weekly_hot = []
+    wh_robot, wh_ai = None, None
     if not args.skip_weekly:
-        weekly_hot = select_hot(args.date, 7, "weekly_hot", db_path)
+        wh_robot = select_hot(args.date, 7, "weekly_hot_robot", db_path, group="robot")
+        wh_ai = select_hot(args.date, 7, "weekly_hot_ai", db_path, group="ai")
+        if wh_robot: weekly_hot.append(wh_robot)
+        if wh_ai: weekly_hot.append(wh_ai)
 
-    # Step 7: 月热门
-    monthly_hot = None
+    # Step 7 & 8: 月热门与撞号处理
+    monthly_hot = []
     if not args.skip_monthly:
-        monthly_hot = select_hot(args.date, 30, "monthly_hot", db_path)
+        mh_robot = select_hot(args.date, 30, "monthly_hot_robot", db_path, group="robot")
+        mh_ai = select_hot(args.date, 30, "monthly_hot_ai", db_path, group="ai")
 
-    # Step 8: 撞号处理
-    monthly_hot = resolve_collision(weekly_hot, monthly_hot, args.date, db_path)
+        mh_robot = resolve_collision(wh_robot, mh_robot, args.date, db_path, group="robot")
+        mh_ai = resolve_collision(wh_ai, mh_ai, args.date, db_path, group="ai")
+
+        if mh_robot: monthly_hot.append(mh_robot)
+        if mh_ai: monthly_hot.append(mh_ai)
 
     # Step 9: 输出
     result = {
